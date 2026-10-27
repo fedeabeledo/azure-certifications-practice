@@ -440,6 +440,48 @@ Catalog.pathQuiz("az-900", "architecture", {
         options: ["Un punto de conexión privado", "Un punto de conexión público", "Un equilibrador de carga público", "Registros de alias de Azure DNS"],
         explain: "Los puntos de conexión privados están dentro de una red virtual con una IP privada. Los públicos tienen una IP pública accesible desde cualquier lugar."
       }
+    },
+    {
+      type: "single",
+      topic: "Storage",
+      q: "Invoices are rarely read after the first month but must stay available within milliseconds when needed. Which blob access tier is most cost-effective?",
+      options: ["Cool", "Hot", "Archive", "Premium"],
+      answer: 0,
+      explain: "Cool suits infrequently accessed data stored at least 30 days with online access. Archive is cheaper to store but retrieval is slow.",
+      es: {
+        topic: "Almacenamiento",
+        q: "Las facturas casi no se leen después del primer mes, pero deben estar disponibles en milisegundos cuando se necesiten. ¿Qué nivel de acceso de blobs es el más económico?",
+        options: ["Esporádico", "Frecuente", "Archivo", "Prémium"],
+        explain: "El nivel esporádico sirve para datos de acceso poco frecuente guardados al menos 30 días, con acceso en línea. Archivo es más barato de guardar pero la recuperación es lenta."
+      }
+    },
+    {
+      type: "multi",
+      topic: "Core architecture",
+      q: "Which two are required to create an Azure free account?",
+      options: ["A phone number", "A credit card for identity verification", "An Enterprise Agreement", "An existing paid subscription", "A Microsoft Entra ID P2 license"],
+      answers: [0, 1],
+      explain: "The free account requires a phone number, a card for verification and a Microsoft or GitHub account. The student offer doesn't need a card.",
+      es: {
+        topic: "Arquitectura principal",
+        q: "¿Cuáles son dos requisitos para crear una cuenta gratuita de Azure?",
+        options: ["Un número de teléfono", "Una tarjeta de crédito para verificar la identidad", "Un Contrato Enterprise", "Una suscripción paga existente", "Una licencia de Microsoft Entra ID P2"],
+        explain: "La cuenta gratuita requiere un número de teléfono, una tarjeta para verificación y una cuenta de Microsoft o GitHub. La oferta para estudiantes no necesita tarjeta."
+      }
+    },
+    {
+      type: "single",
+      topic: "Networking",
+      q: "A company uses ExpressRoute and wants a backup path so connectivity continues if the circuit fails. What can it add?",
+      options: ["A site-to-site VPN gateway as failover", "A second resource group", "A network security group", "Azure DNS alias records"],
+      answer: 0,
+      explain: "A VPN gateway over the internet can serve as a secure failover path for ExpressRoute.",
+      es: {
+        topic: "Redes",
+        q: "Una empresa usa ExpressRoute y quiere una ruta de respaldo para que la conectividad continúe si falla el circuito. ¿Qué puede agregar?",
+        options: ["Una puerta de enlace VPN de sitio a sitio como conmutación por error", "Un segundo grupo de recursos", "Un grupo de seguridad de red", "Registros de alias de Azure DNS"],
+        explain: "Una puerta de enlace VPN por internet puede servir como ruta segura de conmutación por error para ExpressRoute."
+      }
     }
   ]
 });

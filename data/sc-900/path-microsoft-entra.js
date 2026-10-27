@@ -362,6 +362,63 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
         options: ["La restauración de la IP de origen", "La inspección de TLS", "El acceso rápido", "Los roles personalizados"],
         explain: "La restauración de la IP de origen pone la IP original del usuario en los registros de inicio de sesión de Entra para que las directivas de ubicación y las detecciones de riesgo sigan siendo precisas."
       }
+    },
+    {
+      type: "yesno",
+      statements: [
+        { topic: "Authentication", s: "The global banned password list is applied automatically to all users in a tenant.", answer: true, explain: "There's nothing to enable, and it can't be disabled." },
+        { topic: "Protection and governance", s: "Microsoft Entra ID Protection risk detections can be exported to a SIEM.", answer: true, explain: "Through Microsoft Graph APIs, Log Analytics, storage or Event Hubs." },
+        { topic: "Access management", s: "Custom Microsoft Entra roles can include permissions that no built-in role has.", answer: false, explain: "Custom roles choose from the same preset list of permissions used by built-in roles." }
+      ],
+      es: {
+        statements: [
+          { topic: "Autenticación", s: "La lista global de contraseñas prohibidas se aplica automáticamente a todos los usuarios de un inquilino.", explain: "No hay que habilitar nada y no se puede deshabilitar." },
+          { topic: "Protección y gobernanza", s: "Las detecciones de riesgo de Microsoft Entra ID Protection se pueden exportar a un SIEM.", explain: "Mediante las API de Microsoft Graph, Log Analytics, almacenamiento o Event Hubs." },
+          { topic: "Administración de acceso", s: "Los roles personalizados de Microsoft Entra pueden incluir permisos que ningún rol integrado tiene.", explain: "Los roles personalizados eligen de la misma lista predefinida de permisos que usan los roles integrados." }
+        ]
+      }
+    },
+    {
+      type: "single",
+      topic: "Microsoft Entra ID and identity types",
+      q: "Several AI agents of the same type need consistent policies, and the organization wants one place that holds the credentials used to create them. What should it define?",
+      options: ["An agent identity blueprint", "A Microsoft 365 group", "A user-assigned managed identity per agent", "A guest user"],
+      answer: 0,
+      explain: "A blueprint defines a class of agent, holds the credentials and lets administrators apply policies to all agents created from it.",
+      es: {
+        topic: "Microsoft Entra ID y tipos de identidad",
+        q: "Varios agentes de IA del mismo tipo necesitan directivas coherentes, y la organización quiere un único lugar que guarde las credenciales usadas para crearlos. ¿Qué debe definir?",
+        options: ["Un plano técnico de identidad de agente", "Un grupo de Microsoft 365", "Una identidad administrada asignada por el usuario para cada agente", "Un usuario invitado"],
+        explain: "Un plano técnico define una clase de agente, guarda las credenciales y permite aplicar directivas a todos los agentes creados a partir de él."
+      }
+    },
+    {
+      type: "multi",
+      topic: "Access management",
+      q: "Which two are features of Microsoft Entra Internet Access for Microsoft Services?",
+      options: ["Compliant network check", "Universal tenant restrictions", "Quick Access to private apps", "Privileged role activation", "Access packages"],
+      answers: [0, 1],
+      explain: "It includes compliant network check, universal tenant restrictions, source IP restoration and enriched Microsoft 365 logs.",
+      es: {
+        topic: "Administración de acceso",
+        q: "¿Cuáles son dos características de Microsoft Entra Internet Access para Microsoft Services?",
+        options: ["La comprobación de red compatible", "Las restricciones universales de inquilinos", "El acceso rápido a aplicaciones privadas", "La activación de roles con privilegios", "Los paquetes de acceso"],
+        explain: "Incluye la comprobación de red compatible, las restricciones universales de inquilinos, la restauración de la IP de origen y los registros enriquecidos de Microsoft 365."
+      }
+    },
+    {
+      type: "single",
+      topic: "Authentication",
+      q: "A company already uses Duo Security for MFA and wants users to satisfy Microsoft Entra MFA with it. What should it configure?",
+      options: ["An external authentication method", "Authenticator Lite", "A Temporary Access Pass", "Password writeback"],
+      answer: 0,
+      explain: "External authentication methods integrate a non-Microsoft MFA provider so users can satisfy MFA with the existing solution.",
+      es: {
+        topic: "Autenticación",
+        q: "Una empresa ya usa Duo Security para MFA y quiere que los usuarios satisfagan la MFA de Microsoft Entra con esa solución. ¿Qué debe configurar?",
+        options: ["Un método de autenticación externo", "Authenticator Lite", "Un pase de acceso temporal", "La escritura diferida de contraseñas"],
+        explain: "Los métodos de autenticación externos integran un proveedor de MFA ajeno a Microsoft para que los usuarios cumplan la MFA con la solución existente."
+      }
     }
   ]
 });

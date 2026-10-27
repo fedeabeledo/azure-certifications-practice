@@ -316,6 +316,205 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
         ],
         explain: "La nube híbrida combina nubes públicas y privadas interconectadas. Las otras opciones describen la multinube, la nube privada y la nube pública."
       }
+    },
+    {
+      type: "single",
+      topic: "Cloud benefits",
+      q: "A database server is running out of memory. The team wants to fix it without adding more servers. Which type of scaling is this?",
+      options: ["Vertical scaling (scale up)", "Horizontal scaling (scale out)", "Scaling in", "Geo-replication"],
+      answer: 0,
+      explain: "Adding CPU or RAM to the same resource is vertical scaling. Adding instances is horizontal scaling.",
+      es: {
+        topic: "Ventajas de la nube",
+        q: "A un servidor de bases de datos se le está acabando la memoria. El equipo quiere solucionarlo sin agregar más servidores. ¿Qué tipo de escalado es?",
+        options: ["Escalado vertical (escalar verticalmente)", "Escalado horizontal (escalar horizontalmente)", "Reducir horizontalmente", "Replicación geográfica"],
+        explain: "Agregar CPU o RAM al mismo recurso es escalado vertical. Agregar instancias es escalado horizontal."
+      }
+    },
+    {
+      type: "match",
+      topic: "Cloud computing",
+      q: "Match each scenario to the cloud model.",
+      values: ["Public cloud", "Private cloud", "Hybrid cloud", "Multicloud"],
+      targets: [
+        { t: "No CapEx to scale and pay only for what you use, without complete control of resources", answer: 0 },
+        { t: "Complete control, with you responsible for hardware maintenance and updates", answer: 1 },
+        { t: "A private datacenter that surges into public cloud resources for temporary demand", answer: 2 },
+        { t: "Workloads split across two different public cloud providers", answer: 3 }
+      ],
+      explain: "Public cloud is pay-per-use without complete control; private cloud gives control and hardware responsibility; hybrid combines both; multicloud uses several public providers.",
+      es: {
+        topic: "Informática en la nube",
+        q: "Relacione cada escenario con el modelo de nube.",
+        values: ["Nube pública", "Nube privada", "Nube híbrida", "Multinube"],
+        targets: [
+          { t: "Sin CapEx para escalar y pago solo por lo que usa, sin control total de los recursos" },
+          { t: "Control total, con usted a cargo del mantenimiento y las actualizaciones del hardware" },
+          { t: "Un centro de datos privado que se expande hacia recursos de nube pública ante una demanda temporal" },
+          { t: "Cargas de trabajo repartidas entre dos proveedores de nube pública distintos" }
+        ],
+        explain: "La nube pública es pago por uso sin control total; la privada da control y la responsabilidad del hardware; la híbrida combina ambas; la multinube usa varios proveedores públicos."
+      }
+    },
+    {
+      type: "single",
+      topic: "Cloud service types",
+      q: "A company wants to move its on-premises servers to the cloud quickly, keeping the same operating systems and configurations. Which service type fits this lift-and-shift migration?",
+      options: ["IaaS", "PaaS", "SaaS", "Serverless"],
+      answer: 0,
+      explain: "Lift-and-shift is a common IaaS scenario: replicate the datacenter in the cloud and move workloads with full OS control.",
+      es: {
+        topic: "Tipos de servicio en la nube",
+        q: "Una empresa quiere mover rápidamente sus servidores locales a la nube, manteniendo los mismos sistemas operativos y configuraciones. ¿Qué tipo de servicio corresponde a esta migración lift-and-shift?",
+        options: ["IaaS", "PaaS", "SaaS", "Sin servidor"],
+        explain: "Lift-and-shift es un escenario habitual de IaaS: replicar el centro de datos en la nube y mover las cargas con control total del sistema operativo."
+      }
+    },
+    {
+      type: "yesno",
+      statements: [
+        { topic: "Cloud benefits", s: "Uptime guarantees in Azure depend on the service and are part of its service-level agreements.", answer: true, explain: "High availability is backed by SLAs that vary by service." },
+        { topic: "Cloud service types", s: "SaaS is the most flexible cloud service type.", answer: false, explain: "IaaS is the most flexible; SaaS is the easiest to use but the least flexible." },
+        { topic: "Cloud computing", s: "In a private cloud hosted by a third party, the third party becomes responsible for your hardware updates.", answer: false, explain: "In a private cloud you remain responsible for hardware maintenance and updates." }
+      ],
+      es: {
+        statements: [
+          { topic: "Ventajas de la nube", s: "Las garantías de tiempo de actividad de Azure dependen del servicio y forman parte de sus acuerdos de nivel de servicio.", explain: "La alta disponibilidad está respaldada por SLA que varían según el servicio." },
+          { topic: "Tipos de servicio en la nube", s: "SaaS es el tipo de servicio en la nube más flexible.", explain: "IaaS es el más flexible; SaaS es el más fácil de usar pero el menos flexible." },
+          { topic: "Informática en la nube", s: "En una nube privada hospedada por un tercero, el tercero pasa a ser responsable de las actualizaciones de su hardware.", explain: "En una nube privada usted sigue siendo responsable del mantenimiento y las actualizaciones del hardware." }
+        ]
+      }
+    },
+    {
+      type: "dropdown",
+      topic: "Cloud benefits",
+      q: "Complete the statement about predictability.",
+      parts: [
+        "Autoscaling and load balancing support ",
+        { options: ["performance predictability", "cost predictability", "governance"], answer: 0 },
+        ", while the Azure Pricing Calculator supports ",
+        { options: ["cost predictability", "high availability", "reliability"], answer: 0 },
+        "."
+      ],
+      explain: "Performance predictability relies on autoscaling, load balancing and high availability; cost predictability relies on tracking, analytics and the Pricing Calculator.",
+      es: {
+        topic: "Ventajas de la nube",
+        q: "Complete la afirmación sobre la previsibilidad.",
+        parts: [
+          "El escalado automático y el equilibrio de carga respaldan la ",
+          { options: ["previsibilidad del rendimiento", "previsibilidad de los costos", "gobernanza"] },
+          ", mientras que la Calculadora de precios de Azure respalda la ",
+          { options: ["previsibilidad de los costos", "alta disponibilidad", "confiabilidad"] },
+          "."
+        ],
+        explain: "La previsibilidad del rendimiento se apoya en el escalado automático, el equilibrio de carga y la alta disponibilidad; la de los costos, en el seguimiento, el análisis y la Calculadora de precios."
+      }
+    },
+    {
+      type: "single",
+      topic: "Cloud computing",
+      q: "A company uses a cloud SQL database service. Who is responsible for patching the database engine, and who is responsible for the data in it?",
+      options: [
+        "The provider patches the database; the customer owns the data",
+        "The customer patches the database; the provider owns the data",
+        "The customer handles both",
+        "The provider handles both"
+      ],
+      answer: 0,
+      explain: "With a managed cloud database, the provider maintains the database; data always stays the customer's responsibility.",
+      es: {
+        topic: "Informática en la nube",
+        q: "Una empresa usa un servicio de base de datos SQL en la nube. ¿Quién es responsable de aplicar los parches del motor de base de datos y quién de los datos que contiene?",
+        options: [
+          "El proveedor aplica los parches de la base de datos; el cliente es dueño de los datos",
+          "El cliente aplica los parches de la base de datos; el proveedor es dueño de los datos",
+          "El cliente se ocupa de ambos",
+          "El proveedor se ocupa de ambos"
+        ],
+        explain: "Con una base de datos administrada en la nube, el proveedor mantiene la base de datos; los datos siempre son responsabilidad del cliente."
+      }
+    },
+    {
+      type: "multi",
+      topic: "Cloud benefits",
+      q: "Which two are examples of management in the cloud, meaning ways you manage your resources?",
+      options: ["The Azure portal", "PowerShell", "Autoscaling based on demand", "Monitoring resource health", "Deploying from templates"],
+      answers: [0, 1],
+      explain: "Management in the cloud is how you manage: a web portal, a CLI, APIs and PowerShell. Autoscaling, monitoring and templates are management of the cloud.",
+      es: {
+        topic: "Ventajas de la nube",
+        q: "¿Cuáles son dos ejemplos de administración en la nube, es decir, formas de administrar sus recursos?",
+        options: ["El portal de Azure", "PowerShell", "El escalado automático según la demanda", "La supervisión del estado de los recursos", "La implementación desde plantillas"],
+        explain: "La administración en la nube es cómo se administra: un portal web, una CLI, las API y PowerShell. El escalado automático, la supervisión y las plantillas son administración de la nube."
+      }
+    },
+    {
+      type: "single",
+      topic: "Cloud service types",
+      q: "A team wants to build its own web application without worrying about OS licensing, patching or the development framework's infrastructure. Which service type fits?",
+      options: ["PaaS", "IaaS", "SaaS", "On-premises"],
+      answer: 0,
+      explain: "PaaS gives a complete development environment; the provider maintains the OS, middleware and tools while you focus on your code.",
+      es: {
+        topic: "Tipos de servicio en la nube",
+        q: "Un equipo quiere desarrollar su propia aplicación web sin ocuparse de las licencias del sistema operativo, los parches ni la infraestructura del marco de desarrollo. ¿Qué tipo de servicio corresponde?",
+        options: ["PaaS", "IaaS", "SaaS", "Local"],
+        explain: "PaaS ofrece un entorno de desarrollo completo; el proveedor mantiene el sistema operativo, el middleware y las herramientas, y usted se centra en su código."
+      }
+    },
+    {
+      type: "single",
+      topic: "Cloud benefits",
+      q: "A company wants its deployed resources to meet its standards automatically and to be alerted when resources drift out of compliance. Which cloud benefit does this describe?",
+      options: ["Governance", "Scalability", "High availability", "Performance predictability"],
+      answer: 0,
+      explain: "Templates keep deployments within standards and cloud auditing flags noncompliant resources and suggests mitigations.",
+      es: {
+        topic: "Ventajas de la nube",
+        q: "Una empresa quiere que sus recursos implementados cumplan sus estándares automáticamente y recibir alertas cuando un recurso deje de cumplirlos. ¿Qué ventaja de la nube describe esto?",
+        options: ["La gobernanza", "La escalabilidad", "La alta disponibilidad", "La previsibilidad del rendimiento"],
+        explain: "Las plantillas mantienen las implementaciones dentro de los estándares y la auditoría en la nube señala los recursos que no cumplen y sugiere cómo corregirlos."
+      }
+    },
+    {
+      type: "match",
+      topic: "Cloud service types",
+      q: "Match each scenario to the service type it's commonly associated with.",
+      values: ["IaaS", "PaaS", "SaaS"],
+      targets: [
+        { t: "Testing and development with rapid replication and complete control", answer: 0 },
+        { t: "Analytics or business intelligence tools delivered as a service", answer: 1 },
+        { t: "Finance and expense tracking", answer: 2 },
+        { t: "Email and messaging", answer: 2 }
+      ],
+      explain: "Testing and development is an IaaS scenario, analytics is a PaaS scenario and email, productivity and finance tracking are SaaS scenarios.",
+      es: {
+        topic: "Tipos de servicio en la nube",
+        q: "Relacione cada escenario con el tipo de servicio al que suele asociarse.",
+        values: ["IaaS", "PaaS", "SaaS"],
+        targets: [
+          { t: "Pruebas y desarrollo con replicación rápida y control total" },
+          { t: "Herramientas de análisis o inteligencia empresarial entregadas como servicio" },
+          { t: "Seguimiento de finanzas y gastos" },
+          { t: "Correo electrónico y mensajería" }
+        ],
+        explain: "Las pruebas y el desarrollo son un escenario de IaaS, el análisis es de PaaS, y el correo, la productividad y el seguimiento de finanzas son de SaaS."
+      }
+    },
+    {
+      type: "yesno",
+      statements: [
+        { topic: "Cloud benefits", s: "Cloud providers are typically well suited to handle DDoS attacks.", answer: true, explain: "That makes your network more robust and secure." },
+        { topic: "Cloud computing", s: "Cloud services extend beyond VMs and storage to IoT, machine learning and AI.", answer: true, explain: "Cloud computing is the delivery of computing services over the internet, including those." },
+        { topic: "Cloud benefits", s: "Reliability means the ability to add resources when demand increases.", answer: false, explain: "That's scalability. Reliability is recovering from failures and continuing to function." }
+      ],
+      es: {
+        statements: [
+          { topic: "Ventajas de la nube", s: "Los proveedores de nube suelen estar bien preparados para manejar ataques DDoS.", explain: "Eso hace que su red sea más robusta y segura." },
+          { topic: "Informática en la nube", s: "Los servicios en la nube van más allá de las máquinas virtuales y el almacenamiento, e incluyen IoT, aprendizaje automático e IA.", explain: "La informática en la nube es la entrega de servicios informáticos por internet, incluidos esos." },
+          { topic: "Ventajas de la nube", s: "La confiabilidad es la capacidad de agregar recursos cuando aumenta la demanda.", explain: "Eso es escalabilidad. La confiabilidad es recuperarse de las fallas y seguir funcionando." }
+        ]
+      }
     }
   ]
 });

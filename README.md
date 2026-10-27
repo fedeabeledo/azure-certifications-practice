@@ -8,8 +8,10 @@ Es un sitio estático sin build ni dependencias. Se sirve tal cual desde GitHub 
 
 | Certificación | Learning path | Cuestionarios |
 |---|---|---|
-| AZ-900 | Describe cloud concepts | 12 unidades, 3 integrales de módulo, 1 integral del learning path |
-| SC-900 | Introduction to security, compliance, and identity concepts | 10 unidades, 2 integrales de módulo, 1 integral del learning path |
+| AZ-900 | Describe cloud concepts | 12 unidades, 3 integrales de módulo, 1 integral del learning path (38 preguntas) |
+| AZ-900 | Describe Azure architecture and services | 28 unidades, 5 integrales de módulo, 1 integral del learning path (33 preguntas) |
+| SC-900 | Introduction to security, compliance, and identity concepts | 10 unidades, 2 integrales de módulo, 1 integral del learning path (33 preguntas) |
+| SC-900 | Introduction to Microsoft Entra | 20 unidades, 4 integrales de módulo, 1 integral del learning path (33 preguntas) |
 
 ## Cómo funciona
 
@@ -44,7 +46,7 @@ skills/                    Instrucciones para generar cuestionarios nuevos con C
 
 1. Si el módulo es nuevo, agregá su id a la lista `modules` del learning path en `data/<cert>/cert.js`.
 2. Creá `data/<cert>/<module>.js` con `Catalog.module(...)`. Los formatos de cada tipo de pregunta están documentados al principio de `assets/registry.js` y en `skills/cert-practice-quiz/SKILL.md`.
-3. Sumá el `<script>` del archivo nuevo en `index.html`, después del `cert.js` de su certificación.
+3. Sumá el `<script>` del archivo nuevo en `index.html`, después del `cert.js` de su certificación. Los integrales de learning path (`path-<id>.js`) van después del último módulo de ese path.
 4. Corré `node tools/validate.js` antes de hacer commit. Revisa la forma de los datos, los índices de las respuestas y que la versión en español tenga la misma estructura que la inglesa.
 
 Para probar en local, alcanza con abrir `index.html` en el navegador o levantar un servidor estático, por ejemplo `python3 -m http.server`.
