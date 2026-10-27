@@ -32,23 +32,23 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       q: "Match each requirement to the Microsoft Entra ID license that first includes it.",
       values: ["Free", "P1", "P2"],
       targets: [
-        { t: "Self-service password reset for cloud users", answer: 0 },
+        { t: "User and group management with basic reports", answer: 0 },
         { t: "Conditional Access", answer: 1 },
         { t: "Privileged Identity Management", answer: 2 },
         { t: "Risk-based Conditional Access with ID Protection", answer: 2 }
       ],
-      explain: "Free includes user and group management and SSPR; P1 adds Conditional Access and hybrid identity; P2 adds ID Protection, risk-based Conditional Access and PIM.",
+      explain: "Free includes user and group management and basic reports; P1 adds Conditional Access and hybrid identity; P2 adds ID Protection, risk-based Conditional Access and PIM.",
       es: {
         topic: "Microsoft Entra ID y tipos de identidad",
         q: "Relacione cada requisito con la licencia de Microsoft Entra ID que lo incluye por primera vez.",
         values: ["Free", "P1", "P2"],
         targets: [
-          { t: "Restablecimiento de contraseña de autoservicio para usuarios en la nube" },
+          { t: "Administración de usuarios y grupos con informes básicos" },
           { t: "Acceso condicional" },
           { t: "Privileged Identity Management" },
           { t: "Acceso condicional basado en riesgo con ID Protection" }
         ],
-        explain: "Free incluye administración de usuarios y grupos y SSPR; P1 suma el acceso condicional y la identidad híbrida; P2 suma ID Protection, el acceso condicional basado en riesgo y PIM."
+        explain: "Free incluye administración de usuarios y grupos e informes básicos; P1 suma el acceso condicional y la identidad híbrida; P2 suma ID Protection, el acceso condicional basado en riesgo y PIM."
       }
     },
     {

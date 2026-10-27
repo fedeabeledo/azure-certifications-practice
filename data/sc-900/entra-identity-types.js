@@ -340,13 +340,13 @@ Catalog.module("sc-900", {
             type: "yesno",
             statements: [
               { s: "Every tenant of Microsoft 365, Azure or Dynamics CRM Online is automatically a Microsoft Entra tenant.", answer: true, explain: "Each starts with an initial domain like contoso.onmicrosoft.com." },
-              { s: "Microsoft Entra ID Free includes self-service password reset.", answer: true, explain: "Free provides user and group management, basic reporting and SSPR." },
+              { s: "Microsoft Entra ID Free includes user and group management and basic reports.", answer: true, explain: "Those are part of the free tier; P1 and P2 add features such as Conditional Access and ID Protection." },
               { s: "Microsoft Entra ID Protection provides VPN-less access to private apps.", answer: false, explain: "That's Microsoft Entra Private Access; ID Protection detects identity-based risks." }
             ],
             es: {
               statements: [
                 { s: "Todo inquilino de Microsoft 365, Azure o Dynamics CRM Online es automáticamente un inquilino de Microsoft Entra.", explain: "Cada uno empieza con un dominio inicial como contoso.onmicrosoft.com." },
-                { s: "Microsoft Entra ID Free incluye el restablecimiento de contraseña de autoservicio.", explain: "Free ofrece administración de usuarios y grupos, informes básicos y SSPR." },
+                { s: "Microsoft Entra ID Free incluye la administración de usuarios y grupos y los informes básicos.", explain: "Forman parte del nivel gratuito; P1 y P2 suman funciones como el acceso condicional e ID Protection." },
                 { s: "Microsoft Entra ID Protection ofrece acceso sin VPN a aplicaciones privadas.", explain: "Eso es Microsoft Entra Private Access; ID Protection detecta riesgos basados en la identidad." }
               ]
             }
