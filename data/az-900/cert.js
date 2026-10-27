@@ -18,7 +18,7 @@ Catalog.cert({
       name: "Describe Azure architecture and services",
       es: { name: "Descripción de la arquitectura y los servicios de Azure" },
       url: "https://learn.microsoft.com/en-us/training/paths/azure-fundamentals-describe-azure-architecture-services/",
-      modules: ["core-architecture", "compute"]
+      modules: ["core-architecture", "compute", "networking"]
     },
     {
       id: "governance",
