@@ -18,7 +18,7 @@ Catalog.cert({
       name: "Introduction to Microsoft Entra",
       es: { name: "Introducción a Microsoft Entra" },
       url: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-identity-access/",
-      modules: ["entra-identity-types", "entra-authentication", "entra-access-management"]
+      modules: ["entra-identity-types", "entra-authentication", "entra-access-management", "entra-protection-governance"]
     },
     {
       id: "security-solutions",
