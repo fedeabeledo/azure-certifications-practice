@@ -24,7 +24,7 @@ const UI = {
   es: {
     brand: "Azure Certifications Practice", studyGroup: "Práctica para certificaciones", homeTitle: "Cuestionarios de certificaciones Microsoft",
     homeIntro: "Preguntas con el formato del examen, ordenadas como en MS Learn: certificación, learning path, módulo y unidad. Cada nivel tiene además su integral. Elegí el idioma arriba a la derecha; las preguntas cambian con él. No se guarda ninguna respuesta.",
-    paths: n => `${n} ${n === 1 ? "learning path" : "learning paths"}`, quizzes: n => `${n} ${n === 1 ? "cuestionario" : "cuestionarios"}`, noQuizzes: "sin cuestionarios",
+    paths: n => `${n} ${n === 1 ? "learning path" : "learning paths"}`, quizzes: n => `${n} ${n === 1 ? "cuestionario" : "cuestionarios"}`, noQuizzes: "sin cuestionarios", certTabs: "Certificaciones", tabProgress: (a, b) => `${a} de ${b} LP con contenido`,
     questions: n => `${n} ${n === 1 ? "pregunta" : "preguntas"}`, points: n => `${n} ${n === 1 ? "punto" : "puntos"}`,
     certExam: "Simulacro del examen", fullExam: c => `${c} completo`, certReady: n => `${n} preguntas con la distribución de temas de la guía oficial.`,
     certSoon: "Se arma cuando estén cubiertos todos los learning paths, con la distribución de temas de la guía oficial.",
@@ -68,7 +68,7 @@ const UI = {
   en: {
     brand: "Azure Certifications Practice", studyGroup: "Certification practice", homeTitle: "Microsoft certification quizzes",
     homeIntro: "Exam-style questions organized like MS Learn: certification, learning path, module and unit. Every level also has a comprehensive quiz. Pick the language at the top right; questions switch with it. No answers are stored.",
-    paths: n => `${n} ${n === 1 ? "learning path" : "learning paths"}`, quizzes: n => `${n} ${n === 1 ? "quiz" : "quizzes"}`, noQuizzes: "no quizzes",
+    paths: n => `${n} ${n === 1 ? "learning path" : "learning paths"}`, quizzes: n => `${n} ${n === 1 ? "quiz" : "quizzes"}`, noQuizzes: "no quizzes", certTabs: "Certifications", tabProgress: (a, b) => `${a} of ${b} LPs with content`,
     questions: n => `${n} ${n === 1 ? "question" : "questions"}`, points: n => `${n} ${n === 1 ? "point" : "points"}`,
     certExam: "Practice exam", fullExam: c => `Full ${c}`, certReady: n => `${n} questions weighted like the official study guide.`,
     certSoon: "Built once every learning path is covered, weighted like the official study guide.",
@@ -162,7 +162,13 @@ const isStarted = (it, r) => it.type === "single" ? r !== null : it.type === "mu
 let S = null;            // current quiz attempt
 let view = null;         // re-renders the current screen (used by the language switch)
 let pendingFocus = null; // home section to open and scroll to after a breadcrumb click
+// Active certification tab on the home page, remembered per browser
+let activeCert = (() => { const id = store.get("quizhub-cert"); return window.CATALOG.some(c => c.id === id) ? id : window.CATALOG[0].id; })();
+const setActiveCert = id => { activeCert = id; store.set("quizhub-cert", id); };
+// Home anchors start with "c-<cert>", "p-<cert>-" or "m-<cert>-"; returns the cert they belong to
+const certOfAnchor = a => a && window.CATALOG.find(c => a === `c-${c.id}` || a.startsWith(`p-${c.id}-`) || a.startsWith(`m-${c.id}-`));
 let clockTimer = null;
+let keepScroll = false;   // tab switches re-render the home without jumping to the top
 const stopClock = () => { clearInterval(clockTimer); clockTimer = null; };
 const elapsed = () => { const s = Math.floor(((S.end || Date.now()) - S.start) / 1000); return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`; };
 const anyStarted = () => S && S.items.some((it, i) => isStarted(it, S.resp[i]));
@@ -210,9 +216,16 @@ function renderHome() {
   const hasMemory = store.get("quizhub-open") !== null || (pendingFocus && pendingFocus.open);
   let h = topbar(`<span class="brand">${t.brand}</span>`);
   h += `<header class="intro"><span class="eyebrow">${t.studyGroup}</span><h1>${t.homeTitle}</h1><p>${t.homeIntro}</p></header>`;
-  for (const cert of window.CATALOG) {
-    h += `<section class="cert" id="${anchorFor.cert(cert)}"><div class="cert-top"><span class="code">${esc(cert.code)}</span><h2>${esc(nameOf(cert))}</h2>
-      <span class="meta">${t.paths(cert.paths.length)} · ${t.quizzes(quizCount(cert))}</span></div>`;
+  const focusCert = pendingFocus && certOfAnchor(pendingFocus.anchor);
+  if (focusCert) setActiveCert(focusCert.id);
+  h += `<div class="cert-tabs" role="tablist" aria-label="${t.certTabs}">${window.CATALOG.map(c => {
+    const on = c.id === activeCert, withContent = c.paths.filter(p => quizCount(p) > 0).length;
+    return `<button type="button" role="tab" class="cert-tab" id="tab-${c.id}" data-cert="${c.id}" aria-controls="${anchorFor.cert(c)}" aria-selected="${on}" tabindex="${on ? 0 : -1}">
+      <span class="code">${esc(c.code)}</span><span class="tname">${esc(nameOf(c))}</span>
+      <span class="tmeta">${t.tabProgress(withContent, c.paths.length)} · ${t.quizzes(quizCount(c))}</span></button>`;
+  }).join("")}</div>`;
+  for (const cert of window.CATALOG.filter(c => c.id === activeCert)) {
+    h += `<section class="cert" role="tabpanel" aria-labelledby="tab-${cert.id}" id="${anchorFor.cert(cert)}" tabindex="-1">`;
     h += cert.quiz
       ? `<div class="exam-band"><div class="txt"><span class="eyebrow">${t.certExam}</span><h3>${t.fullExam(esc(cert.code))}</h3><p>${t.certReady(qCount(cert.quiz))}</p></div><a class="btn primary" href="#${idFor.cert(cert)}">${t.startExam}</a></div>`
       : `<div class="exam-band soon"><div class="txt"><span class="eyebrow">${t.certExam}</span><h3>${t.fullExam(esc(cert.code))}</h3><p>${t.certSoon}</p></div><span class="btn pending">${t.pending}</span></div>`;
@@ -243,6 +256,23 @@ function renderHome() {
   }
   h += `<footer>${t.footer}</footer>`;
   app.innerHTML = h;
+  const tabs = [...app.querySelectorAll(".cert-tab")];
+  const pick = id => {
+    setActiveCert(id);
+    history.replaceState(null, "", `#${id}`); // shareable link to this tab, without a hashchange
+    keepScroll = true; renderHome();
+    document.getElementById(`tab-${id}`).focus({ preventScroll: true }); // keep focus on the tab after re-render
+  };
+  tabs.forEach((b, i) => {
+    b.addEventListener("click", () => { if (b.dataset.cert !== activeCert) pick(b.dataset.cert); });
+    // Arrow keys, Home and End move between tabs (WAI-ARIA tabs pattern)
+    b.addEventListener("keydown", e => {
+      const j = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (j === undefined) return;
+      e.preventDefault();
+      pick(tabs[(j + tabs.length) % tabs.length].dataset.cert);
+    });
+  });
   app.querySelectorAll("details.path").forEach(d => d.addEventListener("toggle", () =>
     store.set("quizhub-open", [...app.querySelectorAll("details.path[open]")].map(x => x.dataset.pid))));
   if (pendingFocus) {
@@ -250,7 +280,8 @@ function renderHome() {
     pendingFocus = null;
     if (el) { el.scrollIntoView({ block: "start" }); window.scrollBy(0, -70); return; }
   }
-  window.scrollTo(0, 0);
+  if (!keepScroll) window.scrollTo(0, 0);
+  keepScroll = false;
 }
 
 /* ---------- Start screen ---------- */
@@ -530,8 +561,10 @@ function finish() {
 
 /* ---------- Routing ---------- */
 function route() {
-  const entry = index.get(location.hash.slice(1));
-  if (entry) renderStart(entry); else renderHome();
+  const h = location.hash.slice(1), entry = index.get(h);
+  if (entry) return renderStart(entry);
+  if (window.CATALOG.some(c => c.id === h)) setActiveCert(h);
+  renderHome();
 }
 window.addEventListener("hashchange", route);
 route();
