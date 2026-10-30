@@ -132,13 +132,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "SaaS",
         q: "Your company adopts a SaaS application. Which of the following does your company still manage?",
-        options: ["Identity and access settings", "Application updates", "Infrastructure patching", "Platform middleware"],
+        options: ["Who can access it", "Application updates", "Patching the servers that run the application", "Platform middleware"],
         answer: 0,
         explain: "In SaaS you mainly manage your data, identity and access settings, and device access posture. The provider handles infrastructure, platform and application maintenance.",
         es: {
           topic: "SaaS",
           q: "Su empresa adopta una aplicación SaaS. ¿Cuál de los siguientes elementos sigue administrando su empresa?",
-          options: ["La configuración de identidad y acceso", "Las actualizaciones de la aplicación", "Los parches de la infraestructura", "El middleware de la plataforma"],
+          options: ["Quién puede acceder", "Las actualizaciones de la aplicación", "Los parches de los servidores que ejecutan la aplicación", "El middleware de la plataforma"],
           explain: "En SaaS usted administra principalmente sus datos, la configuración de identidad y acceso, y la postura de acceso de los dispositivos. El proveedor se ocupa de la infraestructura, la plataforma y el mantenimiento de la aplicación."
         }
       },
@@ -162,9 +162,9 @@ Catalog.module("az-900", {
         q: "Which statement best describes PaaS?",
         options: [
           "Renting hardware in a cloud datacenter, where everything you do with it is up to you",
-          "A middle ground between renting datacenter space and paying for a complete, deployed solution",
+          "A middle ground between renting infrastructure and using a finished application",
           "Renting or using a fully developed application",
-          "Running every layer of the stack in your own facilities"
+          "Running every layer of the stack in your own facilities, from hardware to application"
         ],
         answer: 1,
         explain: "PaaS sits between IaaS (renting space) and SaaS (a complete solution). The first option describes IaaS and the third describes SaaS.",
@@ -173,9 +173,9 @@ Catalog.module("az-900", {
           q: "¿Qué afirmación describe mejor a PaaS?",
           options: [
             "Alquilar hardware en un centro de datos en la nube, donde todo lo que haga con él depende de usted",
-            "Un punto medio entre alquilar espacio en un centro de datos y pagar por una solución completa e implementada",
+            "Un punto medio entre alquilar infraestructura y usar una aplicación terminada",
             "Alquilar o usar una aplicación completamente desarrollada",
-            "Ejecutar todas las capas de la pila en instalaciones propias"
+            "Ejecutar todas las capas de la pila en instalaciones propias, del hardware a la aplicación"
           ],
           explain: "PaaS está entre IaaS (alquilar espacio) y SaaS (una solución completa). La primera opción describe IaaS y la tercera, SaaS."
         }
@@ -332,12 +332,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team wants tools provided as a service to analyze and mine its data, find patterns and predict outcomes, without managing servers or operating systems. Which option fits best?",
-            options: ["IaaS virtual machines", "An on-premises datacenter", "PaaS analytics or business intelligence tools", "A private cloud on new hardware"],
+            options: ["IaaS virtual machines", "An on-premises datacenter", "PaaS analytics tools", "A private cloud on new hardware with preinstalled analytics software"],
             answer: 2,
             explain: "Analytics or business intelligence is a listed PaaS scenario: the tools come as a service and the provider manages the platform.",
             es: {
               q: "Un equipo quiere herramientas ofrecidas como servicio para analizar y explorar sus datos, encontrar patrones y predecir resultados, sin administrar servidores ni sistemas operativos. ¿Qué opción es la más adecuada?",
-              options: ["Máquinas virtuales IaaS", "Un centro de datos local", "Herramientas PaaS de análisis o inteligencia empresarial", "Una nube privada con hardware nuevo"],
+              options: ["Máquinas virtuales IaaS", "Un centro de datos local", "Herramientas PaaS de análisis", "Una nube privada con hardware nuevo y software de análisis preinstalado"],
               explain: "El análisis o la inteligencia empresarial es un escenario listado de PaaS: las herramientas vienen como servicio y el proveedor administra la plataforma."
             }
           },
@@ -369,8 +369,8 @@ Catalog.module("az-900", {
             q: "In PaaS, what does the customer focus on?",
             options: [
               "Patching the operating system",
-              "Maintaining middleware and runtimes",
-              "Application code, data and access controls",
+              "Maintaining the middleware and runtimes that the app depends on",
+              "Code, data and access",
               "Physical security of the datacenter"
             ],
             answer: 2,
@@ -379,8 +379,8 @@ Catalog.module("az-900", {
               q: "En PaaS, ¿en qué se concentra el cliente?",
               options: [
                 "En aplicar parches al sistema operativo",
-                "En mantener el middleware y los entornos de ejecución",
-                "En el código de la aplicación, los datos y los controles de acceso",
+                "En mantener el middleware y los entornos de ejecución de los que depende la aplicación",
+                "En el código, los datos y el acceso",
                 "En la seguridad física del centro de datos"
               ],
               explain: "El proveedor administra la plataforma: sistema operativo, middleware y entornos de ejecución administrados. Usted se concentra en el código de la aplicación, los datos y los controles de acceso."
@@ -389,12 +389,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Which of the following is NOT something you need to worry about in a PaaS scenario?",
-            options: ["Licensing and patching for operating systems and databases", "Your application code", "Your data", "Access controls for your application"],
+            options: ["OS and database patching", "Your application code", "The data your application stores and processes", "Access controls for your application"],
             answer: 0,
             explain: "In PaaS you don't have to worry about licensing or patching for operating systems and databases. Code, data and access controls stay with you.",
             es: {
               q: "¿Cuál de los siguientes elementos NO debe preocuparle en un escenario PaaS?",
-              options: ["Las licencias y los parches de sistemas operativos y bases de datos", "El código de su aplicación", "Sus datos", "Los controles de acceso de su aplicación"],
+              options: ["Los parches del SO y la base de datos", "El código de su aplicación", "Los datos que su aplicación almacena y procesa", "Los controles de acceso de su aplicación"],
               explain: "En PaaS no tiene que preocuparse por las licencias ni los parches de sistemas operativos y bases de datos. El código, los datos y los controles de acceso siguen siendo suyos."
             }
           },
@@ -499,8 +499,8 @@ Catalog.module("az-900", {
             q: "A team adopts a SaaS collaboration platform. What can the team focus on, now that the provider handles the rest?",
             options: [
               "Infrastructure patching",
-              "Application updates and availability",
-              "User onboarding, access controls and data governance",
+              "Planning application updates and keeping the service available",
+              "Onboarding, access and data governance",
               "Maintaining the platform's operating systems"
             ],
             answer: 2,
@@ -509,8 +509,8 @@ Catalog.module("az-900", {
               q: "Un equipo adopta una plataforma de colaboración SaaS. ¿En qué puede concentrarse ahora que el proveedor se ocupa del resto?",
               options: [
                 "En los parches de la infraestructura",
-                "En las actualizaciones y la disponibilidad de la aplicación",
-                "En la incorporación de usuarios, los controles de acceso y la gobernanza de datos",
+                "En planificar las actualizaciones de la aplicación y mantener el servicio disponible",
+                "En la incorporación, el acceso y la gobernanza de datos",
                 "En mantener los sistemas operativos de la plataforma"
               ],
               explain: "Con SaaS, el equipo se concentra en la incorporación de usuarios, los controles de acceso y la gobernanza de datos, mientras el proveedor se ocupa de parches, actualizaciones y disponibilidad."

@@ -6,13 +6,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "single",
       topic: "Security and compliance concepts",
       q: "Your company deploys an application on a PaaS service. Which of the following does the cloud provider secure?",
-      options: ["The operating system and runtime environment", "Your application code", "Access controls for your application", "Your data"],
+      options: ["The OS and runtime", "Your application code", "Access controls for the users of your application", "Your data"],
       answer: 0,
       explain: "In PaaS the provider also takes on the OS and runtime. Code, configuration, access controls and data stay with you.",
       es: {
         topic: "Conceptos de seguridad y cumplimiento",
         q: "Su empresa implementa una aplicación en un servicio PaaS. ¿Cuál de los siguientes elementos protege el proveedor de nube?",
-        options: ["El sistema operativo y el entorno de ejecución", "El código de su aplicación", "Los controles de acceso de su aplicación", "Sus datos"],
+        options: ["El SO y el entorno de ejecución", "El código de su aplicación", "Los controles de acceso de los usuarios de su aplicación", "Sus datos"],
         explain: "En PaaS el proveedor también asume el sistema operativo y el entorno de ejecución. El código, la configuración, los controles de acceso y los datos siguen siendo suyos."
       }
     },
@@ -146,8 +146,8 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       topic: "Identity concepts",
       q: "Most of a company's employees work remotely, use SaaS applications and access resources from iPhones. Why isn't Active Directory Domain Services alone enough?",
       options: [
-        "AD DS can't store information about users and groups",
-        "AD DS doesn't natively support SaaS apps, mobile devices or modern protocols, and remote users need a VPN",
+        "AD DS can't store information about remote users",
+        "It lacks native SaaS, mobile and modern protocol support",
         "AD DS only works in the cloud",
         "AD DS doesn't support Group Policy"
       ],
@@ -157,8 +157,8 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
         topic: "Conceptos de identidad",
         q: "La mayoría de los empleados de una empresa trabaja de forma remota, usa aplicaciones SaaS y accede a recursos desde iPhones. ¿Por qué Active Directory Domain Services por sí solo no alcanza?",
         options: [
-          "AD DS no puede almacenar información sobre usuarios y grupos",
-          "AD DS no admite de forma nativa aplicaciones SaaS, dispositivos móviles ni protocolos modernos, y los usuarios remotos necesitan VPN",
+          "AD DS no puede guardar información de usuarios remotos",
+          "No admite de forma nativa SaaS, móviles ni protocolos modernos",
           "AD DS solo funciona en la nube",
           "AD DS no admite la directiva de grupo"
         ],
@@ -304,13 +304,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "single",
       topic: "Security and compliance concepts",
       q: "Two users choose the same password, but the stored hashes are different. What explains this?",
-      options: ["Each password was salted with a unique random value before hashing", "The passwords were encrypted with symmetric keys", "Hashing is non-deterministic", "The passwords were signed with each user's private key"],
+      options: ["Each password got a unique salt", "The passwords were encrypted with symmetric keys", "Hashing is non-deterministic", "The passwords were signed with each user's private key"],
       answer: 0,
       explain: "Hashing is deterministic, so identical inputs give identical hashes. A unique salt per password makes the hashes differ and defeats precomputed tables.",
       es: {
         topic: "Conceptos de seguridad y cumplimiento",
         q: "Dos usuarios eligen la misma contraseña, pero los hashes guardados son distintos. ¿Qué lo explica?",
-        options: ["Cada contraseña se combinó con un valor aleatorio único (sal) antes del hash", "Las contraseñas se cifraron con claves simétricas", "El hash no es determinista", "Las contraseñas se firmaron con la clave privada de cada usuario"],
+        options: ["Cada contraseña recibió una sal única", "Las contraseñas se cifraron con claves simétricas", "El hash no es determinista", "Las contraseñas se firmaron con la clave privada de cada usuario"],
         explain: "El hash es determinista, así que entradas idénticas dan hashes idénticos. Una sal única por contraseña hace que los hashes difieran y anula las tablas precalculadas."
       }
     },
@@ -382,7 +382,7 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       topic: "Identity concepts",
       q: "Which two are limitations of Active Directory Domain Services (AD DS) in modern environments?",
       options: [
-        "It doesn't natively support modern authentication protocols for SaaS apps",
+        "No native modern protocols for SaaS apps",
         "Remote sign-in typically requires a VPN",
         "It can't use Group Policy",
         "It doesn't support organizational units",
@@ -394,7 +394,7 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
         topic: "Conceptos de identidad",
         q: "¿Cuáles son dos limitaciones de Active Directory Domain Services (AD DS) en entornos modernos?",
         options: [
-          "No admite de forma nativa los protocolos de autenticación modernos para aplicaciones SaaS",
+          "No admite de forma nativa protocolos modernos para SaaS",
           "El inicio de sesión remoto suele requerir una VPN",
           "No puede usar la directiva de grupo",
           "No admite unidades organizativas",
@@ -436,13 +436,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "single",
       topic: "Identity concepts",
       q: "An employee leaves the company. Because all apps use single sign-on through one identity provider, what does the administrator need to do to remove access?",
-      options: ["Disable the one account in the identity provider", "Delete the account in every app separately", "Change each app's admin password", "Nothing; SSO access expires on its own"],
+      options: ["Disable the account in the IdP", "Delete the account in every app separately", "Change the admin password of each app the employee used", "Nothing; SSO access expires on its own"],
       answer: 0,
       explain: "With SSO, disabling one account in the IdP removes access to all connected apps, making offboarding faster and more reliable.",
       es: {
         topic: "Conceptos de identidad",
         q: "Un empleado deja la empresa. Como todas las aplicaciones usan inicio de sesión único con un proveedor de identidades, ¿qué debe hacer el administrador para quitarle el acceso?",
-        options: ["Deshabilitar la única cuenta en el proveedor de identidades", "Eliminar la cuenta en cada aplicación por separado", "Cambiar la contraseña de administrador de cada aplicación", "Nada; el acceso con SSO vence solo"],
+        options: ["Deshabilitar la cuenta en el IdP", "Eliminar la cuenta en cada aplicación por separado", "Cambiar la contraseña de administrador de cada aplicación que usaba el empleado", "Nada; el acceso con SSO vence solo"],
         explain: "Con el inicio de sesión único, deshabilitar una cuenta en el IdP quita el acceso a todas las aplicaciones conectadas, lo que agiliza y hace más fiable la baja."
       }
     },

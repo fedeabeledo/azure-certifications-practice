@@ -65,9 +65,9 @@ Catalog.module("sc-900", {
         topic: "Microsoft Entra ID",
         q: "Which two statements about a Microsoft Entra tenant are true?",
         options: [
-          "It has a unique tenant ID and a domain name such as contoso.onmicrosoft.com",
+          "It has a unique ID and an initial domain",
           "It serves as a security and administrative boundary",
-          "It can contain several directories",
+          "It can contain several directories, one per department",
           "It's the same thing as an Azure region",
           "It can hold users but not devices"
         ],
@@ -77,9 +77,9 @@ Catalog.module("sc-900", {
           topic: "Microsoft Entra ID",
           q: "¿Cuáles son dos afirmaciones verdaderas sobre un inquilino de Microsoft Entra?",
           options: [
-            "Tiene un identificador de inquilino único y un nombre de dominio como contoso.onmicrosoft.com",
+            "Tiene un identificador único y un dominio inicial",
             "Funciona como límite de seguridad y de administración",
-            "Puede contener varios directorios",
+            "Puede contener varios directorios, uno por departamento",
             "Es lo mismo que una región de Azure",
             "Puede contener usuarios pero no dispositivos"
           ],
@@ -90,13 +90,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "External identities",
         q: "A company wants consultants to access its Office 365 and line-of-business apps using their own credentials, while it keeps control of its corporate data. Which External ID capability fits?",
-        options: ["B2B collaboration in the workforce tenant", "CIAM in an external tenant", "Microsoft Entra Domain Services", "B2B direct connect"],
+        options: ["B2B collaboration", "CIAM in an external tenant with self-service sign-up", "Microsoft Entra Domain Services", "B2B direct connect"],
         answer: 0,
         explain: "B2B collaboration lets business guests access your Office 365, SaaS and line-of-business apps by authenticating with their home organization.",
         es: {
           topic: "Identidades externas",
           q: "Una empresa quiere que unos consultores accedan a sus aplicaciones de Office 365 y de línea de negocio con sus propias credenciales, manteniendo el control de sus datos corporativos. ¿Qué capacidad de External ID corresponde?",
-          options: ["Colaboración B2B en el inquilino de personal", "CIAM en un inquilino externo", "Microsoft Entra Domain Services", "Conexión directa B2B"],
+          options: ["Colaboración B2B", "CIAM en un inquilino externo con registro de autoservicio", "Microsoft Entra Domain Services", "Conexión directa B2B"],
           explain: "La colaboración B2B permite que los invitados empresariales accedan a sus aplicaciones de Office 365, SaaS y de línea de negocio autenticándose con su organización de origen."
         }
       },
@@ -160,9 +160,9 @@ Catalog.module("sc-900", {
         q: "A company runs AI agents built on AWS Bedrock and wants each to have a governed identity in Microsoft Entra. Which statement is correct?",
         options: [
           "Microsoft Entra Agent ID only supports agents built on Microsoft platforms",
-          "Agent ID is platform-agnostic; third-party agents can be integrated with the Microsoft Entra Auth SDK or workload identity federation",
+          "Agent ID is platform-agnostic and supports third-party agents",
           "The agents must be rebuilt in Azure first",
-          "Third-party agents can only use guest user accounts"
+          "Third-party agents can only sign in as guest user accounts invited from the AWS tenant"
         ],
         answer: 1,
         explain: "Agent ID works with agents from Microsoft and non-Microsoft platforms, such as AWS Bedrock and n8n.",
@@ -171,9 +171,9 @@ Catalog.module("sc-900", {
           q: "Una empresa ejecuta agentes de IA creados en AWS Bedrock y quiere que cada uno tenga una identidad gobernada en Microsoft Entra. ¿Qué afirmación es correcta?",
           options: [
             "Microsoft Entra Agent ID solo admite agentes creados en plataformas de Microsoft",
-            "Agent ID no depende de la plataforma; los agentes de terceros se integran con el SDK de autenticación de Microsoft Entra o la federación de identidades de carga de trabajo",
+            "Agent ID no depende de la plataforma y admite agentes de terceros",
             "Primero hay que volver a crear los agentes en Azure",
-            "Los agentes de terceros solo pueden usar cuentas de invitado"
+            "Los agentes de terceros solo pueden iniciar sesión como invitados del inquilino de AWS"
           ],
           explain: "Agent ID funciona con agentes de plataformas de Microsoft y de terceros, como AWS Bedrock y n8n."
         }
@@ -184,8 +184,8 @@ Catalog.module("sc-900", {
         q: "What does the identity secure score in Microsoft Entra ID represent?",
         options: [
           "The number of users in the tenant",
-          "A percentage indicating how aligned you are with Microsoft's best-practice security recommendations",
-          "The tenant's uptime SLA",
+          "Your alignment with best practices, as a percentage",
+          "The uptime SLA that Microsoft guarantees for the tenant",
           "The license tier of the tenant"
         ],
         answer: 1,
@@ -195,8 +195,8 @@ Catalog.module("sc-900", {
           q: "¿Qué representa la puntuación de seguridad de la identidad en Microsoft Entra ID?",
           options: [
             "La cantidad de usuarios del inquilino",
-            "Un porcentaje que indica cuánto se ajusta a las recomendaciones de seguridad de Microsoft",
-            "El SLA de disponibilidad del inquilino",
+            "Su ajuste a los procedimientos recomendados, en porcentaje",
+            "El SLA de disponibilidad que Microsoft garantiza para el inquilino",
             "El nivel de licencia del inquilino"
           ],
           explain: "La puntuación de seguridad de la identidad mide la postura de seguridad de identidades como porcentaje, con acciones de mejora adaptadas a su configuración."
@@ -400,12 +400,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "After acquiring another company, an organization now runs more than one instance of Microsoft Entra ID. What is this called?",
-            options: ["A multitenant organization", "A hybrid identity", "A replica set", "A management group"],
+            options: ["A multitenant organization", "A hybrid identity", "A replica set", "A shared management group"],
             answer: 0,
             explain: "An organization with more than one Entra ID instance is multitenant; mergers and acquisitions are a common reason.",
             es: {
               q: "Después de adquirir otra empresa, una organización ahora ejecuta más de una instancia de Microsoft Entra ID. ¿Cómo se llama esto?",
-              options: ["Una organización multiinquilino", "Una identidad híbrida", "Un conjunto de réplicas", "Un grupo de administración"],
+              options: ["Una organización multiinquilino", "Una identidad híbrida", "Un conjunto de réplicas", "Un grupo de administración común"],
               explain: "Una organización con más de una instancia de Entra ID es multiinquilino; las fusiones y adquisiciones son un motivo habitual."
             }
           },
@@ -437,9 +437,9 @@ Catalog.module("sc-900", {
             type: "single",
             q: "Developers want users to sign in to their new app with the credentials they already have. How does Microsoft Entra ID help?",
             options: [
-              "It provides a standards-based approach for adding single sign-on to apps",
+              "It adds standards-based single sign-on",
               "It requires every user to create a new password for each app",
-              "It replaces the app's business logic",
+              "It replaces the app's login page with a copy of each user's on-premises password",
               "It hosts the app's front end"
             ],
             answer: 0,
@@ -447,9 +447,9 @@ Catalog.module("sc-900", {
             es: {
               q: "Unos desarrolladores quieren que los usuarios inicien sesión en su nueva aplicación con las credenciales que ya tienen. ¿Cómo ayuda Microsoft Entra ID?",
               options: [
-                "Ofrece un enfoque basado en estándares para agregar inicio de sesión único a las aplicaciones",
+                "Agrega inicio de sesión único basado en estándares",
                 "Exige que cada usuario cree una contraseña nueva para cada aplicación",
-                "Reemplaza la lógica de negocio de la aplicación",
+                "Reemplaza la página de inicio de sesión con una copia de la contraseña local de cada usuario",
                 "Hospeda el front-end de la aplicación"
               ],
               explain: "Los desarrolladores usan Entra ID para agregar inicio de sesión único con credenciales existentes, y API para crear experiencias personalizadas con datos de la organización."
@@ -772,8 +772,8 @@ Catalog.module("sc-900", {
             type: "single",
             q: "What is the System for Cross-domain Identity Management (SCIM) used for in hybrid identity?",
             options: [
-              "A standard to automate exchanging user or group identity information between identity domains",
-              "A protocol for encrypting data at rest",
+              "A standard for automating identity provisioning",
+              "A protocol for encrypting identity data at rest",
               "A method for assigning RBAC roles",
               "A type of multifactor authentication"
             ],
@@ -782,8 +782,8 @@ Catalog.module("sc-900", {
             es: {
               q: "¿Para qué se usa el sistema de administración de identidades entre dominios (SCIM) en la identidad híbrida?",
               options: [
-                "Es un estándar para automatizar el intercambio de información de identidad de usuarios o grupos entre dominios de identidad",
-                "Es un protocolo para cifrar datos en reposo",
+                "Es un estándar para automatizar el aprovisionamiento de identidades",
+                "Es un protocolo para cifrar en reposo datos de identidad",
                 "Es un método para asignar roles de RBAC",
                 "Es un tipo de autenticación multifactor"
               ],
@@ -856,8 +856,8 @@ Catalog.module("sc-900", {
             type: "single",
             q: "With B2B collaboration, how do business guests authenticate?",
             options: [
-              "With credentials your organization creates and stores for them",
-              "With their home organization or identity provider; your organization then checks their eligibility for guest collaboration",
+              "With credentials your organization creates and stores for them in your tenant",
+              "Through their home identity provider",
               "With a shared password sent by email",
               "They don't authenticate at all"
             ],
@@ -866,8 +866,8 @@ Catalog.module("sc-900", {
             es: {
               q: "Con la colaboración B2B, ¿cómo se autentican los invitados empresariales?",
               options: [
-                "Con credenciales que su organización crea y guarda para ellos",
-                "Con su organización o proveedor de identidades de origen; luego su organización verifica si pueden colaborar como invitados",
+                "Con credenciales que su organización crea y guarda para ellos en su inquilino",
+                "Mediante su proveedor de identidades de origen",
                 "Con una contraseña compartida enviada por correo",
                 "No se autentican"
               ],

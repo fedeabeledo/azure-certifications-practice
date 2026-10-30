@@ -114,10 +114,10 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
       topic: "Cloud benefits",
       q: "Which two are examples of management of the cloud?",
       options: [
-        "Automatically scaling resources based on need",
-        "Receiving automatic alerts based on configured metrics",
-        "Using a command line interface",
-        "Calling management APIs",
+        "Autoscaling resources",
+        "Getting metric-based alerts",
+        "Using a command line interface to script deployments",
+        "Calling management APIs from your own monitoring tools",
         "Using a web portal"
       ],
       answers: [0, 1],
@@ -126,10 +126,10 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
         topic: "Ventajas de la nube",
         q: "¿Cuáles son dos ejemplos de administración de la nube?",
         options: [
-          "Escalar recursos automáticamente según la necesidad",
-          "Recibir alertas automáticas basadas en métricas configuradas",
-          "Usar una interfaz de línea de comandos",
-          "Llamar a API de administración",
+          "Escalar recursos automáticamente",
+          "Recibir alertas por métricas",
+          "Usar una interfaz de línea de comandos para automatizar implementaciones",
+          "Llamar a las API de administración desde sus propias herramientas",
           "Usar un portal web"
         ],
         explain: "La administración de la nube abarca el escalado automático, las plantillas, la supervisión del estado y las alertas. La CLI, las API y el portal son administración en la nube."

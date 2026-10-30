@@ -118,13 +118,13 @@ Catalog.module("sc-900", {
         type: "multi",
         topic: "Microsoft Entra Security Copilot integration",
         q: "Which two are Microsoft Entra agents available through Security Copilot?",
-        options: ["Conditional Access Optimization Agent", "Identity Risk Management Agent", "Password Writeback Agent", "Azure Cost Agent", "Teams Meeting Agent"],
+        options: ["Conditional Access Optimization Agent", "Identity Risk Management Agent", "Password Writeback Monitoring Agent", "Azure Cost Agent", "Teams Meeting Compliance Agent"],
         answers: [0, 1],
         explain: "The Conditional Access Optimization Agent recommends policy improvements; the Identity Risk Management Agent (preview) helps investigate ID Protection risks.",
         es: {
           topic: "Integración de Microsoft Entra con Security Copilot",
           q: "¿Cuáles son dos agentes de Microsoft Entra disponibles mediante Security Copilot?",
-          options: ["Agente de optimización del acceso condicional", "Agente de administración de riesgos de identidad", "Agente de escritura diferida de contraseñas", "Agente de costos de Azure", "Agente de reuniones de Teams"],
+          options: ["Agente de optimización del acceso condicional", "Agente de administración de riesgos de identidad", "Agente de supervisión de la escritura diferida de contraseñas", "Agente de costos de Azure", "Agente de cumplimiento de reuniones de Teams"],
           explain: "El agente de optimización del acceso condicional recomienda mejoras en las directivas; el agente de administración de riesgos de identidad (versión preliminar) ayuda a investigar riesgos de ID Protection."
         }
       },
@@ -132,13 +132,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Access reviews",
         q: "Compliance requires that a manager, then the app owner, then an auditor attest in sequence to who still needs access to a finance app. What should you configure?",
-        options: ["A multi-stage access review", "A single PIM activation", "A dynamic group", "Terms of use"],
+        options: ["A multi-stage review", "A PIM activation with approvers", "A dynamic group", "Terms of use"],
         answer: 0,
         explain: "Multi-stage access reviews support up to three stages with different reviewers in a set sequence.",
         es: {
           topic: "Revisiones de acceso",
           q: "El cumplimiento exige que un responsable, luego el propietario de la aplicación y luego un auditor certifiquen en secuencia quién sigue necesitando acceso a una aplicación financiera. ¿Qué debe configurar?",
-          options: ["Una revisión de acceso de varias fases", "Una única activación en PIM", "Un grupo dinámico", "Términos de uso"],
+          options: ["Una revisión de varias fases", "Una activación en PIM con aprobación", "Un grupo dinámico", "Términos de uso"],
           explain: "Las revisiones de acceso de varias fases admiten hasta tres fases con distintos revisores en una secuencia definida."
         }
       },
@@ -160,13 +160,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Microsoft Entra ID Protection",
         q: "A company wants users with medium user risk to be automatically remediated by completing a secure password reset. What should it enable?",
-        options: ["A risk-based Conditional Access policy", "A custom banned password list", "Security defaults only", "An access package"],
+        options: ["Risk-based Conditional Access", "A custom banned password list that forces a password change", "Security defaults only", "An access package"],
         answer: 0,
         explain: "Risk-based Conditional Access can require MFA, a strong method or a secure password reset; completing it remediates the risk automatically.",
         es: {
           topic: "Microsoft Entra ID Protection",
           q: "Una empresa quiere que los usuarios con riesgo de usuario medio se corrijan automáticamente completando un restablecimiento seguro de contraseña. ¿Qué debe habilitar?",
-          options: ["Una directiva de acceso condicional basada en riesgo", "Una lista personalizada de contraseñas prohibidas", "Solo los valores predeterminados de seguridad", "Un paquete de acceso"],
+          options: ["Acceso condicional basado en riesgo", "Una lista personalizada de contraseñas prohibidas que fuerce un cambio de contraseña", "Solo los valores predeterminados de seguridad", "Un paquete de acceso"],
           explain: "El acceso condicional basado en riesgo puede exigir MFA, un método seguro o un restablecimiento seguro de contraseña; completarlo corrige el riesgo automáticamente."
         }
       },
@@ -213,12 +213,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A company wants new hires to have accounts in Microsoft Entra ID and Active Directory created automatically from Workday so they're productive on day one. What should it use?",
-            options: ["Inbound provisioning from the HR source", "Access reviews", "Privileged Identity Management", "Terms of use"],
+            options: ["HR inbound provisioning", "Access reviews scheduled on each start date", "Privileged Identity Management", "Terms of use"],
             answer: 0,
             explain: "Inbound provisioning from HR sources maintains user identities in Entra ID and AD automatically.",
             es: {
               q: "Una empresa quiere que las cuentas de los nuevos empleados en Microsoft Entra ID y Active Directory se creen automáticamente desde Workday para que sean productivos desde el primer día. ¿Qué debe usar?",
-              options: ["El aprovisionamiento entrante desde el origen de RR. HH.", "Las revisiones de acceso", "Privileged Identity Management", "Los términos de uso"],
+              options: ["El aprovisionamiento entrante de RR. HH.", "Las revisiones de acceso programadas en cada fecha de ingreso", "Privileged Identity Management", "Los términos de uso"],
               explain: "El aprovisionamiento entrante desde orígenes de RR. HH. mantiene automáticamente las identidades de usuario en Entra ID y AD."
             }
           },
@@ -472,12 +472,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Legal requires every guest to accept a contract PDF before opening a sensitive app. How is this enforced?",
-            options: ["Terms of use required by a Conditional Access policy", "An access review", "PIM approval", "ID Protection user risk"],
+            options: ["Terms of use with Conditional Access", "An access review", "PIM approval", "ID Protection user risk"],
             answer: 0,
             explain: "Terms of use are presented as PDFs and enforced with Conditional Access; admins can see who accepted or declined.",
             es: {
               q: "El área legal exige que cada invitado acepte un contrato en PDF antes de abrir una aplicación sensible. ¿Cómo se aplica?",
-              options: ["Con términos de uso exigidos por una directiva de acceso condicional", "Con una revisión de acceso", "Con aprobación de PIM", "Con el riesgo de usuario de ID Protection"],
+              options: ["Con términos de uso y acceso condicional", "Con una revisión de acceso", "Con aprobación de PIM", "Con el riesgo de usuario de ID Protection"],
               explain: "Los términos de uso se presentan en PDF y se aplican con acceso condicional; los administradores ven quién aceptó y quién rechazó."
             }
           },
@@ -612,12 +612,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two can PIM manage?",
-            options: ["Azure roles at management group, subscription, resource group or resource scope", "Just-in-time membership and ownership of groups", "Web content filtering categories", "Custom banned password lists", "Verifiable credential issuance"],
+            options: ["Azure roles at any scope", "Just-in-time group membership", "Web content filtering categories", "Custom banned password lists for privileged accounts", "Verifiable credential issuance"],
             answers: [0, 1],
             explain: "PIM works with Microsoft Entra roles, Azure roles and PIM for Groups.",
             es: {
               q: "¿Cuáles son dos elementos que puede administrar PIM?",
-              options: ["Roles de Azure en el ámbito de grupo de administración, suscripción, grupo de recursos o recurso", "Pertenencia y propiedad justo a tiempo de grupos", "Categorías de filtrado de contenido web", "Listas personalizadas de contraseñas prohibidas", "La emisión de credenciales verificables"],
+              options: ["Roles de Azure en cualquier ámbito", "Pertenencia justo a tiempo a grupos", "Categorías de filtrado de contenido web", "Listas personalizadas de contraseñas prohibidas para cuentas con privilegios", "La emisión de credenciales verificables"],
               explain: "PIM funciona con roles de Microsoft Entra, roles de Azure y PIM para grupos."
             }
           },
@@ -625,9 +625,9 @@ Catalog.module("sc-900", {
             type: "single",
             q: "What's the difference between an eligible and an active assignment in PIM?",
             options: [
-              "Eligible requires an action such as activation to use the role; active grants the privileges without any action",
+              "Eligible must be activated first; active is usable right away",
               "Eligible is permanent; active always expires after one hour",
-              "Eligible applies only to guests; active applies only to members",
+              "Eligible applies only to guests; active only to members",
               "There's no difference"
             ],
             answer: 0,
@@ -635,9 +635,9 @@ Catalog.module("sc-900", {
             es: {
               q: "¿Cuál es la diferencia entre una asignación apta y una activa en PIM?",
               options: [
-                "La apta requiere una acción, como la activación, para usar el rol; la activa concede los privilegios sin ninguna acción",
+                "La apta se debe activar antes; la activa se puede usar de inmediato",
                 "La apta es permanente; la activa siempre vence a la hora",
-                "La apta se aplica solo a invitados; la activa solo a miembros",
+                "La apta se aplica solo a invitados; la activa, solo a miembros",
                 "No hay diferencia"
               ],
               explain: "Los miembros aptos deben activar o solicitar aprobación; los activos ya tienen los privilegios."
@@ -705,12 +705,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Automated remediation isn't enabled. Which manual actions can an administrator take on detected risks?",
-            options: ["Dismiss, confirm safe or confirm compromise", "Only delete the user", "Only export to a storage account", "Assign a custom role"],
+            options: ["Dismiss or confirm the risk", "Only delete the user", "Only export them to storage", "Assign a custom role"],
             answer: 0,
             explain: "Admins review risks in the portal, the API or Defender XDR and can dismiss, confirm safe or confirm compromise.",
             es: {
               q: "No está habilitada la corrección automática. ¿Qué acciones manuales puede tomar un administrador sobre los riesgos detectados?",
-              options: ["Descartar, confirmar como seguro o confirmar como comprometido", "Solo eliminar al usuario", "Solo exportar a una cuenta de almacenamiento", "Asignar un rol personalizado"],
+              options: ["Descartar o confirmar el riesgo", "Solo eliminar al usuario", "Solo exportarlos a almacenamiento", "Asignar un rol personalizado"],
               explain: "Los administradores revisan los riesgos en el portal, la API o Defender XDR y pueden descartarlos, confirmarlos como seguros o como comprometidos."
             }
           },
@@ -801,12 +801,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Which trust system does Microsoft Entra Verified ID use?",
-            options: ["did:web, linking the issuer's DID to a web domain the organization controls", "A private blockchain operated by each tenant", "Shared passwords between issuer and verifier", "Kerberos tickets"],
+            options: ["did:web, tied to the issuer's web domain", "A private blockchain operated by each tenant, where every credential is recorded", "Shared passwords between issuer and verifier", "Kerberos tickets"],
             answer: 0,
             explain: "With did:web, trust comes from the reputation of the issuer's web domain.",
             es: {
               q: "¿Qué sistema de confianza usa Microsoft Entra Verified ID?",
-              options: ["did:web, que vincula el DID del emisor a un dominio web que controla la organización", "Una cadena de bloques privada que opera cada inquilino", "Contraseñas compartidas entre emisor y verificador", "Vales de Kerberos"],
+              options: ["did:web, ligado al dominio web del emisor", "Una cadena de bloques privada que opera cada inquilino, donde se registra cada credencial", "Contraseñas compartidas entre emisor y verificador", "Vales de Kerberos"],
               explain: "Con did:web, la confianza surge de la reputación del dominio web del emisor."
             }
           },

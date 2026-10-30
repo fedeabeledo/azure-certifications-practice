@@ -271,12 +271,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "You need to create and manage a group of identical, load-balanced VMs that scale in or out automatically. What should you use?",
-            options: ["Availability sets", "Virtual machine scale sets", "Fault domains", "A VM image"],
+            options: ["Availability sets with fault domains", "Virtual machine scale sets", "Fault domains", "A generalized VM image"],
             answer: 1,
             explain: "Scale sets centralize configuration, integrate with load balancing and scale automatically by demand or schedule.",
             es: {
               q: "Necesita crear y administrar un grupo de máquinas virtuales idénticas, con equilibrio de carga, que escalen automáticamente. ¿Qué debe usar?",
-              options: ["Conjuntos de disponibilidad", "Conjuntos de escalado de máquinas virtuales", "Dominios de error", "Una imagen de máquina virtual"],
+              options: ["Conjuntos de disponibilidad con dominios de error", "Conjuntos de escalado de máquinas virtuales", "Dominios de error", "Una imagen generalizada de máquina virtual"],
               explain: "Los conjuntos de escalado centralizan la configuración, se integran con el equilibrio de carga y escalan automáticamente según la demanda o un horario."
             }
           },
@@ -297,10 +297,10 @@ Catalog.module("az-900", {
             q: "Which two are resources you choose when you provision an Azure VM?",
             options: [
               "Size: purpose, number of processor cores and amount of RAM",
-              "Networking: virtual network, public IP address and port configuration",
+              "Networking: VNet, public IP and ports",
               "A management group to host the VM",
               "A sovereign region license",
-              "Microsoft-managed operating system patching"
+              "Microsoft-managed operating system patching for the VM"
             ],
             answers: [0, 1],
             explain: "You choose size, storage disks and networking. OS patching stays with you, and management groups organize subscriptions, not VMs.",
@@ -510,20 +510,20 @@ Catalog.module("az-900", {
             type: "single",
             q: "A website is split into front-end, back-end and storage containers. The back end reaches capacity while the other parts are fine. What do containers let you do?",
             options: [
-              "Scale only the back end, without affecting the front end or storage",
+              "Scale just the back end",
               "Scale all three parts together, since they share one OS",
               "Move the whole website to a larger VM",
-              "Restart the front end to free capacity"
+              "Restart the front end to free up capacity for the back end"
             ],
             answer: 0,
             explain: "In a microservice architecture each part can be maintained, scaled or updated independently.",
             es: {
               q: "Un sitio web está dividido en contenedores de front-end, back-end y almacenamiento. El back-end llega a su capacidad mientras las otras partes están bien. ¿Qué permiten hacer los contenedores?",
               options: [
-                "Escalar solo el back-end, sin afectar el front-end ni el almacenamiento",
+                "Escalar únicamente el back-end",
                 "Escalar las tres partes juntas, porque comparten un sistema operativo",
                 "Trasladar todo el sitio a una máquina virtual más grande",
-                "Reiniciar el front-end para liberar capacidad"
+                "Reiniciar el front-end para liberarle capacidad al back-end"
               ],
               explain: "En una arquitectura de microservicios cada parte se puede mantener, escalar o actualizar de forma independiente."
             }
@@ -618,8 +618,8 @@ Catalog.module("az-900", {
             q: "How does Azure charge for a function running in the serverless model?",
             options: [
               "A fixed monthly fee per function",
-              "Only for the CPU time used while the function runs",
-              "For a VM that stays running all month",
+              "Only for the CPU time used",
+              "For a dedicated VM that stays running all month to host the function",
               "Per user who calls the function"
             ],
             answer: 1,
@@ -628,8 +628,8 @@ Catalog.module("az-900", {
               q: "¿Cómo cobra Azure una función que se ejecuta en el modelo sin servidor?",
               options: [
                 "Una tarifa mensual fija por función",
-                "Solo el tiempo de CPU usado mientras se ejecuta la función",
-                "Una máquina virtual que queda encendida todo el mes",
+                "Solo el tiempo de CPU usado",
+                "Una máquina virtual dedicada que queda encendida todo el mes para alojar la función",
                 "Por cada usuario que llama a la función"
               ],
               explain: "Las funciones se ejecutan cuando se activan y los recursos se liberan al terminar, así que solo se cobra el tiempo de CPU durante la ejecución."
@@ -709,8 +709,8 @@ Catalog.module("az-900", {
             q: "A team's function app now needs to run on a virtual network and be completely isolated. Which statement is correct?",
             options: [
               "Functions can only ever run in the serverless model",
-              "The project can be deployed in an environment that isn't serverless to manage scaling, run on virtual networks and isolate the functions",
-              "The team must rewrite the code as a VM application",
+              "It can be deployed outside the serverless model to run on virtual networks in isolation",
+              "The team must rewrite it for VMs, since functions can't join a VNet",
               "Virtual networks are only available for Azure Virtual Desktop"
             ],
             answer: 1,
@@ -719,8 +719,8 @@ Catalog.module("az-900", {
               q: "Ahora la aplicación de funciones de un equipo necesita ejecutarse en una red virtual y estar completamente aislada. ¿Qué afirmación es correcta?",
               options: [
                 "Las funciones solo pueden ejecutarse en el modelo sin servidor",
-                "El proyecto se puede implementar en un entorno que no sea sin servidor para administrar el escalado, ejecutarse en redes virtuales y aislar las funciones",
-                "El equipo debe reescribir el código como una aplicación en máquinas virtuales",
+                "Se puede implementar fuera del modelo sin servidor para ejecutarse en redes virtuales de forma aislada",
+                "El equipo debe reescribirlo para máquinas virtuales, porque no se une a redes",
                 "Las redes virtuales solo están disponibles para Azure Virtual Desktop"
               ],
               explain: "Functions también es una plataforma de proceso general: el proyecto se puede llevar a un entorno que no sea sin servidor para controlar el escalado, usar redes virtuales y aislarlo."
@@ -826,18 +826,18 @@ Catalog.module("az-900", {
             type: "single",
             q: "At a fundamentals level, how should agentic AI be understood in Azure?",
             options: [
-              "As a separate compute service category, like VMs or containers",
-              "As an application pattern that combines Azure AI capabilities with your own application logic",
+              "As a separate compute category, like VMs or containers",
+              "As a pattern combining Azure AI with your app logic",
               "As a type of IoT device",
-              "As a storage tier for AI data"
+              "As a storage tier optimized for AI training data"
             ],
             answer: 1,
             explain: "Agentic applications combine a model with instructions, context and tools; in Azure you build them from AI services and Azure OpenAI plus your logic, not as a separate compute category.",
             es: {
               q: "En lo fundamental, ¿cómo debe entenderse la IA agéntica en Azure?",
               options: [
-                "Como una categoría de servicio de proceso aparte, como las máquinas virtuales o los contenedores",
-                "Como un patrón de aplicación que combina capacidades de Azure AI con la lógica de su propia aplicación",
+                "Como una categoría de proceso aparte, como los contenedores",
+                "Como un patrón que combina Azure AI con la lógica de su aplicación",
                 "Como un tipo de dispositivo IoT",
                 "Como un nivel de almacenamiento para datos de IA"
               ],

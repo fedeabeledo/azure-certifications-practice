@@ -12,10 +12,10 @@ Catalog.module("az-900", {
         topic: "Physical infrastructure",
         q: "A company wants its application to keep running even if a natural disaster takes down an entire Azure region. What should it use?",
         options: [
-          "Several availability zones in the same region",
-          "The region's paired region in the same geography, with replication configured where the service doesn't do it automatically",
+          "Several availability zones in the same region, with zone-redundant services",
+          "Its paired region, configuring replication where needed",
           "A larger virtual machine size",
-          "A second resource group in the same region"
+          "A second resource group in the same region with a copy of every resource"
         ],
         answer: 1,
         explain: "Availability zones protect against datacenter failures inside a region; a region-wide event needs a second region. Region pairs exist for that, but not every service replicates automatically, so the customer may need to configure it.",
@@ -23,10 +23,10 @@ Catalog.module("az-900", {
           topic: "Infraestructura física",
           q: "Una empresa quiere que su aplicación siga funcionando aunque un desastre natural deje fuera de servicio una región de Azure completa. ¿Qué debe usar?",
           options: [
-            "Varias zonas de disponibilidad de la misma región",
-            "La región emparejada dentro de la misma geografía, configurando la replicación donde el servicio no la haga automáticamente",
+            "Varias zonas de disponibilidad de la misma región, con servicios con redundancia de zona",
+            "Su región emparejada, configurando la replicación donde haga falta",
             "Un tamaño de máquina virtual más grande",
-            "Un segundo grupo de recursos en la misma región"
+            "Un segundo grupo de recursos en la misma región con una copia de cada recurso"
           ],
           explain: "Las zonas de disponibilidad protegen ante fallas de centros de datos dentro de una región; un evento que afecta a toda la región requiere una segunda región. Para eso están los pares de regiones, pero no todos los servicios replican automáticamente, así que el cliente puede tener que configurarlo."
         }
@@ -37,8 +37,8 @@ Catalog.module("az-900", {
         q: "An administrator needs to grant a team the same permissions across 15 subscriptions with a single role assignment. What should the administrator do?",
         options: [
           "Create the assignment on each resource group",
-          "Place the subscriptions under a management group and create one Azure RBAC assignment on it",
-          "Merge the subscriptions into one resource group",
+          "Group the subscriptions in a management group and assign the role there",
+          "Move the subscriptions into one resource group and assign it there",
           "Create a new Azure account for the team"
         ],
         answer: 1,
@@ -48,8 +48,8 @@ Catalog.module("az-900", {
           q: "Un administrador necesita conceder a un equipo los mismos permisos en 15 suscripciones con una sola asignación de rol. ¿Qué debe hacer?",
           options: [
             "Crear la asignación en cada grupo de recursos",
-            "Colocar las suscripciones bajo un grupo de administración y crear una única asignación de Azure RBAC en él",
-            "Unir las suscripciones en un solo grupo de recursos",
+            "Agrupar las suscripciones en un grupo de administración y asignar el rol ahí",
+            "Mover las suscripciones a un grupo de recursos y asignar el rol ahí",
             "Crear una nueva cuenta de Azure para el equipo"
           ],
           explain: "Los permisos asignados en un grupo de administración los heredan todas las suscripciones, grupos de recursos y recursos que dependen de él, así que no hace falta hacer asignaciones una por una."
@@ -100,8 +100,8 @@ Catalog.module("az-900", {
         q: "Which two statements about availability zones are true?",
         options: [
           "Each zone has independent power, cooling and networking",
-          "Zones are connected through high-speed, private fiber-optic networks",
-          "Zones in a region are located in different geographies",
+          "Zones are linked by private, high-speed fiber",
+          "Zones in a region are located in different geographies to avoid shared disasters",
           "Every Azure region supports availability zones",
           "All zones in a region share a single power supply"
         ],
@@ -112,8 +112,8 @@ Catalog.module("az-900", {
           q: "¿Cuáles son dos afirmaciones verdaderas sobre las zonas de disponibilidad?",
           options: [
             "Cada zona tiene energía, refrigeración y red independientes",
-            "Las zonas están conectadas mediante redes privadas de fibra óptica de alta velocidad",
-            "Las zonas de una región están en geografías distintas",
+            "Las zonas se unen con fibra privada de alta velocidad",
+            "Las zonas de una región están en geografías distintas para evitar desastres compartidos",
             "Todas las regiones de Azure admiten zonas de disponibilidad",
             "Todas las zonas de una región comparten un único suministro eléctrico"
           ],
@@ -246,8 +246,8 @@ Catalog.module("az-900", {
             type: "single",
             q: "A team has already moved its existing applications to virtual machines in Azure and now wants to modernize gradually. Which approach does the unit describe?",
             options: [
-              "Rewrite every application at once before going live",
-              "Modernize one workload at a time, for example moving from manually managed servers to managed databases",
+              "Rewrite every application as cloud-native at once, then move them all to production together",
+              "Modernize one workload at a time, such as moving to managed databases",
               "Keep everything on VMs permanently, since that's the main use of the cloud",
               "Move the applications back on-premises first"
             ],
@@ -256,8 +256,8 @@ Catalog.module("az-900", {
             es: {
               q: "Un equipo ya migró sus aplicaciones existentes a máquinas virtuales en Azure y ahora quiere modernizarlas de forma gradual. ¿Qué enfoque describe la unidad?",
               options: [
-                "Reescribir todas las aplicaciones de una vez antes de salir a producción",
-                "Modernizar una carga de trabajo a la vez, por ejemplo pasando de servidores administrados manualmente a bases de datos administradas",
+                "Reescribir todas las aplicaciones como nativas de la nube de una vez y pasarlas juntas a producción",
+                "Modernizar una carga de trabajo a la vez, por ejemplo pasando a bases de datos administradas",
                 "Mantener todo en máquinas virtuales de forma permanente, ya que es el uso principal de la nube",
                 "Volver a llevar primero las aplicaciones al entorno local"
               ],
@@ -280,8 +280,8 @@ Catalog.module("az-900", {
             type: "single",
             q: "An internal app has seasonal demand spikes. How does Azure help the company avoid paying for unused capacity all year?",
             options: [
-              "By requiring capacity to be bought for the yearly peak",
-              "By letting it scale resources up or out during the spike and back down when demand drops",
+              "By reserving capacity for the yearly peak in advance",
+              "By scaling resources for the spike and back down afterward",
               "By moving the app to a sovereign region",
               "By assigning the app to a management group"
             ],
@@ -290,8 +290,8 @@ Catalog.module("az-900", {
             es: {
               q: "Una aplicación interna tiene picos de demanda estacionales. ¿Cómo ayuda Azure a la empresa a no pagar capacidad sin usar todo el año?",
               options: [
-                "Exigiendo comprar capacidad para el pico anual",
-                "Permitiendo escalar los recursos vertical u horizontalmente durante el pico y reducirlos cuando baja la demanda",
+                "Reservando de antemano capacidad para el pico anual",
+                "Permitiendo escalar los recursos durante el pico y reducirlos después",
                 "Trasladando la aplicación a una región soberana",
                 "Asignando la aplicación a un grupo de administración"
               ],
@@ -350,12 +350,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Your team uses one Azure account and wants to run development, testing and production workloads separately. What does the unit suggest?",
-            options: ["Create a separate Azure account for each workload", "Create separate subscriptions for development, testing and production", "Use one subscription with a single resource group", "Use a free student account for development"],
+            options: ["Create a separate Azure account for each workload", "Create one subscription per environment", "Use one subscription with a single resource group and tag resources by environment", "Use a free student account for development"],
             answer: 1,
             explain: "After creating an account you can create additional subscriptions; a team might use one account with separate subscriptions per environment.",
             es: {
               q: "Su equipo usa una sola cuenta de Azure y quiere ejecutar por separado las cargas de desarrollo, pruebas y producción. ¿Qué sugiere la unidad?",
-              options: ["Crear una cuenta de Azure distinta para cada carga", "Crear suscripciones separadas para desarrollo, pruebas y producción", "Usar una suscripción con un único grupo de recursos", "Usar una cuenta gratuita para estudiantes en desarrollo"],
+              options: ["Crear una cuenta de Azure distinta para cada carga", "Crear una suscripción por entorno", "Usar una suscripción con un único grupo de recursos y etiquetar los recursos por entorno", "Usar una cuenta gratuita para estudiantes en desarrollo"],
               explain: "Después de crear una cuenta se pueden crear suscripciones adicionales; un equipo puede usar una cuenta con suscripciones separadas por entorno."
             }
           },
@@ -398,22 +398,22 @@ Catalog.module("az-900", {
             type: "multi",
             q: "Which two are ways to purchase Azure access?",
             options: [
-              "Directly from Microsoft through the Azure website or a Microsoft representative",
-              "Through a Microsoft partner, such as a Cloud Solution Provider",
+              "Directly from Microsoft",
+              "Through a Microsoft partner",
               "Only through a domain registrar",
-              "Only by mailing a purchase order to a datacenter",
-              "Only after attending Microsoft training"
+              "Only by sending a purchase order to the datacenter in your region",
+              "Only after completing an official Microsoft training course"
             ],
             answers: [0, 1],
             explain: "You can buy directly from Microsoft or through a partner; Cloud Solution Provider partners offer complete managed-cloud solutions.",
             es: {
               q: "¿Cuáles son dos formas de comprar acceso a Azure?",
               options: [
-                "Directamente a Microsoft, en el sitio web de Azure o con un representante de Microsoft",
-                "A través de un socio de Microsoft, como un Proveedor de soluciones en la nube",
+                "Directamente a Microsoft",
+                "A través de un socio de Microsoft",
                 "Solo a través de un registrador de dominios",
-                "Solo enviando una orden de compra a un centro de datos",
-                "Solo después de asistir a una capacitación de Microsoft"
+                "Solo enviando una orden de compra al centro de datos de su región",
+                "Solo después de completar un curso oficial de Microsoft"
               ],
               explain: "Se puede comprar directamente a Microsoft o a través de un socio; los Proveedores de soluciones en la nube ofrecen soluciones completas de nube administrada."
             }
@@ -423,8 +423,8 @@ Catalog.module("az-900", {
             q: "When you sign up for the Azure free account, what is your credit card used for?",
             options: [
               "To charge you monthly for always-free services",
-              "Identity verification only; you aren't charged until you upgrade to a paid subscription",
-              "To pay for the 12 months of free products in advance",
+              "Only to verify your identity",
+              "To pay in advance for the 12 months of popular products included in the offer",
               "To pay for support plans automatically"
             ],
             answer: 1,
@@ -433,8 +433,8 @@ Catalog.module("az-900", {
               q: "Cuando se registra en la cuenta gratuita de Azure, ¿para qué se usa su tarjeta de crédito?",
               options: [
                 "Para cobrarle mensualmente los servicios siempre gratuitos",
-                "Solo para verificar la identidad; no se le cobra hasta que actualice a una suscripción de pago",
-                "Para pagar por adelantado los 12 meses de productos gratuitos",
+                "Solo para verificar su identidad",
+                "Para pagar por adelantado los 12 meses de productos populares incluidos en la oferta",
                 "Para pagar automáticamente planes de soporte"
               ],
               explain: "La tarjeta se usa solo para verificar su identidad. Los cargos empiezan únicamente si actualiza la suscripción."
@@ -470,20 +470,20 @@ Catalog.module("az-900", {
             type: "single",
             q: "Which definition of an Azure region is correct?",
             options: [
-              "A single datacenter with dedicated power",
-              "A geographical area containing at least one, but potentially multiple, nearby datacenters networked together with a low-latency network",
+              "A single datacenter with its own dedicated power, cooling and networking",
+              "An area with one or more datacenters linked by a low-latency network",
               "A group of subscriptions that share billing",
-              "An isolated instance of Azure for government use"
+              "A physically and logically isolated instance of Azure for government use"
             ],
             answer: 1,
             explain: "A region is a geographical area with one or more datacenters connected by low-latency networking. Isolated government instances are sovereign regions.",
             es: {
               q: "¿Qué definición de región de Azure es correcta?",
               options: [
-                "Un único centro de datos con energía dedicada",
-                "Un área geográfica que contiene al menos uno, y posiblemente varios, centros de datos cercanos conectados entre sí por una red de baja latencia",
+                "Un único centro de datos con energía, refrigeración y red propias",
+                "Un área con uno o más centros de datos unidos por una red de baja latencia",
                 "Un grupo de suscripciones que comparten la facturación",
-                "Una instancia aislada de Azure para uso gubernamental"
+                "Una instancia de Azure aislada física y lógicamente para uso gubernamental"
               ],
               explain: "Una región es un área geográfica con uno o más centros de datos conectados por una red de baja latencia. Las instancias gubernamentales aisladas son regiones soberanas."
             }
@@ -514,12 +514,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "An application must survive the failure of a single datacenter, but its data must stay within one Azure region for compliance. What should you use?",
-            options: ["Availability zones in that region", "The region's paired region", "A sovereign region", "A single larger datacenter"],
+            options: ["Availability zones in that region", "The region's paired region, with geo-replication", "A sovereign region", "A single larger datacenter in the same region"],
             answer: 0,
             explain: "Spreading workloads across availability zones protects against datacenter failures while staying in the same region. A paired region would move data to another region.",
             es: {
               q: "Una aplicación debe sobrevivir a la falla de un solo centro de datos, pero sus datos deben quedarse en una región de Azure por cumplimiento. ¿Qué debe usar?",
-              options: ["Zonas de disponibilidad de esa región", "La región emparejada", "Una región soberana", "Un único centro de datos más grande"],
+              options: ["Zonas de disponibilidad de esa región", "La región emparejada, con replicación geográfica", "Una región soberana", "Un único centro de datos más grande en la misma región"],
               explain: "Repartir las cargas entre zonas de disponibilidad protege ante fallas de centros de datos sin salir de la región. Una región emparejada llevaría los datos a otra región."
             }
           },
@@ -528,8 +528,8 @@ Catalog.module("az-900", {
             q: "Which statement about the Brazil South region is correct?",
             options: [
               "It's paired in both directions with another region in Brazil",
-              "It's paired in one direction with South Central US, a region outside its geography",
-              "It has no region pair and relies only on availability zones",
+              "Its pair is South Central US, outside its geography",
+              "It has no region pair, so it relies only on its availability zones for resiliency",
               "It's a sovereign region operated by 21Vianet"
             ],
             answer: 1,
@@ -538,8 +538,8 @@ Catalog.module("az-900", {
               q: "¿Qué afirmación sobre la región Brasil Sur es correcta?",
               options: [
                 "Está emparejada en ambos sentidos con otra región de Brasil",
-                "Está emparejada en un solo sentido con Centro y Sur de EE. UU., una región fuera de su geografía",
-                "No tiene región emparejada y depende solo de zonas de disponibilidad",
+                "Su par es Centro y Sur de EE. UU., fuera de su geografía",
+                "No tiene región emparejada, así que depende solo de sus zonas de disponibilidad",
                 "Es una región soberana operada por 21Vianet"
               ],
               explain: "La región secundaria de Brasil Sur es Centro y Sur de EE. UU., fuera de su geografía, y la secundaria de Centro y Sur de EE. UU. no es Brasil Sur."
@@ -634,8 +634,8 @@ Catalog.module("az-900", {
             type: "single",
             q: "You're setting up a temporary development environment with several resources. What's the simplest way to remove everything when you're done?",
             options: [
-              "Put all the resources in one resource group and delete the group",
-              "Create a management group and delete it",
+              "Use one resource group, then delete it",
+              "Delete a management group",
               "Delete the Azure account",
               "Move the resources to another region"
             ],
@@ -644,8 +644,8 @@ Catalog.module("az-900", {
             es: {
               q: "Está armando un entorno de desarrollo temporal con varios recursos. ¿Cuál es la forma más simple de quitar todo al terminar?",
               options: [
-                "Poner todos los recursos en un grupo de recursos y eliminar el grupo",
-                "Crear un grupo de administración y eliminarlo",
+                "Usar un grupo de recursos y después eliminarlo",
+                "Eliminar un grupo de administración",
                 "Eliminar la cuenta de Azure",
                 "Mover los recursos a otra región"
               ],
@@ -682,12 +682,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Your company wants to restrict VM locations to one region across dozens of production subscriptions, and subscription owners must not be able to override the rule. Where should you apply the policy?",
-            options: ["On each virtual machine", "On each resource group", "On a management group that contains the subscriptions", "On the Azure account"],
+            options: ["On each virtual machine", "On each resource group inside the production subscriptions", "On a management group", "On the Azure account"],
             answer: 2,
             explain: "A policy on a management group is inherited by all subscriptions and VMs beneath it, and resource or subscription owners can't override it.",
             es: {
               q: "Su empresa quiere restringir la ubicación de las máquinas virtuales a una región en decenas de suscripciones de producción, y los propietarios de las suscripciones no deben poder anular la regla. ¿Dónde debe aplicar la directiva?",
-              options: ["En cada máquina virtual", "En cada grupo de recursos", "En un grupo de administración que contenga las suscripciones", "En la cuenta de Azure"],
+              options: ["En cada máquina virtual", "En cada grupo de recursos de las suscripciones de producción", "En un grupo de administración", "En la cuenta de Azure"],
               explain: "Una directiva en un grupo de administración la heredan todas las suscripciones y máquinas virtuales que dependen de él, y los propietarios de recursos o suscripciones no pueden anularla."
             }
           },

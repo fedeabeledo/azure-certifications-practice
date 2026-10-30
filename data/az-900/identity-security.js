@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Directory services",
         q: "A company wants to lift and shift a legacy application that needs LDAP and Kerberos authentication and domain join, without deploying or maintaining domain controllers in the cloud. What should it use?",
-        options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Azure RBAC", "Microsoft Entra External ID"],
+        options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Microsoft Entra Conditional Access", "Microsoft Entra External ID"],
         answer: 1,
         explain: "Entra Domain Services provides managed domain join, group policy, LDAP and Kerberos/NTLM, with Azure managing the domain controllers. Entra Connect only synchronizes identities.",
         es: {
           topic: "Servicios de directorio",
           q: "Una empresa quiere migrar tal cual una aplicación heredada que necesita autenticación LDAP y Kerberos y unión a dominio, sin implementar ni mantener controladores de dominio en la nube. ¿Qué debe usar?",
-          options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Azure RBAC", "Microsoft Entra External ID"],
+          options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Acceso condicional de Microsoft Entra", "Microsoft Entra External ID"],
           explain: "Entra Domain Services ofrece unión a dominio, directiva de grupo, LDAP y Kerberos/NTLM administrados, y Azure se ocupa de los controladores de dominio. Entra Connect solo sincroniza identidades."
         }
       },
@@ -150,7 +150,7 @@ Catalog.module("az-900", {
         es: {
           topic: "Microsoft Defender for Cloud",
           q: "Defender for Cloud genera varias alertas relacionadas durante un ataque. ¿Qué capacidad las correlaciona para mostrar dónde empezó el ataque y qué recursos afectó?",
-          options: ["El análisis de la cadena de eliminación (kill chain)", "La puntuación de seguridad", "El acceso a máquinas virtuales justo a tiempo", "Las asignaciones de Azure Policy"],
+          options: ["El análisis de la cadena de eliminación", "La puntuación de seguridad", "El acceso a máquinas virtuales justo a tiempo", "Las asignaciones de Azure Policy de la suscripción afectada"],
           explain: "El análisis de la cadena de eliminación correlaciona automáticamente las alertas relacionadas para contar la historia completa de un ataque."
         }
       },
@@ -187,8 +187,8 @@ Catalog.module("az-900", {
         topic: "Authentication methods",
         q: "Why is single sign-on only as secure as the initial authenticator?",
         options: [
-          "Because every subsequent connection relies on the security of that first sign-in",
-          "Because SSO stores a separate password for each app",
+          "Because later access relies on that first sign-in",
+          "Because SSO stores a separate password for each app and replays it at every sign-in",
           "Because SSO disables multifactor authentication",
           "Because SSO only works on managed devices"
         ],
@@ -198,7 +198,7 @@ Catalog.module("az-900", {
           topic: "Métodos de autenticación",
           q: "¿Por qué el inicio de sesión único es solo tan seguro como el autenticador inicial?",
           options: [
-            "Porque todas las conexiones posteriores dependen de la seguridad de ese primer inicio de sesión",
+            "Porque el acceso posterior depende de ese primer inicio de sesión",
             "Porque el inicio de sesión único guarda una contraseña distinta para cada aplicación",
             "Porque el inicio de sesión único desactiva la autenticación multifactor",
             "Porque el inicio de sesión único solo funciona en dispositivos administrados"
@@ -235,12 +235,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A legacy application can't use modern authentication and needs domain join, group policy and LDAP. The company doesn't want to manage domain controllers in Azure. What should it use?",
-            options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Self-service password reset", "Microsoft Intune"],
+            options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Self-service password reset", "Microsoft Entra Conditional Access"],
             answer: 0,
             explain: "Entra Domain Services provides managed domain services for legacy apps without deploying or maintaining DCs.",
             es: {
               q: "Una aplicación heredada no puede usar autenticación moderna y necesita unión a dominio, directiva de grupo y LDAP. La empresa no quiere administrar controladores de dominio en Azure. ¿Qué debe usar?",
-              options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "El restablecimiento de contraseña de autoservicio", "Microsoft Intune"],
+              options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "El restablecimiento de contraseña de autoservicio", "Acceso condicional de Microsoft Entra"],
               explain: "Entra Domain Services ofrece servicios de dominio administrados para aplicaciones heredadas sin implementar ni mantener controladores de dominio."
             }
           },
@@ -306,20 +306,20 @@ Catalog.module("az-900", {
             type: "single",
             q: "What extra protection does a company gain by connecting its on-premises Active Directory to Microsoft Entra ID?",
             options: [
-              "Microsoft can detect suspicious sign-in attempts, such as from unexpected locations, at no extra cost",
+              "Detection of suspicious sign-ins at no extra cost",
               "On-premises domain controllers are patched by Microsoft",
               "Users no longer need any credentials",
-              "Group policy is applied to all SaaS apps automatically"
+              "Group policy is applied automatically to every SaaS app that users sign in to"
             ],
             answer: 0,
             explain: "On-premises AD doesn't monitor sign-in behavior; connected to Entra ID, suspicious sign-ins can be detected at no extra cost.",
             es: {
               q: "¿Qué protección adicional obtiene una empresa al conectar su Active Directory local con Microsoft Entra ID?",
               options: [
-                "Microsoft puede detectar intentos de inicio de sesión sospechosos, como desde ubicaciones inesperadas, sin costo adicional",
+                "La detección de inicios de sesión sospechosos sin costo adicional",
                 "Microsoft aplica parches a los controladores de dominio locales",
                 "Los usuarios ya no necesitan ninguna credencial",
-                "La directiva de grupo se aplica automáticamente a todas las aplicaciones SaaS"
+                "La directiva de grupo se aplica automáticamente a todas las aplicaciones SaaS en las que inician sesión los usuarios"
               ],
               explain: "El AD local no supervisa el comportamiento de inicio de sesión; conectado a Entra ID, se pueden detectar inicios de sesión sospechosos sin costo adicional."
             }
@@ -375,17 +375,17 @@ Catalog.module("az-900", {
             type: "single",
             q: "Why is single sign-on only as secure as the initial authenticator?",
             options: [
-              "Subsequent connections are all based on the security of the initial authentication",
+              "Later connections build on the first authentication",
               "SSO keeps a separate password for each application",
               "SSO can't be combined with MFA",
-              "SSO only works with on-premises applications"
+              "SSO only works with on-premises applications joined to the same domain"
             ],
             answer: 0,
             explain: "All later access depends on the first sign-in, so its strength determines SSO's security.",
             es: {
               q: "¿Por qué el inicio de sesión único es solo tan seguro como el autenticador inicial?",
               options: [
-                "Porque todas las conexiones posteriores se basan en la seguridad de la autenticación inicial",
+                "Porque las conexiones posteriores se basan en la autenticación inicial",
                 "Porque el inicio de sesión único guarda una contraseña distinta por aplicación",
                 "Porque el inicio de sesión único no se puede combinar con MFA",
                 "Porque el inicio de sesión único solo funciona con aplicaciones locales"
@@ -396,12 +396,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Which authentication approach offers both high security and high convenience?",
-            options: ["Password only", "Passwordless authentication", "Shared accounts", "Security questions only"],
+            options: ["Password plus a second factor", "Passwordless authentication", "Shared accounts", "Security questions only"],
             answer: 1,
             explain: "Passwordless scores highest on both security and convenience. Passwords alone are convenient but low security.",
             es: {
               q: "¿Qué enfoque de autenticación ofrece a la vez alta seguridad y alta comodidad?",
-              options: ["Solo contraseña", "Autenticación sin contraseña", "Cuentas compartidas", "Solo preguntas de seguridad"],
+              options: ["Contraseña más un segundo factor", "Autenticación sin contraseña", "Cuentas compartidas", "Solo preguntas de seguridad"],
               explain: "La autenticación sin contraseña es la que mejor puntúa en seguridad y comodidad. Las contraseñas solas son cómodas pero poco seguras."
             }
           },
@@ -409,10 +409,10 @@ Catalog.module("az-900", {
             type: "multi",
             q: "Which two are benefits of single sign-on?",
             options: [
-              "It reduces password sprawl and related lockouts and resets",
-              "It makes it easier to update or remove access when roles change",
+              "Fewer passwords and resets",
+              "Easier access changes when roles change",
               "It removes the need for a strong initial authentication",
-              "It requires a separate password for every app",
+              "It requires a separate password for every app, which improves isolation",
               "It disables multifactor authentication"
             ],
             answers: [0, 1],
@@ -420,10 +420,10 @@ Catalog.module("az-900", {
             es: {
               q: "¿Cuáles son dos ventajas del inicio de sesión único?",
               options: [
-                "Reduce la proliferación de contraseñas y los bloqueos y restablecimientos asociados",
-                "Facilita actualizar o quitar el acceso cuando cambian los roles",
+                "Menos contraseñas y restablecimientos",
+                "Cambios de acceso más simples al cambiar de rol",
                 "Elimina la necesidad de una autenticación inicial sólida",
-                "Exige una contraseña distinta para cada aplicación",
+                "Exige una contraseña distinta para cada aplicación, lo que mejora el aislamiento",
                 "Desactiva la autenticación multifactor"
               ],
               explain: "El inicio de sesión único reduce los incidentes con credenciales y la carga de bloqueos, y vincula el acceso a una identidad, lo que simplifica la administración del ciclo de vida."
@@ -504,9 +504,9 @@ Catalog.module("az-900", {
             q: "With external identities, who manages authentication and who manages authorization to your applications?",
             options: [
               "Your tenant manages both",
-              "The external identity provider manages authentication; you manage authorization with Microsoft Entra ID",
+              "Their provider authenticates; you authorize",
               "The external identity provider manages both",
-              "You manage authentication; the external provider manages authorization"
+              "You manage authentication in your tenant; the external provider manages authorization to your apps"
             ],
             answer: 1,
             explain: "External users bring their own identities; their provider authenticates them while you control what they can access.",
@@ -514,9 +514,9 @@ Catalog.module("az-900", {
               q: "Con las identidades externas, ¿quién administra la autenticación y quién la autorización a sus aplicaciones?",
               options: [
                 "Su inquilino administra ambas",
-                "El proveedor de identidades externo administra la autenticación; usted administra la autorización con Microsoft Entra ID",
+                "Su proveedor autentica; usted autoriza",
                 "El proveedor de identidades externo administra ambas",
-                "Usted administra la autenticación; el proveedor externo, la autorización"
+                "Usted administra la autenticación en su inquilino; el proveedor externo, la autorización a sus aplicaciones"
               ],
               explain: "Los usuarios externos traen su propia identidad; su proveedor los autentica mientras usted controla a qué pueden acceder."
             }
@@ -549,8 +549,8 @@ Catalog.module("az-900", {
             type: "single",
             q: "How do external identities differ from single sign-on?",
             options: [
-              "External identities are for cross-tenant and consumer access scenarios",
-              "External identities only work inside your own tenant",
+              "They target cross-tenant and consumer access",
+              "External identities only work inside your own tenant, for employees who sign in once",
               "External identities replace authorization",
               "They're the same feature with a different name"
             ],
@@ -559,8 +559,8 @@ Catalog.module("az-900", {
             es: {
               q: "¿En qué se diferencian las identidades externas del inicio de sesión único?",
               options: [
-                "Las identidades externas sirven para escenarios de acceso entre inquilinos y de consumidores",
-                "Las identidades externas solo funcionan dentro de su propio inquilino",
+                "Apuntan al acceso entre inquilinos y de consumidores",
+                "Las identidades externas solo funcionan dentro de su propio inquilino, para empleados que inician sesión una vez",
                 "Las identidades externas reemplazan la autorización",
                 "Son la misma característica con otro nombre"
               ],
@@ -706,8 +706,8 @@ Catalog.module("az-900", {
             type: "single",
             q: "A new engineer joins the team and should automatically get the same Azure access as the other engineers. What's the most manageable approach?",
             options: [
-              "Grant each permission to the engineer individually",
-              "Add the engineer to the group that has the engineers' Azure RBAC role assignment",
+              "Copy each of the other engineers' role assignments to the new engineer individually",
+              "Add the engineer to the engineers' group",
               "Make the engineer an Owner of the tenant",
               "Share another engineer's account"
             ],
@@ -716,8 +716,8 @@ Catalog.module("az-900", {
             es: {
               q: "Un ingeniero nuevo se suma al equipo y debería recibir automáticamente el mismo acceso a Azure que los demás ingenieros. ¿Cuál es el enfoque más fácil de administrar?",
               options: [
-                "Conceder cada permiso al ingeniero de forma individual",
-                "Agregar al ingeniero al grupo que tiene la asignación de rol de Azure RBAC de los ingenieros",
+                "Copiar al nuevo ingeniero, una por una, las asignaciones de rol de los demás ingenieros",
+                "Agregar al ingeniero al grupo de ingenieros",
                 "Hacer al ingeniero propietario del inquilino",
                 "Compartir la cuenta de otro ingeniero"
               ],
@@ -787,8 +787,8 @@ Catalog.module("az-900", {
             type: "single",
             q: "A developer assumes Azure RBAC will also control which records users can see inside the company's application. Is that correct?",
             options: [
-              "Yes, RBAC enforces permissions at the application and data level",
-              "No, RBAC doesn't enforce application or data-level permissions; the application must handle that",
+              "Yes, RBAC enforces permissions at the application and data level for any resource",
+              "No, the application must handle that",
               "Yes, but only for SQL databases",
               "No, because RBAC only works for virtual machines"
             ],
@@ -797,8 +797,8 @@ Catalog.module("az-900", {
             es: {
               q: "Un desarrollador supone que Azure RBAC también controlará qué registros pueden ver los usuarios dentro de la aplicación de la empresa. ¿Es correcto?",
               options: [
-                "Sí, RBAC aplica permisos a nivel de aplicación y de datos",
-                "No, RBAC no aplica permisos a nivel de aplicación o de datos; eso lo debe resolver la aplicación",
+                "Sí, RBAC aplica permisos a nivel de aplicación y de datos en cualquier recurso",
+                "No, eso lo debe resolver la aplicación",
                 "Sí, pero solo para bases de datos SQL",
                 "No, porque RBAC solo funciona con máquinas virtuales"
               ],
@@ -835,8 +835,8 @@ Catalog.module("az-900", {
             type: "single",
             q: "Which statement best describes the Zero Trust security model?",
             options: [
-              "It trusts devices that are inside the corporate network",
-              "It assumes breach at the outset and verifies each request as though it came from an uncontrolled network",
+              "It trusts devices inside the corporate network and verifies only external requests",
+              "It assumes breach and verifies every request",
               "It relies on VPN access as the main security boundary",
               "It allows only personal devices"
             ],
@@ -845,8 +845,8 @@ Catalog.module("az-900", {
             es: {
               q: "¿Qué afirmación describe mejor el modelo de seguridad de Confianza cero?",
               options: [
-                "Confía en los dispositivos que están dentro de la red corporativa",
-                "Asume una vulneración desde el inicio y verifica cada solicitud como si viniera de una red no controlada",
+                "Confía en los dispositivos de la red corporativa y verifica solo las solicitudes externas",
+                "Asume una vulneración y verifica cada solicitud",
                 "Depende del acceso por VPN como principal límite de seguridad",
                 "Solo permite dispositivos personales"
               ],
@@ -893,9 +893,9 @@ Catalog.module("az-900", {
             q: "A user signs in from an unmanaged device on a public network. Which response is consistent with Zero Trust?",
             options: [
               "Grant full access because the password was correct",
-              "Evaluate identity, device state and risk, then allow low-risk apps, require MFA for sensitive systems or block if risk is too high",
+              "Decide based on identity, device and risk",
               "Block every sign-in from outside the office permanently",
-              "Allow access only if the user connects through any VPN"
+              "Allow access only if the user first connects through a VPN, since the network is then trusted"
             ],
             answer: 1,
             explain: "Zero Trust decisions are continuous and context-aware, based on identity, device and risk rather than only where the request comes from.",
@@ -903,9 +903,9 @@ Catalog.module("az-900", {
               q: "Un usuario inicia sesión desde un dispositivo no administrado en una red pública. ¿Qué respuesta es coherente con Confianza cero?",
               options: [
                 "Conceder acceso total porque la contraseña fue correcta",
-                "Evaluar la identidad, el estado del dispositivo y el riesgo, y luego permitir aplicaciones de bajo riesgo, exigir MFA para sistemas confidenciales o bloquear si el riesgo es demasiado alto",
+                "Decidir según la identidad, el dispositivo y el riesgo",
                 "Bloquear para siempre todo inicio de sesión fuera de la oficina",
-                "Permitir el acceso solo si el usuario se conecta por cualquier VPN"
+                "Permitir el acceso solo si el usuario se conecta primero por VPN, porque así la red es de confianza"
               ],
               explain: "Las decisiones de Confianza cero son continuas y dependen del contexto: identidad, dispositivo y riesgo, no solo de dónde viene la solicitud."
             }
@@ -999,8 +999,8 @@ Catalog.module("az-900", {
             type: "single",
             q: "What is the objective of a defense-in-depth strategy?",
             options: [
-              "To rely on one strong layer of protection",
-              "To protect information from unauthorized access by slowing the advance of an attack through a series of mechanisms",
+              "To rely on one very strong perimeter layer so attackers never get inside",
+              "To slow an attack with layered mechanisms",
               "To replace the need for identity controls",
               "To make all resources publicly accessible"
             ],
@@ -1009,8 +1009,8 @@ Catalog.module("az-900", {
             es: {
               q: "¿Cuál es el objetivo de una estrategia de defensa en profundidad?",
               options: [
-                "Depender de una única capa de protección sólida",
-                "Proteger la información del acceso no autorizado frenando el avance de un ataque mediante una serie de mecanismos",
+                "Depender de una única capa perimetral muy sólida para que los atacantes nunca entren",
+                "Frenar un ataque con mecanismos en capas",
                 "Reemplazar la necesidad de controles de identidad",
                 "Hacer que todos los recursos sean accesibles públicamente"
               ],
@@ -1143,12 +1143,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A security team needs one service that monitors Azure, on-premises and multicloud resources, recommends improvements to security posture and raises threat alerts. What should it use?",
-            options: ["Azure Key Vault", "Microsoft Defender for Cloud", "Azure RBAC", "Microsoft Entra Connect"],
+            options: ["Azure Key Vault", "Microsoft Defender for Cloud", "Microsoft Entra Conditional Access", "Microsoft Entra Connect"],
             answer: 1,
             explain: "Defender for Cloud is a security posture management and threat protection service across cloud, on-premises, hybrid and multicloud resources.",
             es: {
               q: "Un equipo de seguridad necesita un solo servicio que supervise recursos de Azure, locales y multinube, recomiende mejoras de la postura de seguridad y genere alertas de amenazas. ¿Qué debe usar?",
-              options: ["Azure Key Vault", "Microsoft Defender for Cloud", "Azure RBAC", "Microsoft Entra Connect"],
+              options: ["Azure Key Vault", "Microsoft Defender for Cloud", "Acceso condicional de Microsoft Entra", "Microsoft Entra Connect"],
               explain: "Defender for Cloud es un servicio de administración de la postura de seguridad y protección contra amenazas para recursos en la nube, locales, híbridos y multinube."
             }
           },
@@ -1179,9 +1179,9 @@ Catalog.module("az-900", {
             type: "single",
             q: "A company wants Defender for Cloud to protect its on-premises servers. What should it do?",
             options: [
-              "Deploy Azure Arc and enable Defender for Cloud's enhanced security features",
+              "Connect them with Azure Arc",
               "Move every server to Azure first",
-              "Configure a site-to-site VPN only",
+              "Configure a site-to-site VPN so Defender for Cloud can scan them over the tunnel",
               "Assign the Reader role to the servers"
             ],
             answer: 0,
@@ -1189,9 +1189,9 @@ Catalog.module("az-900", {
             es: {
               q: "Una empresa quiere que Defender for Cloud proteja sus servidores locales. ¿Qué debe hacer?",
               options: [
-                "Implementar Azure Arc y habilitar las características de seguridad mejoradas de Defender for Cloud",
+                "Conectarlos con Azure Arc",
                 "Trasladar primero todos los servidores a Azure",
-                "Configurar solo una VPN de sitio a sitio",
+                "Configurar una VPN de sitio a sitio para que Defender for Cloud los analice por el túnel",
                 "Asignar el rol de lector a los servidores"
               ],
               explain: "Azure Arc extiende los planes de Defender a máquinas fuera de Azure; luego se habilitan las características de seguridad mejoradas."

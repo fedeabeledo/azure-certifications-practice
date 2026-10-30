@@ -172,13 +172,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "File movement",
         q: "An administrator on macOS wants a graphical interface to upload, download and move blobs between storage accounts. What should the administrator use?",
-        options: ["AzCopy", "Azure Storage Explorer", "Azure File Sync", "Azure Data Box"],
+        options: ["The AzCopy command-line tool", "Azure Storage Explorer", "Azure File Sync", "Azure Data Box"],
         answer: 1,
         explain: "Storage Explorer is a standalone GUI app for Windows, macOS and Linux that uses AzCopy behind the scenes.",
         es: {
           topic: "Movimiento de archivos",
           q: "Un administrador en macOS quiere una interfaz gráfica para subir, descargar y mover blobs entre cuentas de almacenamiento. ¿Qué debe usar?",
-          options: ["AzCopy", "Explorador de Azure Storage", "Azure File Sync", "Azure Data Box"],
+          options: ["La herramienta de línea de comandos AzCopy", "Explorador de Azure Storage", "Azure File Sync", "Azure Data Box"],
           explain: "El Explorador de Storage es una aplicación gráfica independiente para Windows, macOS y Linux que usa AzCopy por detrás."
         }
       },
@@ -570,22 +570,22 @@ Catalog.module("az-900", {
             type: "multi",
             q: "Which two are benefits of Azure Storage?",
             options: [
-              "All data written to a storage account is encrypted by the service",
-              "Azure handles hardware maintenance, updates and critical issues",
+              "Data is encrypted automatically",
+              "Azure maintains the hardware",
               "Data is only accessible from inside Azure",
-              "Customers patch the storage servers themselves",
-              "Storage can't scale beyond a single region"
+              "Customers patch the storage servers themselves during maintenance windows",
+              "Storage can't scale beyond the capacity of a single region"
             ],
             answers: [0, 1],
             explain: "Azure Storage is durable, secure (encrypted by default), scalable, managed and accessible globally over HTTP or HTTPS.",
             es: {
               q: "¿Cuáles son dos ventajas de Azure Storage?",
               options: [
-                "Todos los datos escritos en una cuenta de almacenamiento los cifra el servicio",
-                "Azure se ocupa del mantenimiento del hardware, las actualizaciones y los problemas críticos",
+                "Los datos se cifran automáticamente",
+                "Azure mantiene el hardware",
                 "Los datos solo son accesibles desde dentro de Azure",
-                "Los clientes aplican parches a los servidores de almacenamiento",
-                "El almacenamiento no puede escalar más allá de una región"
+                "Los clientes aplican parches a los servidores de almacenamiento en ventanas de mantenimiento",
+                "El almacenamiento no puede escalar más allá de la capacidad de una región"
               ],
               explain: "Azure Storage es duradero, seguro (cifrado por defecto), escalable, administrado y accesible globalmente por HTTP o HTTPS."
             }
@@ -776,8 +776,8 @@ Catalog.module("az-900", {
             q: "You use AzCopy to synchronize a folder with a blob container. How does the synchronization work?",
             options: [
               "Bi-directionally, based on timestamps",
-              "In one direction, from the source you designate to the destination",
-              "Bi-directionally, based on file metadata",
+              "One way, from source to destination",
+              "Bi-directionally, comparing file metadata on both sides",
               "Only when triggered by Azure File Sync"
             ],
             answer: 1,
@@ -786,8 +786,8 @@ Catalog.module("az-900", {
               q: "Usa AzCopy para sincronizar una carpeta con un contenedor de blobs. ¿Cómo funciona la sincronización?",
               options: [
                 "En ambos sentidos, según las marcas de tiempo",
-                "En un solo sentido, desde el origen que designe hacia el destino",
-                "En ambos sentidos, según los metadatos de los archivos",
+                "En un sentido, del origen al destino",
+                "En ambos sentidos, comparando los metadatos de los archivos en cada lado",
                 "Solo cuando la activa Azure File Sync"
               ],
               explain: "La sincronización de AzCopy es en un solo sentido: usted elige origen y destino. No sincroniza en ambos sentidos."
@@ -821,22 +821,22 @@ Catalog.module("az-900", {
             type: "multi",
             q: "Which two can you do with Azure File Sync?",
             options: [
-              "Access data locally using protocols available on Windows Server, such as SMB, NFS and FTPS",
-              "Replace a failed local server by installing Azure File Sync on a new server in the same datacenter",
+              "Access data locally over SMB, NFS or FTPS",
+              "Replace a failed local server with a new one",
               "Copy blobs between two cloud providers from the command line",
-              "Ship data offline on a physical device",
-              "Run it only on Linux servers"
+              "Ship data offline on a physical device when bandwidth is limited",
+              "Run the sync agent only on Linux servers with NFS enabled"
             ],
             answers: [0, 1],
             explain: "File Sync supports local access with Windows Server protocols, many caches worldwide, easy server replacement and cloud tiering.",
             es: {
               q: "¿Cuáles son dos cosas que se pueden hacer con Azure File Sync?",
               options: [
-                "Acceder a los datos localmente con los protocolos disponibles en Windows Server, como SMB, NFS y FTPS",
-                "Reemplazar un servidor local que falló instalando Azure File Sync en un servidor nuevo del mismo centro de datos",
+                "Acceder a los datos localmente por SMB, NFS o FTPS",
+                "Reemplazar un servidor local que falló por uno nuevo",
                 "Copiar blobs entre dos proveedores de nube desde la línea de comandos",
-                "Enviar datos sin conexión en un dispositivo físico",
-                "Ejecutarlo solo en servidores Linux"
+                "Enviar datos sin conexión en un dispositivo físico cuando el ancho de banda es limitado",
+                "Ejecutar el agente de sincronización solo en servidores Linux con NFS"
               ],
               explain: "File Sync admite el acceso local con protocolos de Windows Server, muchas cachés en todo el mundo, reemplazo sencillo de servidores y organización en niveles en la nube."
             }

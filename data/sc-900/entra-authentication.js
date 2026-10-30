@@ -39,13 +39,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Self-service password reset",
         q: "A user lost their phone and has no other registered authentication method. Which Microsoft Entra capability helps them regain access without help desk judgment?",
-        options: ["Self-service password reset", "Account recovery with identity verification", "A custom banned password list", "Security defaults"],
+        options: ["Self-service password reset with security questions", "Account recovery", "A custom banned password list", "Security defaults"],
         answer: 1,
         explain: "SSPR needs at least one registered method. Account recovery re-establishes trust through a certified identity verification provider, such as Verified ID with Face Check.",
         es: {
           topic: "Autoservicio de restablecimiento de contraseña",
           q: "Un usuario perdió su teléfono y no tiene otro método de autenticación registrado. ¿Qué capacidad de Microsoft Entra le permite recuperar el acceso sin depender del criterio del soporte técnico?",
-          options: ["El autoservicio de restablecimiento de contraseña", "La recuperación de cuentas con verificación de identidad", "Una lista personalizada de contraseñas prohibidas", "Los valores predeterminados de seguridad"],
+          options: ["El autoservicio de restablecimiento de contraseña con preguntas de seguridad", "La recuperación de cuentas", "Una lista personalizada de contraseñas prohibidas", "Los valores predeterminados de seguridad"],
           explain: "SSPR necesita al menos un método registrado. La recuperación de cuentas restablece la confianza mediante un proveedor certificado de verificación de identidad, como Verified ID con Face Check."
         }
       },
@@ -158,13 +158,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Password protection",
         q: "An attacker tries the password Summer2026! against thousands of accounts, a few attempts each, to avoid lockouts. Which Microsoft Entra capability is designed to block the passwords used in this attack?",
-        options: ["Password protection with the global banned password list", "Temporary Access Pass", "Password writeback", "QR code authentication"],
+        options: ["Password protection", "Smart lockout with a Temporary Access Pass", "Password writeback", "QR code authentication"],
         answer: 0,
         explain: "This is password spray. The global banned password list is built from telemetry on real password spray attacks.",
         es: {
           topic: "Protección de contraseñas",
           q: "Un atacante prueba la contraseña Verano2026! contra miles de cuentas, pocos intentos por cada una, para evitar bloqueos. ¿Qué capacidad de Microsoft Entra está pensada para bloquear las contraseñas de este ataque?",
-          options: ["La protección de contraseñas con la lista global de contraseñas prohibidas", "El pase de acceso temporal", "La escritura diferida de contraseñas", "La autenticación con código QR"],
+          options: ["La protección de contraseñas", "El bloqueo inteligente con un pase de acceso temporal", "La escritura diferida de contraseñas", "La autenticación con código QR"],
           explain: "Esto es una difusión de contraseñas (password spray). La lista global de contraseñas prohibidas se construye con telemetría de ataques reales de este tipo."
         }
       },
@@ -308,8 +308,8 @@ Catalog.module("sc-900", {
             type: "single",
             q: "What is OATH TOTP?",
             options: [
-              "An open standard for generating time-based one-time password codes",
-              "A Microsoft protocol for federation with AD FS",
+              "An open standard for time-based codes",
+              "A Microsoft protocol for federating cloud apps with on-premises AD FS",
               "A biometric standard used by Windows Hello",
               "A list of banned passwords"
             ],
@@ -318,8 +318,8 @@ Catalog.module("sc-900", {
             es: {
               q: "¿Qué es OATH TOTP?",
               options: [
-                "Un estándar abierto para generar códigos de contraseña de un solo uso basados en el tiempo",
-                "Un protocolo de Microsoft para federarse con AD FS",
+                "Un estándar abierto para códigos basados en el tiempo",
+                "Un protocolo de Microsoft para federar aplicaciones en la nube con AD FS local",
                 "Un estándar biométrico que usa Windows Hello",
                 "Una lista de contraseñas prohibidas"
               ],
@@ -377,12 +377,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "An organization wants MFA only when users sign in from outside the corporate network or from personal devices. What does it need?",
-            options: ["Security defaults", "Conditional Access with a Microsoft Entra ID P1 or P2 license", "Password protection", "SSPR registration"],
+            options: ["Security defaults with trusted IPs", "Conditional Access (P1 or P2)", "Password protection", "SSPR registration"],
             answer: 1,
             explain: "Conditional Access gives granular control based on location, device state, risk or app sensitivity, and requires P1 or P2.",
             es: {
               q: "Una organización quiere exigir MFA solo cuando los usuarios inician sesión desde fuera de la red corporativa o desde dispositivos personales. ¿Qué necesita?",
-              options: ["Los valores predeterminados de seguridad", "El acceso condicional con una licencia de Microsoft Entra ID P1 o P2", "La protección de contraseñas", "El registro en SSPR"],
+              options: ["Los valores predeterminados de seguridad", "El acceso condicional (P1 o P2)", "La protección de contraseñas", "El registro en SSPR"],
               explain: "El acceso condicional da control granular según la ubicación, el estado del dispositivo, el riesgo o la sensibilidad de la aplicación, y requiere P1 o P2."
             }
           },
@@ -424,12 +424,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Attackers bombard a user with MFA push prompts hoping the user approves one out of annoyance. Which measure in security defaults helps prevent this?",
-            options: ["Number matching in Microsoft Authenticator", "Blocking SMS", "Custom banned password lists", "Password writeback"],
+            options: ["Number matching", "Blocking SMS", "Custom banned password lists for push-enabled users", "Password writeback"],
             answer: 0,
             explain: "Number matching requires the user to type the number shown on the sign-in screen, preventing MFA fatigue approvals.",
             es: {
               q: "Unos atacantes bombardean a un usuario con notificaciones de MFA esperando que apruebe una por cansancio. ¿Qué medida de los valores predeterminados de seguridad ayuda a evitarlo?",
-              options: ["La coincidencia de números en Microsoft Authenticator", "El bloqueo de SMS", "Las listas personalizadas de contraseñas prohibidas", "La escritura diferida de contraseñas"],
+              options: ["La coincidencia de números", "El bloqueo de SMS", "Las listas personalizadas de contraseñas prohibidas", "La escritura diferida de contraseñas"],
               explain: "La coincidencia de números exige que el usuario escriba el número que aparece en la pantalla de inicio de sesión, lo que evita aprobaciones por fatiga de MFA."
             }
           },

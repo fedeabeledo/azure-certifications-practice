@@ -118,13 +118,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Conditional Access",
         q: "An organization wants to block downloads of sensitive documents from unmanaged devices but still let users view them in the browser. Which Conditional Access control fits?",
-        options: ["Block access", "Session control with Conditional Access App Control", "Require a password change", "Require terms of use"],
+        options: ["Block access", "A session control (App Control)", "Require a password change", "Require terms of use"],
         answer: 1,
         explain: "App Control uses Defender for Cloud Apps signals to block download, cut, copy and print within an allowed session.",
         es: {
           topic: "Acceso condicional",
           q: "Una organización quiere bloquear la descarga de documentos sensibles desde dispositivos no administrados, pero seguir permitiendo verlos en el explorador. ¿Qué control de acceso condicional corresponde?",
-          options: ["Bloquear el acceso", "Control de sesión con Control de aplicaciones de acceso condicional", "Requerir un cambio de contraseña", "Requerir términos de uso"],
+          options: ["Bloquear el acceso", "Un control de sesión (App Control)", "Requerir cambiar la contraseña", "Requerir términos de uso"],
           explain: "App Control usa señales de Defender for Cloud Apps para bloquear la descarga, cortar, copiar e imprimir dentro de una sesión permitida."
         }
       },
@@ -147,10 +147,10 @@ Catalog.module("sc-900", {
         topic: "Microsoft Entra roles and RBAC",
         q: "You want one user to manage app registrations only for the Contoso Expense Reports app, using a role you define. What do you need?",
         options: [
-          "A custom role assigned at an object scope, with a P1 or P2 license",
+          "A custom role at object scope",
           "A built-in role with its permissions edited",
           "An Azure RBAC role at subscription scope",
-          "A Conditional Access policy targeting the app"
+          "A Conditional Access policy that targets the app and the user"
         ],
         answer: 0,
         explain: "Custom roles are created from a preset list of permissions and can be assigned at object scope, such as one app. Built-in roles can't be modified.",
@@ -158,10 +158,10 @@ Catalog.module("sc-900", {
           topic: "Roles de Microsoft Entra y RBAC",
           q: "Quiere que un usuario administre registros de aplicaciones solo para la aplicación Contoso Expense Reports, con un rol que usted defina. ¿Qué necesita?",
           options: [
-            "Un rol personalizado asignado en el ámbito de un objeto, con una licencia P1 o P2",
+            "Un rol personalizado en el ámbito del objeto",
             "Un rol integrado con sus permisos editados",
             "Un rol de Azure RBAC en el ámbito de la suscripción",
-            "Una directiva de acceso condicional dirigida a la aplicación"
+            "Una directiva de acceso condicional dirigida a la aplicación y al usuario"
           ],
           explain: "Los roles personalizados se crean a partir de una lista predefinida de permisos y se pueden asignar en el ámbito de un objeto, como una aplicación. Los roles integrados no se pueden modificar."
         }
@@ -199,13 +199,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Global Secure Access",
         q: "A company wants to stop employees from copying data into personal or unauthorized foreign Microsoft 365 tenants. Which capability fits?",
-        options: ["Universal tenant restrictions", "Web content filtering", "Quick Access", "Custom roles"],
+        options: ["Universal tenant restrictions", "Web content filtering by category", "Quick Access", "Custom roles"],
         answer: 0,
         explain: "Universal tenant restrictions, part of Internet Access for Microsoft Services, prevent data exfiltration to unauthorized tenants or personal accounts.",
         es: {
           topic: "Acceso seguro global",
           q: "Una empresa quiere impedir que los empleados copien datos en inquilinos de Microsoft 365 personales o ajenos no autorizados. ¿Qué capacidad corresponde?",
-          options: ["Las restricciones universales de inquilinos", "El filtrado de contenido web", "El acceso rápido", "Los roles personalizados"],
+          options: ["Las restricciones de inquilinos", "El filtrado web por categoría", "El acceso rápido", "Los roles personalizados"],
           explain: "Las restricciones universales de inquilinos, parte de Internet Access para Microsoft Services, evitan la filtración de datos hacia inquilinos no autorizados o cuentas personales."
         }
       }
@@ -281,24 +281,24 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are grant requirements available in Conditional Access?",
-            options: ["Require the device to be marked as compliant", "Require a Microsoft Entra hybrid joined device", "Require a custom banned password", "Require a Temporary Access Pass", "Require a VPN connection"],
+            options: ["Require a compliant device", "Require a hybrid joined device", "Require a custom banned password", "Require a Temporary Access Pass", "Require a VPN connection to the corporate network"],
             answers: [0, 1],
             explain: "Grant requirements include MFA, authentication strength, compliant device, hybrid joined device, approved client app, password change and terms of use.",
             es: {
               q: "¿Cuáles son dos requisitos de concesión disponibles en el acceso condicional?",
-              options: ["Requerir que el dispositivo esté marcado como compatible", "Requerir un dispositivo unido a Microsoft Entra híbrido", "Requerir una contraseña prohibida personalizada", "Requerir un pase de acceso temporal", "Requerir una conexión VPN"],
+              options: ["Requerir un dispositivo compatible", "Requerir un dispositivo unido híbrido", "Requerir una contraseña prohibida personalizada", "Requerir un pase de acceso temporal", "Requerir una conexión VPN a la red corporativa"],
               explain: "Los requisitos de concesión incluyen MFA, nivel de autenticación, dispositivo compatible, dispositivo unido híbrido, aplicación cliente aprobada, cambio de contraseña y términos de uso."
             }
           },
           {
             type: "single",
             q: "An organization wants to block access to Microsoft Security Copilot whenever a user's insider risk is elevated. What should it use?",
-            options: ["A Conditional Access policy with the insider risk condition and Block access", "Security defaults", "A custom Microsoft Entra role", "Password protection"],
+            options: ["A Conditional Access policy using insider risk", "Security defaults", "A custom role without Copilot permissions", "Password protection"],
             answer: 0,
             explain: "Conditional Access can protect AI services, including blocking access when insider risk is elevated.",
             es: {
               q: "Una organización quiere bloquear el acceso a Microsoft Security Copilot cuando el riesgo interno de un usuario es elevado. ¿Qué debe usar?",
-              options: ["Una directiva de acceso condicional con la condición de riesgo interno y Bloquear acceso", "Los valores predeterminados de seguridad", "Un rol personalizado de Microsoft Entra", "La protección de contraseñas"],
+              options: ["Una directiva de acceso condicional con riesgo interno", "Los valores predeterminados de seguridad", "Un rol personalizado sin permisos sobre Copilot", "La protección de contraseñas"],
               explain: "El acceso condicional puede proteger servicios de IA, incluido bloquear el acceso cuando el riesgo interno es elevado."
             }
           },
@@ -379,7 +379,7 @@ Catalog.module("sc-900", {
             type: "single",
             q: "What does a network connector do in Microsoft Entra Private Access?",
             options: [
-              "Brokers traffic between the service and the private resource the user wants to access",
+              "Brokers traffic to the private resource",
               "Filters websites by content category",
               "Syncs passwords to on-premises AD",
               "Stores banned password lists"
@@ -389,7 +389,7 @@ Catalog.module("sc-900", {
             es: {
               q: "¿Qué hace un conector de red en Microsoft Entra Private Access?",
               options: [
-                "Intermedia el tráfico entre el servicio y el recurso privado al que el usuario quiere acceder",
+                "Intermedia el tráfico hacia el recurso privado",
                 "Filtra sitios web por categoría de contenido",
                 "Sincroniza contraseñas con AD local",
                 "Guarda las listas de contraseñas prohibidas"
@@ -401,9 +401,9 @@ Catalog.module("sc-900", {
             type: "multi",
             q: "Which two security challenges does Security Service Edge help address?",
             options: [
-              "Reducing the risk of lateral movement through a compromised VPN tunnel",
-              "Putting a security perimeter around internet-based assets",
-              "Classifying documents with sensitivity labels",
+              "Limiting lateral movement via VPN",
+              "A perimeter for internet assets",
+              "Classifying documents with sensitivity labels before they're shared",
               "Managing Azure subscription budgets",
               "Replacing Windows Hello for Business"
             ],
@@ -412,9 +412,9 @@ Catalog.module("sc-900", {
             es: {
               q: "¿Cuáles son dos desafíos de seguridad que Security Service Edge ayuda a resolver?",
               options: [
-                "Reducir el riesgo de movimiento lateral a través de un túnel VPN comprometido",
-                "Poner un perímetro de seguridad alrededor de los recursos basados en internet",
-                "Clasificar documentos con etiquetas de confidencialidad",
+                "Limitar el movimiento lateral por VPN",
+                "Un perímetro para los recursos en internet",
+                "Clasificar documentos con etiquetas de confidencialidad antes de compartirlos",
                 "Administrar los presupuestos de las suscripciones de Azure",
                 "Reemplazar Windows Hello para empresas"
               ],

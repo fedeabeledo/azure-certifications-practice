@@ -98,13 +98,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Identity and security",
       q: "A legacy application needs domain join, Group Policy and Kerberos, but the company doesn't want to deploy or maintain domain controllers in Azure. What should it use?",
-      options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Azure Key Vault", "Microsoft Defender for Cloud"],
+      options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Microsoft Entra Conditional Access", "Microsoft Defender for Cloud"],
       answer: 0,
       explain: "Entra Domain Services provides managed domain services; Azure handles the domain controllers. Entra Connect only synchronizes identities.",
       es: {
         topic: "Identidad y seguridad",
         q: "Una aplicación heredada necesita unión a dominio, directiva de grupo y Kerberos, pero la empresa no quiere implementar ni mantener controladores de dominio en Azure. ¿Qué debe usar?",
-        options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Azure Key Vault", "Microsoft Defender for Cloud"],
+        options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Acceso condicional de Microsoft Entra", "Microsoft Defender for Cloud"],
         explain: "Entra Domain Services ofrece servicios de dominio administrados; Azure se ocupa de los controladores. Entra Connect solo sincroniza identidades."
       }
     },
@@ -221,13 +221,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Storage",
       q: "Which of the following is a valid storage account name?",
-      options: ["contosodata2026", "Contoso-Data", "contoso_data", "cd"],
+      options: ["contosodata2026", "Contoso-Data", "contoso_storage_2026", "cd"],
       answer: 0,
       explain: "Names are 3 to 24 characters of lowercase letters and numbers only, unique across Azure.",
       es: {
         topic: "Almacenamiento",
         q: "¿Cuál de los siguientes es un nombre de cuenta de almacenamiento válido?",
-        options: ["contosodata2026", "Contoso-Data", "contoso_data", "cd"],
+        options: ["contosodata2026", "Contoso-Data", "contoso_storage_2026", "cd"],
         explain: "Los nombres tienen de 3 a 24 caracteres, solo letras minúsculas y números, y son únicos en todo Azure."
       }
     },
@@ -300,13 +300,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Compute",
       q: "A support team wants to deliver full Windows desktops to many users from Azure, with apps and data kept in Azure-hosted sessions instead of on local devices. Which service fits?",
-      options: ["Azure Virtual Desktop", "Azure Functions", "Azure Container Apps", "Azure Data Box"],
+      options: ["Azure Virtual Desktop", "Azure Functions", "Azure Container Apps", "Azure Virtual Machine Scale Sets"],
       answer: 0,
       explain: "Azure Virtual Desktop centralizes desktop and app delivery, supports single- and multi-session and keeps data in Azure.",
       es: {
         topic: "Proceso",
         q: "Un equipo de soporte quiere ofrecer escritorios Windows completos a muchos usuarios desde Azure, con aplicaciones y datos en sesiones hospedadas en Azure en lugar de en los dispositivos locales. ¿Qué servicio corresponde?",
-        options: ["Azure Virtual Desktop", "Azure Functions", "Azure Container Apps", "Azure Data Box"],
+        options: ["Azure Virtual Desktop", "Azure Functions", "Azure Container Apps", "Azure Virtual Machine Scale Sets"],
         explain: "Azure Virtual Desktop centraliza la entrega de escritorios y aplicaciones, admite sesión única y multisesión, y mantiene los datos en Azure."
       }
     },
@@ -339,13 +339,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Identity and security",
       q: "Which Azure service manages the security posture of resources across Azure, on-premises and other clouds, with recommendations and threat protection?",
-      options: ["Microsoft Defender for Cloud", "Azure Key Vault", "Microsoft Entra Connect", "Azure DNS"],
+      options: ["Microsoft Defender for Cloud", "Azure Key Vault", "Microsoft Entra Connect", "Microsoft Entra Conditional Access"],
       answer: 0,
       explain: "Defender for Cloud manages security posture and extends protections to other clouds; Key Vault stores secrets, keys and certificates.",
       es: {
         topic: "Identidad y seguridad",
         q: "¿Qué servicio de Azure administra la postura de seguridad de los recursos en Azure, en el entorno local y en otras nubes, con recomendaciones y protección contra amenazas?",
-        options: ["Microsoft Defender for Cloud", "Azure Key Vault", "Microsoft Entra Connect", "Azure DNS"],
+        options: ["Microsoft Defender for Cloud", "Azure Key Vault", "Microsoft Entra Connect", "Acceso condicional de Microsoft Entra"],
         explain: "Defender for Cloud administra la postura de seguridad y extiende sus protecciones a otras nubes; Key Vault guarda secretos, claves y certificados."
       }
     },
@@ -369,7 +369,7 @@ Catalog.pathQuiz("az-900", "architecture", {
       topic: "Core architecture",
       q: "An administrator assigns the Reader role at a management group. Who receives it?",
       options: [
-        "Every subscription, resource group and resource under that management group",
+        "Everything beneath that management group",
         "Only the management group object itself",
         "Only resources created after the assignment",
         "Only subscriptions in the same region"
@@ -380,9 +380,9 @@ Catalog.pathQuiz("az-900", "architecture", {
         topic: "Arquitectura principal",
         q: "Un administrador asigna el rol Lector en un grupo de administración. ¿A qué alcanza?",
         options: [
-          "A todas las suscripciones, grupos de recursos y recursos de ese grupo de administración",
+          "A todo lo que está debajo de ese grupo de administración",
           "Solo al objeto del grupo de administración",
-          "Solo a los recursos creados después de la asignación",
+          "Solo a los recursos creados después de asignarlo",
           "Solo a las suscripciones de la misma región"
         ],
         explain: "Los permisos de un grupo de administración los hereda todo lo que está debajo, así que no hace falta asignarlos uno por uno."
@@ -473,13 +473,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Networking",
       q: "A company uses ExpressRoute and wants a backup path so connectivity continues if the circuit fails. What can it add?",
-      options: ["A site-to-site VPN gateway as failover", "A second resource group", "A network security group", "Azure DNS alias records"],
+      options: ["A site-to-site VPN gateway as failover", "A second resource group in another region", "A network security group", "Azure DNS alias records"],
       answer: 0,
       explain: "A VPN gateway over the internet can serve as a secure failover path for ExpressRoute.",
       es: {
         topic: "Redes",
         q: "Una empresa usa ExpressRoute y quiere una ruta de respaldo para que la conectividad continúe si falla el circuito. ¿Qué puede agregar?",
-        options: ["Una puerta de enlace VPN de sitio a sitio como conmutación por error", "Un segundo grupo de recursos", "Un grupo de seguridad de red", "Registros de alias de Azure DNS"],
+        options: ["Una VPN de sitio a sitio de respaldo", "Un segundo grupo de recursos", "Un grupo de seguridad de red", "Registros de alias de Azure DNS que apunten a otra región"],
         explain: "Una puerta de enlace VPN por internet puede servir como ruta segura de conmutación por error para ExpressRoute."
       }
     }

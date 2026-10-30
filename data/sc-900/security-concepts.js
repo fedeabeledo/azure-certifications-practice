@@ -159,9 +159,9 @@ Catalog.module("sc-900", {
         topic: "Shared responsibility",
         q: "Your company rolls out a SaaS AI assistant to its employees. Which responsibility remains with your company?",
         options: [
-          "Hosting and securing the AI model",
+          "Hosting the AI model and protecting it against tampering",
           "Providing the platform's built-in content filtering",
-          "Deciding which sensitive data the AI assistant is allowed to access",
+          "Deciding which data the assistant can reach",
           "Managing the compute infrastructure behind the service"
         ],
         answer: 2,
@@ -170,9 +170,9 @@ Catalog.module("sc-900", {
           topic: "Responsabilidad compartida",
           q: "Su empresa implementa un asistente de IA SaaS para sus empleados. ¿Qué responsabilidad sigue siendo de su empresa?",
           options: [
-            "Hospedar y proteger el modelo de IA",
+            "Hospedar el modelo de IA y protegerlo contra manipulaciones",
             "Proveer el filtrado de contenido integrado de la plataforma",
-            "Decidir a qué datos confidenciales puede acceder el asistente de IA",
+            "Decidir a qué datos accede el asistente",
             "Administrar la infraestructura de cómputo detrás del servicio"
           ],
           explain: "El proveedor protege el modelo, los controles de seguridad de la plataforma y el cómputo. Usted controla a qué datos accede la IA, quién puede usarla y cómo se configura."
@@ -248,22 +248,22 @@ Catalog.module("sc-900", {
             type: "multi",
             q: "Which two responsibilities always stay with the customer, regardless of the cloud service model?",
             options: [
-              "Securing the endpoints that connect to cloud services",
-              "The security configuration choices in your tenant",
-              "Securing the physical datacenter",
+              "Securing endpoints",
+              "Your tenant's configuration choices",
+              "Securing the physical datacenter where your workloads run",
               "Securing the host machines",
-              "Patching the operating system in PaaS"
+              "Patching the operating system that hosts your PaaS application"
             ],
             answers: [0, 1],
             explain: "Data, identities and access, endpoints and configuration choices always stay with you. Datacenter and hosts are the provider's; in PaaS so is the OS.",
             es: {
               q: "¿Cuáles son dos responsabilidades que siempre quedan en manos del cliente, sin importar el modelo de servicio en la nube?",
               options: [
-                "Proteger los dispositivos que se conectan a los servicios en la nube",
-                "Las decisiones de configuración de seguridad de su inquilino",
-                "Proteger el centro de datos físico",
+                "Proteger los dispositivos",
+                "La configuración de su inquilino",
+                "Proteger el centro de datos físico donde corren sus cargas",
                 "Proteger los equipos host",
-                "Aplicar parches al sistema operativo en PaaS"
+                "Aplicar parches al sistema operativo que hospeda su aplicación PaaS"
               ],
               explain: "Los datos, las identidades y el acceso, los dispositivos y las decisiones de configuración siempre son suyos. El centro de datos y los hosts son del proveedor; en PaaS, también el sistema operativo."
             }
@@ -272,8 +272,8 @@ Catalog.module("sc-900", {
             type: "single",
             q: "An attacker embeds instructions in external data that an AI application processes, to manipulate the AI's outputs. What is this risk called, and who is responsible for mitigating it?",
             options: [
-              "Prompt injection; the customer mitigates it through input validation, access controls and monitoring",
-              "Prompt injection; only the AI provider can mitigate it",
+              "Prompt injection; the customer mitigates it",
+              "Prompt injection; only the AI provider can mitigate it, since it controls the model",
               "A rainbow table attack; the customer mitigates it with salting",
               "A DDoS attack; the provider mitigates it at the perimeter"
             ],
@@ -282,8 +282,8 @@ Catalog.module("sc-900", {
             es: {
               q: "Un atacante inserta instrucciones en datos externos que procesa una aplicación de IA, para manipular sus resultados. ¿Cómo se llama este riesgo y quién es responsable de mitigarlo?",
               options: [
-                "Inyección de prompts; la mitiga el cliente con validación de entradas, controles de acceso y supervisión",
-                "Inyección de prompts; solo el proveedor de IA puede mitigarla",
+                "Inyección de prompts; la mitiga el cliente",
+                "Inyección de prompts; solo el proveedor de IA puede mitigarla, porque controla el modelo",
                 "Un ataque con tablas arcoíris; lo mitiga el cliente agregando sal",
                 "Un ataque DDoS; lo mitiga el proveedor en el perímetro"
               ],
@@ -460,22 +460,22 @@ Catalog.module("sc-900", {
             type: "multi",
             q: "Which two controls primarily support availability?",
             options: [
-              "Redundant infrastructure with automatic failover",
-              "Regular backups with tested recovery plans",
-              "Cryptographic hashing",
+              "Redundancy and failover",
+              "Tested backups",
+              "Cryptographic hashing of stored files",
               "Digital signatures",
-              "Data classification"
+              "Data classification with sensitivity labels"
             ],
             answers: [0, 1],
             explain: "Redundancy, failover, load balancing, backups and DDoS protection keep systems reachable. Hashing and signatures protect integrity; classification guides data protection.",
             es: {
               q: "¿Cuáles son dos controles que contribuyen principalmente a la disponibilidad?",
               options: [
-                "Infraestructura redundante con conmutación por error automática",
-                "Copias de seguridad periódicas con planes de recuperación probados",
-                "El hash criptográfico",
+                "Redundancia y conmutación por error",
+                "Copias de seguridad probadas",
+                "El hash criptográfico de los archivos guardados",
                 "Las firmas digitales",
-                "La clasificación de datos"
+                "La clasificación de datos con etiquetas de confidencialidad"
               ],
               explain: "La redundancia, la conmutación por error, el equilibrio de carga, las copias de seguridad y la protección contra DDoS mantienen los sistemas accesibles. El hash y las firmas protegen la integridad; la clasificación orienta la protección de los datos."
             }
@@ -617,8 +617,8 @@ Catalog.module("sc-900", {
             q: "Which statement best describes Zero Trust?",
             options: [
               "A firewall product that blocks untrusted traffic",
-              "A security strategy that requires every access request to be authenticated and authorized, wherever it comes from",
-              "A model that trusts everything inside the corporate network",
+              "A strategy that verifies every access request",
+              "A model that trusts everything inside the corporate network and verifies only remote access",
               "A regulation that defines minimum security standards"
             ],
             answer: 1,
@@ -627,8 +627,8 @@ Catalog.module("sc-900", {
               q: "¿Qué afirmación describe mejor Confianza cero?",
               options: [
                 "Un producto de firewall que bloquea el tráfico no confiable",
-                "Una estrategia de seguridad que exige autenticar y autorizar cada solicitud de acceso, venga de donde venga",
-                "Un modelo que confía en todo lo que está dentro de la red corporativa",
+                "Una estrategia que verifica cada solicitud de acceso",
+                "Un modelo que confía en todo lo que está dentro de la red corporativa y verifica solo el acceso remoto",
                 "Una regulación que define estándares mínimos de seguridad"
               ],
               explain: "Confianza cero es una estrategia, no un producto: no confiar en nadie, verificarlo todo. Confiar en la red interna es el modelo de castillo y foso que reemplaza."
@@ -698,12 +698,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "In a multitenant environment, a company needs to protect data while it's being processed in memory, so that not even the operating system or hypervisor can see it. What provides this?",
-            options: ["TLS", "Encryption at rest", "Confidential computing with secure enclaves", "Salting"],
+            options: ["TLS", "Encryption at rest", "Confidential computing", "Salting"],
             answer: 2,
             explain: "Data in use is protected by confidential computing, which processes data inside protected enclaves. TLS protects data in transit; encryption at rest protects stored data.",
             es: {
               q: "En un entorno multiinquilino, una empresa necesita proteger los datos mientras se procesan en memoria, de modo que ni el sistema operativo ni el hipervisor puedan verlos. ¿Qué lo permite?",
-              options: ["TLS", "El cifrado en reposo", "La computación confidencial con enclaves seguros", "El agregado de sal"],
+              options: ["TLS", "El cifrado en reposo", "La computación confidencial", "El agregado de sal"],
               explain: "Los datos en uso se protegen con computación confidencial, que los procesa dentro de enclaves protegidos. TLS protege los datos en tránsito; el cifrado en reposo protege los datos almacenados."
             }
           },
@@ -747,8 +747,8 @@ Catalog.module("sc-900", {
             q: "Why are passwords salted before they are hashed?",
             options: [
               "To make the hash reversible for administrators",
-              "So identical passwords produce different hashes, which makes precomputed rainbow tables ineffective",
-              "To encrypt passwords while they travel over the network",
+              "So identical passwords get different hashes",
+              "To encrypt passwords while they travel over the network to the authentication server",
               "To shorten the hash so it takes less storage"
             ],
             answer: 1,
@@ -757,8 +757,8 @@ Catalog.module("sc-900", {
               q: "¿Por qué se agrega sal a las contraseñas antes de aplicarles el hash?",
               options: [
                 "Para que los administradores puedan revertir el hash",
-                "Para que contraseñas idénticas produzcan hashes distintos, lo que inutiliza las tablas arcoíris precalculadas",
-                "Para cifrar las contraseñas mientras viajan por la red",
+                "Para que contraseñas iguales tengan hashes distintos",
+                "Para cifrar las contraseñas mientras viajan por la red hasta el servidor de autenticación",
                 "Para acortar el hash y que ocupe menos espacio"
               ],
               explain: "Una sal única y aleatoria por contraseña hace que dos usuarios con la misma contraseña tengan hashes distintos, así que las tablas de búsqueda precalculadas dejan de funcionar."
@@ -913,9 +913,9 @@ Catalog.module("sc-900", {
             q: "An organization meets every minimum requirement of the regulations that apply to it. Which statement is true?",
             options: [
               "It's fully secure, because compliance and security are the same",
-              "It can still have significant security vulnerabilities, because compliance is only the required minimum",
+              "It can still have significant vulnerabilities",
               "It no longer needs risk management",
-              "It no longer needs to know where its data is stored"
+              "It no longer needs to track where its data is stored, because the regulator already did"
             ],
             answer: 1,
             explain: "Compliance is not the same as security. Doing only the regulatory minimum can leave real vulnerabilities.",
@@ -923,9 +923,9 @@ Catalog.module("sc-900", {
               q: "Una organización cumple todos los requisitos mínimos de las regulaciones que le aplican. ¿Qué afirmación es verdadera?",
               options: [
                 "Es completamente segura, porque cumplimiento y seguridad son lo mismo",
-                "Puede seguir teniendo vulnerabilidades importantes, porque el cumplimiento es solo el mínimo exigido",
+                "Puede seguir teniendo vulnerabilidades importantes",
                 "Ya no necesita gestionar riesgos",
-                "Ya no necesita saber dónde se almacenan sus datos"
+                "Ya no necesita saber dónde se almacenan sus datos, porque eso ya lo verificó el regulador"
               ],
               explain: "El cumplimiento no es lo mismo que la seguridad. Hacer solo el mínimo regulatorio puede dejar vulnerabilidades reales."
             }

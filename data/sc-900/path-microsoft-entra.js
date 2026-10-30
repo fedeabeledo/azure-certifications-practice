@@ -7,7 +7,7 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       topic: "Protection and governance",
       q: "ID Protection reports a high sign-in risk for a user. The company wants the user to prove their identity automatically before access continues. Which combination fits?",
       options: [
-        "A risk-based Conditional Access policy that requires MFA",
+        "Risk-based Conditional Access requiring MFA",
         "A custom banned password list",
         "An access review of the user's groups",
         "A PIM eligible assignment"
@@ -18,9 +18,9 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
         topic: "Protección y gobernanza",
         q: "ID Protection informa un riesgo de inicio de sesión alto para un usuario. La empresa quiere que el usuario demuestre su identidad automáticamente antes de continuar. ¿Qué combinación corresponde?",
         options: [
-          "Una directiva de acceso condicional basada en riesgo que exija MFA",
+          "Acceso condicional basado en riesgo que exija MFA",
           "Una lista personalizada de contraseñas prohibidas",
-          "Una revisión de acceso de los grupos del usuario",
+          "Una revisión de acceso de sus grupos",
           "Una asignación apta en PIM"
         ],
         explain: "ID Protection envía el riesgo al acceso condicional; completar la MFA exigida corrige el riesgo automáticamente."
@@ -69,13 +69,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Access management",
       q: "Contractors join a project for three months and need a Teams team, a SharePoint site and an app. Access should be requested, approved by the project lead and removed automatically at the end. What should you use?",
-      options: ["An access package in entitlement management", "A security group with assigned membership", "A Global administrator role", "Global Secure Access Quick Access"],
+      options: ["An access package", "A security group with assigned membership", "A Global administrator role", "Global Secure Access Quick Access with a Conditional Access policy"],
       answer: 0,
       explain: "Access packages bundle resources with request, approval and expiration policies, and can invite external users automatically.",
       es: {
         topic: "Administración de acceso",
         q: "Unos contratistas se suman a un proyecto por tres meses y necesitan un equipo de Teams, un sitio de SharePoint y una aplicación. El acceso se debe solicitar, lo debe aprobar el líder del proyecto y se debe quitar automáticamente al final. ¿Qué debe usar?",
-        options: ["Un paquete de acceso de la administración de derechos", "Un grupo de seguridad con pertenencia asignada", "El rol de administrador global", "El acceso rápido del acceso seguro global"],
+        options: ["Un paquete de acceso", "Un grupo de seguridad con pertenencia asignada", "El rol de administrador global", "El acceso rápido del acceso seguro global con una directiva de acceso condicional"],
         explain: "Los paquetes de acceso agrupan recursos con directivas de solicitud, aprobación y vencimiento, y pueden invitar automáticamente a usuarios externos."
       }
     },
@@ -152,9 +152,9 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       topic: "Authentication",
       q: "A user forgot their password and still has the Authenticator app. Another user lost every registered method. Which pair of capabilities fits each case?",
       options: [
-        "SSPR for the first; account recovery with identity verification for the second",
+        "SSPR for the first; account recovery for the second",
         "Account recovery for both",
-        "PIM for the first; SSPR for the second",
+        "A Temporary Access Pass for the first; SSPR for the second",
         "Password protection for both"
       ],
       answer: 0,
@@ -163,9 +163,9 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
         topic: "Autenticación",
         q: "Un usuario olvidó su contraseña y todavía tiene Authenticator. Otro usuario perdió todos sus métodos registrados. ¿Qué par de capacidades corresponde a cada caso?",
         options: [
-          "SSPR para el primero; recuperación de cuentas con verificación de identidad para el segundo",
+          "SSPR para el primero; recuperación de cuentas para el segundo",
           "Recuperación de cuentas para ambos",
-          "PIM para el primero; SSPR para el segundo",
+          "Un pase de acceso temporal para el primero; SSPR para el segundo",
           "Protección de contraseñas para ambos"
         ],
         explain: "SSPR necesita al menos un método registrado; la recuperación de cuentas restablece la identidad mediante un proveedor IDV cuando se perdieron todos los métodos."
@@ -271,13 +271,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Protection and governance",
       q: "When an employee moves from Sales to Finance, their group memberships and app roles should change automatically based on the department attribute. What should you use?",
-      options: ["Automatic assignment policies in entitlement management or dynamic groups", "A Temporary Access Pass", "A custom banned password list", "Microsoft Entra Verified ID"],
+      options: ["Dynamic groups or automatic assignment policies", "A Temporary Access Pass", "An access review whenever the department changes", "Microsoft Entra Verified ID"],
       answer: 0,
       explain: "Automatic assignment policies and dynamic groups add and remove access based on user attributes.",
       es: {
         topic: "Protección y gobernanza",
         q: "Cuando un empleado pasa de Ventas a Finanzas, sus pertenencias a grupos y roles de aplicaciones deben cambiar automáticamente según el atributo de departamento. ¿Qué debe usar?",
-        options: ["Directivas de asignación automática de la administración de derechos o grupos dinámicos", "Un pase de acceso temporal", "Una lista personalizada de contraseñas prohibidas", "Microsoft Entra Verified ID"],
+        options: ["Grupos dinámicos o directivas de asignación automática", "Un pase de acceso temporal", "Una revisión de acceso cada vez que cambia el área", "Microsoft Entra Verified ID"],
         explain: "Las directivas de asignación automática y los grupos dinámicos agregan y quitan acceso según los atributos del usuario."
       }
     },
@@ -325,13 +325,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Protection and governance",
       q: "A security team wants an AI agent to review Conditional Access policies daily and flag new users and apps not covered by any policy. What should it turn on?",
-      options: ["The Conditional Access Optimization Agent", "Security defaults", "The Identity secure score", "A multi-stage access review"],
+      options: ["The CA Optimization Agent", "Security defaults with a daily policy report", "The Identity secure score", "A multi-stage access review"],
       answer: 0,
       explain: "This Microsoft Entra agent scans the tenant every 24 hours against best practices and Zero Trust and suggests next steps.",
       es: {
         topic: "Protección y gobernanza",
         q: "Un equipo de seguridad quiere que un agente de IA revise las directivas de acceso condicional a diario y señale usuarios y aplicaciones nuevos sin directiva. ¿Qué debe activar?",
-        options: ["El agente de optimización del acceso condicional", "Los valores predeterminados de seguridad", "La puntuación de seguridad de la identidad", "Una revisión de acceso de varias fases"],
+        options: ["El agente de optimización del CA", "Los valores predeterminados de seguridad", "La puntuación de seguridad de la identidad", "Una revisión de acceso de varias fases"],
         explain: "Este agente de Microsoft Entra examina el inquilino cada 24 horas según los procedimientos recomendados y la Confianza cero, y sugiere próximos pasos."
       }
     },
@@ -353,13 +353,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Access management",
       q: "Location-based Conditional Access must keep working accurately even though users' traffic now goes through the Global Secure Access proxy. Which feature ensures this?",
-      options: ["Source IP restoration", "TLS inspection", "Quick Access", "Custom roles"],
+      options: ["Source IP restoration", "TLS inspection", "Quick Access", "Custom network roles"],
       answer: 0,
       explain: "Source IP restoration puts the original user IP in Entra sign-in logs so location policies and risk detections stay accurate.",
       es: {
         topic: "Administración de acceso",
         q: "El acceso condicional basado en la ubicación debe seguir funcionando con precisión aunque el tráfico de los usuarios ahora pase por el proxy del acceso seguro global. ¿Qué característica lo asegura?",
-        options: ["La restauración de la IP de origen", "La inspección de TLS", "El acceso rápido", "Los roles personalizados"],
+        options: ["Restaurar la IP de origen", "La inspección de TLS", "El acceso rápido", "Los roles de red personalizados"],
         explain: "La restauración de la IP de origen pone la IP original del usuario en los registros de inicio de sesión de Entra para que las directivas de ubicación y las detecciones de riesgo sigan siendo precisas."
       }
     },
@@ -382,13 +382,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Microsoft Entra ID and identity types",
       q: "Several AI agents of the same type need consistent policies, and the organization wants one place that holds the credentials used to create them. What should it define?",
-      options: ["An agent identity blueprint", "A Microsoft 365 group", "A user-assigned managed identity per agent", "A guest user"],
+      options: ["An agent identity blueprint", "A Microsoft 365 group", "One managed identity per agent", "A guest user"],
       answer: 0,
       explain: "A blueprint defines a class of agent, holds the credentials and lets administrators apply policies to all agents created from it.",
       es: {
         topic: "Microsoft Entra ID y tipos de identidad",
         q: "Varios agentes de IA del mismo tipo necesitan directivas coherentes, y la organización quiere un único lugar que guarde las credenciales usadas para crearlos. ¿Qué debe definir?",
-        options: ["Un plano técnico de identidad de agente", "Un grupo de Microsoft 365", "Una identidad administrada asignada por el usuario para cada agente", "Un usuario invitado"],
+        options: ["Un plano técnico de identidad de agente", "Un grupo de Microsoft 365", "Una identidad administrada por agente", "Un usuario invitado"],
         explain: "Un plano técnico define una clase de agente, guarda las credenciales y permite aplicar directivas a todos los agentes creados a partir de él."
       }
     },

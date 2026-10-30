@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "High availability and scalability",
         q: "A developer needs more processing power for an app that runs on a single virtual machine. The team doesn't want to add more instances. What should the developer do?",
-        options: ["Scale out by adding virtual machines", "Scale up by adding CPUs or RAM to the virtual machine", "Scale in by removing virtual machines", "Request a higher SLA for the virtual machine"],
+        options: ["Scale out by adding virtual machines", "Scale up by adding CPUs or RAM to the virtual machine", "Scale in by removing virtual machines", "Request a higher SLA so the VM gets more capacity"],
         answer: 1,
         explain: "Adding CPUs or RAM to the same virtual machine is vertical scaling (scale up). Adding instances is horizontal scaling, which the team ruled out.",
         es: {
           topic: "Alta disponibilidad y escalabilidad",
           q: "Un desarrollador necesita más capacidad de procesamiento para una aplicación que se ejecuta en una sola máquina virtual. El equipo no quiere agregar más instancias. ¿Qué debe hacer?",
-          options: ["Escalar horizontalmente agregando máquinas virtuales", "Escalar verticalmente agregando CPU o RAM a la máquina virtual", "Reducir horizontalmente quitando máquinas virtuales", "Solicitar un SLA más alto para la máquina virtual"],
+          options: ["Escalar horizontalmente agregando máquinas virtuales", "Escalar verticalmente agregando CPU o RAM a la máquina virtual", "Reducir horizontalmente quitando máquinas virtuales", "Pedir un SLA más alto para que la máquina virtual rinda más"],
           explain: "Agregar CPU o RAM a la misma máquina virtual es escalado vertical. Agregar instancias es escalado horizontal, que el equipo descartó."
         }
       },
@@ -64,13 +64,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Manageability",
         q: "Which of the following is an example of management of the cloud, rather than management in the cloud?",
-        options: ["Automatically replacing failing resources", "Using the Azure command line interface", "Calling management APIs", "Running PowerShell scripts"],
+        options: ["Automatically replacing failing resources", "Using the Azure command line interface", "Calling management APIs from your own tools", "Running PowerShell scripts against your subscription"],
         answer: 0,
         explain: "Management of the cloud is what you can do with your resources: autoscale, deploy from templates, monitor health and replace failing resources, get alerts. Portal, CLI, APIs and PowerShell are management in the cloud: how you manage.",
         es: {
           topic: "Capacidad de administración",
           q: "¿Cuál de las siguientes opciones es un ejemplo de administración de la nube, y no de administración en la nube?",
-          options: ["Reemplazar automáticamente los recursos que fallan", "Usar la interfaz de línea de comandos de Azure", "Llamar a API de administración", "Ejecutar scripts de PowerShell"],
+          options: ["Reemplazar automáticamente los recursos que fallan", "Usar la interfaz de línea de comandos de Azure", "Llamar a las API de administración desde sus herramientas", "Ejecutar scripts de PowerShell contra su suscripción"],
           explain: "La administración de la nube es lo que se puede hacer con los recursos: escalar automáticamente, implementar desde plantillas, supervisar el estado y reemplazar recursos que fallan, recibir alertas. El portal, la CLI, las API y PowerShell son administración en la nube: cómo se administra."
         }
       },
@@ -109,8 +109,8 @@ Catalog.module("az-900", {
         q: "Monitoring shows that several virtual machines consistently use a small fraction of their allocated CPU. Which sustainability-aligned practice applies?",
         options: [
           "Add more virtual machines to spread the load",
-          "Keep them as they are to cover future growth",
-          "Choose more efficient sizes and configurations to reduce overprovisioning",
+          "Keep them at their current size so there's headroom for future growth",
+          "Right-size them to reduce overprovisioning",
           "Move them to an on-premises datacenter"
         ],
         answer: 2,
@@ -120,8 +120,8 @@ Catalog.module("az-900", {
           q: "La supervisión muestra que varias máquinas virtuales usan siempre una pequeña parte de la CPU asignada. ¿Qué práctica alineada con la sostenibilidad corresponde?",
           options: [
             "Agregar más máquinas virtuales para repartir la carga",
-            "Dejarlas como están para cubrir el crecimiento futuro",
-            "Elegir tamaños y configuraciones más eficientes para reducir el sobreaprovisionamiento",
+            "Dejarlas con el tamaño actual para tener margen ante el crecimiento futuro",
+            "Ajustar su tamaño para reducir el sobreaprovisionamiento",
             "Trasladarlas a un centro de datos local"
           ],
           explain: "Ajustar el tamaño, eligiendo servicios y configuraciones eficientes, reduce el sobreaprovisionamiento y el desperdicio. Mantener capacidad ociosa \"por las dudas\" es justamente el desperdicio que la práctica ataca."
@@ -156,13 +156,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Reliability and predictability",
         q: "A company wants its applications to keep running even if one region suffers a catastrophic event. Which characteristic of the cloud makes this possible?",
-        options: ["Vertical scaling", "Its decentralized design, with resources deployed in regions around the world", "Deployment templates", "Pay-as-you-go pricing"],
+        options: ["Vertical scaling of the most critical resources", "Its decentralized, multi-region design", "Deployment templates that recreate resources in the same region", "Pay-as-you-go pricing"],
         answer: 1,
         explain: "The cloud's decentralized design and global scale mean other regions keep running if one fails. That's the basis of cloud reliability.",
         es: {
           topic: "Confiabilidad y previsibilidad",
           q: "Una empresa quiere que sus aplicaciones sigan funcionando aunque una región sufra un evento catastrófico. ¿Qué característica de la nube lo hace posible?",
-          options: ["El escalado vertical", "Su diseño descentralizado, con recursos implementados en regiones de todo el mundo", "Las plantillas de implementación", "Los precios de pago por uso"],
+          options: ["El escalado vertical de los recursos más críticos", "Su diseño descentralizado en varias regiones", "Las plantillas de implementación que recrean recursos en la misma región", "Los precios de pago por uso"],
           explain: "El diseño descentralizado y la escala global de la nube hacen que otras regiones sigan funcionando si una falla. Esa es la base de la confiabilidad en la nube."
         }
       },
@@ -171,8 +171,8 @@ Catalog.module("az-900", {
         topic: "High availability and scalability",
         q: "What does high availability focus on?",
         options: [
-          "Adjusting resources to meet demand",
-          "Ensuring maximum availability regardless of disruptions or events",
+          "Adjusting the amount of resources to meet changing demand",
+          "Keeping resources available despite disruptions",
           "Forecasting the cost of cloud spend",
           "Applying patches automatically"
         ],
@@ -182,8 +182,8 @@ Catalog.module("az-900", {
           topic: "Alta disponibilidad y escalabilidad",
           q: "¿En qué se centra la alta disponibilidad?",
           options: [
-            "En ajustar los recursos para satisfacer la demanda",
-            "En garantizar la máxima disponibilidad sin importar las interrupciones o los eventos",
+            "En ajustar la cantidad de recursos para satisfacer una demanda cambiante",
+            "En mantener los recursos disponibles pese a las interrupciones",
             "En pronosticar el costo del gasto en la nube",
             "En aplicar parches automáticamente"
           ],
@@ -194,13 +194,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Manageability",
         q: "An operations team wants to automate recurring management tasks in its cloud environment. Which tools fit this need?",
-        options: ["Service-level agreements", "The Azure Pricing Calculator", "Command line interface or PowerShell scripts", "DDoS protection"],
+        options: ["Service-level agreements", "The Azure Pricing Calculator", "CLI or PowerShell scripts", "DDoS protection"],
         answer: 2,
         explain: "The CLI and PowerShell, along with APIs, let you script and automate management. SLAs, the Pricing Calculator and DDoS protection serve other purposes.",
         es: {
           topic: "Capacidad de administración",
           q: "Un equipo de operaciones quiere automatizar tareas de administración recurrentes en su entorno en la nube. ¿Qué herramientas responden a esa necesidad?",
-          options: ["Los acuerdos de nivel de servicio", "La Calculadora de precios de Azure", "Scripts de interfaz de línea de comandos o PowerShell", "La protección contra DDoS"],
+          options: ["Los acuerdos de nivel de servicio", "La Calculadora de precios de Azure", "Scripts de la CLI o de PowerShell", "La protección contra DDoS"],
           explain: "La CLI y PowerShell, junto con las API, permiten escribir scripts y automatizar la administración. Los SLA, la Calculadora de precios y la protección contra DDoS sirven para otros fines."
         }
       },
@@ -400,12 +400,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Which framework heavily influences both performance and cost predictability, and includes reliability as one of its pillars?",
-            options: ["The shared responsibility model", "The Microsoft Azure Well-Architected Framework", "Azure service-level agreements", "The consumption-based model"],
+            options: ["The Microsoft cloud shared responsibility model", "The Azure Well-Architected Framework", "Azure service-level agreements", "The consumption-based model"],
             answer: 1,
             explain: "The module ties both kinds of predictability to the Well-Architected Framework and names reliability as one of its pillars.",
             es: {
               q: "¿Qué marco influye fuertemente tanto en la previsibilidad del rendimiento como en la de costos, e incluye la confiabilidad como uno de sus pilares?",
-              options: ["El modelo de responsabilidad compartida", "El Marco de buena arquitectura de Microsoft Azure", "Los acuerdos de nivel de servicio de Azure", "El modelo basado en el consumo"],
+              options: ["El modelo de responsabilidad compartida de la nube de Microsoft", "El Marco de buena arquitectura de Azure", "Los acuerdos de nivel de servicio de Azure", "El modelo basado en el consumo"],
               explain: "El módulo vincula ambos tipos de previsibilidad con el Marco de buena arquitectura y menciona la confiabilidad como uno de sus pilares."
             }
           },
@@ -522,8 +522,8 @@ Catalog.module("az-900", {
             q: "A company is concerned about distributed denial of service (DDoS) attacks against its services. Which statement reflects the module?",
             options: [
               "The customer must handle DDoS attacks alone in every cloud service type",
-              "Cloud providers are typically well suited to handle DDoS attacks, making your network more robust",
-              "DDoS attacks only affect on-premises environments",
+              "Cloud providers are typically well suited to handle DDoS attacks",
+              "DDoS attacks only affect on-premises environments, never cloud services",
               "DDoS protection is only available when you use IaaS"
             ],
             answer: 1,
@@ -532,8 +532,8 @@ Catalog.module("az-900", {
               q: "A una empresa le preocupan los ataques de denegación de servicio distribuido (DDoS) contra sus servicios. ¿Qué afirmación refleja el módulo?",
               options: [
                 "El cliente debe gestionar solo los ataques DDoS en todos los tipos de servicio en la nube",
-                "Los proveedores de nube suelen estar bien preparados para gestionar ataques DDoS, lo que hace más robusta su red",
-                "Los ataques DDoS solo afectan a los entornos locales",
+                "Los proveedores de nube suelen estar bien preparados para gestionar ataques DDoS",
+                "Los ataques DDoS solo afectan a los entornos locales, nunca a los servicios en la nube",
                 "La protección contra DDoS solo está disponible si usa IaaS"
               ],
               explain: "El módulo indica que los proveedores de nube suelen estar bien preparados para gestionar ataques DDoS, lo que hace más robusta y segura su red."
@@ -615,24 +615,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "An operations team wants to stop configuring each new resource by hand. Which capability addresses this?",
-            options: ["Monitoring resource health in the portal", "Deploying resources from a preconfigured template", "Receiving alerts on configured metrics", "Scaling resources vertically"],
+            options: ["Monitoring resource health in the portal after each deployment", "Deploying from a template", "Receiving alerts on configured metrics", "Scaling resources vertically"],
             answer: 1,
             explain: "Deploying from a preconfigured template removes the need for manual configuration and keeps configurations consistent.",
             es: {
               q: "Un equipo de operaciones quiere dejar de configurar a mano cada recurso nuevo. ¿Qué capacidad resuelve esto?",
-              options: ["Supervisar el estado de los recursos en el portal", "Implementar recursos desde una plantilla preconfigurada", "Recibir alertas sobre métricas configuradas", "Escalar recursos verticalmente"],
+              options: ["Supervisar el estado de los recursos en el portal después de cada implementación", "Implementar desde una plantilla", "Recibir alertas sobre métricas configuradas", "Escalar recursos verticalmente"],
               explain: "Implementar desde una plantilla preconfigurada elimina la configuración manual y mantiene configuraciones coherentes."
             }
           },
           {
             type: "single",
             q: "You want to learn about performance problems in real time without watching dashboards all day. What should you set up?",
-            options: ["Automatic alerts based on configured metrics", "A deployment template", "A service-level agreement", "A PowerShell module"],
+            options: ["Metric-based alerts", "A deployment template that includes a monitoring dashboard", "A service-level agreement", "A PowerShell module"],
             answer: 0,
             explain: "Automatic alerts based on configured metrics keep you aware of performance in real time.",
             es: {
               q: "Quiere enterarse de los problemas de rendimiento en tiempo real sin mirar paneles todo el día. ¿Qué debe configurar?",
-              options: ["Alertas automáticas basadas en métricas configuradas", "Una plantilla de implementación", "Un acuerdo de nivel de servicio", "Un módulo de PowerShell"],
+              options: ["Alertas basadas en métricas", "Una plantilla de implementación que incluya un panel de supervisión", "Un acuerdo de nivel de servicio", "Un módulo de PowerShell"],
               explain: "Las alertas automáticas basadas en métricas configuradas le permiten conocer el rendimiento en tiempo real."
             }
           },
@@ -735,20 +735,20 @@ Catalog.module("az-900", {
             type: "single",
             q: "Why can cloud computing improve resource efficiency compared with many on-premises environments?",
             options: [
-              "Cloud providers operate at large scale, which can improve resource utilization compared to many isolated environments",
+              "Large-scale operation can improve utilization compared with isolated environments",
               "Cloud datacenters don't consume energy",
               "Customers no longer need to optimize their deployments",
-              "Every cloud resource scales down automatically without configuration"
+              "Every cloud resource scales down automatically when it's idle"
             ],
             answer: 0,
             explain: "Large-scale operation can improve utilization compared with isolated on-premises environments. Teams still need to optimize to get the benefit.",
             es: {
               q: "¿Por qué la informática en la nube puede mejorar la eficiencia de los recursos frente a muchos entornos locales?",
               options: [
-                "Porque los proveedores de nube operan a gran escala, lo que puede mejorar el aprovechamiento de recursos frente a muchos entornos aislados",
+                "Porque operar a gran escala puede mejorar el aprovechamiento frente a entornos aislados",
                 "Porque los centros de datos en la nube no consumen energía",
                 "Porque los clientes ya no necesitan optimizar sus implementaciones",
-                "Porque todos los recursos en la nube se reducen automáticamente sin configuración"
+                "Porque todos los recursos en la nube se reducen solos cuando están ociosos"
               ],
               explain: "Operar a gran escala puede mejorar el aprovechamiento frente a entornos locales aislados. Los equipos igual necesitan optimizar para obtener el beneficio."
             }

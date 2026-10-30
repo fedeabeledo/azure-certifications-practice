@@ -152,7 +152,7 @@ Catalog.module("az-900", {
         es: {
           topic: "Azure DNS",
           q: "Un registro DNS siempre debe resolver a una dirección IP pública de Azure que podría cambiar. ¿Qué característica de Azure DNS lo resuelve automáticamente?",
-          options: ["Los dominios DNS privados", "Los conjuntos de registros de alias", "Las redes anycast", "Los bloqueos de recursos"],
+          options: ["Los dominios DNS privados", "Los registros de alias", "Las redes anycast", "Los bloqueos de recursos de la zona DNS"],
           explain: "Un conjunto de registros de alias apunta al recurso de Azure, así que si cambia la IP subyacente el registro se actualiza durante la resolución."
         }
       },
@@ -160,13 +160,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "ExpressRoute",
         q: "Which protocol does ExpressRoute use to exchange routes dynamically between on-premises networks and Azure?",
-        options: ["Border Gateway Protocol (BGP)", "Domain Name System (DNS)", "A preshared key", "Network security group rules"],
+        options: ["BGP", "DNS", "A preshared key exchanged with the gateway", "Network security group rules"],
         answer: 0,
         explain: "ExpressRoute uses BGP for dynamic routing between your network and the Microsoft cloud.",
         es: {
           topic: "ExpressRoute",
           q: "¿Qué protocolo usa ExpressRoute para intercambiar rutas dinámicamente entre las redes locales y Azure?",
-          options: ["Protocolo de puerta de enlace de borde (BGP)", "Sistema de nombres de dominio (DNS)", "Una clave precompartida", "Reglas de grupos de seguridad de red"],
+          options: ["BGP", "DNS", "Una clave precompartida con la puerta de enlace", "Reglas de grupos de seguridad de red"],
           explain: "ExpressRoute usa BGP para el enrutamiento dinámico entre su red y la nube de Microsoft."
         }
       },
@@ -174,13 +174,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Virtual networking",
         q: "A public website hosted in Azure must be reachable from anywhere in the world. What kind of endpoint does it need?",
-        options: ["A private endpoint", "A public endpoint with a public IP address", "A service endpoint", "A point-to-site connection"],
+        options: ["A private endpoint", "A public endpoint", "A service endpoint on the subnet", "A point-to-site connection"],
         answer: 1,
         explain: "Public endpoints have a public IP address and can be accessed from anywhere. Private endpoints have a private IP within the virtual network.",
         es: {
           topic: "Redes virtuales",
           q: "Un sitio web público hospedado en Azure debe ser accesible desde cualquier parte del mundo. ¿Qué tipo de punto de conexión necesita?",
-          options: ["Un punto de conexión privado", "Un punto de conexión público con una dirección IP pública", "Un punto de conexión de servicio", "Una conexión de punto a sitio"],
+          options: ["Un punto de conexión privado", "Un punto de conexión público", "Un punto de conexión de servicio en la subred", "Una conexión de punto a sitio"],
           explain: "Los puntos de conexión públicos tienen una IP pública y se puede acceder a ellos desde cualquier lugar. Los privados tienen una IP privada dentro de la red virtual."
         }
       },
@@ -294,10 +294,10 @@ Catalog.module("az-900", {
             type: "multi",
             q: "Which two options enable incoming connections from the internet to an Azure resource?",
             options: [
-              "Assign a public IP address to the resource",
-              "Put the resource behind a public load balancer",
-              "Use only a private endpoint",
-              "Use virtual network peering",
+              "Assign it a public IP",
+              "Use a public load balancer",
+              "Expose it only through a private endpoint in the VNet",
+              "Peer its virtual network with another virtual network",
               "Use a service endpoint"
             ],
             answers: [0, 1],
@@ -305,10 +305,10 @@ Catalog.module("az-900", {
             es: {
               q: "¿Cuáles son dos opciones que habilitan conexiones entrantes desde internet a un recurso de Azure?",
               options: [
-                "Asignar una dirección IP pública al recurso",
-                "Colocar el recurso detrás de un equilibrador de carga público",
-                "Usar solo un punto de conexión privado",
-                "Usar el emparejamiento de redes virtuales",
+                "Asignarle una IP pública",
+                "Usar un equilibrador de carga público",
+                "Exponerlo solo con un punto de conexión privado en la red virtual",
+                "Emparejar su red virtual con otra red virtual",
                 "Usar un punto de conexión de servicio"
               ],
               explain: "El acceso entrante desde internet viene de una IP pública o de un equilibrador de carga público. Los puntos de conexión privados, el emparejamiento y los puntos de conexión de servicio mantienen el tráfico privado."
@@ -317,12 +317,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company needs a specialized VM in its virtual network that acts like a hardened appliance to run a firewall. What is this called?",
-            options: ["A network virtual appliance", "A VPN gateway", "A network security group", "A route table"],
+            options: ["A network virtual appliance", "A VPN gateway with firewall rules", "A network security group", "A route table with user-defined routes"],
             answer: 0,
             explain: "A network virtual appliance is a specialized VM that performs a network function such as a firewall or WAN optimization.",
             es: {
               q: "Una empresa necesita en su red virtual una máquina virtual especializada que funcione como un dispositivo reforzado para ejecutar un firewall. ¿Cómo se llama?",
-              options: ["Una aplicación virtual de red", "Una puerta de enlace VPN", "Un grupo de seguridad de red", "Una tabla de rutas"],
+              options: ["Una aplicación virtual de red", "Una puerta de enlace VPN con reglas de firewall", "Un grupo de seguridad de red", "Una tabla de rutas definidas por el usuario"],
               explain: "Una aplicación virtual de red es una máquina virtual especializada que cumple una función de red, como un firewall u optimización de WAN."
             }
           },
@@ -402,8 +402,8 @@ Catalog.module("az-900", {
             q: "A company already uses ExpressRoute and wants a backup path in case its circuit suffers a physical outage. What does the unit recommend?",
             options: [
               "A second ExpressRoute circuit in the same location only",
-              "A VPN gateway that uses the internet as an alternative connection",
-              "Virtual network peering to on-premises",
+              "A VPN gateway over the internet as a fallback",
+              "Virtual network peering between Azure and the on-premises network",
               "A policy-based gateway with no encryption"
             ],
             answer: 1,
@@ -412,8 +412,8 @@ Catalog.module("az-900", {
               q: "Una empresa ya usa ExpressRoute y quiere una ruta de respaldo por si su circuito sufre una interrupción física. ¿Qué recomienda la unidad?",
               options: [
                 "Solo un segundo circuito de ExpressRoute en la misma ubicación",
-                "Una puerta de enlace VPN que use internet como conexión alternativa",
-                "El emparejamiento de redes virtuales con el entorno local",
+                "Una puerta de enlace VPN por internet como respaldo",
+                "El emparejamiento de redes virtuales entre Azure y la red del entorno local",
                 "Una puerta de enlace basada en directivas sin cifrado"
               ],
               explain: "Una puerta de enlace VPN por internet puede servir como ruta segura de conmutación por error para ExpressRoute, de modo que siempre haya conexión."
@@ -533,9 +533,9 @@ Catalog.module("az-900", {
             q: "Even with an ExpressRoute connection in place, which traffic is still sent over the public internet?",
             options: [
               "All traffic to Azure Virtual Machines",
-              "DNS queries, certificate revocation list checks and Azure CDN requests",
+              "DNS queries and CRL checks",
               "Traffic between on-premises sites connected with Global Reach",
-              "Traffic to Azure Storage"
+              "Traffic to Azure Storage accounts in the same region"
             ],
             answer: 1,
             explain: "The unit's security note: DNS queries, CRL checks and Azure Content Delivery Network requests still go over the internet.",
@@ -543,9 +543,9 @@ Catalog.module("az-900", {
               q: "Aun con una conexión de ExpressRoute, ¿qué tráfico se sigue enviando por la internet pública?",
               options: [
                 "Todo el tráfico hacia Azure Virtual Machines",
-                "Las consultas DNS, las comprobaciones de listas de revocación de certificados y las solicitudes a Azure CDN",
+                "Las consultas DNS y las comprobaciones de CRL",
                 "El tráfico entre sitios locales conectados con Global Reach",
-                "El tráfico hacia Azure Storage"
+                "El tráfico hacia cuentas de Azure Storage de la misma región"
               ],
               explain: "La nota de seguridad de la unidad: las consultas DNS, las comprobaciones de listas de revocación y las solicitudes a Azure Content Delivery Network siguen pasando por internet."
             }
@@ -577,20 +577,20 @@ Catalog.module("az-900", {
             type: "single",
             q: "How does ExpressRoute provide built-in redundancy?",
             options: [
-              "Each connectivity provider uses redundant devices, and you can configure multiple circuits to complement this",
+              "Providers use redundant devices, and you can add more circuits",
               "It automatically fails over to a site-to-site VPN without configuration",
               "It replicates all traffic over the public internet",
-              "It relies only on availability sets"
+              "It relies only on availability sets in the region where the circuit terminates"
             ],
             answer: 0,
             explain: "Providers use redundant devices in every peering location for high availability, and multiple circuits can complement that.",
             es: {
               q: "¿Cómo ofrece ExpressRoute redundancia integrada?",
               options: [
-                "Cada proveedor de conectividad usa dispositivos redundantes, y se pueden configurar varios circuitos para complementarlo",
+                "Los proveedores usan dispositivos redundantes y se pueden sumar circuitos",
                 "Conmuta automáticamente a una VPN de sitio a sitio sin configuración",
                 "Replica todo el tráfico por la internet pública",
-                "Depende solo de los conjuntos de disponibilidad"
+                "Depende solo de los conjuntos de disponibilidad de la región donde termina el circuito"
               ],
               explain: "Los proveedores usan dispositivos redundantes en cada ubicación de emparejamiento para lograr alta disponibilidad, y varios circuitos pueden complementarlo."
             }
@@ -626,9 +626,9 @@ Catalog.module("az-900", {
             q: "A company wants to purchase a new domain name and then manage its records in Azure. Which statement is correct?",
             options: [
               "It can buy the domain directly in Azure DNS",
-              "It must buy the domain through App Service domains or a third-party registrar, then host it in Azure DNS",
+              "It buys it from a registrar, then hosts it in Azure DNS",
               "Azure DNS can't host domains bought elsewhere",
-              "It must use ExpressRoute to register the domain"
+              "It registers it through its ExpressRoute provider first"
             ],
             answer: 1,
             explain: "Azure DNS doesn't sell domains. You buy one via App Service domains or a registrar and then host it in Azure DNS.",
@@ -636,9 +636,9 @@ Catalog.module("az-900", {
               q: "Una empresa quiere comprar un nombre de dominio nuevo y luego administrar sus registros en Azure. ¿Qué afirmación es correcta?",
               options: [
                 "Puede comprar el dominio directamente en Azure DNS",
-                "Debe comprar el dominio con dominios de App Service o un registrador externo, y luego hospedarlo en Azure DNS",
+                "Lo compra en un registrador y luego lo hospeda en Azure DNS",
                 "Azure DNS no puede hospedar dominios comprados en otro lado",
-                "Debe usar ExpressRoute para registrar el dominio"
+                "Primero lo registra mediante su proveedor de ExpressRoute"
               ],
               explain: "Azure DNS no vende dominios. Se compra uno con dominios de App Service o un registrador y luego se hospeda en Azure DNS."
             }
@@ -648,8 +648,8 @@ Catalog.module("az-900", {
             q: "How does Azure DNS deliver fast performance and high availability for each query?",
             options: [
               "Each query is answered by a single central server",
-              "Anycast networking lets the closest available DNS server answer",
-              "Queries are routed through ExpressRoute",
+              "Anycast routes it to the nearest server",
+              "Queries are routed through ExpressRoute to avoid internet latency",
               "Queries are cached only on the client"
             ],
             answer: 1,
@@ -658,8 +658,8 @@ Catalog.module("az-900", {
               q: "¿Cómo logra Azure DNS un rendimiento rápido y alta disponibilidad en cada consulta?",
               options: [
                 "Cada consulta la responde un único servidor central",
-                "Las redes anycast hacen que responda el servidor DNS disponible más cercano",
-                "Las consultas se enrutan por ExpressRoute",
+                "Anycast la dirige al servidor más cercano",
+                "Las consultas se enrutan por ExpressRoute para evitar la latencia de internet",
                 "Las consultas solo se almacenan en caché en el cliente"
               ],
               explain: "Los dominios de Azure DNS se hospedan en una red global de servidores de nombres, y anycast dirige cada consulta al más cercano."
@@ -673,19 +673,19 @@ Catalog.module("az-900", {
             explain: "Alias record sets refer to an Azure resource such as a public IP, a Traffic Manager profile or a CDN endpoint, and update automatically if its IP changes.",
             es: {
               q: "Un registro DNS debe apuntar a un perfil de Azure Traffic Manager y seguir siendo correcto aunque cambie la dirección IP subyacente. ¿Qué característica corresponde?",
-              options: ["Un conjunto de registros de alias", "Un dominio DNS privado", "Un bloqueo de recursos", "Una tabla de rutas"],
+              options: ["Un registro de alias", "Un dominio DNS privado", "Un bloqueo de recursos de la zona", "Una tabla de rutas"],
               explain: "Los conjuntos de registros de alias apuntan a un recurso de Azure, como una IP pública, un perfil de Traffic Manager o un punto de conexión de CDN, y se actualizan automáticamente si cambia su IP."
             }
           },
           {
             type: "single",
             q: "A company wants to use its own custom domain names inside its private virtual networks instead of Azure-provided names. What should it use?",
-            options: ["Public DNS zones only", "Private DNS domains in Azure DNS", "ExpressRoute Global Reach", "A network virtual appliance"],
+            options: ["Public DNS zones only", "Private DNS domains", "ExpressRoute Global Reach", "A network virtual appliance running a DNS server"],
             answer: 1,
             explain: "Azure DNS supports private DNS domains for custom names in private virtual networks.",
             es: {
               q: "Una empresa quiere usar sus propios nombres de dominio personalizados dentro de sus redes virtuales privadas en lugar de los nombres que proporciona Azure. ¿Qué debe usar?",
-              options: ["Solo zonas DNS públicas", "Dominios DNS privados en Azure DNS", "ExpressRoute Global Reach", "Una aplicación virtual de red"],
+              options: ["Solo zonas DNS públicas", "Dominios DNS privados", "ExpressRoute Global Reach", "Una aplicación virtual de red con un servidor DNS"],
               explain: "Azure DNS admite dominios DNS privados para usar nombres personalizados en redes virtuales privadas."
             }
           },

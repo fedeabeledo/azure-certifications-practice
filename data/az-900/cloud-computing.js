@@ -228,9 +228,9 @@ Catalog.module("az-900", {
                   q: "Which statement best describes cloud computing?",
                   options: [
                     "Renting rack space in a third-party datacenter to host your own servers",
-                    "Running virtualization software on your own on-site servers",
-                    "Delivering computing services such as virtual machines, storage, databases and networking over the internet",
-                    "Outsourcing your IT staff to a managed service provider"
+                    "Running virtualization software on servers you buy, install and maintain in your own building",
+                    "Delivering computing services such as VMs, storage and networking over the internet",
+                    "Outsourcing the operation of your on-premises servers to a managed service provider"
                   ],
                   answer: 2,
                   explain: "Cloud computing is the delivery of computing services over the internet, and it extends to IoT, machine learning and AI.",
@@ -239,9 +239,9 @@ Catalog.module("az-900", {
                     q: "¿Qué afirmación describe mejor la informática en la nube?",
                     options: [
                       "Alquilar espacio en racks de un centro de datos de terceros para alojar servidores propios",
-                      "Ejecutar software de virtualización en servidores propios del sitio",
-                      "Entregar servicios de computación como máquinas virtuales, almacenamiento, bases de datos y redes a través de internet",
-                      "Tercerizar el personal de TI en un proveedor de servicios administrados"
+                      "Ejecutar software de virtualización en servidores que usted compra, instala y mantiene en su edificio",
+                      "Entregar servicios de computación como máquinas virtuales, almacenamiento y redes por internet",
+                      "Tercerizar la operación de sus servidores locales en un proveedor de servicios administrados"
                     ],
                     explain: "La informática en la nube es la entrega de servicios de computación a través de internet, y se extiende a IoT, aprendizaje automático e IA."
                   }
@@ -289,7 +289,7 @@ Catalog.module("az-900", {
                       q: "A retail team expects high traffic during a seasonal launch. Following a cloud approach, what should the team do?",
                       options: [
                         "Buy and configure extra physical servers months in advance",
-                        "Deploy additional compute capacity in the cloud for the launch period and scale down afterward",
+                        "Add cloud compute capacity for the launch and scale it down afterward",
                         "Keep the extra capacity running permanently in case traffic returns",
                         "Delay the launch until a new datacenter is built"
                       ],
@@ -299,8 +299,8 @@ Catalog.module("az-900", {
                         q: "Un equipo de retail espera mucho tráfico durante un lanzamiento de temporada. Siguiendo un enfoque de nube, ¿qué debe hacer el equipo?",
                         options: [
                           "Comprar y configurar servidores físicos adicionales con meses de anticipación",
-                          "Implementar capacidad de cómputo adicional en la nube durante el lanzamiento y reducirla después",
-                          "Mantener la capacidad adicional funcionando de forma permanente por si vuelve el tráfico",
+                          "Agregar capacidad de cómputo en la nube para el lanzamiento y reducirla después",
+                          "Dejar la capacidad adicional siempre encendida por si vuelve el tráfico",
                           "Postergar el lanzamiento hasta construir un nuevo centro de datos"
                         ],
                         explain: "Implementar capacidad solo para el lanzamiento y reducirla después mejora la agilidad y alinea el gasto con la demanda real. Comprar servidores con meses de anticipación es el enfoque tradicional que la nube evita."
@@ -333,8 +333,8 @@ Catalog.module("az-900", {
                       type: "single",
                       q: "A company needs to increase its IT infrastructure rapidly. In a traditional datacenter, this would mean waiting to build new facilities. Why doesn't the cloud have this constraint?",
                       options: [
-                        "Because cloud services are delivered over the internet and aren't constrained by physical infrastructure the same way",
-                        "Because the company still owns the hardware, but the provider installs it faster",
+                        "Because services delivered over the internet aren't limited by your own physical facilities",
+                        "Because the company still buys the hardware, but it's installed faster",
                         "Because cloud providers don't use physical datacenters",
                         "Because the company signs a long-term capacity contract in advance"
                       ],
@@ -343,8 +343,8 @@ Catalog.module("az-900", {
                       es: {
                         q: "Una empresa necesita ampliar rápidamente su infraestructura de TI. En un centro de datos tradicional, eso implicaría esperar a construir nuevas instalaciones. ¿Por qué la nube no tiene esa limitación?",
                         options: [
-                          "Porque los servicios en la nube se entregan a través de internet y no están limitados por la infraestructura física de la misma manera",
-                          "Porque la empresa sigue siendo dueña del hardware, pero el proveedor lo instala más rápido",
+                          "Porque los servicios entregados por internet no dependen de sus propias instalaciones físicas",
+                          "Porque la empresa sigue comprando el hardware, pero se instala más rápido",
                           "Porque los proveedores de nube no usan centros de datos físicos",
                           "Porque la empresa firma por adelantado un contrato de capacidad a largo plazo"
                         ],
@@ -426,10 +426,10 @@ Catalog.module("az-900", {
                       type: "multi",
                       q: "Which two items are always the customer's responsibility, regardless of the cloud service type?",
                       options: [
-                        "The information and data stored in the cloud",
-                        "The physical network",
-                        "The accounts and identities of people, services and devices",
-                        "Operating systems",
+                        "Your stored data",
+                        "The physical network connecting the datacenter's hosts",
+                        "User and device identities",
+                        "Operating systems of the virtual machines you run",
                         "Network controls"
                       ],
                       answers: [0, 2],
@@ -437,10 +437,10 @@ Catalog.module("az-900", {
                       es: {
                         q: "¿Cuáles son dos elementos que siempre son responsabilidad del cliente, sin importar el tipo de servicio en la nube?",
                         options: [
-                          "La información y los datos almacenados en la nube",
-                          "La red física",
-                          "Las cuentas e identidades de personas, servicios y dispositivos",
-                          "Los sistemas operativos",
+                          "Los datos que almacena",
+                          "La red física que conecta los hosts del centro de datos",
+                          "Las identidades de usuarios y dispositivos",
+                          "Los sistemas operativos de las máquinas virtuales que ejecuta",
                           "Los controles de red"
                         ],
                         explain: "Los datos, los dispositivos que se conectan y las cuentas e identidades siempre son suyos. Los sistemas operativos y los controles de red dependen del tipo de servicio; la red física siempre es del proveedor."
@@ -687,9 +687,9 @@ Catalog.module("az-900", {
                       q: "Your CFO asks how moving workloads to the cloud changes the company's IT budget. Which explanation is correct?",
                       options: [
                         "Spending shifts from operational expenditure to capital expenditure",
-                        "Spending shifts from up-front infrastructure purchases to ongoing payment for the services consumed",
+                        "Spending shifts from up-front purchases to paying for what you consume",
                         "Operational expenditure disappears, because the provider owns the hardware",
-                        "The company needs a large capital purchase first and then pays for usage"
+                        "The company needs a large capital purchase first, and only then starts paying for actual usage"
                       ],
                       answer: 1,
                       explain: "Paying for cloud services as you consume them is OpEx, replacing up-front CapEx on servers, network hardware and datacenter space.",
@@ -697,9 +697,9 @@ Catalog.module("az-900", {
                         q: "Su director financiero pregunta cómo cambia el presupuesto de TI al llevar cargas de trabajo a la nube. ¿Qué explicación es correcta?",
                         options: [
                           "El gasto pasa de gasto operativo a gasto de capital",
-                          "El gasto pasa de compras iniciales de infraestructura a pagos continuos por los servicios consumidos",
+                          "El gasto pasa de compras iniciales a pagar por lo que se consume",
                           "El gasto operativo desaparece, porque el proveedor es dueño del hardware",
-                          "La empresa necesita primero una gran compra de capital y después paga por uso"
+                          "La empresa necesita primero una gran compra de capital y recién después empieza a pagar por uso"
                         ],
                         explain: "Pagar los servicios en la nube a medida que se consumen es OpEx, y reemplaza el CapEx inicial en servidores, hardware de red y espacio en el centro de datos."
                       }
@@ -731,22 +731,22 @@ Catalog.module("az-900", {
                       type: "multi",
                       q: "Which two problems of traditional datacenter capacity planning does the consumption-based model help avoid?",
                       options: [
-                        "Paying for infrastructure that sits idle after overestimating demand",
-                        "Responsibility for the data you store",
-                        "Degraded application performance after underestimating demand",
+                        "Paying for idle capacity after overestimating",
+                        "Keeping responsibility for the data you store in your own systems",
+                        "Slow apps after underestimating demand",
                         "Managing the identities of your users",
-                        "Classifying the sensitivity of your data"
+                        "Classifying the sensitivity of the data your applications collect"
                       ],
                       answers: [0, 2],
                       explain: "Estimating capacity in advance leads to idle spending if you overestimate and poor performance if you underestimate. In the cloud you adjust resources to actual demand. Data and identities stay your responsibility either way.",
                       es: {
                         q: "¿Cuáles son dos problemas de la planificación de capacidad de un centro de datos tradicional que el modelo basado en el consumo ayuda a evitar?",
                         options: [
-                          "Pagar por infraestructura ociosa después de sobrestimar la demanda",
-                          "La responsabilidad sobre los datos que almacena",
-                          "El rendimiento degradado de las aplicaciones después de subestimar la demanda",
+                          "Pagar capacidad ociosa por sobrestimar",
+                          "La responsabilidad sobre los datos que almacena en sus propios sistemas",
+                          "Aplicaciones lentas por subestimar la demanda",
                           "La administración de las identidades de sus usuarios",
-                          "La clasificación de la confidencialidad de sus datos"
+                          "La clasificación de la confidencialidad de los datos que recopilan sus aplicaciones"
                         ],
                         explain: "Estimar la capacidad por adelantado genera gasto ocioso si se sobrestima y mal rendimiento si se subestima. En la nube los recursos se ajustan a la demanda real. Los datos y las identidades siguen siendo responsabilidad suya en ambos casos."
                       }
