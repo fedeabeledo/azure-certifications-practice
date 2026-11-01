@@ -25,7 +25,7 @@ Catalog.cert({
       name: "Describe Azure management and governance",
       es: { name: "Descripción de la administración y gobernanza de Azure" },
       url: "https://learn.microsoft.com/en-us/training/paths/describe-azure-management-governance/",
-      modules: ["cost-management", "governance-compliance"]
+      modules: ["cost-management", "governance-compliance", "manage-deploy"]
     }
   ]
 });
