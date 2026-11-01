@@ -6,13 +6,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Governance and compliance",
       q: "A company wants every new resource to carry a CostCenter tag so finance can report spend per cost center. Which combination delivers this?",
-      options: ["Azure Policy to require the tag, then Cost Management to analyze costs by tag", "A Delete lock on each subscription and the pricing calculator", "Azure Advisor recommendations and Resource Health", "Azure Arc and Application Insights"],
+      options: ["Azure Policy to require the tag, then Cost Management to analyze costs by tag", "A Delete lock on each subscription so tags can't be removed, plus the pricing calculator for reporting", "Azure Advisor recommendations and Resource Health", "Azure Arc and Application Insights"],
       answer: 0,
       explain: "Azure Policy enforces tagging rules, and tags let Cost Management group and report costs.",
       es: {
         topic: "Gobernanza y cumplimiento",
         q: "Una empresa quiere que todo recurso nuevo tenga una etiqueta CostCenter para que finanzas informe el gasto por centro de costos. ¿Qué combinación lo logra?",
-        options: ["Azure Policy para exigir la etiqueta y Cost Management para analizar costos por etiqueta", "Un bloqueo Delete en cada suscripción y la calculadora de precios", "Las recomendaciones de Azure Advisor y Resource Health", "Azure Arc y Application Insights"],
+        options: ["Azure Policy para exigir la etiqueta y Cost Management para analizar costos por etiqueta", "Un bloqueo Delete en cada suscripción para que no se quiten etiquetas, más la calculadora de precios para informes", "Las recomendaciones de Azure Advisor y Resource Health", "Azure Arc y Application Insights"],
         explain: "Azure Policy aplica reglas de etiquetado, y las etiquetas permiten que Cost Management agrupe e informe los costos."
       }
     },
@@ -278,7 +278,7 @@ Catalog.pathQuiz("az-900", "governance", {
       options: [
         "All its policy definitions apply to every subscription and resource beneath it",
         "Only the first policy in the initiative is applied",
-        "It applies only to resources created in the next 30 days",
+        "It applies only to the resources created in that management group during the next 30 days",
         "It locks every resource as ReadOnly"
       ],
       answer: 0,
@@ -289,7 +289,7 @@ Catalog.pathQuiz("az-900", "governance", {
         options: [
           "Todas sus definiciones se aplican a cada suscripción y recurso que está debajo",
           "Solo se aplica la primera directiva de la iniciativa",
-          "Se aplica solo a los recursos creados en los próximos 30 días",
+          "Se aplica solo a los recursos creados en ese grupo de administración durante los próximos 30 días",
           "Bloquea todos los recursos como ReadOnly"
         ],
         explain: "Las iniciativas agrupan directivas, y las asignaciones las hereda todo lo que está debajo del ámbito."
@@ -383,7 +383,7 @@ Catalog.pathQuiz("az-900", "governance", {
       q: "Copilot suggests deploying a VM in a region the company doesn't allow. How does Azure Policy treat that change?",
       options: [
         "It enforces the allowed-locations rule just like any other change",
-        "It skips the rule because the change came from Copilot",
+        "It skips the rule, because changes suggested by Copilot are already validated by Microsoft",
         "It applies the rule only after the VM is running",
         "It converts the VM to Spot pricing"
       ],
@@ -394,11 +394,81 @@ Catalog.pathQuiz("az-900", "governance", {
         q: "Copilot sugiere implementar una máquina virtual en una región que la empresa no permite. ¿Cómo trata Azure Policy ese cambio?",
         options: [
           "Aplica la regla de ubicaciones permitidas como con cualquier otro cambio",
-          "Omite la regla porque el cambio vino de Copilot",
+          "Omite la regla, porque los cambios que sugiere Copilot ya están validados por Microsoft",
           "Aplica la regla solo después de que la máquina esté en ejecución",
           "Pasa la máquina virtual a precios de Spot"
         ],
         explain: "Azure Policy aplica los estándares sin importar cómo se propuso el cambio."
+      }
+    },
+    {
+      type: "single",
+      topic: "Monitoring",
+      q: "An administrator wants to write queries over the log data that Azure Monitor collects from VMs and apps. Which tool should they use?",
+      options: ["Log Analytics", "Azure Advisor recommendations", "Azure Status page", "The pricing calculator"],
+      answer: 0,
+      explain: "Log Analytics is the Azure portal tool for writing and running log queries on Azure Monitor data.",
+      es: {
+        topic: "Supervisión",
+        q: "Un administrador quiere escribir consultas sobre los datos de registro que Azure Monitor recopila de máquinas virtuales y aplicaciones. ¿Qué herramienta debe usar?",
+        options: ["Log Analytics", "Las recomendaciones de Azure Advisor", "La página de Azure Status", "La calculadora de precios"],
+        explain: "Log Analytics es la herramienta de Azure Portal para escribir y ejecutar consultas de registros sobre los datos de Azure Monitor."
+      }
+    },
+    {
+      type: "single",
+      topic: "Governance and compliance",
+      q: "An Owner needs to delete a resource group that has a Delete lock. What must happen first?",
+      options: ["Someone with permission removes the lock", "A policy exemption is created for the group", "The lock expires after 24 hours", "Microsoft support approves the deletion"],
+      answer: 0,
+      explain: "Locks apply to everyone, including Owners. To delete or modify the locked resource, the lock must be removed first.",
+      es: {
+        topic: "Gobernanza y cumplimiento",
+        q: "Un Propietario necesita eliminar un grupo de recursos que tiene un bloqueo Delete. ¿Qué tiene que pasar primero?",
+        options: ["Alguien con permiso quita el bloqueo", "Se crea una exención de directiva para el grupo", "El bloqueo vence a las 24 horas", "El soporte de Microsoft aprueba la eliminación"],
+        explain: "Los bloqueos se aplican a todos, incluidos los Propietarios. Para eliminar o modificar el recurso bloqueado, primero hay que quitar el bloqueo."
+      }
+    },
+    {
+      type: "single",
+      topic: "Cost management",
+      q: "After a team starts replicating data from one Azure region to another, the bill goes up even though no new resources were created. Which cost factor explains it?",
+      options: ["Bandwidth for data moving between regions", "The number of tags on the storage account", "The resource group's location", "Inbound data from the internet"],
+      answer: 0,
+      explain: "Data transfer between regions and outbound transfers are charged; some inbound transfers are free.",
+      es: {
+        topic: "Administración de costos",
+        q: "Después de que un equipo empieza a replicar datos de una región de Azure a otra, la factura sube aunque no se crearon recursos nuevos. ¿Qué factor de costo lo explica?",
+        options: ["El ancho de banda de los datos que viajan entre regiones", "La cantidad de etiquetas de la cuenta de almacenamiento", "La ubicación del grupo de recursos", "Los datos entrantes desde internet"],
+        explain: "La transferencia de datos entre regiones y las transferencias salientes tienen costo; algunas transferencias entrantes son gratuitas."
+      }
+    },
+    {
+      type: "single",
+      topic: "Monitoring",
+      q: "A team wants a history of planned maintenance and service issues that affected the services and regions it uses. Where should it look?",
+      options: ["Azure Service Health", "Azure Status", "Azure Advisor", "Microsoft Cost Management"],
+      answer: 0,
+      explain: "Service Health is personalized to your services and regions and keeps a history of incidents and planned maintenance.",
+      es: {
+        topic: "Supervisión",
+        q: "Un equipo quiere el historial de mantenimientos planeados y problemas de servicio que afectaron a los servicios y regiones que usa. ¿Dónde debe buscar?",
+        options: ["Azure Service Health", "Azure Status", "Azure Advisor", "Microsoft Cost Management"],
+        explain: "Service Health se personaliza según sus servicios y regiones y guarda el historial de incidentes y mantenimientos planeados."
+      }
+    },
+    {
+      type: "single",
+      topic: "Cost management",
+      q: "A company wants suggestions to resize or shut down underused VMs to lower its bill. Which tool and category provide them?",
+      options: ["Azure Advisor, Cost category", "Azure Monitor, Reliability category", "Azure Policy, audit effect", "Service Health, Resource Health view"],
+      answer: 0,
+      explain: "Advisor's Cost recommendations identify idle and underutilized resources to optimize spend.",
+      es: {
+        topic: "Administración de costos",
+        q: "Una empresa quiere sugerencias para cambiar el tamaño o apagar máquinas virtuales poco usadas y bajar la factura. ¿Qué herramienta y categoría las ofrecen?",
+        options: ["Azure Advisor, categoría Costo", "Azure Monitor, categoría Confiabilidad", "Azure Policy, efecto de auditoría", "Service Health, vista Resource Health"],
+        explain: "Las recomendaciones de Costo de Advisor identifican recursos inactivos o infrautilizados para optimizar el gasto."
       }
     }
   ]

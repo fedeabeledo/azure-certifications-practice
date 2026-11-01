@@ -146,7 +146,7 @@ Catalog.module("az-900", {
         q: "Which resource types can Azure Arc currently manage outside Azure?",
         options: [
           "Servers, Kubernetes clusters, Azure data services and SQL Server",
-          "Only Windows servers in Microsoft datacenters",
+          "Only Windows servers running in Microsoft datacenters or connected through ExpressRoute",
           "Only Microsoft 365 tenants",
           "Only storage accounts in other clouds"
         ],
@@ -157,7 +157,7 @@ Catalog.module("az-900", {
           q: "¿Qué tipos de recursos puede administrar actualmente Azure Arc fuera de Azure?",
           options: [
             "Servidores, clústeres de Kubernetes, servicios de datos de Azure y SQL Server",
-            "Solo servidores Windows en centros de datos de Microsoft",
+            "Solo servidores Windows que se ejecutan en centros de datos de Microsoft o conectados por ExpressRoute",
             "Solo inquilinos de Microsoft 365",
             "Solo cuentas de almacenamiento en otras nubes"
           ],
@@ -186,7 +186,7 @@ Catalog.module("az-900", {
         options: [
           "It authenticates and authorizes the request, then sends it to the Azure service",
           "It sends the request directly to the service without checks",
-          "It converts the request into a Bicep file and stores it",
+          "It converts the request into a Bicep file and stores it in the resource group for later review",
           "It forwards the request to Azure Arc for approval"
         ],
         answer: 0,
@@ -197,7 +197,7 @@ Catalog.module("az-900", {
           options: [
             "Autentica y autoriza la solicitud, y luego la envía al servicio de Azure",
             "Envía la solicitud directamente al servicio sin controles",
-            "Convierte la solicitud en un archivo Bicep y lo guarda",
+            "Convierte la solicitud en un archivo Bicep y lo guarda en el grupo de recursos para revisarlo después",
             "Reenvía la solicitud a Azure Arc para su aprobación"
           ],
           explain: "Resource Manager autentica y autoriza cada solicitud antes de que el servicio de destino actúe."
@@ -411,7 +411,7 @@ Catalog.module("az-900", {
             q: "An organization runs workloads in Azure, its datacenter and another public cloud, each managed with separate tools. What problem does Azure Arc address?",
             options: [
               "Disconnected management, by enabling consistent governance and inventory from Azure",
-              "High egress costs, by moving all data into one region",
+              "High egress costs, by moving all the data from every environment into a single Azure region",
               "Licensing, by converting servers to Azure subscriptions",
               "Latency, by caching resources in Cloud Shell"
             ],
@@ -421,7 +421,7 @@ Catalog.module("az-900", {
               q: "Una organización ejecuta cargas en Azure, en su centro de datos y en otra nube pública, cada una administrada con herramientas distintas. ¿Qué problema resuelve Azure Arc?",
               options: [
                 "La administración desconectada, al permitir gobernanza e inventario coherentes desde Azure",
-                "Los costos de salida altos, al mover todos los datos a una región",
+                "Los costos de salida altos, al mover todos los datos de cada entorno a una única región de Azure",
                 "Las licencias, al convertir los servidores en suscripciones de Azure",
                 "La latencia, al guardar los recursos en caché en Cloud Shell"
               ],
@@ -483,7 +483,7 @@ Catalog.module("az-900", {
             options: [
               "All requests are handled through Azure Resource Manager's same API",
               "Each tool keeps its own copy of the resources",
-              "They synchronize through Azure Arc every hour",
+              "They synchronize their own copies of the resources through Azure Arc every hour",
               "They all store state in Cloud Shell storage"
             ],
             answer: 0,
@@ -493,7 +493,7 @@ Catalog.module("az-900", {
               options: [
                 "Todas las solicitudes pasan por la misma API de Azure Resource Manager",
                 "Cada herramienta guarda su propia copia de los recursos",
-                "Se sincronizan mediante Azure Arc cada hora",
+                "Sincronizan sus propias copias de los recursos mediante Azure Arc cada hora",
                 "Todas guardan el estado en el almacenamiento de Cloud Shell"
               ],
               explain: "Resource Manager recibe, autentica y autoriza cada solicitud, sin importar la herramienta."

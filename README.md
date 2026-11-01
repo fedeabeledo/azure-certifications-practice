@@ -10,13 +10,16 @@ Es un sitio estático sin build ni dependencias. Se sirve tal cual desde GitHub 
 |---|---|---|
 | AZ-900 | Describe cloud concepts | 12 unidades, 3 integrales de módulo, 1 integral del learning path (38 preguntas) |
 | AZ-900 | Describe Azure architecture and services | 28 unidades, 5 integrales de módulo, 1 integral del learning path (33 preguntas) |
+| AZ-900 | Describe Azure management and governance | 15 unidades, 4 integrales de módulo, 1 integral del learning path (33 preguntas) |
 | SC-900 | Introduction to security, compliance, and identity concepts | 10 unidades, 2 integrales de módulo, 1 integral del learning path (33 preguntas) |
 | SC-900 | Introduction to Microsoft Entra | 20 unidades, 4 integrales de módulo, 1 integral del learning path (33 preguntas) |
+| SC-900 | Introduction to Microsoft security solutions | 30 unidades, 5 integrales de módulo, 1 integral del learning path (33 preguntas) |
 
 ## Cómo funciona
 
 - **Dos modos.** En Práctica se corrige cada pregunta al responderla. En Examen no hay correcciones hasta el final, y hay cronómetro, marcar para revisar y pantalla de revisión.
 - **Formatos del examen real:** opción única, selección múltiple, bloques Sí/No, desplegables y arrastrar y soltar.
+- **Orden aleatorio.** Cada vez que empezás un cuestionario se mezclan las opciones de cada pregunta, así la respuesta correcta no cae siempre en el mismo lugar.
 - **Puntaje por selección.** Cada selección correcta vale un punto, como en el examen.
 - **Privacidad.** No se guardan respuestas. El navegador solo recuerda el idioma elegido y qué secciones quedaron abiertas.
 

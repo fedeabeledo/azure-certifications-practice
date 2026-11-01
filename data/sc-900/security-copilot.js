@@ -52,7 +52,7 @@ Catalog.module("sc-900", {
         q: "A company has Microsoft 365 E5 licenses. What does it need to do to get Security Copilot?",
         options: [
           "Nothing manual; eligible tenants are provisioned automatically with advance notice",
-          "Provision at least 10 SCUs in an Azure subscription",
+          "Provision at least 10 SCUs in an Azure subscription and assign them to a workspace manually",
           "Buy a separate Azure OpenAI subscription",
           "Deploy Microsoft Sentinel first"
         ],
@@ -63,7 +63,7 @@ Catalog.module("sc-900", {
           q: "Una empresa tiene licencias de Microsoft 365 E5. ¿Qué debe hacer para obtener Security Copilot?",
           options: [
             "Nada manual; los inquilinos aptos se aprovisionan automáticamente con aviso previo",
-            "Aprovisionar al menos 10 SCU en una suscripción de Azure",
+            "Aprovisionar al menos 10 SCU en una suscripción de Azure y asignarlas a mano a un área de trabajo",
             "Comprar una suscripción aparte de Azure OpenAI",
             "Implementar primero Microsoft Sentinel"
           ],
@@ -130,7 +130,7 @@ Catalog.module("sc-900", {
         q: "An analyst with the Copilot contributor role can open Security Copilot but can't see Sentinel incidents through the Sentinel plugin. What's missing?",
         options: [
           "A role that grants access to Sentinel data, such as Microsoft Sentinel Reader",
-          "The Copilot owner role, which grants access to all security data",
+          "The Copilot owner role, which grants access to all the security data connected through plugins",
           "A larger number of SCUs",
           "A new session"
         ],
@@ -141,7 +141,7 @@ Catalog.module("sc-900", {
           q: "Un analista con el rol de colaborador de Copilot puede abrir Security Copilot pero no ve los incidentes de Sentinel con el complemento de Sentinel. ¿Qué le falta?",
           options: [
             "Un rol que dé acceso a los datos de Sentinel, como Lector de Microsoft Sentinel",
-            "El rol de propietario de Copilot, que da acceso a todos los datos de seguridad",
+            "El rol de propietario de Copilot, que da acceso a todos los datos de seguridad conectados mediante complementos",
             "Una cantidad mayor de SCU",
             "Una sesión nueva"
           ],
@@ -185,7 +185,7 @@ Catalog.module("sc-900", {
           "It formats and reviews the response as part of responsible AI",
           "It asks the user to approve the plan",
           "It trains the foundation model on the response",
-          "It sends the response to Microsoft support for review"
+          "It sends the response to Microsoft support so a human analyst can review it first"
         ],
         answer: 0,
         explain: "The response is formatted and goes through safety checks before it reaches the user.",
@@ -196,7 +196,7 @@ Catalog.module("sc-900", {
             "Formatea y revisa la respuesta como parte de la IA responsable",
             "Le pide al usuario que apruebe el plan",
             "Entrena el modelo fundacional con la respuesta",
-            "Envía la respuesta al soporte de Microsoft para revisarla"
+            "Envía la respuesta al soporte de Microsoft para que un analista humano la revise antes"
           ],
           explain: "La respuesta se formatea y pasa por controles de seguridad antes de llegar al usuario."
         }
@@ -257,7 +257,7 @@ Catalog.module("sc-900", {
               "An AI-powered, cloud-based security analysis tool that helps analysts respond at machine speed",
               "An on-premises SIEM that replaces Microsoft Sentinel",
               "A firewall that filters traffic to Azure resources",
-              "A service that provisions virtual machines for security teams"
+              "A service that provisions hardened virtual machines so security teams can run their analysis tools"
             ],
             answer: 0,
             explain: "Security Copilot helps analysts respond quickly, process signals at machine speed and assess risk exposure.",
@@ -267,7 +267,7 @@ Catalog.module("sc-900", {
                 "Una herramienta de análisis de seguridad en la nube con IA que ayuda a responder a velocidad de máquina",
                 "Un SIEM local que reemplaza a Microsoft Sentinel",
                 "Un firewall que filtra el tráfico hacia los recursos de Azure",
-                "Un servicio que aprovisiona máquinas virtuales para los equipos de seguridad"
+                "Un servicio que aprovisiona máquinas virtuales protegidas para que los equipos de seguridad ejecuten sus herramientas"
               ],
               explain: "Security Copilot ayuda a responder rápido, procesar señales a velocidad de máquina y evaluar la exposición al riesgo."
             }
@@ -419,7 +419,7 @@ Catalog.module("sc-900", {
             options: [
               "Mapping costs to team budgets and storing session data according to geo-specific regulations",
               "Removing the need for role permissions",
-              "Training a private foundation model per team",
+              "Training a private foundation model per team with that team's own incidents and session data",
               "Replacing Microsoft Entra tenants"
             ],
             answer: 0,
@@ -429,7 +429,7 @@ Catalog.module("sc-900", {
               options: [
                 "Asignar costos a los presupuestos de cada equipo y guardar los datos de sesión según normas geográficas",
                 "Eliminar la necesidad de permisos de rol",
-                "Entrenar un modelo fundacional privado por equipo",
+                "Entrenar un modelo fundacional privado por equipo con los incidentes y los datos de sesión de ese equipo",
                 "Reemplazar los inquilinos de Microsoft Entra"
               ],
               explain: "Las áreas de trabajo separan entornos, ayudan a asignar capacidad y costos, y admiten reglas de residencia de datos."
@@ -501,7 +501,7 @@ Catalog.module("sc-900", {
             q: "Why is the process log important to the user?",
             options: [
               "It shows which capability produced the response, helping judge whether the source is trusted",
-              "It lets the user edit the foundation model",
+              "It lets the user edit the foundation model's answer and retrain it with the corrected version",
               "It records the user's SCU invoice",
               "It replaces the need for safety checks"
             ],
@@ -511,7 +511,7 @@ Catalog.module("sc-900", {
               q: "¿Por qué es importante el registro del proceso para el usuario?",
               options: [
                 "Muestra qué capacidad produjo la respuesta, lo que ayuda a juzgar si el origen es confiable",
-                "Permite al usuario editar el modelo fundacional",
+                "Permite al usuario editar la respuesta del modelo fundacional y volver a entrenarlo con la versión corregida",
                 "Registra la factura de SCU del usuario",
                 "Reemplaza la necesidad de controles de seguridad"
               ],
@@ -679,7 +679,7 @@ Catalog.module("sc-900", {
             q: "A company without Microsoft 365 E5 or E7 wants to provision Security Copilot capacity. Which permissions are needed at minimum?",
             options: [
               "Azure owner or contributor at resource group level, plus Security Administrator in the tenant",
-              "Only the Global Administrator role in Microsoft Entra",
+              "Only the Global Administrator role in Microsoft Entra, with no Azure role needed on the subscription or resource group",
               "Only the Copilot contributor role",
               "A Microsoft Sentinel Reader role"
             ],
@@ -689,7 +689,7 @@ Catalog.module("sc-900", {
               q: "Una empresa sin Microsoft 365 E5 ni E7 quiere aprovisionar capacidad de Security Copilot. ¿Qué permisos necesita como mínimo?",
               options: [
                 "Propietario o colaborador de Azure en el grupo de recursos, más Administrador de seguridad en el inquilino",
-                "Solo el rol de administrador global de Microsoft Entra",
+                "Solo el rol de administrador global de Microsoft Entra, sin ningún rol de Azure en la suscripción ni en el grupo de recursos",
                 "Solo el rol de colaborador de Copilot",
                 "Un rol de Lector de Microsoft Sentinel"
               ],

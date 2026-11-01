@@ -50,13 +50,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Network security groups",
         q: "An NSG has a custom rule with priority 200 that allows port 443, and another with priority 100 that denies all inbound traffic from the internet. What happens to inbound HTTPS from the internet?",
-        options: ["It's denied, because the priority 100 rule is processed first", "It's allowed, because allow rules always win", "It's allowed, because the higher number has precedence", "Both rules are combined and the traffic is logged only"],
+        options: ["It's denied, because the priority 100 rule is processed first", "It's allowed, because allow rules always win", "It's allowed, because the rule with the higher priority number takes precedence over the lower one", "Both rules are combined and the traffic is logged only"],
         answer: 0,
         explain: "Lower numbers are processed first, and processing stops at the first match.",
         es: {
           topic: "Grupos de seguridad de red",
           q: "Un NSG tiene una regla personalizada de prioridad 200 que permite el puerto 443 y otra de prioridad 100 que deniega todo el tráfico entrante desde internet. ¿Qué pasa con el HTTPS entrante desde internet?",
-          options: ["Se deniega, porque la regla de prioridad 100 se procesa primero", "Se permite, porque las reglas de permiso siempre ganan", "Se permite, porque el número más alto tiene prioridad", "Se combinan ambas reglas y el tráfico solo se registra"],
+          options: ["Se deniega, porque la regla de prioridad 100 se procesa primero", "Se permite, porque las reglas de permiso siempre ganan", "Se permite, porque la regla con el número de prioridad más alto tiene precedencia sobre la más baja", "Se combinan ambas reglas y el tráfico solo se registra"],
           explain: "Los números más bajos se procesan primero, y el procesamiento se detiene en la primera coincidencia."
         }
       },
@@ -164,7 +164,7 @@ Catalog.module("sc-900", {
         options: [
           "NSGs filter traffic within VNets; Azure Firewall is a centralized, stateful firewall across subscriptions and VNets",
           "Azure Firewall replaces NSGs entirely",
-          "NSGs work only for outbound traffic, Azure Firewall only for inbound",
+          "NSGs filter only outbound traffic from each subnet, while Azure Firewall filters only the inbound traffic from the internet",
           "They're the same service with different names"
         ],
         answer: 0,
@@ -175,7 +175,7 @@ Catalog.module("sc-900", {
           options: [
             "Los NSG filtran el tráfico dentro de las redes virtuales; Azure Firewall es un firewall centralizado y con estado entre suscripciones y redes",
             "Azure Firewall reemplaza por completo a los NSG",
-            "Los NSG solo filtran tráfico saliente y Azure Firewall solo entrante",
+            "Los NSG filtran solo el tráfico saliente de cada subred, mientras que Azure Firewall filtra solo el tráfico entrante desde internet",
             "Son el mismo servicio con distinto nombre"
           ],
           explain: "Se complementan para lograr defensa en profundidad."
@@ -377,7 +377,7 @@ Catalog.module("sc-900", {
             q: "Why can Azure Firewall stay available during failures or traffic spikes?",
             options: [
               "It has built-in high availability and can span multiple availability zones",
-              "It runs on a single VM that restarts quickly",
+              "It runs on a single VM in your subscription that restarts automatically within seconds of a failure",
               "It's deployed in every customer's on-premises datacenter",
               "It caches all traffic in Azure Key Vault"
             ],
@@ -387,7 +387,7 @@ Catalog.module("sc-900", {
               q: "¿Por qué Azure Firewall puede seguir disponible ante fallas o picos de tráfico?",
               options: [
                 "Tiene alta disponibilidad integrada y puede abarcar varias zonas de disponibilidad",
-                "Se ejecuta en una sola máquina virtual que se reinicia rápido",
+                "Se ejecuta en una sola máquina virtual de su suscripción que se reinicia automáticamente segundos después de una falla",
                 "Se implementa en el centro de datos local de cada cliente",
                 "Guarda todo el tráfico en caché en Azure Key Vault"
               ],
@@ -434,7 +434,7 @@ Catalog.module("sc-900", {
             options: [
               "A newly discovered vulnerability can be patched in one place instead of in every app",
               "It removes the need for network security groups",
-              "It provides layer 3 and 4 DDoS mitigation",
+              "It provides layer 3 and 4 DDoS mitigation for every public IP address in the virtual network",
               "It stores application secrets"
             ],
             answer: 0,
@@ -444,7 +444,7 @@ Catalog.module("sc-900", {
               options: [
                 "Una vulnerabilidad nueva se corrige en un solo lugar en lugar de en cada aplicación",
                 "Elimina la necesidad de grupos de seguridad de red",
-                "Mitiga ataques DDoS de las capas 3 y 4",
+                "Mitiga ataques DDoS de las capas 3 y 4 para todas las IP públicas de la red virtual",
                 "Guarda los secretos de las aplicaciones"
               ],
               explain: "El WAF centralizado simplifica la administración de la seguridad y acorta la exposición a amenazas nuevas."
@@ -602,7 +602,7 @@ Catalog.module("sc-900", {
             options: [
               "Traffic from the virtual network and from the Azure load balancer",
               "All traffic from the internet",
-              "Only HTTPS from the internet",
+              "Only HTTPS from the internet and traffic from peered virtual networks in other regions",
               "No traffic at all"
             ],
             answer: 0,
@@ -612,7 +612,7 @@ Catalog.module("sc-900", {
               options: [
                 "El tráfico de la red virtual y del equilibrador de carga de Azure",
                 "Todo el tráfico de internet",
-                "Solo HTTPS desde internet",
+                "Solo HTTPS desde internet y el tráfico de redes virtuales emparejadas en otras regiones",
                 "Ningún tráfico"
               ],
               explain: "AllowVNetInBound y AllowAzureLoadBalancerInBound se procesan antes que DenyAllInBound."
@@ -758,7 +758,7 @@ Catalog.module("sc-900", {
             q: "Why does Azure Bastion help protect against zero-day exploits?",
             options: [
               "It's a hardened, platform-managed service at the VNet perimeter that Azure keeps up to date",
-              "It installs antivirus on every VM automatically",
+              "It installs and updates an antivirus agent on every VM in the virtual network automatically, so each VM is patched against new threats",
               "It blocks all outbound traffic from the VNet",
               "It replaces the operating system on each VM"
             ],
@@ -768,7 +768,7 @@ Catalog.module("sc-900", {
               q: "¿Por qué Azure Bastion ayuda a proteger contra vulnerabilidades de día cero?",
               options: [
                 "Es un servicio protegido y administrado por la plataforma en el perímetro de la red virtual, que Azure mantiene actualizado",
-                "Instala un antivirus en cada máquina virtual automáticamente",
+                "Instala y actualiza automáticamente un agente antivirus en cada máquina virtual de la red, para que cada una quede protegida frente a amenazas nuevas",
                 "Bloquea todo el tráfico saliente de la red virtual",
                 "Reemplaza el sistema operativo de cada máquina virtual"
               ],
@@ -814,7 +814,7 @@ Catalog.module("sc-900", {
               "Microsoft Entra ID authenticates; Azure RBAC or Key Vault access policies authorize",
               "A shared password stored in the app configuration",
               "Network security groups authenticate and authorize",
-              "Azure Bastion authenticates and Azure Firewall authorizes"
+              "Azure Bastion authenticates the caller and Azure Firewall authorizes access to the vault"
             ],
             answer: 0,
             explain: "Entra ID verifies identity, then RBAC or access policies decide allowed operations.",
@@ -824,7 +824,7 @@ Catalog.module("sc-900", {
                 "Microsoft Entra ID autentica; Azure RBAC o las directivas de acceso de Key Vault autorizan",
                 "Con una contraseña compartida guardada en la configuración de la aplicación",
                 "Los grupos de seguridad de red autentican y autorizan",
-                "Azure Bastion autentica y Azure Firewall autoriza"
+                "Azure Bastion autentica a quien llama y Azure Firewall autoriza el acceso al almacén"
               ],
               explain: "Entra ID verifica la identidad, y luego RBAC o las directivas de acceso deciden qué operaciones se permiten."
             }
@@ -861,7 +861,7 @@ Catalog.module("sc-900", {
             q: "A team wants each application to access only its own secrets. What does Key Vault allow?",
             options: [
               "Creating a key vault per application and restricting its secrets to that app and team",
-              "Storing all secrets in one vault readable by every app",
+              "Storing all secrets in one shared vault that every application in the subscription can read",
               "Embedding secrets in each app's source code",
               "Sharing secrets through network security groups"
             ],
@@ -871,7 +871,7 @@ Catalog.module("sc-900", {
               q: "Un equipo quiere que cada aplicación acceda solo a sus propios secretos. ¿Qué permite Key Vault?",
               options: [
                 "Crear un almacén de claves por aplicación y limitar sus secretos a esa aplicación y su equipo",
-                "Guardar todos los secretos en un almacén que todas las aplicaciones pueden leer",
+                "Guardar todos los secretos en un único almacén compartido que todas las aplicaciones de la suscripción pueden leer",
                 "Incrustar los secretos en el código fuente de cada aplicación",
                 "Compartir secretos mediante grupos de seguridad de red"
               ],

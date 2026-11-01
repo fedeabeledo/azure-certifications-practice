@@ -52,7 +52,7 @@ Catalog.module("sc-900", {
         q: "What happens when Defender for Cloud is first enabled on a subscription?",
         options: [
           "The Microsoft cloud security benchmark is assigned automatically as the default initiative",
-          "All Defender plans are enabled and billed automatically",
+          "All Defender plans are enabled automatically, and billing starts for every protected resource type",
           "Every resource gets a ReadOnly lock",
           "ISO 27001 is assigned as the only standard"
         ],
@@ -63,7 +63,7 @@ Catalog.module("sc-900", {
           q: "¿Qué pasa cuando se habilita Defender for Cloud por primera vez en una suscripción?",
           options: [
             "Se asigna automáticamente el punto de referencia de seguridad en la nube de Microsoft como iniciativa predeterminada",
-            "Se habilitan y facturan automáticamente todos los planes de Defender",
+            "Se habilitan automáticamente todos los planes de Defender, y empieza la facturación de cada tipo de recurso protegido y de cada suscripción",
             "Cada recurso recibe un bloqueo ReadOnly",
             "Se asigna ISO 27001 como único estándar"
           ],
@@ -225,7 +225,7 @@ Catalog.module("sc-900", {
             q: "What is Microsoft Defender for Cloud?",
             options: [
               "A cloud-native application protection platform for Azure, other clouds and on-premises",
-              "A SIEM that only collects logs from Microsoft 365",
+              "A SIEM that only collects and correlates logs from Microsoft 365 workloads and Entra ID",
               "A firewall that filters traffic between VNets",
               "An identity provider for external users"
             ],
@@ -235,7 +235,7 @@ Catalog.module("sc-900", {
               q: "¿Qué es Microsoft Defender for Cloud?",
               options: [
                 "Una plataforma de protección de aplicaciones nativas de la nube para Azure, otras nubes y el entorno local",
-                "Un SIEM que solo recopila registros de Microsoft 365",
+                "Un SIEM que solo recopila y correlaciona registros de las cargas de trabajo de Microsoft 365 y de Entra ID",
                 "Un firewall que filtra el tráfico entre redes virtuales",
                 "Un proveedor de identidades para usuarios externos"
               ],
@@ -450,7 +450,7 @@ Catalog.module("sc-900", {
               "Asset discovery, continuous assessment, MCSB compliance and secure score",
               "Attack path analysis and the cloud security explorer",
               "DSPM and AI SPM",
-              "All Defender plans for servers and storage"
+              "All Defender plans for servers, storage, databases and containers, for the first 30 days"
             ],
             answer: 0,
             explain: "Foundational CSPM is free; the optional Defender CSPM plan adds advanced capabilities.",
@@ -460,7 +460,7 @@ Catalog.module("sc-900", {
                 "La detección de recursos, la evaluación continua, el cumplimiento del MCSB y la puntuación de seguridad",
                 "El análisis de rutas de ataque y el explorador de seguridad en la nube",
                 "DSPM y AI SPM",
-                "Todos los planes de Defender para servidores y almacenamiento"
+                "Todos los planes de Defender para servidores, almacenamiento, bases de datos y contenedores, durante los primeros 30 días y en todas las suscripciones"
               ],
               explain: "El CSPM básico es gratuito; el plan opcional Defender CSPM suma capacidades avanzadas."
             }
@@ -653,7 +653,7 @@ Catalog.module("sc-900", {
               "Its findings can be correlated with cloud risks in the Defender CSPM plan",
               "It only supports Azure DevOps",
               "It replaces the need for code reviews",
-              "It works only after code is deployed to production"
+              "It works only after code is deployed to production, by scanning the running workloads"
             ],
             answers: [0, 1],
             explain: "It covers IaC and correlates with CSPM for a code-to-cloud view, across GitHub, Azure DevOps and GitLab.",
@@ -664,7 +664,7 @@ Catalog.module("sc-900", {
                 "Sus hallazgos se pueden correlacionar con riesgos de la nube en el plan Defender CSPM",
                 "Solo admite Azure DevOps",
                 "Reemplaza la necesidad de revisar el código",
-                "Solo funciona después de implementar el código en producción"
+                "Solo funciona después de implementar el código en producción, analizando las cargas en ejecución y sus registros"
               ],
               explain: "Abarca la IaC y se correlaciona con CSPM para una vista del código a la nube, en GitHub, Azure DevOps y GitLab."
             }

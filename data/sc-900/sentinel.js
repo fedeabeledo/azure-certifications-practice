@@ -11,13 +11,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Microsoft Sentinel",
         q: "When an incident involving a compromised account is created, the company wants the account disabled, a ticket opened and the team notified automatically. What should it configure in Sentinel?",
-        options: ["An automation rule that triggers a playbook", "A hunting query", "A workbook", "A data connector"],
+        options: ["An automation rule that triggers a playbook", "A scheduled hunting query that runs every five minutes", "A workbook", "A data connector"],
         answer: 0,
         explain: "Automation rules define conditions and actions, including triggering playbooks built on Azure Logic Apps.",
         es: {
           topic: "Microsoft Sentinel",
           q: "Cuando se crea un incidente con una cuenta comprometida, la empresa quiere que la cuenta se deshabilite, se abra un ticket y se avise al equipo automáticamente. ¿Qué debe configurar en Sentinel?",
-          options: ["Una regla de automatización que dispare un playbook", "Una consulta de búsqueda", "Un libro", "Un conector de datos"],
+          options: ["Una regla de automatización que dispare un playbook", "Una consulta de búsqueda programada cada cinco minutos", "Un libro", "Un conector de datos"],
           explain: "Las reglas de automatización definen condiciones y acciones, incluido disparar playbooks basados en Azure Logic Apps."
         }
       },
@@ -189,13 +189,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "SIEM and SOAR",
         q: "An attacker performs reconnaissance one day, establishes persistence days later and exfiltrates data weeks after. Which AI capability helps connect these signals?",
-        options: ["Multi-stage attack detection", "Log aggregation only", "Severity scoring only", "Manual alert review"],
+        options: ["Multi-stage attack detection", "Log aggregation only", "Severity scoring only", "Manual review of each alert by a tier 1 analyst"],
         answer: 0,
         explain: "ML models connect low-level signals over time to reveal the broader attack pattern.",
         es: {
           topic: "SIEM y SOAR",
           q: "Un atacante hace reconocimiento un día, establece persistencia días después y extrae datos semanas más tarde. ¿Qué capacidad de IA ayuda a conectar esas señales?",
-          options: ["La detección de ataques de varias fases", "Solo la agregación de registros", "Solo la puntuación de gravedad", "La revisión manual de alertas"],
+          options: ["La detección de ataques de varias fases", "Solo la agregación de registros", "Solo la puntuación de gravedad", "La revisión manual de cada alerta por un analista de nivel 1"],
           explain: "Los modelos de aprendizaje automático conectan señales de bajo nivel a lo largo del tiempo para revelar el patrón del ataque."
         }
       }
@@ -236,7 +236,7 @@ Catalog.module("sc-900", {
             q: "What does a SOAR system add on top of a SIEM's alerting?",
             options: [
               "Action-driven automated workflows that handle the response",
-              "Longer log retention",
+              "Longer log retention in a lower-cost data lake tier for investigations",
               "A replacement for threat intelligence",
               "Encryption of collected logs"
             ],
@@ -246,7 +246,7 @@ Catalog.module("sc-900", {
               q: "¿Qué agrega un sistema SOAR a las alertas de un SIEM?",
               options: [
                 "Flujos de trabajo automatizados que se ocupan de la respuesta",
-                "Una retención de registros más larga",
+                "Una retención de registros más larga en un nivel de lago de datos más económico",
                 "Un reemplazo de la inteligencia sobre amenazas",
                 "El cifrado de los registros recopilados"
               ],
@@ -434,12 +434,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "An analyst finds an obfuscated PowerShell command line in an incident. Which Security Copilot capability explains what it does and which MITRE techniques it uses?",
-            options: ["Script and command-line analysis", "Incident report generation", "Device summarization", "Threat intelligence summary"],
+            options: ["Script and command-line analysis", "Incident report generation", "Device summarization", "Threat intelligence summary for the indicators in the incident"],
             answer: 0,
             explain: "Script analysis explains the script in plain language without external reverse-engineering tools.",
             es: {
               q: "Un analista encuentra una línea de comandos de PowerShell ofuscada en un incidente. ¿Qué capacidad de Security Copilot explica qué hace y qué técnicas de MITRE usa?",
-              options: ["El análisis de scripts y líneas de comandos", "La generación de informes de incidentes", "El resumen de dispositivos", "El resumen de inteligencia sobre amenazas"],
+              options: ["El análisis de scripts y líneas de comandos", "La generación de informes de incidentes", "El resumen de dispositivos", "El resumen de inteligencia sobre amenazas de los indicadores del incidente"],
               explain: "El análisis de scripts explica el script en lenguaje común sin herramientas externas de ingeniería inversa."
             }
           },

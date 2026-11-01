@@ -118,7 +118,7 @@ Catalog.module("az-900", {
         q: "A team deletes a VM to save money, but charges continue. What is the most likely cause?",
         options: [
           "Associated resources such as disks and network interfaces weren't deprovisioned",
-          "Deleted VMs keep billing for 30 days",
+          "Deleted VMs keep billing for 30 days in case the deletion needs to be reverted",
           "The pricing calculator is still running an estimate",
           "Tags on the VM keep generating charges"
         ],
@@ -129,7 +129,7 @@ Catalog.module("az-900", {
           q: "Un equipo elimina una máquina virtual para ahorrar, pero los cargos siguen. ¿Cuál es la causa más probable?",
           options: [
             "Los recursos asociados, como discos e interfaces de red, no se desaprovisionaron",
-            "Las máquinas virtuales eliminadas se siguen facturando durante 30 días",
+            "Las máquinas virtuales eliminadas se siguen facturando 30 días por si hay que revertir la eliminación",
             "La calculadora de precios sigue ejecutando una estimación",
             "Las etiquetas de la máquina virtual siguen generando cargos"
           ],
@@ -186,7 +186,7 @@ Catalog.module("az-900", {
         options: [
           "Azure services used plus the vendor's charges, with a structure set by the vendor",
           "Only the underlying Azure services, at no extra cost",
-          "A flat Microsoft fee identical for all Marketplace products",
+          "A flat Microsoft fee identical for all Marketplace products, regardless of the vendor or usage",
           "Nothing, since Marketplace items are always free"
         ],
         answer: 0,
@@ -197,7 +197,7 @@ Catalog.module("az-900", {
           options: [
             "Los servicios de Azure usados más los cargos del proveedor, con una estructura que define el proveedor",
             "Solo los servicios de Azure subyacentes, sin costo adicional",
-            "Una tarifa fija de Microsoft igual para todos los productos de Marketplace",
+            "Una tarifa fija de Microsoft igual para todos los productos de Marketplace, sin importar el proveedor ni el uso",
             "No se factura, porque los productos de Marketplace siempre son gratuitos"
           ],
           explain: "Las compras en Marketplace pueden incluir el uso de Azure y los servicios del proveedor; el proveedor define la estructura de facturación."
@@ -390,7 +390,7 @@ Catalog.module("az-900", {
             q: "How do teams commonly use a pricing calculator estimate after creating it?",
             options: [
               "As a baseline for budget approval, revisited when the architecture changes",
-              "As a binding price quote that Microsoft must honor",
+              "As a binding price quote that Microsoft must honor for the rest of the contract term",
               "As a deployment template that provisions the resources",
               "As a replacement for monitoring actual spend"
             ],
@@ -400,7 +400,7 @@ Catalog.module("az-900", {
               q: "¿Cómo suelen usar los equipos una estimación de la calculadora de precios después de crearla?",
               options: [
                 "Como base para aprobar el presupuesto, revisándola cuando cambia la arquitectura",
-                "Como una cotización vinculante que Microsoft debe respetar",
+                "Como una cotización vinculante que Microsoft debe respetar durante todo el contrato",
                 "Como una plantilla de implementación que aprovisiona los recursos",
                 "Como reemplazo de la supervisión del gasto real"
               ],
@@ -612,7 +612,7 @@ Catalog.module("az-900", {
             options: [
               "Nothing; resources don't inherit tags from the resource group",
               "They inherit the tag automatically",
-              "They inherit it only if they're created afterward",
+              "They inherit it, but only if they're created after the tag was applied",
               "The tag is copied to them once a day"
             ],
             answer: 0,
@@ -622,7 +622,7 @@ Catalog.module("az-900", {
               options: [
                 "Nada; los recursos no heredan etiquetas del grupo de recursos",
                 "Heredan la etiqueta automáticamente",
-                "La heredan solo si se crean después",
+                "La heredan, pero solo si se crean después de aplicar la etiqueta",
                 "La etiqueta se les copia una vez por día"
               ],
               explain: "Las etiquetas no se heredan de suscripciones ni de grupos de recursos, lo que permite esquemas distintos en cada nivel. Azure Policy puede aplicarlas si hace falta."

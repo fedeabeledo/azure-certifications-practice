@@ -50,13 +50,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Monitor",
         q: "A team wants an email whenever a VM's CPU stays above 80%. What should it create in Azure Monitor?",
-        options: ["A metric alert rule with an action group", "An Advisor recommendation", "A Resource Health check", "An availability test"],
+        options: ["A metric alert rule with an action group", "An Advisor recommendation configured with a CPU threshold of 80%", "A Resource Health check", "An availability test"],
         answer: 0,
         explain: "An alert rule defines the condition and an action group controls who's notified and what happens.",
         es: {
           topic: "Azure Monitor",
           q: "Un equipo quiere un correo cada vez que la CPU de una máquina virtual se mantenga por encima del 80 %. ¿Qué debe crear en Azure Monitor?",
-          options: ["Una regla de alerta de métricas con un grupo de acciones", "Una recomendación de Advisor", "Una comprobación de Resource Health", "Una prueba de disponibilidad"],
+          options: ["Una regla de alerta de métricas con un grupo de acciones", "Una recomendación de Advisor configurada con un umbral de CPU del 80 %", "Una comprobación de Resource Health", "Una prueba de disponibilidad"],
           explain: "Una regla de alerta define la condición y un grupo de acciones controla a quién se notifica y qué pasa."
         }
       },
@@ -177,7 +177,7 @@ Catalog.module("az-900", {
         q: "Why can Service Health show events relevant to your environment, unlike Azure Status?",
         options: [
           "Because you're signed in, it knows which services and regions you use",
-          "Because it scans the logs of every VM you own",
+          "Because it scans the logs of every VM in your subscriptions to detect problems",
           "Because Advisor shares its recommendations with it",
           "Because it only covers your paired region"
         ],
@@ -188,7 +188,7 @@ Catalog.module("az-900", {
           q: "¿Por qué Service Health puede mostrar eventos relevantes para su entorno, a diferencia de Azure Status?",
           options: [
             "Porque, al haber iniciado sesión, sabe qué servicios y regiones usa",
-            "Porque analiza los registros de cada máquina virtual que tiene",
+            "Porque analiza los registros de cada máquina virtual de sus suscripciones para detectar problemas",
             "Porque Advisor le comparte sus recomendaciones",
             "Porque solo cubre su región emparejada"
           ],
@@ -202,7 +202,7 @@ Catalog.module("az-900", {
         options: [
           "A platform to collect, analyze and act on data from resources and applications",
           "A service that estimates the monthly cost of resources",
-          "A tool that enforces configuration rules on resources",
+          "A tool that enforces configuration rules on resources and reports which ones are noncompliant",
           "A portal with Microsoft's compliance reports"
         ],
         answer: 0,
@@ -213,7 +213,7 @@ Catalog.module("az-900", {
           options: [
             "Una plataforma para recopilar, analizar y actuar sobre datos de recursos y aplicaciones",
             "Un servicio que estima el costo mensual de los recursos",
-            "Una herramienta que aplica reglas de configuración a los recursos",
+            "Una herramienta que aplica reglas de configuración a los recursos e informa cuáles no las cumplen",
             "Un portal con los informes de cumplimiento de Microsoft"
           ],
           explain: "Azure Monitor reúne registros y métricas de forma centralizada y los expone en paneles, consultas y alertas."

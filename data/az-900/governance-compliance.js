@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Resource locks",
         q: "An administrator with the Owner role tries to delete a storage account and gets an error, although RBAC allows it. What is the most likely reason?",
-        options: ["A Delete or ReadOnly resource lock is applied", "An Azure Policy initiative is assigned", "The account is tagged as mission-critical", "Microsoft Purview classified its data"],
+        options: ["A Delete or ReadOnly resource lock is applied", "An Azure Policy initiative with an audit effect is assigned to it", "The account is tagged as mission-critical", "Microsoft Purview classified its data"],
         answer: 0,
         explain: "Locks apply regardless of RBAC permissions. Even an owner must remove the lock before deleting.",
         es: {
           topic: "Bloqueos de recursos",
           q: "Un administrador con el rol Propietario intenta eliminar una cuenta de almacenamiento y recibe un error, aunque RBAC lo permite. ¿Cuál es la causa más probable?",
-          options: ["Tiene aplicado un bloqueo de recursos Delete o ReadOnly", "Tiene asignada una iniciativa de Azure Policy", "Está etiquetada como crítica", "Microsoft Purview clasificó sus datos"],
+          options: ["Tiene aplicado un bloqueo de recursos Delete o ReadOnly", "Tiene asignada una iniciativa de Azure Policy con efecto de auditoría", "Está etiquetada como crítica", "Microsoft Purview clasificó sus datos"],
           explain: "Los bloqueos se aplican sin importar los permisos de RBAC. Incluso un propietario debe quitar el bloqueo antes de eliminar."
         }
       },
@@ -185,13 +185,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Policy",
         q: "A policy is assigned at a resource group. Which resources does it apply to?",
-        options: ["All resources in that resource group, including new ones", "Only the resource group object itself", "Only resources created before the assignment", "Every resource in the subscription"],
+        options: ["All resources in that resource group, including new ones", "Only the resource group object itself", "Only the resources that existed before the policy was assigned", "Every resource in the subscription"],
         answer: 0,
         explain: "Policies are inherited by everything beneath the scope where they're set.",
         es: {
           topic: "Azure Policy",
           q: "Se asigna una directiva en un grupo de recursos. ¿A qué recursos se aplica?",
-          options: ["A todos los recursos de ese grupo, incluidos los nuevos", "Solo al objeto del grupo de recursos", "Solo a los recursos creados antes de la asignación", "A todos los recursos de la suscripción"],
+          options: ["A todos los recursos de ese grupo, incluidos los nuevos", "Solo al objeto del grupo de recursos", "Solo a los recursos que ya existían antes de asignar la directiva", "A todos los recursos de la suscripción"],
           explain: "Las directivas las hereda todo lo que está debajo del ámbito donde se asignan."
         }
       },
@@ -199,13 +199,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Service Trust Portal",
         q: "For how long are Service Trust Portal reports and documents available to download?",
-        options: ["At least 12 months after publishing, or until a new version is available", "Only 30 days after publishing", "Only while the customer has an active Enterprise Agreement", "Indefinitely, with every past version kept"],
+        options: ["At least 12 months after publishing, or until a new version is available", "Only 30 days after publishing", "Only while the customer keeps an active Enterprise Agreement with Microsoft in place", "Indefinitely, with every past version kept"],
         answer: 0,
         explain: "Documents stay available for at least 12 months or until a new version replaces them.",
         es: {
           topic: "Portal de confianza de servicios",
           q: "¿Durante cuánto tiempo se pueden descargar los informes y documentos del Portal de confianza de servicios?",
-          options: ["Al menos 12 meses desde su publicación o hasta que haya una versión nueva", "Solo 30 días después de su publicación", "Solo mientras el cliente tenga un Contrato Enterprise activo", "Indefinidamente, conservando todas las versiones anteriores"],
+          options: ["Al menos 12 meses desde su publicación o hasta que haya una versión nueva", "Solo 30 días después de su publicación", "Solo mientras el cliente mantenga vigente un Contrato Enterprise activo con Microsoft", "Indefinidamente, conservando todas las versiones anteriores"],
           explain: "Los documentos siguen disponibles al menos 12 meses o hasta que una versión nueva los reemplace."
         }
       }
@@ -225,7 +225,7 @@ Catalog.module("az-900", {
             q: "Which statement best describes Microsoft Purview?",
             options: [
               "A family of data governance, risk and compliance solutions with a unified view of your data",
-              "A service that enforces rules on Azure resource configurations",
+              "A service that enforces rules on Azure resource configurations and blocks noncompliant deployments",
               "A tool that prevents resources from being deleted",
               "A calculator that estimates the cost of storing data"
             ],
@@ -235,7 +235,7 @@ Catalog.module("az-900", {
               q: "¿Qué afirmación describe mejor Microsoft Purview?",
               options: [
                 "Una familia de soluciones de gobernanza de datos, riesgo y cumplimiento con una vista unificada de los datos",
-                "Un servicio que aplica reglas a la configuración de los recursos de Azure",
+                "Un servicio que aplica reglas a la configuración de los recursos de Azure y bloquea implementaciones no conformes",
                 "Una herramienta que impide que se eliminen recursos",
                 "Una calculadora que estima el costo de almacenar datos"
               ],
@@ -390,7 +390,7 @@ Catalog.module("az-900", {
             q: "A policy allows only certain VM sizes. When is it invoked?",
             options: [
               "When a VM is created or resized, and it also evaluates existing VMs",
-              "Only once a month during a compliance scan",
+              "Only once a month, during a scheduled compliance scan of the whole subscription",
               "Only when the VM is deleted",
               "Only when a budget alert fires"
             ],
@@ -400,7 +400,7 @@ Catalog.module("az-900", {
               q: "Una directiva permite solo ciertos tamaños de máquina virtual. ¿Cuándo se invoca?",
               options: [
                 "Cuando se crea o se cambia el tamaño de una máquina virtual, y además evalúa las existentes",
-                "Solo una vez por mes durante un análisis de cumplimiento",
+                "Solo una vez por mes, durante un análisis de cumplimiento programado de toda la suscripción",
                 "Solo cuando se elimina la máquina virtual",
                 "Solo cuando se dispara una alerta de presupuesto"
               ],
@@ -427,7 +427,7 @@ Catalog.module("az-900", {
             q: "What is the goal of the built-in initiative Enable Monitoring in Azure Security Center?",
             options: [
               "To monitor all available security recommendations for all Azure resource types",
-              "To lock every resource that lacks endpoint protection",
+              "To apply a ReadOnly lock to every resource type that lacks endpoint protection",
               "To delete unencrypted SQL databases automatically",
               "To estimate the cost of Security Center"
             ],
@@ -437,7 +437,7 @@ Catalog.module("az-900", {
               q: "¿Cuál es el objetivo de la iniciativa integrada Enable Monitoring in Azure Security Center?",
               options: [
                 "Supervisar todas las recomendaciones de seguridad disponibles para todos los tipos de recursos de Azure",
-                "Bloquear todos los recursos que no tengan protección de puntos de conexión",
+                "Aplicar un bloqueo ReadOnly a todos los tipos de recursos que no tengan protección de puntos de conexión",
                 "Eliminar automáticamente las bases de datos SQL sin cifrar",
                 "Estimar el costo de Security Center"
               ],
@@ -495,7 +495,7 @@ Catalog.module("az-900", {
               "Because people with the right access could still delete critical resources by accident",
               "Because RBAC doesn't work for production resources",
               "Because locks reduce the cost of the resources",
-              "Because locks replace the need for backups"
+              "Because locks replace the need for backups and disaster recovery plans for critical resources"
             ],
             answer: 0,
             explain: "Locks protect against accidental deletion or change even by users whose RBAC permissions allow it.",
@@ -505,7 +505,7 @@ Catalog.module("az-900", {
                 "Porque quienes tienen el acceso adecuado igual podrían eliminar por error recursos críticos",
                 "Porque RBAC no funciona con recursos de producción",
                 "Porque los bloqueos reducen el costo de los recursos",
-                "Porque los bloqueos reemplazan las copias de seguridad"
+                "Porque los bloqueos reemplazan las copias de seguridad y los planes de recuperación de los recursos críticos"
               ],
               explain: "Los bloqueos protegen contra eliminaciones o cambios accidentales, incluso de usuarios cuyos permisos de RBAC lo permiten."
             }
@@ -587,7 +587,7 @@ Catalog.module("az-900", {
             options: [
               "Sign in with a Microsoft Entra work or school account and accept the non-disclosure agreement",
               "An Azure subscription with a ReadOnly lock",
-              "An Enterprise Agreement and a credit alert",
+              "An active Enterprise Agreement, an Azure subscription and a configured credit alert in Cost Management",
               "Nothing; every document is public"
             ],
             answer: 0,
@@ -597,7 +597,7 @@ Catalog.module("az-900", {
               options: [
                 "Iniciar sesión con una cuenta profesional o educativa de Microsoft Entra y aceptar el acuerdo de confidencialidad",
                 "Una suscripción de Azure con un bloqueo ReadOnly",
-                "Un Contrato Enterprise y una alerta de crédito",
+                "Un Contrato Enterprise activo, una suscripción de Azure y una alerta de crédito configurada en Cost Management",
                 "Nada; todos los documentos son públicos"
               ],
               explain: "Parte del contenido requiere una cuenta autenticada de servicios en la nube de Microsoft y aceptar el acuerdo de confidencialidad para materiales de cumplimiento."
