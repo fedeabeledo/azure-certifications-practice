@@ -25,7 +25,7 @@ Catalog.cert({
       name: "Introduction to Microsoft security solutions",
       es: { name: "Introducción a las soluciones de seguridad de Microsoft" },
       url: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-security-solutions/",
-      modules: ["security-copilot", "azure-infra-security"]
+      modules: ["security-copilot", "azure-infra-security", "defender-for-cloud"]
     },
     {
       id: "priva-purview",
