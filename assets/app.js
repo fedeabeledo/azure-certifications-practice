@@ -284,6 +284,46 @@ function renderHome() {
   keepScroll = false;
 }
 
+/* ---------- Answer order randomization ---------- */
+// Random permutation: perm[newIndex] = oldIndex (Fisher-Yates)
+function randomPerm(n) {
+  const p = [...Array(n).keys()];
+  for (let i = n - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [p[i], p[j]] = [p[j], p[i]]; }
+  return p;
+}
+const permute = (arr, p) => arr && p.map(i => arr[i]);
+// Returns a copy of the item with options, dropdown choices and match values reordered.
+// The same permutation is applied to the Spanish mirror so both languages stay aligned by index.
+function shuffleItem(src) {
+  const it = JSON.parse(JSON.stringify(src)), es = it.es || {};
+  switch (it.type) {
+    case "single":
+    case "multi": {
+      const p = randomPerm(it.options.length);
+      it.options = permute(it.options, p); if (es.options) es.options = permute(es.options, p);
+      if (it.type === "single") it.answer = p.indexOf(it.answer);
+      else it.answers = it.answers.map(a => p.indexOf(a)).sort((a, b) => a - b);
+      break;
+    }
+    case "dropdown":
+      it.parts.forEach((part, pi) => {
+        if (typeof part === "string") return;
+        const p = randomPerm(part.options.length);
+        part.options = permute(part.options, p); part.answer = p.indexOf(part.answer);
+        if (es.parts && es.parts[pi] && es.parts[pi].options) es.parts[pi].options = permute(es.parts[pi].options, p);
+      });
+      break;
+    case "match": {
+      const pv = randomPerm(it.values.length), pt = randomPerm(it.targets.length);
+      it.values = permute(it.values, pv); if (es.values) es.values = permute(es.values, pv);
+      it.targets.forEach(tg => { tg.answer = pv.indexOf(tg.answer); });
+      it.targets = permute(it.targets, pt); if (es.targets) es.targets = permute(es.targets, pt);
+      break;
+    }
+  }
+  return it;
+}
+
 /* ---------- Start screen ---------- */
 function renderStart(entry) {
   stopClock(); S = null; view = () => renderStart(entry);
@@ -301,6 +341,7 @@ function renderStart(entry) {
     <div class="formats"><span>${t.formats}</span>${fmts.map(f => `<span class="fmt">${t.fmt[f]}</span>`).join("")}</div>
   </div>`;
   app.querySelectorAll(".mode").forEach(b => b.addEventListener("click", () => {
+    const items = entry.node.quiz.items.map(shuffleItem); // fresh answer order on every attempt
     S = { entry, items, mode: b.dataset.mode, idx: 0, resp: items.map(emptyResp), marked: new Set(), checked: new Set(), start: Date.now(), end: null, pick: null };
     if (S.mode === "exam") clockTimer = setInterval(() => { const c = document.getElementById("clock"); if (c) c.textContent = elapsed(); }, 1000);
     renderItemView();
