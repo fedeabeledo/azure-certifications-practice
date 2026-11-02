@@ -68,7 +68,7 @@ Catalog.module("sc-900", {
           "It has a unique ID and an initial domain",
           "It serves as a security and administrative boundary",
           "It can contain several directories, one per department",
-          "It's the same thing as an Azure region",
+          "It's tied to a single Azure region",
           "It can hold users but not devices"
         ],
         answers: [0, 1],
@@ -80,7 +80,7 @@ Catalog.module("sc-900", {
             "Tiene un identificador único y un dominio inicial",
             "Funciona como límite de seguridad y de administración",
             "Puede contener varios directorios, uno por departamento",
-            "Es lo mismo que una región de Azure",
+            "Está vinculado a una única región de Azure",
             "Puede contener usuarios pero no dispositivos"
           ],
           explain: "Un inquilino es una instancia de Entra ID para una organización, con un identificador y un dominio únicos, que funciona como límite de seguridad y administración. Tiene exactamente un directorio."
@@ -123,7 +123,7 @@ Catalog.module("sc-900", {
           "Privileged Identity Management (PIM) is included in Microsoft Entra ID ",
           { options: ["Free", "P1", "P2"], answer: 2 },
           ", which comes with ",
-          { options: ["Microsoft 365 E5", "Microsoft 365 Business Premium", "the Azure free account"], answer: 0 },
+          { options: ["Microsoft 365 E5", "Microsoft 365 Business Premium", "Microsoft 365 E3"], answer: 0 },
           "."
         ],
         explain: "P2 adds risk-based Conditional Access, ID Protection and PIM and is included with Microsoft 365 E5 and EMS E5. Business Premium includes P1.",
@@ -134,7 +134,7 @@ Catalog.module("sc-900", {
             "Privileged Identity Management (PIM) está incluido en Microsoft Entra ID ",
             { options: ["Free", "P1", "P2"] },
             ", que viene con ",
-            { options: ["Microsoft 365 E5", "Microsoft 365 Empresa Premium", "la cuenta gratuita de Azure"] },
+            { options: ["Microsoft 365 E5", "Microsoft 365 Empresa Premium", "Microsoft 365 E3"] },
             "."
           ],
           explain: "P2 suma el acceso condicional basado en riesgo, ID Protection y PIM, y viene con Microsoft 365 E5 y EMS E5. Empresa Premium incluye P1."
@@ -144,13 +144,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Identity types",
         q: "An administrator wants to target a Conditional Access policy at a set of users and devices that share the same access needs. Which type of group should be used?",
-        options: ["A security group", "A Microsoft 365 group", "A distribution list in Exchange only", "An administrative unit"],
+        options: ["A security group", "A Microsoft 365 group", "A dynamic device group only", "An administrative unit"],
         answer: 0,
         explain: "Security groups manage user and device access and can be used with Conditional Access. Microsoft 365 groups can only contain users and serve collaboration.",
         es: {
           topic: "Tipos de identidad",
           q: "Un administrador quiere aplicar una directiva de acceso condicional a un conjunto de usuarios y dispositivos con las mismas necesidades de acceso. ¿Qué tipo de grupo debe usar?",
-          options: ["Un grupo de seguridad", "Un grupo de Microsoft 365", "Solo una lista de distribución de Exchange", "Una unidad administrativa"],
+          options: ["Un grupo de seguridad", "Un grupo de Microsoft 365", "Solo un grupo dinámico de dispositivos", "Una unidad administrativa"],
           explain: "Los grupos de seguridad administran el acceso de usuarios y dispositivos y se pueden usar con el acceso condicional. Los grupos de Microsoft 365 solo contienen usuarios y sirven para colaborar."
         }
       },
@@ -183,10 +183,10 @@ Catalog.module("sc-900", {
         topic: "Microsoft Entra ID",
         q: "What does the identity secure score in Microsoft Entra ID represent?",
         options: [
-          "The number of users in the tenant",
+          "The share of users registered for MFA",
           "Your alignment with best practices, as a percentage",
-          "The uptime SLA that Microsoft guarantees for the tenant",
-          "The license tier of the tenant"
+          "The tenant's risk level in ID Protection",
+          "Your compliance with regulations"
         ],
         answer: 1,
         explain: "The identity secure score measures identity security posture as a percentage, with improvement actions tailored to your configuration.",
@@ -194,10 +194,10 @@ Catalog.module("sc-900", {
           topic: "Microsoft Entra ID",
           q: "¿Qué representa la puntuación de seguridad de la identidad en Microsoft Entra ID?",
           options: [
-            "La cantidad de usuarios del inquilino",
+            "El porcentaje de usuarios registrados para MFA",
             "Su ajuste a los procedimientos recomendados, en porcentaje",
-            "El SLA de disponibilidad que Microsoft garantiza para el inquilino",
-            "El nivel de licencia del inquilino"
+            "El nivel de riesgo del inquilino en ID Protection",
+            "Su cumplimiento de las normativas"
           ],
           explain: "La puntuación de seguridad de la identidad mide la postura de seguridad de identidades como porcentaje, con acciones de mejora adaptadas a su configuración."
         }
@@ -327,12 +327,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Where do administrators configure and manage all Microsoft Entra products?",
-            options: ["The Microsoft Entra admin center", "The Azure Pricing Calculator", "The Microsoft Purview portal only", "Each product's own separate portal"],
+            options: ["The Microsoft Entra admin center", "The Azure portal only", "The Microsoft 365 admin center", "Each product's own separate portal"],
             answer: 0,
             explain: "All Microsoft Entra products are managed from a single web portal, the Microsoft Entra admin center.",
             es: {
               q: "¿Dónde configuran y administran los administradores todos los productos de Microsoft Entra?",
-              options: ["En el Centro de administración de Microsoft Entra", "En la Calculadora de precios de Azure", "Solo en el portal de Microsoft Purview", "En un portal separado para cada producto"],
+              options: ["En el Centro de administración de Microsoft Entra", "Solo Azure Portal", "El Centro de administración de Microsoft 365", "En un portal separado para cada producto"],
               explain: "Todos los productos de Microsoft Entra se administran desde un único portal web, el Centro de administración de Microsoft Entra."
             }
           },
@@ -365,12 +365,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A security team wants an objective measure of its identity security posture, with improvement actions tailored to its configuration. Which Microsoft Entra ID feature fits?",
-            options: ["Identity secure score", "Multi-tenant configuration", "The directory", "Self-service password reset"],
+            options: ["Identity secure score", "Microsoft Secure Score for Devices", "ID Protection risk reports", "Access reviews"],
             answer: 0,
             explain: "The identity secure score is a percentage indicating alignment with Microsoft's best-practice recommendations, with tailored improvement actions.",
             es: {
               q: "Un equipo de seguridad quiere una medida objetiva de su postura de seguridad de identidades, con acciones de mejora adaptadas a su configuración. ¿Qué característica de Microsoft Entra ID corresponde?",
-              options: ["La puntuación de seguridad de la identidad", "La configuración multiinquilino", "El directorio", "El restablecimiento de contraseña de autoservicio"],
+              options: ["La puntuación de seguridad de la identidad", "Microsoft Secure Score para dispositivos", "Los informes de riesgo de ID Protection", "Las revisiones de acceso"],
               explain: "La puntuación de seguridad de la identidad es un porcentaje que indica cuánto se ajusta a las recomendaciones de Microsoft, con acciones de mejora adaptadas."
             }
           },
@@ -381,7 +381,7 @@ Catalog.module("sc-900", {
               "A Microsoft Entra tenant consists of ",
               { options: ["only one", "up to ten", "an unlimited number of"], answer: 0 },
               " directory, and the tenant serves as a ",
-              { options: ["security and administrative boundary", "billing region", "network subnet"], answer: 0 },
+              { options: ["security and administrative boundary", "licensing unit only", "network boundary"], answer: 0 },
               " for the organization."
             ],
             explain: "A tenant holds a single directory of users, groups, devices and apps, and acts as a security and administrative boundary.",
@@ -391,7 +391,7 @@ Catalog.module("sc-900", {
                 "Un inquilino de Microsoft Entra tiene ",
                 { options: ["un único", "hasta diez", "una cantidad ilimitada de"] },
                 " directorio, y el inquilino funciona como ",
-                { options: ["límite de seguridad y de administración", "región de facturación", "subred de red"] },
+                { options: ["límite de seguridad y de administración", "unidad solo de licencias", "límite de red"] },
                 " para la organización."
               ],
               explain: "Un inquilino contiene un único directorio de usuarios, grupos, dispositivos y aplicaciones, y funciona como límite de seguridad y de administración."
@@ -400,12 +400,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "After acquiring another company, an organization now runs more than one instance of Microsoft Entra ID. What is this called?",
-            options: ["A multitenant organization", "A hybrid identity", "A replica set", "A shared management group"],
+            options: ["A multitenant organization", "A tenant with multiple directories", "A hybrid identity", "A B2B direct connect"],
             answer: 0,
             explain: "An organization with more than one Entra ID instance is multitenant; mergers and acquisitions are a common reason.",
             es: {
               q: "Después de adquirir otra empresa, una organización ahora ejecuta más de una instancia de Microsoft Entra ID. ¿Cómo se llama esto?",
-              options: ["Una organización multiinquilino", "Una identidad híbrida", "Un conjunto de réplicas", "Un grupo de administración común"],
+              options: ["Una organización multiinquilino", "Un inquilino con varios directorios", "Una identidad híbrida", "Una conexión directa B2B"],
               explain: "Una organización con más de una instancia de Entra ID es multiinquilino; las fusiones y adquisiciones son un motivo habitual."
             }
           },
@@ -416,8 +416,8 @@ Catalog.module("sc-900", {
               "Synchronized with an existing on-premises Active Directory",
               "Used as a standalone service",
               "Usable only if an on-premises Active Directory exists",
-              "Available only to Dynamics 365 customers",
-              "Deployed as a firewall appliance"
+              "Only in a single Azure region chosen by the customer",
+              "Only together with Microsoft Entra Domain Services"
             ],
             answers: [0, 1],
             explain: "Entra ID can be synchronized with on-premises AD or other directories, or used standalone.",
@@ -427,8 +427,8 @@ Catalog.module("sc-900", {
                 "Sincronizado con un Active Directory local existente",
                 "Usado como servicio independiente",
                 "Utilizable solo si existe un Active Directory local",
-                "Disponible solo para clientes de Dynamics 365",
-                "Implementado como dispositivo de firewall"
+                "Solo en una región de Azure elegida por el cliente",
+                "Solo junto con Microsoft Entra Domain Services"
               ],
               explain: "Entra ID se puede sincronizar con AD local u otros directorios, o usarse de forma independiente."
             }
@@ -440,7 +440,7 @@ Catalog.module("sc-900", {
               "It adds standards-based single sign-on",
               "It requires every user to create a new password for each app",
               "It replaces the app's login page with a copy of each user's on-premises password",
-              "It hosts the app's front end"
+              "It syncs app passwords to the user's device"
             ],
             answer: 0,
             explain: "Developers use Entra ID to add SSO with existing credentials, and APIs to build personalized experiences with organizational data.",
@@ -450,7 +450,7 @@ Catalog.module("sc-900", {
                 "Agrega inicio de sesión único basado en estándares",
                 "Exige que cada usuario cree una contraseña nueva para cada aplicación",
                 "Reemplaza la página de inicio de sesión con una copia de la contraseña local de cada usuario",
-                "Hospeda el front-end de la aplicación"
+                "Sincroniza las contraseñas de la aplicación con el dispositivo"
               ],
               explain: "Los desarrolladores usan Entra ID para agregar inicio de sesión único con credenciales existentes, y API para crear experiencias personalizadas con datos de la organización."
             }
@@ -566,12 +566,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "In Microsoft Entra, which two are workload identities?",
-            options: ["Applications and service principals", "Managed identities", "Guest users", "Hybrid joined devices", "Microsoft 365 groups"],
+            options: ["Applications and service principals", "Managed identities", "Guest users", "Hybrid joined devices", "Microsoft Entra registered devices"],
             answers: [0, 1],
             explain: "Workload identities are applications, service principals and managed identities.",
             es: {
               q: "En Microsoft Entra, ¿cuáles son dos identidades de carga de trabajo?",
-              options: ["Las aplicaciones y entidades de servicio", "Las identidades administradas", "Los usuarios invitados", "Los dispositivos unidos híbridos", "Los grupos de Microsoft 365"],
+              options: ["Las aplicaciones y entidades de servicio", "Las identidades administradas", "Los usuarios invitados", "Los dispositivos unidos híbridos", "Los dispositivos registrados en Microsoft Entra"],
               explain: "Las identidades de carga de trabajo son las aplicaciones, las entidades de servicio y las identidades administradas."
             }
           },
@@ -651,12 +651,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Agents created months ago for a short pilot are still running in production, with permissions nobody has reviewed. Which risk does this describe?",
-            options: ["Agent sprawl", "Prompt injection", "Token expiration", "Federation"],
+            options: ["Agent sprawl", "Agent identity drift", "Token expiration", "Overprivileged blueprints"],
             answer: 0,
             explain: "Agent sprawl is the uncontrolled expansion of agents without visibility, management or lifecycle controls.",
             es: {
               q: "Agentes creados hace meses para una prueba piloto corta siguen ejecutándose en producción, con permisos que nadie revisó. ¿Qué riesgo describe esto?",
-              options: ["La proliferación de agentes", "La inyección de prompts", "El vencimiento de tokens", "La federación"],
+              options: ["La proliferación de agentes", "Desviación de identidades de agentes", "El vencimiento de tokens", "Plantillas con privilegios excesivos"],
               explain: "La proliferación de agentes es la expansión descontrolada de agentes sin visibilidad, administración ni controles de ciclo de vida."
             }
           },
@@ -668,7 +668,7 @@ Catalog.module("sc-900", {
               "An agent registry for centralized discovery and metadata",
               "Granting agents high-privilege administrator roles by default",
               "Giving each agent identity its own long-lived password",
-              "Letting users consent to any permission for an agent"
+              "Federation with each agent's platform"
             ],
             answers: [0, 1],
             explain: "Agent ID integrates Conditional Access, ID Protection, ID Governance and an agent registry. High-privilege roles and powerful consents are blocked for agents.",
@@ -679,7 +679,7 @@ Catalog.module("sc-900", {
                 "Un registro de agentes para descubrimiento y metadatos centralizados",
                 "Conceder por defecto roles de administrador con privilegios elevados a los agentes",
                 "Dar a cada identidad de agente su propia contraseña de larga duración",
-                "Permitir que los usuarios consientan cualquier permiso para un agente"
+                "La federación con la plataforma de cada agente"
               ],
               explain: "Agent ID integra el acceso condicional, ID Protection, ID Governance y un registro de agentes. Los roles con privilegios elevados y los consentimientos poderosos están bloqueados para los agentes."
             }
@@ -689,9 +689,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about agent identities.",
             parts: [
               "Each agent identity has a ",
-              { options: ["sponsor", "password", "subscription"], answer: 0 },
+              { options: ["sponsor", "owner tenant", "managed identity"], answer: 0 },
               ", the human user or group accountable for it, and relies on its ",
-              { options: ["blueprint", "user's password", "VPN gateway"], answer: 0 },
+              { options: ["blueprint", "user's password", "managed identity"], answer: 0 },
               " to acquire authentication tokens."
             ],
             explain: "Agent identities have a unique ID, a display name and a sponsor, and get tokens through their blueprint because they have no credentials of their own.",
@@ -699,9 +699,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre las identidades de agente.",
               parts: [
                 "Cada identidad de agente tiene un ",
-                { options: ["patrocinador", "contraseña", "suscripción"] },
+                { options: ["patrocinador", "inquilino propietario", "identidad administrada"] },
                 ", el usuario o grupo humano responsable, y depende de su ",
-                { options: ["plano técnico", "contraseña del usuario", "puerta de enlace VPN"] },
+                { options: ["plano técnico", "contraseña del usuario", "identidad administrada"] },
                 " para obtener tokens de autenticación."
               ],
               explain: "Las identidades de agente tienen un identificador único, un nombre para mostrar y un patrocinador, y obtienen tokens mediante su plano técnico porque no tienen credenciales propias."
@@ -750,9 +750,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about hybrid identity.",
             parts: [
               "Hybrid identity is accomplished through ",
-              { options: ["provisioning", "encryption", "peering"], answer: 0 },
+              { options: ["provisioning", "encryption", "replication"], answer: 0 },
               " and ",
-              { options: ["synchronization", "federation only", "replication to Azure Files"], answer: 0 },
+              { options: ["synchronization", "federation only", "Kerberos delegation"], answer: 0 },
               "."
             ],
             explain: "Inter-directory provisioning creates identities across directories, and synchronization keeps on-premises users and groups matching the cloud.",
@@ -760,9 +760,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre la identidad híbrida.",
               parts: [
                 "La identidad híbrida se logra mediante el ",
-                { options: ["aprovisionamiento", "cifrado", "emparejamiento"] },
+                { options: ["aprovisionamiento", "cifrado", "replicación"] },
                 " y la ",
-                { options: ["sincronización", "federación únicamente", "replicación en Azure Files"] },
+                { options: ["sincronización", "federación únicamente", "delegación Kerberos"] },
                 "."
               ],
               explain: "El aprovisionamiento entre directorios crea identidades entre directorios, y la sincronización mantiene alineados los usuarios y grupos locales con la nube."
@@ -774,7 +774,7 @@ Catalog.module("sc-900", {
             options: [
               "A standard for automating identity provisioning",
               "A protocol for encrypting identity data at rest",
-              "A method for assigning RBAC roles",
+              "A protocol for federated single sign-on",
               "A type of multifactor authentication"
             ],
             answer: 0,
@@ -784,7 +784,7 @@ Catalog.module("sc-900", {
               options: [
                 "Es un estándar para automatizar el aprovisionamiento de identidades",
                 "Es un protocolo para cifrar en reposo datos de identidad",
-                "Es un método para asignar roles de RBAC",
+                "Un protocolo para inicio de sesión único federado",
                 "Es un tipo de autenticación multifactor"
               ],
               explain: "El agente de Cloud Sync usa SCIM para aprovisionar y desaprovisionar usuarios y grupos; SCIM se está convirtiendo en el estándar de facto de aprovisionamiento."
@@ -796,9 +796,9 @@ Catalog.module("sc-900", {
             options: [
               "Simplified deployment with a lightweight provisioning agent",
               "High availability through multiple agents",
-              "Requires deploying a full synchronization server farm",
-              "Stores its provisioning configuration only on-premises",
-              "Doesn't support multi-forest environments"
+              "Requires a dedicated SQL Server database",
+              "Supports custom sync rules in a local console",
+              "Writes back all attributes to AD by default"
             ],
             answers: [0, 1],
             explain: "Cloud Sync offers simplified deployment, high availability through multiple agents and support for disconnected multi-forest environments; its configuration is stored in Entra ID.",
@@ -807,9 +807,9 @@ Catalog.module("sc-900", {
               options: [
                 "Implementación simplificada con un agente de aprovisionamiento liviano",
                 "Alta disponibilidad mediante varios agentes",
-                "Exige implementar una granja completa de servidores de sincronización",
-                "Guarda su configuración de aprovisionamiento solo en el entorno local",
-                "No admite entornos con varios bosques"
+                "Requiere una base de datos de SQL Server dedicada",
+                "Admite reglas de sincronización personalizadas en una consola local",
+                "Escribe de vuelta todos los atributos en AD de forma predeterminada"
               ],
               explain: "Cloud Sync ofrece implementación simplificada, alta disponibilidad con varios agentes y compatibilidad con entornos de varios bosques desconectados; su configuración se guarda en Entra ID."
             }
@@ -858,8 +858,8 @@ Catalog.module("sc-900", {
             options: [
               "With credentials your organization creates and stores for them in your tenant",
               "Through their home identity provider",
-              "With a shared password sent by email",
-              "They don't authenticate at all"
+              "With a Temporary Access Pass issued by your admin",
+              "Through Microsoft Entra Domain Services"
             ],
             answer: 1,
             explain: "No credentials are associated with business guests in your tenant; they authenticate at home and you check their eligibility.",
@@ -868,8 +868,8 @@ Catalog.module("sc-900", {
               options: [
                 "Con credenciales que su organización crea y guarda para ellos en su inquilino",
                 "Mediante su proveedor de identidades de origen",
-                "Con una contraseña compartida enviada por correo",
-                "No se autentican"
+                "Con un pase de acceso temporal que emite su administrador",
+                "Mediante Microsoft Entra Domain Services"
               ],
               explain: "Los invitados empresariales no tienen credenciales asociadas en su inquilino; se autentican en su origen y usted verifica que cumplan los requisitos."
             }
@@ -898,12 +898,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two features are part of the customer identity and access management (CIAM) capabilities in Microsoft Entra External ID?",
-            options: ["Self-service registration", "Customer account management", "Deploying domain controllers", "Group Policy for consumer devices", "A VPN gateway for each customer"],
+            options: ["Self-service registration", "Customer account management", "B2B direct connect with Teams shared channels", "Access reviews for partners", "Privileged Identity Management"],
             answers: [0, 1],
             explain: "CIAM includes self-service registration, personalized sign-in with SSO across social and enterprise identities, and customer account management.",
             es: {
               q: "¿Cuáles son dos características de las capacidades de administración de identidades y acceso de clientes (CIAM) de Microsoft Entra External ID?",
-              options: ["El registro de autoservicio", "La administración de cuentas de clientes", "La implementación de controladores de dominio", "La directiva de grupo para dispositivos de consumidores", "Una puerta de enlace VPN para cada cliente"],
+              options: ["El registro de autoservicio", "La administración de cuentas de clientes", "La conexión directa B2B con canales compartidos de Teams", "Las revisiones de acceso para partners", "Privileged Identity Management"],
               explain: "El CIAM incluye registro de autoservicio, inicio de sesión personalizado con SSO entre identidades sociales y empresariales, y administración de cuentas de clientes."
             }
           },
@@ -912,9 +912,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about tenant configurations.",
             parts: [
               "A ",
-              { options: ["workforce", "external", "sovereign"], answer: 0 },
+              { options: ["workforce", "external", "multitenant"], answer: 0 },
               " tenant configuration is for your employees and internal business apps, and you can invite ",
-              { options: ["business partners and guests", "only consumers", "no external users"], answer: 0 },
+              { options: ["business partners and guests", "only consumers", "only users from synchronized domains"], answer: 0 },
               " to it."
             ],
             explain: "Workforce tenants serve employees and internal resources and can include invited business guests; external tenants serve consumer and customer apps.",
@@ -922,9 +922,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre las configuraciones de inquilino.",
               parts: [
                 "Una configuración de inquilino de ",
-                { options: ["personal", "externo", "soberano"] },
+                { options: ["personal", "externo", "multiinquilino"] },
                 " es para sus empleados y aplicaciones internas, y se puede invitar a ",
-                { options: ["socios empresariales e invitados", "solo consumidores", "ningún usuario externo"] },
+                { options: ["socios empresariales e invitados", "solo consumidores", "solo usuarios de dominios sincronizados"] },
                 "."
               ],
               explain: "Los inquilinos de personal sirven a empleados y recursos internos y pueden incluir invitados empresariales; los externos sirven a aplicaciones para consumidores y clientes."

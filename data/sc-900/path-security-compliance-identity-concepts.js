@@ -73,13 +73,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "multi",
       topic: "Security and compliance concepts",
       q: "Which two are guiding principles of the Zero Trust model?",
-      options: ["Verify explicitly", "Assume breach", "Trust the internal network", "Defense in depth", "Castle-and-moat"],
+      options: ["Verify explicitly", "Assume breach", "Trust the internal network", "Defense in depth", "Verify once at the perimeter"],
       answers: [0, 1],
       explain: "The three principles are verify explicitly, use least privileged access and assume breach. Defense in depth is a separate layered strategy, and castle-and-moat is the model Zero Trust replaces.",
       es: {
         topic: "Conceptos de seguridad y cumplimiento",
         q: "¿Cuáles son dos principios rectores del modelo de Confianza cero?",
-        options: ["Verificar explícitamente", "Asumir que hay una vulneración", "Confiar en la red interna", "Defensa en profundidad", "Castillo y foso"],
+        options: ["Verificar explícitamente", "Asumir que hay una vulneración", "Confiar en la red interna", "Defensa en profundidad", "Verificar una vez en el perímetro"],
         explain: "Los tres principios son verificar explícitamente, usar el acceso con privilegios mínimos y asumir que hay una vulneración. La defensa en profundidad es otra estrategia por capas, y el castillo y foso es el modelo que Confianza cero reemplaza."
       }
     },
@@ -146,10 +146,10 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       topic: "Identity concepts",
       q: "Most of a company's employees work remotely, use SaaS applications and access resources from iPhones. Why isn't Active Directory Domain Services alone enough?",
       options: [
-        "AD DS can't store information about remote users",
+        "AD DS can't apply Group Policy to laptops",
         "It lacks native SaaS, mobile and modern protocol support",
-        "AD DS only works in the cloud",
-        "AD DS doesn't support Group Policy"
+        "AD DS can't store more than one domain",
+        "AD DS doesn't support Kerberos"
       ],
       answer: 1,
       explain: "These are AD DS's listed limitations for a modern environment, which Microsoft Entra ID was built to address.",
@@ -157,10 +157,10 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
         topic: "Conceptos de identidad",
         q: "La mayoría de los empleados de una empresa trabaja de forma remota, usa aplicaciones SaaS y accede a recursos desde iPhones. ¿Por qué Active Directory Domain Services por sí solo no alcanza?",
         options: [
-          "AD DS no puede guardar información de usuarios remotos",
+          "AD DS no puede aplicar directivas de grupo a laptops",
           "No admite de forma nativa SaaS, móviles ni protocolos modernos",
-          "AD DS solo funciona en la nube",
-          "AD DS no admite la directiva de grupo"
+          "AD DS no puede almacenar más de un dominio",
+          "AD DS no admite Kerberos"
         ],
         explain: "Son las limitaciones listadas de AD DS en un entorno moderno, que Microsoft Entra ID vino a resolver."
       }
@@ -237,13 +237,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "single",
       topic: "Security and compliance concepts",
       q: "Your company builds an app on a PaaS AI platform. Who decides which external connectors and data sources the app is allowed to use?",
-      options: ["The AI platform provider", "Your company", "The model's developers", "Nobody; connectors are enabled automatically"],
+      options: ["The AI platform provider", "Your company", "The model's developers", "The end users of the app"],
       answer: 1,
       explain: "Safe configuration, including which connectors or data sources are enabled, is the customer's responsibility in the AI shared responsibility model.",
       es: {
         topic: "Conceptos de seguridad y cumplimiento",
         q: "Su empresa desarrolla una aplicación sobre una plataforma de IA PaaS. ¿Quién decide qué conectores externos y orígenes de datos puede usar la aplicación?",
-        options: ["El proveedor de la plataforma de IA", "Su empresa", "Los desarrolladores del modelo", "Nadie; los conectores se habilitan automáticamente"],
+        options: ["El proveedor de la plataforma de IA", "Su empresa", "Los desarrolladores del modelo", "Los usuarios finales de la aplicación"],
         explain: "La configuración segura, incluidos los conectores u orígenes de datos habilitados, es responsabilidad del cliente en el modelo de responsabilidad compartida de la IA."
       }
     },
@@ -251,13 +251,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "single",
       topic: "Identity concepts",
       q: "An application needs to call an API to read a user's calendar on their behalf. Which security token does it need?",
-      options: ["An ID token", "An access token", "A SAML assertion about the user's device", "A salt"],
+      options: ["An ID token", "An access token", "A refresh token only", "A SAML assertion"],
       answer: 1,
       explain: "Access tokens grant an application permission to access a specific resource on the user's behalf. ID tokens only prove who the user is.",
       es: {
         topic: "Conceptos de identidad",
         q: "Una aplicación necesita llamar a una API para leer el calendario de un usuario en su nombre. ¿Qué token de seguridad necesita?",
-        options: ["Un token de identificador", "Un token de acceso", "Una aserción SAML sobre el dispositivo del usuario", "Una sal"],
+        options: ["Un token de identificador", "Un token de acceso", "Solo un token de actualización", "Una aserción SAML"],
         explain: "Los tokens de acceso conceden a una aplicación permiso para acceder a un recurso específico en nombre del usuario. Los tokens de identificador solo demuestran quién es el usuario."
       }
     },
@@ -304,13 +304,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "single",
       topic: "Security and compliance concepts",
       q: "Two users choose the same password, but the stored hashes are different. What explains this?",
-      options: ["Each password got a unique salt", "The passwords were encrypted with symmetric keys", "Hashing is non-deterministic", "The passwords were signed with each user's private key"],
+      options: ["Each password got a unique salt", "The passwords were encrypted with symmetric keys", "They used different hashing algorithms", "The passwords were signed with each user's private key"],
       answer: 0,
       explain: "Hashing is deterministic, so identical inputs give identical hashes. A unique salt per password makes the hashes differ and defeats precomputed tables.",
       es: {
         topic: "Conceptos de seguridad y cumplimiento",
         q: "Dos usuarios eligen la misma contraseña, pero los hashes guardados son distintos. ¿Qué lo explica?",
-        options: ["Cada contraseña recibió una sal única", "Las contraseñas se cifraron con claves simétricas", "El hash no es determinista", "Las contraseñas se firmaron con la clave privada de cada usuario"],
+        options: ["Cada contraseña recibió una sal única", "Las contraseñas se cifraron con claves simétricas", "Usaron algoritmos de hash distintos", "Las contraseñas se firmaron con la clave privada de cada usuario"],
         explain: "El hash es determinista, así que entradas idénticas dan hashes idénticos. Una sal única por contraseña hace que los hashes difieran y anula las tablas precalculadas."
       }
     },
@@ -384,9 +384,9 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       options: [
         "No native modern protocols for SaaS apps",
         "Remote sign-in typically requires a VPN",
-        "It can't use Group Policy",
-        "It doesn't support organizational units",
-        "It can't run on a domain controller"
+        "It can't authenticate users with Kerberos",
+        "It can't apply Group Policy",
+        "It can't be synchronized with Microsoft Entra ID"
       ],
       answers: [0, 1],
       explain: "Group Policy and OUs are core AD DS capabilities. Native SaaS and modern protocol support, mobile device management and VPN-free sign-in are its limitations.",
@@ -396,9 +396,9 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
         options: [
           "No admite de forma nativa protocolos modernos para SaaS",
           "El inicio de sesión remoto suele requerir una VPN",
-          "No puede usar la directiva de grupo",
-          "No admite unidades organizativas",
-          "No puede ejecutarse en un controlador de dominio"
+          "No puede autenticar usuarios con Kerberos",
+          "No puede aplicar directivas de grupo",
+          "No se puede sincronizar con Microsoft Entra ID"
         ],
         explain: "La directiva de grupo y las unidades organizativas son capacidades centrales de AD DS. La compatibilidad nativa con SaaS y protocolos modernos, la administración de dispositivos móviles y el inicio de sesión sin VPN son sus limitaciones."
       }
@@ -436,13 +436,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "single",
       topic: "Identity concepts",
       q: "An employee leaves the company. Because all apps use single sign-on through one identity provider, what does the administrator need to do to remove access?",
-      options: ["Disable the account in the IdP", "Delete the account in every app separately", "Change the admin password of each app the employee used", "Nothing; SSO access expires on its own"],
+      options: ["Disable the account in the IdP", "Delete the account in every app separately", "Change the admin password of each app the employee used", "Revoke the user's MFA methods"],
       answer: 0,
       explain: "With SSO, disabling one account in the IdP removes access to all connected apps, making offboarding faster and more reliable.",
       es: {
         topic: "Conceptos de identidad",
         q: "Un empleado deja la empresa. Como todas las aplicaciones usan inicio de sesión único con un proveedor de identidades, ¿qué debe hacer el administrador para quitarle el acceso?",
-        options: ["Deshabilitar la cuenta en el IdP", "Eliminar la cuenta en cada aplicación por separado", "Cambiar la contraseña de administrador de cada aplicación que usaba el empleado", "Nada; el acceso con SSO vence solo"],
+        options: ["Deshabilitar la cuenta en el IdP", "Eliminar la cuenta en cada aplicación por separado", "Cambiar la contraseña de administrador de cada aplicación que usaba el empleado", "Revocar los métodos de MFA del usuario"],
         explain: "Con el inicio de sesión único, deshabilitar una cuenta en el IdP quita el acceso a todas las aplicaciones conectadas, lo que agiliza y hace más fiable la baja."
       }
     },
@@ -477,7 +477,7 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
         "OpenID Connect handles ",
         { options: ["authentication", "authorization", "encryption"], answer: 0 },
         " and is built on top of ",
-        { options: ["OAuth 2.0", "Kerberos", "NTLM"], answer: 0 },
+        { options: ["OAuth 2.0", "SAML", "NTLM"], answer: 0 },
         ", which handles authorization."
       ],
       explain: "OIDC adds authentication on top of OAuth 2.0; SAML is common in enterprise and federation scenarios, and Kerberos and NTLM are AD DS protocols.",
@@ -488,7 +488,7 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
           "OpenID Connect se ocupa de la ",
           { options: ["autenticación", "autorización", "cifrado"] },
           " y se basa en ",
-          { options: ["OAuth 2.0", "Kerberos", "NTLM"] },
+          { options: ["OAuth 2.0", "SAML", "NTLM"] },
           ", que se ocupa de la autorización."
         ],
         explain: "OIDC agrega la autenticación sobre OAuth 2.0; SAML es habitual en escenarios empresariales y de federación, y Kerberos y NTLM son protocolos de AD DS."

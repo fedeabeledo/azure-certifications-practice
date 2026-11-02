@@ -11,13 +11,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Authentication and authorization",
         q: "A user signs in successfully with a password and MFA, but is then denied access to the payroll application because their role doesn't include that permission. Which process denied the access?",
-        options: ["Authentication", "Authorization", "Federation", "Auditing"],
+        options: ["Authentication", "Authorization", "Federation", "Accounting"],
         answer: 1,
         explain: "Authentication succeeded: the user's identity was confirmed. Authorization then evaluated the role's permissions and denied access.",
         es: {
           topic: "Autenticación y autorización",
           q: "Un usuario inicia sesión correctamente con contraseña y MFA, pero luego se le niega el acceso a la aplicación de sueldos porque su rol no incluye ese permiso. ¿Qué proceso negó el acceso?",
-          options: ["La autenticación", "La autorización", "La federación", "La auditoría"],
+          options: ["La autenticación", "La autorización", "La federación", "Contabilidad (accounting)"],
           explain: "La autenticación funcionó: se confirmó la identidad del usuario. Después, la autorización evaluó los permisos del rol y negó el acceso."
         }
       },
@@ -48,13 +48,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Directory services",
         q: "A company runs Active Directory Domain Services and adopts Microsoft Entra ID. It wants users to access both on-premises and cloud resources with the same credentials. What is this configuration called?",
-        options: ["Federation with a social identity provider", "Hybrid identity", "Multifactor authentication", "Single-factor authentication"],
+        options: ["Federation with a partner organization", "Hybrid identity", "Multifactor authentication", "Single-factor authentication"],
         answer: 1,
         explain: "Connecting AD DS and Microsoft Entra ID so identities are synchronized is hybrid identity.",
         es: {
           topic: "Servicios de directorio",
           q: "Una empresa usa Active Directory Domain Services y adopta Microsoft Entra ID. Quiere que los usuarios accedan a recursos locales y en la nube con las mismas credenciales. ¿Cómo se llama esta configuración?",
-          options: ["Federación con un proveedor de identidades social", "Identidad híbrida", "Autenticación multifactor", "Autenticación de un solo factor"],
+          options: ["Federación con una organización asociada", "Identidad híbrida", "Autenticación multifactor", "Autenticación de un solo factor"],
           explain: "Conectar AD DS y Microsoft Entra ID para que las identidades estén sincronizadas es identidad híbrida."
         }
       },
@@ -62,13 +62,13 @@ Catalog.module("sc-900", {
         type: "multi",
         topic: "Identity as the security perimeter",
         q: "Which two are types of identities that must be authenticated and authorized in a modern environment?",
-        options: ["Workload identities", "Agent identities", "Network perimeters", "Firewall rules", "VPN gateways"],
+        options: ["Workload identities", "Agent identities", "Distribution lists", "Shared mailboxes", "Network locations"],
         answers: [0, 1],
         explain: "The four identity types are human, device, workload and agent. Perimeters, firewalls and VPN gateways belong to the traditional network model.",
         es: {
           topic: "Identidad como perímetro de seguridad",
           q: "¿Cuáles son dos tipos de identidades que deben autenticarse y autorizarse en un entorno moderno?",
-          options: ["Identidades de carga de trabajo", "Identidades de agentes", "Perímetros de red", "Reglas de firewall", "Puertas de enlace VPN"],
+          options: ["Identidades de carga de trabajo", "Identidades de agentes", "Listas de distribución", "Buzones compartidos", "Ubicaciones de red"],
           explain: "Los cuatro tipos de identidad son humana, de dispositivo, de carga de trabajo y de agente. Los perímetros, los firewalls y las puertas de enlace VPN pertenecen al modelo de red tradicional."
         }
       },
@@ -142,8 +142,8 @@ Catalog.module("sc-900", {
         q: "A company wants to require MFA for every application from a single place instead of configuring each app separately. Which benefit of a central identity provider does this rely on?",
         options: [
           "Consistent policies across apps",
-          "Separate user accounts in each application",
-          "Password rules defined per application",
+          "Federation with each app's provider",
+          "Self-service password reset",
           "Local user stores inside each application, synchronized nightly"
         ],
         answer: 0,
@@ -153,8 +153,8 @@ Catalog.module("sc-900", {
           q: "Una empresa quiere exigir MFA en todas las aplicaciones desde un solo lugar, en vez de configurar cada una por separado. ¿En qué ventaja de un proveedor de identidades central se apoya?",
           options: [
             "Directivas coherentes en todas las aplicaciones",
-            "Cuentas de usuario separadas en cada aplicación",
-            "Reglas de contraseña definidas por aplicación",
+            "Federación con el proveedor de cada aplicación",
+            "Autoservicio de restablecimiento de contraseña",
             "Almacenes de usuarios locales en cada aplicación, sincronizados cada noche"
           ],
           explain: "Delegar la autenticación en un proveedor de identidades central permite aplicar directivas como la MFA a todas las aplicaciones desde un solo lugar."
@@ -164,13 +164,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Authentication and authorization",
         q: "Which of the following is an example of the authentication factor \"something you are\"?",
-        options: ["A PIN", "A smart card", "A facial scan", "A security question"],
+        options: ["A PIN", "A one-time code from an authenticator app", "A facial scan", "A security question"],
         answer: 2,
         explain: "\"Something you are\" is a biometric, such as a fingerprint or facial scan. A PIN and a security question are something you know; a smart card is something you have.",
         es: {
           q: "¿Cuál de los siguientes es un ejemplo del factor de autenticación \"algo que usted es\"?",
           topic: "Autenticación y autorización",
-          options: ["Un PIN", "Una tarjeta inteligente", "Un escaneo facial", "Una pregunta de seguridad"],
+          options: ["Un PIN", "Un código de un solo uso de una aplicación de autenticación", "Un escaneo facial", "Una pregunta de seguridad"],
           explain: "\"Algo que usted es\" es un dato biométrico, como una huella digital o un escaneo facial. Un PIN y una pregunta de seguridad son algo que usted sabe; una tarjeta inteligente es algo que usted tiene."
         }
       },
@@ -179,10 +179,10 @@ Catalog.module("sc-900", {
         topic: "Federation",
         q: "A consumer app lets customers sign in with their existing Microsoft or GitHub account instead of creating a new one. What is the main benefit of this federated sign-in?",
         options: [
-          "It removes the need for the app to trust any identity provider",
+          "It gives the app access to the user's mailbox",
           "It reduces sign-up friction, because users don't need a new account",
-          "It stores users' passwords inside the app",
-          "It replaces authorization in the app"
+          "It removes the need for MFA",
+          "It lets the app manage the user's account"
         ],
         answer: 1,
         explain: "Social sign-in is federation: the app trusts the social IdP to authenticate users, which reduces sign-up friction and improves adoption.",
@@ -190,10 +190,10 @@ Catalog.module("sc-900", {
           topic: "Federación",
           q: "Una aplicación para consumidores permite a los clientes iniciar sesión con su cuenta existente de Microsoft o GitHub en lugar de crear una nueva. ¿Cuál es la principal ventaja de este inicio de sesión federado?",
           options: [
-            "Elimina la necesidad de que la aplicación confíe en algún proveedor de identidades",
+            "Le da a la aplicación acceso al buzón del usuario",
             "Reduce la fricción del registro, porque los usuarios no necesitan una cuenta nueva",
-            "Guarda las contraseñas de los usuarios dentro de la aplicación",
-            "Reemplaza la autorización en la aplicación"
+            "Elimina la necesidad de MFA",
+            "Permite que la aplicación administre la cuenta del usuario"
           ],
           explain: "El inicio de sesión social es federación: la aplicación confía en el proveedor social para autenticar a los usuarios, lo que reduce la fricción del registro y mejora la adopción."
         }
@@ -205,8 +205,8 @@ Catalog.module("sc-900", {
         options: [
           "Is the request using the corporate VPN?",
           "Who or what is asking, and can it be trusted?",
-          "Which firewall rule allows this traffic?",
-          "Is the device located in the main office on a wired connection?"
+          "Is the traffic encrypted end to end?",
+          "Has the user signed in during the last 24 hours?"
         ],
         answer: 1,
         explain: "When work happens anywhere, identity becomes the central point of verification for every access decision.",
@@ -216,8 +216,8 @@ Catalog.module("sc-900", {
           options: [
             "¿La solicitud usa la VPN corporativa?",
             "¿Quién o qué la hace, y se puede confiar?",
-            "¿Qué regla de firewall permite este tráfico?",
-            "¿El dispositivo está en la oficina central con conexión por cable?"
+            "¿El tráfico está cifrado de extremo a extremo?",
+            "¿El usuario inició sesión en las últimas 24 horas?"
           ],
           explain: "Cuando se trabaja desde cualquier lugar, la identidad pasa a ser el punto central de verificación de cada decisión de acceso."
         }
@@ -313,7 +313,7 @@ Catalog.module("sc-900", {
               "Authorization first, then authentication",
               "Authentication first, then authorization",
               "Both at the same time, independently",
-              "Only one of them is needed per request"
+              "It depends on the identity provider"
             ],
             answer: 1,
             explain: "Authorization can only happen after successful authentication: you can't decide what someone may do without first confirming who they are.",
@@ -323,7 +323,7 @@ Catalog.module("sc-900", {
                 "Primero la autorización y después la autenticación",
                 "Primero la autenticación y después la autorización",
                 "Ambas al mismo tiempo, de forma independiente",
-                "Solo se necesita una de las dos por solicitud"
+                "Depende del proveedor de identidades"
               ],
               explain: "La autorización solo puede ocurrir después de una autenticación correcta: no se puede decidir qué puede hacer alguien sin confirmar antes quién es."
             }
@@ -331,12 +331,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "An analyst needs to read monthly reports but has no reason to edit or delete them. You grant read access only. Which principle are you applying?",
-            options: ["Single sign-on", "The principle of least privilege", "Multifactor authentication", "Federation"],
+            options: ["Separation of duties", "The principle of least privilege", "Defense in depth", "Assume breach"],
             answer: 1,
             explain: "Least privilege means granting only the minimum access needed to do the job, which limits damage from a compromised account.",
             es: {
               q: "Un analista necesita leer informes mensuales pero no tiene motivos para editarlos ni eliminarlos. Le concede solo acceso de lectura. ¿Qué principio está aplicando?",
-              options: ["Inicio de sesión único", "El principio de privilegios mínimos", "Autenticación multifactor", "Federación"],
+              options: ["La separación de funciones", "El principio de privilegios mínimos", "La defensa en profundidad", "Asumir la vulneración"],
               explain: "Privilegios mínimos significa conceder solo el acceso mínimo necesario para el trabajo, lo que limita el daño si la cuenta se compromete."
             }
           },
@@ -396,9 +396,9 @@ Catalog.module("sc-900", {
             options: [
               "Remote and hybrid work",
               "Business-critical workloads moving to cloud and SaaS applications",
-              "Company-managed devices used only inside the office",
-              "Applications running only on local servers",
-              "All employees working from a single office"
+              "Stronger perimeter firewalls",
+              "Wider use of VPN concentrators",
+              "Network segmentation inside offices"
             ],
             answers: [0, 1],
             explain: "Cloud and SaaS apps, remote work, personal devices, external users and IoT all moved access outside the boundary. The other options describe the old environment where perimeters worked.",
@@ -407,9 +407,9 @@ Catalog.module("sc-900", {
               options: [
                 "El trabajo remoto e híbrido",
                 "El paso de cargas de trabajo críticas a aplicaciones en la nube y SaaS",
-                "Los dispositivos administrados por la empresa usados solo dentro de la oficina",
-                "Las aplicaciones que se ejecutan solo en servidores locales",
-                "Que todos los empleados trabajen desde una única oficina"
+                "Firewalls perimetrales más fuertes",
+                "Un uso más amplio de concentradores VPN",
+                "La segmentación de red dentro de las oficinas"
               ],
               explain: "Las aplicaciones en la nube y SaaS, el trabajo remoto, los dispositivos personales, los usuarios externos e IoT sacaron el acceso fuera del límite. Las otras opciones describen el entorno antiguo donde los perímetros funcionaban."
             }
@@ -418,20 +418,20 @@ Catalog.module("sc-900", {
             type: "single",
             q: "Why is identity considered the new primary security perimeter?",
             options: [
-              "Because firewalls and VPNs are no longer available",
+              "Because firewalls can't inspect encrypted traffic",
               "Because the network no longer tells you who to trust",
-              "Because identities never get compromised",
-              "Because only human users access corporate resources, so protecting them protects everything"
+              "Because MFA removes the need for network controls",
+              "Because identities are easier to monitor than devices"
             ],
             answer: 1,
             explain: "With users, devices and apps connecting from anywhere, verifying and controlling identities becomes the fundamental security control.",
             es: {
               q: "¿Por qué se considera a la identidad el nuevo perímetro de seguridad principal?",
               options: [
-                "Porque los firewalls y las VPN ya no están disponibles",
+                "Porque los firewalls no pueden inspeccionar el tráfico cifrado",
                 "Porque la red ya no indica en quién confiar",
-                "Porque las identidades nunca se comprometen",
-                "Porque solo los usuarios humanos acceden a los recursos corporativos, así que protegerlos protege todo"
+                "Porque la MFA elimina la necesidad de controles de red",
+                "Porque las identidades son más fáciles de supervisar que los dispositivos"
               ],
               explain: "Con usuarios, dispositivos y aplicaciones que se conectan desde cualquier lugar, verificar y controlar las identidades pasa a ser el control de seguridad fundamental."
             }
@@ -488,8 +488,8 @@ Catalog.module("sc-900", {
             options: [
               "Only human identities need strong protection",
               "Workload identities need protection too",
-              "Device identities can't be compromised",
-              "The network perimeter should have stopped the attack, so the firewall was misconfigured"
+              "The database should have used encryption at rest",
+              "MFA would have stopped the attack"
             ],
             answer: 1,
             explain: "A compromised application credential can give an attacker the same access as a compromised user account. All identity types need protection.",
@@ -498,8 +498,8 @@ Catalog.module("sc-900", {
               options: [
                 "Solo las identidades humanas necesitan una protección fuerte",
                 "Las identidades de carga de trabajo también necesitan protección",
-                "Las identidades de dispositivo no se pueden comprometer",
-                "El perímetro de red debió detener el ataque, así que el firewall estaba mal configurado"
+                "La base de datos debería haber usado cifrado en reposo",
+                "La MFA habría detenido el ataque"
               ],
               explain: "Una credencial de aplicación comprometida puede darle a un atacante el mismo acceso que una cuenta de usuario comprometida. Todos los tipos de identidad necesitan protección."
             }
@@ -556,20 +556,20 @@ Catalog.module("sc-900", {
             type: "single",
             q: "What does an identity provider (IdP) do in modern authentication?",
             options: [
-              "Each application stores its own users and passwords and the IdP backs them up",
+              "It replicates passwords to each app",
               "It manages identities and authenticates for apps",
               "It encrypts data at rest for applications",
-              "It filters network traffic before it reaches applications, blocking unknown users"
+              "It stores each app's local user database"
             ],
             answer: 1,
             explain: "Applications delegate authentication and authorization to the IdP instead of managing their own accounts and policies.",
             es: {
               q: "¿Qué hace un proveedor de identidades (IdP) en la autenticación moderna?",
               options: [
-                "Cada aplicación guarda sus propios usuarios y contraseñas y el IdP los respalda",
+                "Replica las contraseñas en cada aplicación",
                 "Administra identidades y autentica para las aplicaciones",
                 "Cifra los datos en reposo de las aplicaciones",
-                "Filtra el tráfico de red antes de que llegue a las aplicaciones y bloquea usuarios desconocidos"
+                "Almacena la base de usuarios local de cada aplicación"
               ],
               explain: "Las aplicaciones delegan la autenticación y la autorización en el IdP en lugar de administrar sus propias cuentas y directivas."
             }
@@ -650,7 +650,7 @@ Catalog.module("sc-900", {
             options: [
               "Fragmented credentials that lead to password reuse",
               "Inconsistent security policies across applications",
-              "Single sign-on across all applications",
+              "Federation between applications",
               "Centralized monitoring of sign-in activity",
               "Consistent MFA requirements"
             ],
@@ -661,7 +661,7 @@ Catalog.module("sc-900", {
               options: [
                 "Credenciales fragmentadas que llevan a reutilizar contraseñas",
                 "Directivas de seguridad incoherentes entre aplicaciones",
-                "Inicio de sesión único en todas las aplicaciones",
+                "La federación entre aplicaciones",
                 "Supervisión centralizada de la actividad de inicio de sesión",
                 "Requisitos de MFA coherentes"
               ],
@@ -674,8 +674,8 @@ Catalog.module("sc-900", {
             options: [
               "To force users to change their passwords",
               "So that a stolen token can't be used indefinitely",
-              "To reduce the size of the token",
-              "Because applications can't validate long-lived tokens"
+              "So the identity provider can rotate signing keys",
+              "So users must reauthenticate with MFA every time"
             ],
             answer: 1,
             explain: "Tokens expire after a set period, which limits how long a stolen token is useful.",
@@ -684,8 +684,8 @@ Catalog.module("sc-900", {
               options: [
                 "Para obligar a los usuarios a cambiar la contraseña",
                 "Para que un token robado no se pueda usar indefinidamente",
-                "Para reducir el tamaño del token",
-                "Porque las aplicaciones no pueden validar tokens de larga duración"
+                "Para que el proveedor de identidades pueda rotar las claves de firma",
+                "Para que los usuarios deban volver a autenticarse con MFA cada vez"
               ],
               explain: "Los tokens vencen después de un período fijo, lo que limita el tiempo en que un token robado resulta útil."
             }
@@ -721,9 +721,9 @@ Catalog.module("sc-900", {
             q: "What is a directory service?",
             options: [
               "Software that stores and serves data about users, devices and groups",
-              "A firewall that controls which users can reach the network",
-              "A web portal where employees search company documents",
-              "A protocol for encrypting data in transit"
+              "An identity provider that issues tokens for SaaS apps",
+              "A database that stores application data",
+              "A protocol for federating organizations"
             ],
             answer: 0,
             explain: "A directory is a structured repository of objects; a directory service stores that data and answers questions like who a user is and what they can access.",
@@ -731,9 +731,9 @@ Catalog.module("sc-900", {
               q: "¿Qué es un servicio de directorio?",
               options: [
                 "Software que guarda y ofrece datos de usuarios, dispositivos y grupos",
-                "Un firewall que controla qué usuarios pueden llegar a la red",
-                "Un portal web donde los empleados buscan documentos internos",
-                "Un protocolo para cifrar datos en tránsito"
+                "Un proveedor de identidades que emite tokens para aplicaciones SaaS",
+                "Una base de datos que almacena los datos de las aplicaciones",
+                "Un protocolo para federar organizaciones"
               ],
               explain: "Un directorio es un repositorio estructurado de objetos; un servicio de directorio almacena esos datos y responde preguntas como quién es un usuario y a qué puede acceder."
             }
@@ -758,7 +758,7 @@ Catalog.module("sc-900", {
               "Organizing users and computers into organizational units (OUs)",
               "Natively authenticating users to SaaS applications with OpenID Connect",
               "Natively managing iOS and Android devices",
-              "Authenticating remote users directly without a VPN"
+              "Single sign-on to SaaS apps through SAML by default"
             ],
             answers: [0, 1],
             explain: "Group Policy and OUs are core AD DS capabilities. Native SaaS and modern protocols, mobile device management and VPN-free remote sign-in are its listed limitations.",
@@ -769,7 +769,7 @@ Catalog.module("sc-900", {
                 "Organizar usuarios y equipos en unidades organizativas (OU)",
                 "Autenticar de forma nativa a usuarios en aplicaciones SaaS con OpenID Connect",
                 "Administrar de forma nativa dispositivos iOS y Android",
-                "Autenticar directamente a usuarios remotos sin VPN"
+                "Inicio de sesión único en aplicaciones SaaS mediante SAML de forma predeterminada"
               ],
               explain: "La directiva de grupo y las OU son capacidades centrales de AD DS. El soporte nativo de SaaS y protocolos modernos, la administración de móviles y el inicio de sesión remoto sin VPN son sus limitaciones listadas."
             }
@@ -861,12 +861,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Two companies partner on a project. Employees of each company need to access a shared workspace using their own company credentials, without the administrators creating individual guest accounts. What should they set up?",
-            options: ["Federation between their identity providers", "A shared username and password", "Hybrid identity", "A site-to-site VPN between the offices with shared network credentials"],
+            options: ["Federation between their identity providers", "A shared username and password", "Hybrid identity", "Guest accounts with new passwords in each company"],
             answer: 0,
             explain: "B2B federation lets users authenticate with their own organization's identity provider; administrators configure trust instead of creating guest accounts.",
             es: {
               q: "Dos empresas se asocian en un proyecto. Los empleados de cada una necesitan acceder a un espacio de trabajo compartido con las credenciales de su propia empresa, sin que los administradores creen cuentas de invitado individuales. ¿Qué deben configurar?",
-              options: ["Federación entre sus proveedores de identidades", "Un nombre de usuario y una contraseña compartidos", "Identidad híbrida", "Una VPN de sitio a sitio entre las oficinas con credenciales de red compartidas"],
+              options: ["Federación entre sus proveedores de identidades", "Un nombre de usuario y una contraseña compartidos", "Identidad híbrida", "Cuentas de invitado con contraseñas nuevas en cada empresa"],
               explain: "La federación B2B permite que los usuarios se autentiquen con el proveedor de identidades de su propia organización; los administradores configuran la confianza en lugar de crear cuentas de invitado."
             }
           },
@@ -876,8 +876,8 @@ Catalog.module("sc-900", {
             options: [
               "Yes, trust is always bidirectional",
               "No, B must also trust A",
-              "Yes, but only for read access",
-              "No, federation never allows access between different organizations, only between domains"
+              "Yes, if both use the same protocol",
+              "No, unless A uses hybrid identity"
             ],
             answer: 1,
             explain: "Trust relationships aren't automatically bidirectional. For access in both directions, a two-way trust must be configured explicitly.",
@@ -886,8 +886,8 @@ Catalog.module("sc-900", {
               options: [
                 "Sí, la confianza siempre es bidireccional",
                 "No, B también debe confiar en A",
-                "Sí, pero solo con acceso de lectura",
-                "No, la federación nunca permite el acceso entre organizaciones distintas, solo entre dominios"
+                "Sí, si ambas usan el mismo protocolo",
+                "No, salvo que A use identidad híbrida"
               ],
               explain: "Las relaciones de confianza no son bidireccionales automáticamente. Para el acceso en ambos sentidos se debe configurar explícitamente una confianza bidireccional."
             }
@@ -907,12 +907,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Which Microsoft server role lets on-premises Active Directory users access cloud applications by authenticating against an on-premises server that issues tokens the cloud services accept?",
-            options: ["Active Directory Domain Services", "Active Directory Federation Services (AD FS)", "Active Directory Certificate Services (AD CS)", "A domain controller"],
+            options: ["Microsoft Entra Connect Sync", "Active Directory Federation Services (AD FS)", "Active Directory Certificate Services (AD CS)", "Microsoft Entra Domain Services"],
             answer: 1,
             explain: "AD FS shares identity information with external services securely, extending on-premises authentication to cloud applications.",
             es: {
               q: "¿Qué rol de servidor de Microsoft permite que los usuarios de Active Directory local accedan a aplicaciones en la nube autenticándose en un servidor local que emite tokens que aceptan los servicios en la nube?",
-              options: ["Active Directory Domain Services", "Servicios de federación de Active Directory (AD FS)", "Servicios de certificados de Active Directory (AD CS)", "Un controlador de dominio"],
+              options: ["Microsoft Entra Connect Sync", "Servicios de federación de Active Directory (AD FS)", "Servicios de certificados de Active Directory (AD CS)", "Microsoft Entra Domain Services"],
               explain: "AD FS comparte información de identidad con servicios externos de forma segura y extiende la autenticación local a las aplicaciones en la nube."
             }
           },
@@ -942,12 +942,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are federation scenarios described in the unit?",
-            options: ["Business-to-business (B2B) collaboration", "Sign-in with social identity providers", "Salting stored passwords", "Network segmentation", "Group Policy deployment"],
+            options: ["Business-to-business (B2B) collaboration", "Sign-in with social identity providers", "Hybrid identity synchronization", "Single sign-on within one tenant", "Directory replication between DCs"],
             answers: [0, 1],
             explain: "The unit covers B2B collaboration, social and consumer identity providers, and enterprise integration with on-premises identity through AD FS.",
             es: {
               q: "¿Cuáles son dos escenarios de federación que describe la unidad?",
-              options: ["Colaboración entre empresas (B2B)", "Inicio de sesión con proveedores de identidades sociales", "Agregar sal a las contraseñas almacenadas", "Segmentación de red", "Implementación de directivas de grupo"],
+              options: ["Colaboración entre empresas (B2B)", "Inicio de sesión con proveedores de identidades sociales", "La sincronización de identidad híbrida", "El inicio de sesión único dentro de un inquilino", "La replicación del directorio entre controladores de dominio"],
               explain: "La unidad cubre la colaboración B2B, los proveedores de identidades sociales y de consumidores, y la integración empresarial con la identidad local mediante AD FS."
             }
           },

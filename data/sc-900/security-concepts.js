@@ -11,13 +11,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Shared responsibility",
         q: "An attacker compromises an employee's laptop and uses it to access cloud services as that employee. Under the shared responsibility model, who is responsible for securing that laptop?",
-        options: ["The cloud provider, if the service is SaaS", "The customer, in every service model", "The cloud provider, if the service is PaaS", "The hardware manufacturer"],
+        options: ["The cloud provider, if the service is SaaS", "The customer, in every service model", "The cloud provider, if the service is PaaS", "The cloud provider, if the service is IaaS"],
         answer: 1,
         explain: "Endpoints that connect to your cloud services are always yours to secure, whatever the service model.",
         es: {
           topic: "Responsabilidad compartida",
           q: "Un atacante compromete la laptop de un empleado y la usa para acceder a servicios en la nube como ese empleado. Según el modelo de responsabilidad compartida, ¿quién es responsable de proteger esa laptop?",
-          options: ["El proveedor de nube, si el servicio es SaaS", "El cliente, en todos los modelos de servicio", "El proveedor de nube, si el servicio es PaaS", "El fabricante del hardware"],
+          options: ["El proveedor de nube, si el servicio es SaaS", "El cliente, en todos los modelos de servicio", "El proveedor de nube, si el servicio es PaaS", "El proveedor de nube, si el servicio es IaaS"],
           explain: "Los dispositivos que se conectan a sus servicios en la nube siempre son responsabilidad suya, sin importar el modelo de servicio."
         }
       },
@@ -69,7 +69,7 @@ Catalog.module("sc-900", {
           "Hashing is a one-way process",
           "Hashing requires a private key",
           "A hash can be decrypted with the right key",
-          "Hashing makes data in transit readable only by the intended recipient"
+          "Two different inputs can never produce the same hash"
         ],
         answers: [0, 1],
         explain: "Hashing is deterministic and one-way, and it doesn't use keys. Keeping data in transit private is the job of encryption, such as TLS.",
@@ -81,7 +81,7 @@ Catalog.module("sc-900", {
             "El hash es un proceso unidireccional",
             "El hash requiere una clave privada",
             "Un hash se puede descifrar con la clave correcta",
-            "El hash hace que los datos en tránsito solo sean legibles para el destinatario"
+            "Dos entradas distintas nunca pueden producir el mismo hash"
           ],
           explain: "El hash es determinista y unidireccional, y no usa claves. Mantener privados los datos en tránsito es tarea del cifrado, como TLS."
         }
@@ -130,13 +130,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Encryption and hashing",
         q: "Which type of device is designed specifically to store and protect cryptographic keys in tamper-resistant hardware?",
-        options: ["A network security group (NSG)", "A hardware security module (HSM)", "A domain controller", "A SIEM"],
+        options: ["A software key store such as Key Vault Standard", "A hardware security module (HSM)", "A certificate authority (CA) server", "A password vault in the cloud"],
         answer: 1,
         explain: "HSMs are specialized, tamper-resistant devices for storing and protecting cryptographic keys.",
         es: {
           topic: "Cifrado y hash",
           q: "¿Qué tipo de dispositivo está diseñado específicamente para almacenar y proteger claves criptográficas en hardware resistente a manipulaciones?",
-          options: ["Un grupo de seguridad de red (NSG)", "Un módulo de seguridad de hardware (HSM)", "Un controlador de dominio", "Un SIEM"],
+          options: ["Un almacén de claves por software, como Key Vault Estándar", "Un módulo de seguridad de hardware (HSM)", "Un servidor de entidad de certificación (CA)", "Un almacén de contraseñas en la nube"],
           explain: "Los HSM son dispositivos especializados y resistentes a manipulaciones para almacenar y proteger claves criptográficas."
         }
       },
@@ -196,13 +196,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Zero Trust",
         q: "A security team segments access, encrypts data end to end and deploys analytics so it can detect intrusions quickly and limit the damage. Which Zero Trust principle drives these measures?",
-        options: ["Verify explicitly", "Use least privileged access", "Assume breach", "Trust the internal network"],
+        options: ["Verify explicitly", "Use least privileged access", "Assume breach", "Defense in depth"],
         answer: 2,
         explain: "Assume breach means designing as if an attacker will get in: segmentation, end-to-end encryption and monitoring limit and expose the damage.",
         es: {
           topic: "Confianza cero",
           q: "Un equipo de seguridad segmenta el acceso, cifra los datos de extremo a extremo e implementa análisis para detectar intrusiones rápido y limitar el daño. ¿Qué principio de Confianza cero impulsa estas medidas?",
-          options: ["Verificar explícitamente", "Usar el acceso con privilegios mínimos", "Asumir que hay una vulneración", "Confiar en la red interna"],
+          options: ["Verificar explícitamente", "Usar el acceso con privilegios mínimos", "Asumir que hay una vulneración", "Defensa en profundidad"],
           explain: "Asumir que hay una vulneración significa diseñar como si un atacante fuera a entrar: la segmentación, el cifrado de extremo a extremo y la supervisión limitan y revelan el daño."
         }
       },
@@ -250,7 +250,7 @@ Catalog.module("sc-900", {
             options: [
               "Securing endpoints",
               "Your tenant's configuration choices",
-              "Securing the physical datacenter where your workloads run",
+              "Securing the network controls of the platform",
               "Securing the host machines",
               "Patching the operating system that hosts your PaaS application"
             ],
@@ -261,7 +261,7 @@ Catalog.module("sc-900", {
               options: [
                 "Proteger los dispositivos",
                 "La configuración de su inquilino",
-                "Proteger el centro de datos físico donde corren sus cargas",
+                "Proteger los controles de red de la plataforma",
                 "Proteger los equipos host",
                 "Aplicar parches al sistema operativo que hospeda su aplicación PaaS"
               ],
@@ -274,8 +274,8 @@ Catalog.module("sc-900", {
             options: [
               "Prompt injection; the customer mitigates it",
               "Prompt injection; only the AI provider can mitigate it, since it controls the model",
-              "A rainbow table attack; the customer mitigates it with salting",
-              "A DDoS attack; the provider mitigates it at the perimeter"
+              "Data poisoning; the customer mitigates it",
+              "Jailbreak; only the AI provider can mitigate it"
             ],
             answer: 0,
             explain: "Prompt injection is an AI-specific risk that the customer addresses with input validation, access controls and monitoring, even when the provider secures the platform.",
@@ -284,8 +284,8 @@ Catalog.module("sc-900", {
               options: [
                 "Inyección de prompts; la mitiga el cliente",
                 "Inyección de prompts; solo el proveedor de IA puede mitigarla, porque controla el modelo",
-                "Un ataque con tablas arcoíris; lo mitiga el cliente agregando sal",
-                "Un ataque DDoS; lo mitiga el proveedor en el perímetro"
+                "Envenenamiento de datos; lo mitiga el cliente",
+                "Jailbreak; solo el proveedor de IA puede mitigarlo"
               ],
               explain: "La inyección de prompts es un riesgo propio de la IA que el cliente aborda con validación de entradas, controles de acceso y supervisión, aunque el proveedor proteja la plataforma."
             }
@@ -339,12 +339,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A storage account is misconfigured and exposes sensitive data, even though the cloud platform itself is properly secured. Who is responsible for this exposure?",
-            options: ["The cloud provider", "The customer", "Both equally, because storage is shared", "Nobody, because the platform is secure"],
+            options: ["The cloud provider", "The customer", "Both equally, because storage is shared", "The cloud provider, because it hosts the storage service"],
             answer: 1,
             explain: "Configuration choices in your tenant are always your responsibility. A misconfiguration can expose data even on a properly secured platform.",
             es: {
               q: "Una cuenta de almacenamiento está mal configurada y expone datos confidenciales, aunque la plataforma en la nube está bien protegida. ¿Quién es responsable de esta exposición?",
-              options: ["El proveedor de nube", "El cliente", "Ambos por igual, porque el almacenamiento es compartido", "Nadie, porque la plataforma es segura"],
+              options: ["El proveedor de nube", "El cliente", "Ambos por igual, porque el almacenamiento es compartido", "El proveedor de nube, porque hospeda el servicio de almacenamiento"],
               explain: "Las decisiones de configuración de su inquilino siempre son responsabilidad suya. Una mala configuración puede exponer datos incluso en una plataforma bien protegida."
             }
           },
@@ -568,12 +568,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are among the seven foundational pillars of Zero Trust?",
-            options: ["Devices", "Applications", "Perimeter firewalls", "Castle-and-moat", "Physical security"],
+            options: ["Devices", "Applications", "Perimeter firewalls", "Encryption", "Identity governance"],
             answers: [0, 1],
             explain: "The pillars are identities, devices, applications, data, infrastructure, networks, and visibility, automation and orchestration. Castle-and-moat is the traditional model Zero Trust replaces.",
             es: {
               q: "¿Cuáles son dos de los siete pilares fundamentales de Confianza cero?",
-              options: ["Dispositivos", "Aplicaciones", "Firewalls perimetrales", "Castillo y foso", "Seguridad física"],
+              options: ["Dispositivos", "Aplicaciones", "Firewalls perimetrales", "Cifrado", "Gobernanza de identidades"],
               explain: "Los pilares son identidades, dispositivos, aplicaciones, datos, infraestructura, redes, y visibilidad, automatización y orquestación. El modelo de castillo y foso es el tradicional que Confianza cero reemplaza."
             }
           },
@@ -582,9 +582,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about the visibility, automation, and orchestration pillar.",
             parts: [
               "A ",
-              { options: ["SOAR", "SIEM", "VPN"], answer: 1 },
+              { options: ["SOAR", "SIEM", "XDR"], answer: 1 },
               " ingests and correlates signals across all pillars to detect threats, while a ",
-              { options: ["SIEM", "SOAR", "NSG"], answer: 1 },
+              { options: ["SIEM", "SOAR", "CSPM"], answer: 1 },
               " uses those detections to trigger automated response playbooks."
             ],
             explain: "SIEM detects by correlating signals; SOAR responds by running automated playbooks.",
@@ -592,9 +592,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre el pilar de visibilidad, automatización y orquestación.",
               parts: [
                 "Un ",
-                { options: ["SOAR", "SIEM", "VPN"] },
+                { options: ["SOAR", "SIEM", "XDR"] },
                 " ingiere y correlaciona señales de todos los pilares para detectar amenazas, mientras que un ",
-                { options: ["SIEM", "SOAR", "NSG"] },
+                { options: ["SIEM", "SOAR", "CSPM"] },
                 " usa esas detecciones para iniciar guías de respuesta automatizadas."
               ],
               explain: "El SIEM detecta correlacionando señales; el SOAR responde ejecutando guías automatizadas."
@@ -616,20 +616,20 @@ Catalog.module("sc-900", {
             type: "single",
             q: "Which statement best describes Zero Trust?",
             options: [
-              "A firewall product that blocks untrusted traffic",
+              "A security product that replaces firewalls and VPNs",
               "A strategy that verifies every access request",
               "A model that trusts everything inside the corporate network and verifies only remote access",
-              "A regulation that defines minimum security standards"
+              "A layered set of controls around the network perimeter"
             ],
             answer: 1,
             explain: "Zero Trust is a strategy, not a product: trust no one, verify everything. Trusting the internal network is the castle-and-moat model it replaces.",
             es: {
               q: "¿Qué afirmación describe mejor Confianza cero?",
               options: [
-                "Un producto de firewall que bloquea el tráfico no confiable",
+                "Un producto de seguridad que reemplaza los firewalls y las VPN",
                 "Una estrategia que verifica cada solicitud de acceso",
                 "Un modelo que confía en todo lo que está dentro de la red corporativa y verifica solo el acceso remoto",
-                "Una regulación que define estándares mínimos de seguridad"
+                "Un conjunto de controles en capas alrededor del perímetro de red"
               ],
               explain: "Confianza cero es una estrategia, no un producto: no confiar en nadie, verificarlo todo. Confiar en la red interna es el modelo de castillo y foso que reemplaza."
             }
@@ -698,12 +698,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "In a multitenant environment, a company needs to protect data while it's being processed in memory, so that not even the operating system or hypervisor can see it. What provides this?",
-            options: ["TLS", "Encryption at rest", "Confidential computing", "Salting"],
+            options: ["TLS", "Encryption at rest", "Confidential computing", "Encryption in transit with IPsec"],
             answer: 2,
             explain: "Data in use is protected by confidential computing, which processes data inside protected enclaves. TLS protects data in transit; encryption at rest protects stored data.",
             es: {
               q: "En un entorno multiinquilino, una empresa necesita proteger los datos mientras se procesan en memoria, de modo que ni el sistema operativo ni el hipervisor puedan verlos. ¿Qué lo permite?",
-              options: ["TLS", "El cifrado en reposo", "La computación confidencial", "El agregado de sal"],
+              options: ["TLS", "El cifrado en reposo", "La computación confidencial", "El cifrado en tránsito con IPsec"],
               explain: "Los datos en uso se protegen con computación confidencial, que los procesa dentro de enclaves protegidos. TLS protege los datos en tránsito; el cifrado en reposo protege los datos almacenados."
             }
           },
@@ -749,7 +749,7 @@ Catalog.module("sc-900", {
               "To make the hash reversible for administrators",
               "So identical passwords get different hashes",
               "To encrypt passwords while they travel over the network to the authentication server",
-              "To shorten the hash so it takes less storage"
+              "So the hash can be compared faster during sign-in"
             ],
             answer: 1,
             explain: "A unique random salt per password means two users with the same password get different hashes, so precomputed lookup tables stop working.",
@@ -759,7 +759,7 @@ Catalog.module("sc-900", {
                 "Para que los administradores puedan revertir el hash",
                 "Para que contraseñas iguales tengan hashes distintos",
                 "Para cifrar las contraseñas mientras viajan por la red hasta el servidor de autenticación",
-                "Para acortar el hash y que ocupe menos espacio"
+                "Para que el hash se pueda comparar más rápido al iniciar sesión"
               ],
               explain: "Una sal única y aleatoria por contraseña hace que dos usuarios con la misma contraseña tengan hashes distintos, así que las tablas de búsqueda precalculadas dejan de funcionar."
             }
@@ -771,8 +771,8 @@ Catalog.module("sc-900", {
               "Store keys separately from the data they protect",
               "Rotate keys regularly",
               "Store keys alongside the encrypted data for faster access",
-              "Give every administrator access to all decryption keys",
-              "Keep the same key indefinitely to avoid data loss"
+              "Use a single master key for all workloads to simplify rotation",
+              "Back up keys in the same storage account as the data"
             ],
             answers: [0, 1],
             explain: "Separate storage, HSMs, regular rotation and tight least-privilege access to keys are the listed practices.",
@@ -782,8 +782,8 @@ Catalog.module("sc-900", {
                 "Almacenar las claves separadas de los datos que protegen",
                 "Rotar las claves con regularidad",
                 "Almacenar las claves junto a los datos cifrados para acceder más rápido",
-                "Dar a todos los administradores acceso a todas las claves de descifrado",
-                "Mantener la misma clave indefinidamente para evitar pérdida de datos"
+                "Usar una única clave maestra para todas las cargas de trabajo y simplificar la rotación",
+                "Guardar copias de las claves en la misma cuenta de almacenamiento que los datos"
               ],
               explain: "El almacenamiento separado, los HSM, la rotación periódica y un acceso estricto con privilegios mínimos son las prácticas listadas."
             }
@@ -914,8 +914,8 @@ Catalog.module("sc-900", {
             options: [
               "It's fully secure, because compliance and security are the same",
               "It can still have significant vulnerabilities",
-              "It no longer needs risk management",
-              "It no longer needs to track where its data is stored, because the regulator already did"
+              "It's protected against insider threats",
+              "Its security controls are already optimized"
             ],
             answer: 1,
             explain: "Compliance is not the same as security. Doing only the regulatory minimum can leave real vulnerabilities.",
@@ -924,8 +924,8 @@ Catalog.module("sc-900", {
               options: [
                 "Es completamente segura, porque cumplimiento y seguridad son lo mismo",
                 "Puede seguir teniendo vulnerabilidades importantes",
-                "Ya no necesita gestionar riesgos",
-                "Ya no necesita saber dónde se almacenan sus datos, porque eso ya lo verificó el regulador"
+                "Está protegida frente a amenazas internas",
+                "Sus controles de seguridad ya están optimizados"
               ],
               explain: "El cumplimiento no es lo mismo que la seguridad. Hacer solo el mínimo regulatorio puede dejar vulnerabilidades reales."
             }
