@@ -387,8 +387,8 @@ Catalog.module("az-900", {
               options: [
                 "Porque las conexiones posteriores se basan en la autenticación inicial",
                 "Porque el inicio de sesión único guarda una contraseña distinta por aplicación",
-                "Porque el inicio de sesión único no se puede combinar con MFA",
-                "Porque el inicio de sesión único solo funciona con aplicaciones locales"
+                "Porque los tokens de SSO no se pueden revocar",
+                "Porque el SSO reemplaza la MFA después del primer inicio de sesión"
               ],
               explain: "Todo el acceso posterior depende del primer inicio de sesión, así que su solidez determina la seguridad del inicio de sesión único."
             }

@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Resource Manager and templates",
         q: "A team wants to deploy identical dev, test and production environments from a single definition that declares the desired end state. What should it use?",
-        options: ["ARM templates or Bicep", "Azure Cloud Shell sessions", "The Azure portal dashboards", "Azure Arc custom locations"],
+        options: ["ARM templates or Bicep", "Azure CLI scripts run manually", "Azure PowerShell in Cloud Shell", "Azure Arc"],
         answer: 0,
         explain: "Templates are declarative infrastructure as code that produce repeatable, consistent deployments.",
         es: {
           topic: "Azure Resource Manager y plantillas",
           q: "Un equipo quiere implementar entornos idénticos de desarrollo, pruebas y producción a partir de una única definición que declare el estado final deseado. ¿Qué debe usar?",
-          options: ["Plantillas ARM o Bicep", "Sesiones de Azure Cloud Shell", "Los paneles de Azure Portal", "Las ubicaciones personalizadas de Azure Arc"],
+          options: ["Plantillas ARM o Bicep", "Scripts de la CLI de Azure ejecutados a mano", "Azure PowerShell en Cloud Shell", "Azure Arc"],
           explain: "Las plantillas son infraestructura como código declarativa que produce implementaciones repetibles y coherentes."
         }
       },
@@ -50,13 +50,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Arc",
         q: "A company wants to apply Azure Policy and track inventory for servers in its own datacenter and Kubernetes clusters in another cloud, all from Azure. What should it use?",
-        options: ["Azure Arc", "Azure Resource Manager templates", "Azure Cloud Shell", "Microsoft Purview"],
+        options: ["Azure Arc", "Azure Resource Manager templates", "Azure Lighthouse", "Azure Migrate"],
         answer: 0,
         explain: "Azure Arc projects non-Azure resources into Azure Resource Manager so they can be governed and managed like Azure resources.",
         es: {
           topic: "Azure Arc",
           q: "Una empresa quiere aplicar Azure Policy y llevar el inventario de servidores de su centro de datos y de clústeres de Kubernetes en otra nube, todo desde Azure. ¿Qué debe usar?",
-          options: ["Azure Arc", "Plantillas de Azure Resource Manager", "Azure Cloud Shell", "Microsoft Purview"],
+          options: ["Azure Arc", "Plantillas de Azure Resource Manager", "Azure Lighthouse", "Azure Migrate"],
           explain: "Azure Arc proyecta recursos que no son de Azure en Azure Resource Manager para gobernarlos y administrarlos como recursos de Azure."
         }
       },
@@ -67,9 +67,9 @@ Catalog.module("az-900", {
         options: [
           "Defining dependencies so resources deploy in the correct order",
           "Native RBAC integration for access control across services",
-          "Automatic cost reduction of every deployed resource",
-          "Replacing the need for authentication on requests",
-          "Hosting virtual machines outside Azure"
+          "Running workloads outside Azure",
+          "Replacing the need for RBAC",
+          "Estimating costs before deployment"
         ],
         answers: [0, 1],
         explain: "Resource Manager handles dependencies, group deployment, tags and natively integrated RBAC; it authenticates and authorizes every request.",
@@ -79,9 +79,9 @@ Catalog.module("az-900", {
           options: [
             "Definir dependencias para que los recursos se implementen en el orden correcto",
             "La integración nativa con RBAC para controlar el acceso a todos los servicios",
-            "La reducción automática del costo de cada recurso implementado",
-            "Eliminar la necesidad de autenticar las solicitudes",
-            "Hospedar máquinas virtuales fuera de Azure"
+            "Ejecutar cargas de trabajo fuera de Azure",
+            "Eliminar la necesidad de RBAC",
+            "Estimar costos antes de implementar"
           ],
           explain: "Resource Manager maneja dependencias, implementación en grupo, etiquetas y RBAC integrado de forma nativa; autentica y autoriza cada solicitud."
         }
@@ -107,9 +107,9 @@ Catalog.module("az-900", {
         q: "Complete the statement about infrastructure as code.",
         parts: [
           "ARM templates describe resources in declarative ",
-          { options: ["JSON", "Bash", "YAML pipelines"], answer: 0 },
+          { options: ["JSON", "YAML", "XML"], answer: 0 },
           ", while ",
-          { options: ["Bicep", "Azure PowerShell", "Azure Arc"], answer: 0 },
+          { options: ["Bicep", "Azure Resource Graph", "Azure CLI"], answer: 0 },
           " is a declarative language with simpler, more concise syntax that also deploys through ARM."
         ],
         explain: "ARM templates are JSON; Bicep is a simpler declarative language that deploys through Azure Resource Manager.",
@@ -118,9 +118,9 @@ Catalog.module("az-900", {
           q: "Complete la afirmación sobre la infraestructura como código.",
           parts: [
             "Las plantillas ARM describen los recursos en ",
-            { options: ["JSON", "Bash", "canalizaciones YAML"] },
+            { options: ["JSON", "YAML", "XML"] },
             " declarativo, mientras que ",
-            { options: ["Bicep", "Azure PowerShell", "Azure Arc"] },
+            { options: ["Bicep", "Azure Resource Graph", "CLI de Azure"] },
             " es un lenguaje declarativo con sintaxis más simple y concisa que también implementa mediante ARM."
           ],
           explain: "Las plantillas ARM son JSON; Bicep es un lenguaje declarativo más simple que implementa mediante Azure Resource Manager."
@@ -130,13 +130,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Tools for interacting with Azure",
         q: "An administrator is comfortable with Bash and wants to script repeatable Azure tasks from a Mac. Which tool fits most naturally?",
-        options: ["The Azure CLI", "Azure PowerShell cmdlets only", "The Azure portal", "The Service Trust Portal"],
+        options: ["The Azure CLI", "Azure PowerShell cmdlets only", "ARM templates", "Azure Arc"],
         answer: 0,
         explain: "The Azure CLI uses Bash commands and runs on Windows, Linux and macOS. The choice between CLI and PowerShell mostly depends on familiarity.",
         es: {
           topic: "Herramientas para interactuar con Azure",
           q: "Un administrador se siente cómodo con Bash y quiere automatizar tareas repetibles de Azure desde una Mac. ¿Qué herramienta encaja mejor?",
-          options: ["La CLI de Azure", "Solo los cmdlets de Azure PowerShell", "Azure Portal", "El Portal de confianza de servicios"],
+          options: ["La CLI de Azure", "Solo los cmdlets de Azure PowerShell", "Plantillas ARM", "Azure Arc"],
           explain: "La CLI de Azure usa comandos de Bash y funciona en Windows, Linux y macOS. Elegir entre CLI y PowerShell depende sobre todo de la familiaridad."
         }
       },
@@ -147,8 +147,8 @@ Catalog.module("az-900", {
         options: [
           "Servers, Kubernetes clusters, Azure data services and SQL Server",
           "Only Windows servers running in Microsoft datacenters or connected through ExpressRoute",
-          "Only Microsoft 365 tenants",
-          "Only storage accounts in other clouds"
+          "Only virtual machines in other public clouds",
+          "Only Kubernetes clusters"
         ],
         answer: 0,
         explain: "Azure Arc manages servers, Kubernetes clusters, Azure data services, SQL Server and, in preview, virtual machines.",
@@ -158,8 +158,8 @@ Catalog.module("az-900", {
           options: [
             "Servidores, clústeres de Kubernetes, servicios de datos de Azure y SQL Server",
             "Solo servidores Windows que se ejecutan en centros de datos de Microsoft o conectados por ExpressRoute",
-            "Solo inquilinos de Microsoft 365",
-            "Solo cuentas de almacenamiento en otras nubes"
+            "Solo máquinas virtuales en otras nubes públicas",
+            "Solo clústeres de Kubernetes"
           ],
           explain: "Azure Arc administra servidores, clústeres de Kubernetes, servicios de datos de Azure, SQL Server y, en versión preliminar, máquinas virtuales."
         }
@@ -186,8 +186,8 @@ Catalog.module("az-900", {
         options: [
           "It authenticates and authorizes the request, then sends it to the Azure service",
           "It sends the request directly to the service without checks",
-          "It converts the request into a Bicep file and stores it in the resource group for later review",
-          "It forwards the request to Azure Arc for approval"
+          "It deploys the request to Azure Arc first",
+          "It sends it to the service and authorizes afterward"
         ],
         answer: 0,
         explain: "Resource Manager authenticates and authorizes every request before the target service acts on it.",
@@ -197,8 +197,8 @@ Catalog.module("az-900", {
           options: [
             "Autentica y autoriza la solicitud, y luego la envía al servicio de Azure",
             "Envía la solicitud directamente al servicio sin controles",
-            "Convierte la solicitud en un archivo Bicep y lo guarda en el grupo de recursos para revisarlo después",
-            "Reenvía la solicitud a Azure Arc para su aprobación"
+            "Primero implementa la solicitud en Azure Arc",
+            "La envía al servicio y la autoriza después"
           ],
           explain: "Resource Manager autentica y autoriza cada solicitud antes de que el servicio de destino actúe."
         }
@@ -209,9 +209,9 @@ Catalog.module("az-900", {
         q: "Why is the Azure portal resilient to the failure of an individual datacenter?",
         options: [
           "It maintains a presence in every Azure datacenter",
-          "It runs only in a single paired region",
-          "It's installed locally on each administrator's computer",
-          "It caches all resources in Azure Cloud Shell"
+          "It runs in one region with geo-backup",
+          "It runs in the customer's paired region",
+          "It fails over to Cloud Shell"
         ],
         answer: 0,
         explain: "Being present in every datacenter makes the portal resilient and close to users.",
@@ -220,9 +220,9 @@ Catalog.module("az-900", {
           q: "¿Por qué Azure Portal resiste la falla de un centro de datos individual?",
           options: [
             "Tiene presencia en todos los centros de datos de Azure",
-            "Se ejecuta solo en un par de regiones",
-            "Se instala localmente en el equipo de cada administrador",
-            "Guarda en caché todos los recursos en Azure Cloud Shell"
+            "Se ejecuta en una región con copia de seguridad geográfica",
+            "Se ejecuta en la región emparejada del cliente",
+            "Conmuta por error a Cloud Shell"
           ],
           explain: "Estar presente en todos los centros de datos hace que el portal sea resiliente y cercano a los usuarios."
         }
@@ -231,13 +231,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Resource Manager and templates",
         q: "A template needs to run a setup script after creating a resource. What allows this?",
-        options: ["Deployment scripts in PowerShell or Bash called from the template", "A resource lock on the resource group", "An Azure Arc custom location", "A budget alert"],
+        options: ["Deployment scripts in PowerShell or Bash called from the template", "A resource tag that runs on creation", "An Azure Advisor recommendation", "A Cloud Shell session"],
         answer: 0,
         explain: "Templates are extensible: they can call PowerShell or Bash deployment scripts before or after resource creation.",
         es: {
           topic: "Azure Resource Manager y plantillas",
           q: "Una plantilla necesita ejecutar un script de configuración después de crear un recurso. ¿Qué lo permite?",
-          options: ["Scripts de implementación en PowerShell o Bash llamados desde la plantilla", "Un bloqueo de recursos en el grupo de recursos", "Una ubicación personalizada de Azure Arc", "Una alerta de presupuesto"],
+          options: ["Scripts de implementación en PowerShell o Bash llamados desde la plantilla", "Una etiqueta de recurso que se ejecuta al crear", "Una recomendación de Azure Advisor", "Una sesión de Cloud Shell"],
           explain: "Las plantillas son extensibles: pueden llamar a scripts de implementación de PowerShell o Bash antes o después de crear los recursos."
         }
       }
@@ -255,12 +255,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "An administrator on a borrowed laptop needs to run Azure CLI commands right away without installing anything. What should they use?",
-            options: ["Azure Cloud Shell", "A local Azure PowerShell installation", "An ARM template", "Azure Arc"],
+            options: ["Azure Cloud Shell", "A local Azure PowerShell installation", "The Azure portal's template editor", "Azure Arc"],
             answer: 0,
             explain: "Cloud Shell runs in the browser, needs no installation and is already authenticated with your credentials.",
             es: {
               q: "Un administrador en una laptop prestada necesita ejecutar comandos de la CLI de Azure de inmediato sin instalar nada. ¿Qué debe usar?",
-              options: ["Azure Cloud Shell", "Una instalación local de Azure PowerShell", "Una plantilla ARM", "Azure Arc"],
+              options: ["Azure Cloud Shell", "Una instalación local de Azure PowerShell", "El editor de plantillas de Azure Portal", "Azure Arc"],
               explain: "Cloud Shell funciona en el explorador, no requiere instalación y ya está autenticado con sus credenciales."
             }
           },
@@ -290,12 +290,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "What is the main difference between Azure PowerShell and the Azure CLI?",
-            options: ["The syntax of the commands", "Which Azure services they can manage", "Whether they can be scripted", "Whether they work in Cloud Shell"],
+            options: ["The syntax of the commands", "Which Azure services they can manage", "Which operating systems they run on", "Whether they use Azure Resource Manager"],
             answer: 0,
             explain: "They're functionally equivalent; PowerShell uses PowerShell commands and the CLI uses Bash.",
             es: {
               q: "¿Cuál es la principal diferencia entre Azure PowerShell y la CLI de Azure?",
-              options: ["La sintaxis de los comandos", "Qué servicios de Azure pueden administrar", "Si se pueden usar en scripts", "Si funcionan en Cloud Shell"],
+              options: ["La sintaxis de los comandos", "Qué servicios de Azure pueden administrar", "En qué sistemas operativos se ejecutan", "Si usan Azure Resource Manager"],
               explain: "Son equivalentes en funciones; PowerShell usa comandos de PowerShell y la CLI usa Bash."
             }
           },
@@ -305,9 +305,9 @@ Catalog.module("az-900", {
             options: [
               "It's authenticated with your Azure credentials",
               "It supports both Azure PowerShell and the Azure CLI",
-              "It requires a local installation on Windows",
-              "It only works with Microsoft 365 resources",
-              "It replaces Azure Resource Manager"
+              "It requires a local installation",
+              "It supports only Bash",
+              "It runs only on Windows browsers"
             ],
             answers: [0, 1],
             explain: "Cloud Shell is browser-based, already knows who you are and lets you choose PowerShell or the CLI.",
@@ -316,9 +316,9 @@ Catalog.module("az-900", {
               options: [
                 "Está autenticado con sus credenciales de Azure",
                 "Admite tanto Azure PowerShell como la CLI de Azure",
-                "Requiere una instalación local en Windows",
-                "Solo funciona con recursos de Microsoft 365",
-                "Reemplaza a Azure Resource Manager"
+                "Requiere una instalación local",
+                "Solo admite Bash",
+                "Solo funciona en exploradores de Windows"
               ],
               explain: "Cloud Shell funciona en el explorador, ya sabe quién es usted y permite elegir PowerShell o la CLI."
             }
@@ -343,9 +343,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about Azure PowerShell.",
             parts: [
               "Azure PowerShell runs commands called ",
-              { options: ["cmdlets", "templates", "initiatives"], answer: 0 },
+              { options: ["cmdlets", "scripts", "modules"], answer: 0 },
               " that call the ",
-              { options: ["Azure REST API", "Service Trust Portal", "pricing calculator"], answer: 0 },
+              { options: ["Azure REST API", "Azure CLI", "Microsoft Graph only"], answer: 0 },
               " to perform management tasks."
             ],
             explain: "Cmdlets call the Azure REST API and can be run individually or combined in scripts.",
@@ -353,9 +353,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre Azure PowerShell.",
               parts: [
                 "Azure PowerShell ejecuta comandos llamados ",
-                { options: ["cmdlets", "plantillas", "iniciativas"] },
+                { options: ["cmdlets", "scripts", "módulos"] },
                 " que llaman a la ",
-                { options: ["API REST de Azure", "Portal de confianza de servicios", "calculadora de precios"] },
+                { options: ["API REST de Azure", "CLI de Azure", "solo Microsoft Graph"] },
                 " para realizar tareas de administración."
               ],
               explain: "Los cmdlets llaman a la API REST de Azure y se pueden ejecutar de a uno o combinados en scripts."
@@ -378,8 +378,8 @@ Catalog.module("az-900", {
             options: [
               "By projecting them into Azure Resource Manager",
               "By migrating them into Azure automatically",
-              "By copying their data into Microsoft Purview",
-              "By converting them into ARM templates"
+              "By installing Azure services in the other cloud",
+              "By connecting them through ExpressRoute"
             ],
             answer: 0,
             explain: "Arc projects existing non-Azure resources into Resource Manager so they're managed as if they ran in Azure.",
@@ -388,8 +388,8 @@ Catalog.module("az-900", {
               options: [
                 "Proyectándolos en Azure Resource Manager",
                 "Migrándolos automáticamente a Azure",
-                "Copiando sus datos en Microsoft Purview",
-                "Convirtiéndolos en plantillas ARM"
+                "Instalando servicios de Azure en la otra nube",
+                "Conectándolos mediante ExpressRoute"
               ],
               explain: "Arc proyecta los recursos existentes que no son de Azure en Resource Manager para administrarlos como si estuvieran en Azure."
             }
@@ -397,12 +397,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two resource types can Azure Arc manage outside Azure?",
-            options: ["Kubernetes clusters", "SQL Server", "Microsoft 365 mailboxes", "Billing zones", "Service Trust Portal documents"],
+            options: ["Kubernetes clusters", "SQL Server", "Microsoft 365 tenants", "AWS IAM users", "Physical network switches"],
             answers: [0, 1],
             explain: "Arc manages servers, Kubernetes clusters, Azure data services, SQL Server and, in preview, VMs.",
             es: {
               q: "¿Cuáles son dos tipos de recursos que Azure Arc puede administrar fuera de Azure?",
-              options: ["Clústeres de Kubernetes", "SQL Server", "Buzones de Microsoft 365", "Zonas de facturación", "Documentos del Portal de confianza de servicios"],
+              options: ["Clústeres de Kubernetes", "SQL Server", "Inquilinos de Microsoft 365", "Usuarios de AWS IAM", "Conmutadores de red físicos"],
               explain: "Arc administra servidores, clústeres de Kubernetes, servicios de datos de Azure, SQL Server y, en versión preliminar, máquinas virtuales."
             }
           },
@@ -412,8 +412,8 @@ Catalog.module("az-900", {
             options: [
               "Disconnected management, by enabling consistent governance and inventory from Azure",
               "High egress costs, by moving all the data from every environment into a single Azure region",
-              "Licensing, by converting servers to Azure subscriptions",
-              "Latency, by caching resources in Cloud Shell"
+              "Migration, by moving every workload into Azure",
+              "Network latency, by routing traffic through Azure"
             ],
             answer: 0,
             explain: "Arc delivers a consistent multicloud and on-premises management platform instead of disconnected tools.",
@@ -422,8 +422,8 @@ Catalog.module("az-900", {
               options: [
                 "La administración desconectada, al permitir gobernanza e inventario coherentes desde Azure",
                 "Los costos de salida altos, al mover todos los datos de cada entorno a una única región de Azure",
-                "Las licencias, al convertir los servidores en suscripciones de Azure",
-                "La latencia, al guardar los recursos en caché en Cloud Shell"
+                "La migración, al mover todas las cargas a Azure",
+                "La latencia de red, al enrutar el tráfico por Azure"
               ],
               explain: "Arc ofrece una plataforma coherente para multinube y entorno local en lugar de herramientas desconectadas."
             }
@@ -448,9 +448,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about Azure Arc.",
             parts: [
               "Azure Arc works with ",
-              { options: ["Azure Resource Manager", "Azure Cloud Shell", "the pricing calculator"], answer: 0 },
+              { options: ["Azure Resource Manager", "Azure Migrate", "ExpressRoute"], answer: 0 },
               " to extend Azure ",
-              { options: ["compliance and monitoring", "billing zones", "Spot capacity"], answer: 0 },
+              { options: ["compliance and monitoring", "pricing", "compute capacity"], answer: 0 },
               " to hybrid and multicloud configurations."
             ],
             explain: "Arc extends compliance and monitoring by working with Resource Manager.",
@@ -458,9 +458,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre Azure Arc.",
               parts: [
                 "Azure Arc trabaja con ",
-                { options: ["Azure Resource Manager", "Azure Cloud Shell", "la calculadora de precios"] },
+                { options: ["Azure Resource Manager", "Azure Migrate", "ExpressRoute"] },
                 " para extender ",
-                { options: ["el cumplimiento y la supervisión", "las zonas de facturación", "la capacidad de Spot"] },
+                { options: ["el cumplimiento y la supervisión", "los precios", "la capacidad de proceso"] },
                 " de Azure a configuraciones híbridas y multinube."
               ],
               explain: "Arc extiende el cumplimiento y la supervisión trabajando con Resource Manager."
@@ -483,7 +483,7 @@ Catalog.module("az-900", {
             options: [
               "All requests are handled through Azure Resource Manager's same API",
               "Each tool keeps its own copy of the resources",
-              "They synchronize their own copies of the resources through Azure Arc every hour",
+              "They each call different service APIs that are kept in sync",
               "They all store state in Cloud Shell storage"
             ],
             answer: 0,
@@ -493,7 +493,7 @@ Catalog.module("az-900", {
               options: [
                 "Todas las solicitudes pasan por la misma API de Azure Resource Manager",
                 "Cada herramienta guarda su propia copia de los recursos",
-                "Sincronizan sus propias copias de los recursos mediante Azure Arc cada hora",
+                "Cada una llama a API de servicio distintas que se mantienen sincronizadas",
                 "Todas guardan el estado en el almacenamiento de Cloud Shell"
               ],
               explain: "Resource Manager recibe, autentica y autoriza cada solicitud, sin importar la herramienta."
@@ -525,12 +525,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team finds JSON ARM templates hard to read and wants a simpler declarative language that still deploys through Resource Manager. What should it use?",
-            options: ["Bicep", "Azure CLI scripts", "Azure Arc", "Azure Cloud Shell"],
+            options: ["Bicep", "Azure CLI scripts", "Terraform JSON", "Azure PowerShell"],
             answer: 0,
             explain: "Bicep is simpler and more concise than JSON templates and deploys through ARM.",
             es: {
               q: "A un equipo le cuesta leer las plantillas ARM en JSON y quiere un lenguaje declarativo más simple que siga implementando con Resource Manager. ¿Qué debe usar?",
-              options: ["Bicep", "Scripts de la CLI de Azure", "Azure Arc", "Azure Cloud Shell"],
+              options: ["Bicep", "Scripts de la CLI de Azure", "Terraform JSON", "Azure PowerShell"],
               explain: "Bicep es más simple y conciso que las plantillas JSON e implementa mediante ARM."
             }
           },
@@ -542,7 +542,7 @@ Catalog.module("az-900", {
               "It can start with Azure CLI or PowerShell and grow into ARM templates and Bicep",
               "It requires deploying resources one at a time by hand",
               "It can only be used in production environments",
-              "It replaces the need for Azure Resource Manager"
+              "It only applies to Bicep, not to scripts"
             ],
             answers: [0, 1],
             explain: "IaC replaces manual configuration and can grow from scripts to declarative templates.",
@@ -553,7 +553,7 @@ Catalog.module("az-900", {
                 "Puede empezar con la CLI de Azure o PowerShell y crecer hacia plantillas ARM y Bicep",
                 "Requiere implementar los recursos de a uno y a mano",
                 "Solo se puede usar en entornos de producción",
-                "Reemplaza la necesidad de Azure Resource Manager"
+                "Solo se aplica a Bicep, no a scripts"
               ],
               explain: "La IaC reemplaza la configuración manual y puede crecer desde scripts hasta plantillas declarativas."
             }
@@ -580,7 +580,7 @@ Catalog.module("az-900", {
               "Azure Resource Manager is the ",
               { options: ["deployment and management service", "monitoring service", "cost estimation service"], answer: 0 },
               " for Azure, and it applies access control natively through ",
-              { options: ["RBAC", "resource tags", "Azure Arc"], answer: 0 },
+              { options: ["RBAC", "Azure Policy", "resource locks"], answer: 0 },
               "."
             ],
             explain: "Resource Manager is the management layer for create, update and delete, with RBAC built in.",
@@ -590,7 +590,7 @@ Catalog.module("az-900", {
                 "Azure Resource Manager es el ",
                 { options: ["servicio de implementación y administración", "servicio de supervisión", "servicio de estimación de costos"] },
                 " de Azure, y aplica el control de acceso de forma nativa con ",
-                { options: ["RBAC", "etiquetas de recursos", "Azure Arc"] },
+                { options: ["RBAC", "Azure Policy", "los bloqueos de recursos"] },
                 "."
               ],
               explain: "Resource Manager es la capa de administración para crear, actualizar y eliminar, con RBAC integrado."

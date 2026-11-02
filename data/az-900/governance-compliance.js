@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Resource locks",
         q: "An administrator with the Owner role tries to delete a storage account and gets an error, although RBAC allows it. What is the most likely reason?",
-        options: ["A Delete or ReadOnly resource lock is applied", "An Azure Policy initiative with an audit effect is assigned to it", "The account is tagged as mission-critical", "Microsoft Purview classified its data"],
+        options: ["A Delete or ReadOnly resource lock is applied", "An Azure Policy initiative with an audit effect is assigned to it", "The account has a soft delete policy", "Microsoft Purview classified its data"],
         answer: 0,
         explain: "Locks apply regardless of RBAC permissions. Even an owner must remove the lock before deleting.",
         es: {
           topic: "Bloqueos de recursos",
           q: "Un administrador con el rol Propietario intenta eliminar una cuenta de almacenamiento y recibe un error, aunque RBAC lo permite. ¿Cuál es la causa más probable?",
-          options: ["Tiene aplicado un bloqueo de recursos Delete o ReadOnly", "Tiene asignada una iniciativa de Azure Policy con efecto de auditoría", "Está etiquetada como crítica", "Microsoft Purview clasificó sus datos"],
+          options: ["Tiene aplicado un bloqueo de recursos Delete o ReadOnly", "Tiene asignada una iniciativa de Azure Policy con efecto de auditoría", "La cuenta tiene una directiva de eliminación temporal", "Microsoft Purview clasificó sus datos"],
           explain: "Los bloqueos se aplican sin importar los permisos de RBAC. Incluso un propietario debe quitar el bloqueo antes de eliminar."
         }
       },
@@ -52,9 +52,9 @@ Catalog.module("az-900", {
         q: "A company assigns an Azure Policy that restricts VM sizes. What happens to VMs created before the assignment?",
         options: [
           "They're evaluated and flagged if noncompliant",
-          "They're deleted automatically",
+          "They're resized automatically",
           "They're ignored, since policies apply only to new resources",
-          "They're locked as ReadOnly until resized"
+          "They're blocked from starting until resized"
         ],
         answer: 0,
         explain: "Azure Policy evaluates and monitors existing resources too, highlighting noncompliance.",
@@ -63,9 +63,9 @@ Catalog.module("az-900", {
           q: "Una empresa asigna una directiva de Azure Policy que restringe los tamaños de máquina virtual. ¿Qué pasa con las máquinas creadas antes de la asignación?",
           options: [
             "Se evalúan y se marcan si no cumplen",
-            "Se eliminan automáticamente",
+            "Se les cambia el tamaño automáticamente",
             "Se ignoran, porque las directivas solo aplican a recursos nuevos",
-            "Se bloquean como ReadOnly hasta que se cambie su tamaño"
+            "No pueden iniciarse hasta que se cambie su tamaño"
           ],
           explain: "Azure Policy también evalúa y supervisa los recursos existentes y señala los que no cumplen."
         }
@@ -74,13 +74,13 @@ Catalog.module("az-900", {
         type: "multi",
         topic: "Microsoft Purview",
         q: "Which two are the main solution areas of Microsoft Purview?",
-        options: ["Risk and compliance", "Unified data governance", "Cost analysis and budgets", "Infrastructure as code", "Service health monitoring"],
+        options: ["Risk and compliance", "Unified data governance", "Cloud security posture management", "Identity governance", "Threat protection"],
         answers: [0, 1],
         explain: "Purview comprises risk and compliance solutions and unified data governance.",
         es: {
           topic: "Microsoft Purview",
           q: "¿Cuáles son las dos áreas principales de soluciones de Microsoft Purview?",
-          options: ["Riesgo y cumplimiento", "Gobernanza de datos unificada", "Análisis de costos y presupuestos", "Infraestructura como código", "Supervisión del estado del servicio"],
+          options: ["Riesgo y cumplimiento", "Gobernanza de datos unificada", "La administración de la postura de seguridad en la nube", "La gobernanza de identidades", "La protección contra amenazas"],
           explain: "Purview se compone de soluciones de riesgo y cumplimiento y de gobernanza de datos unificada."
         }
       },
@@ -105,9 +105,9 @@ Catalog.module("az-900", {
         q: "Complete the statement about lock types.",
         parts: [
           "With a ",
-          { options: ["Delete", "ReadOnly", "Reader"], answer: 0 },
+          { options: ["Delete", "ReadOnly", "NoAccess"], answer: 0 },
           " lock, authorized users can still read and modify a resource, while a ",
-          { options: ["ReadOnly", "Delete", "Contributor"], answer: 0 },
+          { options: ["ReadOnly", "Delete", "Deny"], answer: 0 },
           " lock also blocks updates."
         ],
         explain: "Delete blocks deletion only; ReadOnly blocks deletion and updates, similar to restricting users to the Reader role.",
@@ -116,9 +116,9 @@ Catalog.module("az-900", {
           q: "Complete la afirmación sobre los tipos de bloqueo.",
           parts: [
             "Con un bloqueo ",
-            { options: ["Delete", "ReadOnly", "Reader"] },
+            { options: ["Delete", "ReadOnly", "NoAccess"] },
             ", los usuarios autorizados todavía pueden leer y modificar un recurso, mientras que un bloqueo ",
-            { options: ["ReadOnly", "Delete", "Contributor"] },
+            { options: ["ReadOnly", "Delete", "Deny"] },
             " también impide las actualizaciones."
           ],
           explain: "Delete solo impide eliminar; ReadOnly impide eliminar y actualizar, como si los usuarios tuvieran solo el rol Lector."
@@ -128,13 +128,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Policy",
         q: "A team uses Copilot recommendations to propose infrastructure changes. How can the company make sure those changes still meet its required tags and allowed locations?",
-        options: ["Assign Azure Policy definitions for those rules", "Add a Delete lock to every subscription", "Review the Service Trust Portal before each change", "Create a Purview data map"],
+        options: ["Assign Azure Policy definitions for those rules", "Apply a ReadOnly lock to every subscription", "Review Advisor recommendations after each change", "Create a budget for each Copilot user"],
         answer: 0,
         explain: "Azure Policy enforces standards regardless of how a change was proposed, including AI-assisted changes.",
         es: {
           topic: "Azure Policy",
           q: "Un equipo usa recomendaciones de Copilot para proponer cambios de infraestructura. ¿Cómo puede la empresa asegurarse de que esos cambios cumplan sus etiquetas obligatorias y ubicaciones permitidas?",
-          options: ["Asignar definiciones de Azure Policy para esas reglas", "Agregar un bloqueo Delete a cada suscripción", "Revisar el Portal de confianza de servicios antes de cada cambio", "Crear un mapa de datos de Purview"],
+          options: ["Asignar definiciones de Azure Policy para esas reglas", "Aplicar un bloqueo ReadOnly a cada suscripción", "Revisar las recomendaciones de Advisor después de cada cambio", "Crear un presupuesto para cada usuario de Copilot"],
           explain: "Azure Policy aplica los estándares sin importar cómo se propuso el cambio, incluidos los cambios asistidos por IA."
         }
       },
@@ -142,13 +142,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Microsoft Purview",
         q: "A company has data in Azure, on-premises SQL databases and Amazon S3, and needs to know where its sensitive data is stored. Which service fits?",
-        options: ["Microsoft Purview", "Azure Policy", "Resource locks", "Azure Advisor"],
+        options: ["Microsoft Purview", "Azure Policy", "Azure Monitor", "Azure Arc"],
         answer: 0,
         explain: "Purview's unified data governance covers on-premises, multicloud and SaaS data and identifies where sensitive data lives.",
         es: {
           topic: "Microsoft Purview",
           q: "Una empresa tiene datos en Azure, en bases de datos SQL locales y en Amazon S3, y necesita saber dónde están sus datos confidenciales. ¿Qué servicio corresponde?",
-          options: ["Microsoft Purview", "Azure Policy", "Los bloqueos de recursos", "Azure Advisor"],
+          options: ["Microsoft Purview", "Azure Policy", "Azure Monitor", "Azure Arc"],
           explain: "La gobernanza de datos unificada de Purview abarca datos locales, multinube y SaaS, e identifica dónde están los datos confidenciales."
         }
       },
@@ -171,13 +171,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Resource locks",
         q: "A team must update a resource that has a ReadOnly lock. What must happen first?",
-        options: ["Remove the lock, then make the change", "Assign the Owner role, which overrides the lock", "Create an Azure Policy exception", "Move the resource to another subscription"],
+        options: ["Remove the lock, then make the change", "Assign the Owner role, which overrides the lock", "Create an Azure Policy exception", "Use the Azure CLI instead of the portal"],
         answer: 0,
         explain: "Changing a locked resource is a two-step process: remove the lock, then perform the action you're allowed to.",
         es: {
           topic: "Bloqueos de recursos",
           q: "Un equipo debe actualizar un recurso que tiene un bloqueo ReadOnly. ¿Qué debe pasar primero?",
-          options: ["Quitar el bloqueo y después hacer el cambio", "Asignar el rol Propietario, que anula el bloqueo", "Crear una excepción de Azure Policy", "Mover el recurso a otra suscripción"],
+          options: ["Quitar el bloqueo y después hacer el cambio", "Asignar el rol Propietario, que anula el bloqueo", "Crear una excepción de Azure Policy", "Usar la CLI de Azure en lugar del portal"],
           explain: "Cambiar un recurso bloqueado es un proceso de dos pasos: quitar el bloqueo y después hacer la acción permitida."
         }
       },
@@ -185,13 +185,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Policy",
         q: "A policy is assigned at a resource group. Which resources does it apply to?",
-        options: ["All resources in that resource group, including new ones", "Only the resource group object itself", "Only the resources that existed before the policy was assigned", "Every resource in the subscription"],
+        options: ["All resources in that resource group, including new ones", "Only the resource group object itself", "Only the resources that existed before the policy was assigned", "Only resources that share the group's region"],
         answer: 0,
         explain: "Policies are inherited by everything beneath the scope where they're set.",
         es: {
           topic: "Azure Policy",
           q: "Se asigna una directiva en un grupo de recursos. ¿A qué recursos se aplica?",
-          options: ["A todos los recursos de ese grupo, incluidos los nuevos", "Solo al objeto del grupo de recursos", "Solo a los recursos que ya existían antes de asignar la directiva", "A todos los recursos de la suscripción"],
+          options: ["A todos los recursos de ese grupo, incluidos los nuevos", "Solo al objeto del grupo de recursos", "Solo a los recursos que ya existían antes de asignar la directiva", "Solo los recursos que comparten la región del grupo"],
           explain: "Las directivas las hereda todo lo que está debajo del ámbito donde se asignan."
         }
       },
@@ -226,8 +226,8 @@ Catalog.module("az-900", {
             options: [
               "A family of data governance, risk and compliance solutions with a unified view of your data",
               "A service that enforces rules on Azure resource configurations and blocks noncompliant deployments",
-              "A tool that prevents resources from being deleted",
-              "A calculator that estimates the cost of storing data"
+              "A security service that detects threats to data",
+              "A service that backs up data across clouds"
             ],
             answer: 0,
             explain: "Purview unifies insights about on-premises, multicloud and SaaS data for governance, risk and compliance.",
@@ -236,8 +236,8 @@ Catalog.module("az-900", {
               options: [
                 "Una familia de soluciones de gobernanza de datos, riesgo y cumplimiento con una vista unificada de los datos",
                 "Un servicio que aplica reglas a la configuración de los recursos de Azure y bloquea implementaciones no conformes",
-                "Una herramienta que impide que se eliminen recursos",
-                "Una calculadora que estima el costo de almacenar datos"
+                "Un servicio de seguridad que detecta amenazas a los datos",
+                "Un servicio que hace copias de seguridad de datos entre nubes"
               ],
               explain: "Purview unifica la información sobre datos locales, multinube y SaaS para la gobernanza, el riesgo y el cumplimiento."
             }
@@ -245,12 +245,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two capabilities help Microsoft Purview keep you up to date on your data landscape?",
-            options: ["Automated data discovery", "End-to-end data lineage", "Resource locks", "Budget alerts", "VM scale sets"],
+            options: ["Automated data discovery", "End-to-end data lineage", "Azure Policy compliance scans", "Azure Monitor metrics", "Resource tags"],
             answers: [0, 1],
             explain: "Purview offers automated discovery, sensitive data classification and end-to-end lineage.",
             es: {
               q: "¿Cuáles son dos capacidades con las que Microsoft Purview lo mantiene al día sobre su panorama de datos?",
-              options: ["La detección automatizada de datos", "El linaje de datos de extremo a extremo", "Los bloqueos de recursos", "Las alertas de presupuesto", "Los conjuntos de escalado de máquinas virtuales"],
+              options: ["La detección automatizada de datos", "El linaje de datos de extremo a extremo", "Los análisis de cumplimiento de Azure Policy", "Las métricas de Azure Monitor", "Las etiquetas de recursos"],
               explain: "Purview ofrece detección automatizada, clasificación de datos confidenciales y linaje de extremo a extremo."
             }
           },
@@ -284,7 +284,7 @@ Catalog.module("az-900", {
               "Purview can govern data stored in Azure, SQL and Hive databases, locally and in ",
               { options: ["other clouds such as Amazon S3", "Azure only", "Microsoft 365 only"], answer: 0 },
               ", and it can identify ",
-              { options: ["where sensitive data is stored", "which VMs are oversized", "which regions are cheapest"], answer: 0 },
+              { options: ["where sensitive data is stored", "which resources are noncompliant with policies", "which users have risky sign-ins"], answer: 0 },
               "."
             ],
             explain: "Unified data governance covers on-premises, multicloud and SaaS data and locates sensitive data.",
@@ -294,7 +294,7 @@ Catalog.module("az-900", {
                 "Purview puede gobernar datos almacenados en Azure, bases de datos SQL y Hive, en el entorno local y en ",
                 { options: ["otras nubes como Amazon S3", "solo Azure", "solo Microsoft 365"] },
                 ", y puede identificar ",
-                { options: ["dónde están almacenados los datos confidenciales", "qué máquinas virtuales están sobredimensionadas", "qué regiones son más baratas"] },
+                { options: ["dónde están almacenados los datos confidenciales", "qué recursos no cumplen las directivas", "qué usuarios tienen inicios de sesión riesgosos"] },
                 "."
               ],
               explain: "La gobernanza de datos unificada abarca datos locales, multinube y SaaS, y ubica los datos confidenciales."
@@ -329,12 +329,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company wants to prevent anyone from creating resources outside two approved regions, and to see which existing resources break the rule. What should it use?",
-            options: ["Azure Policy", "A resource lock", "Microsoft Purview", "Cost Management budgets"],
+            options: ["Azure Policy", "A ReadOnly lock on each subscription", "Azure Advisor", "Microsoft Defender for Cloud alerts"],
             answer: 0,
             explain: "Azure Policy can prevent noncompliant resources from being created and highlights existing noncompliant resources.",
             es: {
               q: "Una empresa quiere impedir que se creen recursos fuera de dos regiones aprobadas y ver qué recursos existentes no cumplen la regla. ¿Qué debe usar?",
-              options: ["Azure Policy", "Un bloqueo de recursos", "Microsoft Purview", "Los presupuestos de Cost Management"],
+              options: ["Azure Policy", "Un bloqueo ReadOnly en cada suscripción", "Azure Advisor", "Las alertas de Microsoft Defender for Cloud"],
               explain: "Azure Policy puede impedir que se creen recursos que no cumplen y señala los recursos existentes que no cumplen."
             }
           },
@@ -343,9 +343,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about Azure Policy.",
             parts: [
               "A group of related policy definitions is called an ",
-              { options: ["initiative", "assignment", "lock"], answer: 0 },
+              { options: ["initiative", "assignment", "blueprint"], answer: 0 },
               ", and a policy set at a high level is ",
-              { options: ["inherited by everything beneath it", "applied only to that level", "applied only to new subscriptions"], answer: 0 },
+              { options: ["inherited by everything beneath it", "applied only to that level", "applied only after manual approval at each level"], answer: 0 },
               "."
             ],
             explain: "Initiatives group policies toward a larger goal, and policies are inherited down the hierarchy.",
@@ -353,9 +353,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre Azure Policy.",
               parts: [
                 "Un grupo de definiciones de directivas relacionadas se llama ",
-                { options: ["iniciativa", "asignación", "bloqueo"] },
+                { options: ["iniciativa", "asignación", "blueprint"] },
                 ", y una directiva asignada en un nivel alto ",
-                { options: ["la hereda todo lo que está debajo", "se aplica solo a ese nivel", "se aplica solo a suscripciones nuevas"] },
+                { options: ["la hereda todo lo que está debajo", "se aplica solo a ese nivel", "aplicada solo después de una aprobación manual en cada nivel"] },
                 "."
               ],
               explain: "Las iniciativas agrupan directivas para un objetivo mayor, y las directivas se heredan hacia abajo en la jerarquía."
@@ -391,8 +391,8 @@ Catalog.module("az-900", {
             options: [
               "When a VM is created or resized, and it also evaluates existing VMs",
               "Only once a month, during a scheduled compliance scan of the whole subscription",
-              "Only when the VM is deleted",
-              "Only when a budget alert fires"
+              "Only when someone runs a manual compliance scan",
+              "Only when the VM is started"
             ],
             answer: 0,
             explain: "The policy is invoked on create and resize, and Azure Policy keeps evaluating existing resources.",
@@ -401,8 +401,8 @@ Catalog.module("az-900", {
               options: [
                 "Cuando se crea o se cambia el tamaño de una máquina virtual, y además evalúa las existentes",
                 "Solo una vez por mes, durante un análisis de cumplimiento programado de toda la suscripción",
-                "Solo cuando se elimina la máquina virtual",
-                "Solo cuando se dispara una alerta de presupuesto"
+                "Solo cuando alguien ejecuta un análisis de cumplimiento manual",
+                "Solo cuando se inicia la máquina virtual"
               ],
               explain: "La directiva se invoca al crear y al cambiar el tamaño, y Azure Policy sigue evaluando los recursos existentes."
             }
@@ -428,8 +428,8 @@ Catalog.module("az-900", {
             options: [
               "To monitor all available security recommendations for all Azure resource types",
               "To apply a ReadOnly lock to every resource type that lacks endpoint protection",
-              "To delete unencrypted SQL databases automatically",
-              "To estimate the cost of Security Center"
+              "To deny creation of resources without encryption",
+              "To enable Defender plans on every subscription"
             ],
             answer: 0,
             explain: "The initiative groups over 100 policy definitions, such as monitoring unencrypted SQL databases and missing endpoint protection.",
@@ -438,8 +438,8 @@ Catalog.module("az-900", {
               options: [
                 "Supervisar todas las recomendaciones de seguridad disponibles para todos los tipos de recursos de Azure",
                 "Aplicar un bloqueo ReadOnly a todos los tipos de recursos que no tengan protección de puntos de conexión",
-                "Eliminar automáticamente las bases de datos SQL sin cifrar",
-                "Estimar el costo de Security Center"
+                "Denegar la creación de recursos sin cifrado",
+                "Habilitar los planes de Defender en cada suscripción"
               ],
               explain: "La iniciativa agrupa más de 100 definiciones de directivas, como supervisar bases de datos SQL sin cifrar y la falta de protección de puntos de conexión."
             }
@@ -458,12 +458,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Admins must still be able to change a production database's settings, but nobody should be able to delete it by mistake. Which lock fits?",
-            options: ["Delete", "ReadOnly", "Reader", "An Azure Policy initiative"],
+            options: ["Delete", "ReadOnly", "Azure Policy with an audit effect", "The Reader role for admins"],
             answer: 0,
             explain: "A Delete lock allows reading and modifying but blocks deletion. ReadOnly would also block changes.",
             es: {
               q: "Los administradores deben poder seguir cambiando la configuración de una base de datos de producción, pero nadie debería poder eliminarla por error. ¿Qué bloqueo corresponde?",
-              options: ["Delete", "ReadOnly", "Reader", "Una iniciativa de Azure Policy"],
+              options: ["Delete", "ReadOnly", "Azure Policy con efecto de auditoría", "El rol Lector para los administradores"],
               explain: "Un bloqueo Delete permite leer y modificar pero impide eliminar. ReadOnly también impediría los cambios."
             }
           },
@@ -494,7 +494,7 @@ Catalog.module("az-900", {
             options: [
               "Because people with the right access could still delete critical resources by accident",
               "Because RBAC doesn't work for production resources",
-              "Because locks reduce the cost of the resources",
+              "Because locks also restrict reading data",
               "Because locks replace the need for backups and disaster recovery plans for critical resources"
             ],
             answer: 0,
@@ -504,7 +504,7 @@ Catalog.module("az-900", {
               options: [
                 "Porque quienes tienen el acceso adecuado igual podrían eliminar por error recursos críticos",
                 "Porque RBAC no funciona con recursos de producción",
-                "Porque los bloqueos reducen el costo de los recursos",
+                "Porque los bloqueos también restringen la lectura de datos",
                 "Porque los bloqueos reemplazan las copias de seguridad y los planes de recuperación de los recursos críticos"
               ],
               explain: "Los bloqueos protegen contra eliminaciones o cambios accidentales, incluso de usuarios cuyos permisos de RBAC lo permiten."
@@ -513,12 +513,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two scopes can a resource lock be applied to?",
-            options: ["A resource group", "An entire subscription", "A Microsoft Entra user", "A billing zone", "An Azure region"],
+            options: ["A resource group", "An entire subscription", "A management group", "A Microsoft Entra user", "An Azure region"],
             answers: [0, 1],
             explain: "Locks can be applied to individual resources, resource groups or subscriptions, and they're inherited.",
             es: {
               q: "¿Cuáles son dos ámbitos a los que se puede aplicar un bloqueo de recursos?",
-              options: ["Un grupo de recursos", "Una suscripción completa", "Un usuario de Microsoft Entra", "Una zona de facturación", "Una región de Azure"],
+              options: ["Un grupo de recursos", "Una suscripción completa", "Un grupo de administración", "Un usuario de Microsoft Entra", "Una región de Azure"],
               explain: "Los bloqueos se aplican a recursos individuales, grupos de recursos o suscripciones, y se heredan."
             }
           },
@@ -551,12 +551,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "An auditor asks for details about how Microsoft implements controls that protect its cloud services and customer data. Where should you look?",
-            options: ["The Microsoft Service Trust Portal", "Azure Policy compliance view", "Microsoft Cost Management", "Azure Resource Manager"],
+            options: ["The Microsoft Service Trust Portal", "Microsoft Defender for Cloud regulatory compliance", "Microsoft Purview", "Azure Policy compliance view"],
             answer: 0,
             explain: "The Service Trust Portal provides content and tools about Microsoft's security, privacy and compliance practices.",
             es: {
               q: "Un auditor pide detalles sobre cómo Microsoft implementa los controles que protegen sus servicios en la nube y los datos de los clientes. ¿Dónde debe buscar?",
-              options: ["El Portal de confianza de servicios de Microsoft", "La vista de cumplimiento de Azure Policy", "Microsoft Cost Management", "Azure Resource Manager"],
+              options: ["El Portal de confianza de servicios de Microsoft", "El cumplimiento normativo de Microsoft Defender for Cloud", "Microsoft Purview", "La vista de cumplimiento de Azure Policy"],
               explain: "El Portal de confianza de servicios ofrece contenido y herramientas sobre las prácticas de seguridad, privacidad y cumplimiento de Microsoft."
             }
           },
@@ -586,8 +586,8 @@ Catalog.module("az-900", {
             q: "What do you need to access some resources on the Service Trust Portal?",
             options: [
               "Sign in with a Microsoft Entra work or school account and accept the non-disclosure agreement",
-              "An Azure subscription with a ReadOnly lock",
-              "An active Enterprise Agreement, an Azure subscription and a configured credit alert in Cost Management",
+              "An Azure subscription with Reader access",
+              "A Microsoft personal account",
               "Nothing; every document is public"
             ],
             answer: 0,
@@ -596,8 +596,8 @@ Catalog.module("az-900", {
               q: "¿Qué necesita para acceder a algunos recursos del Portal de confianza de servicios?",
               options: [
                 "Iniciar sesión con una cuenta profesional o educativa de Microsoft Entra y aceptar el acuerdo de confidencialidad",
-                "Una suscripción de Azure con un bloqueo ReadOnly",
-                "Un Contrato Enterprise activo, una suscripción de Azure y una alerta de crédito configurada en Cost Management",
+                "Una suscripción de Azure con acceso de Lector",
+                "Una cuenta personal de Microsoft",
                 "Nada; todos los documentos son públicos"
               ],
               explain: "Parte del contenido requiere una cuenta autenticada de servicios en la nube de Microsoft y aceptar el acuerdo de confidencialidad para materiales de cumplimiento."
@@ -625,7 +625,7 @@ Catalog.module("az-900", {
               "From ",
               { options: ["All Documents", "My Library", "the home page"], answer: 0 },
               " you can pin documents so they appear in ",
-              { options: ["My Library", "All Documents", "Azure Policy"], answer: 0 },
+              { options: ["My Library", "All Documents", "Recently viewed"], answer: 0 },
               "."
             ],
             explain: "You pin documents from All Documents, and they show up in My Library.",
@@ -635,7 +635,7 @@ Catalog.module("az-900", {
                 "Desde ",
                 { options: ["Todos los documentos", "Mi biblioteca", "la página principal"] },
                 " puede fijar documentos para que aparezcan en ",
-                { options: ["Mi biblioteca", "Todos los documentos", "Azure Policy"] },
+                { options: ["Mi biblioteca", "Todos los documentos", "Vistos recientemente"] },
                 "."
               ],
               explain: "Los documentos se fijan desde Todos los documentos y aparecen en Mi biblioteca."

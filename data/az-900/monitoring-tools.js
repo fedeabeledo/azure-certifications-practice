@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Service Health",
         q: "A user reports that one specific VM is unreachable. The admin wants to know whether the problem is on Azure's side or theirs. Which view should they check?",
-        options: ["Resource Health", "Azure Status", "Azure Advisor", "Log Analytics"],
+        options: ["Resource Health", "Azure Status", "Azure Advisor", "Application Insights"],
         answer: 0,
         explain: "Resource Health zooms in on individual resources and indicates whether an issue comes from Azure or from your side.",
         es: {
           topic: "Azure Service Health",
           q: "Un usuario informa que una máquina virtual específica no responde. El administrador quiere saber si el problema es de Azure o propio. ¿Qué vista debe revisar?",
-          options: ["Resource Health", "Azure Status", "Azure Advisor", "Log Analytics"],
+          options: ["Resource Health", "Azure Status", "Azure Advisor", "Application Insights"],
           explain: "Resource Health se centra en recursos individuales e indica si un problema viene de Azure o de su lado."
         }
       },
@@ -50,13 +50,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Monitor",
         q: "A team wants an email whenever a VM's CPU stays above 80%. What should it create in Azure Monitor?",
-        options: ["A metric alert rule with an action group", "An Advisor recommendation configured with a CPU threshold of 80%", "A Resource Health check", "An availability test"],
+        options: ["A metric alert rule with an action group", "An Advisor recommendation configured with a CPU threshold of 80%", "A log alert on activity logs", "An availability test"],
         answer: 0,
         explain: "An alert rule defines the condition and an action group controls who's notified and what happens.",
         es: {
           topic: "Azure Monitor",
           q: "Un equipo quiere un correo cada vez que la CPU de una máquina virtual se mantenga por encima del 80 %. ¿Qué debe crear en Azure Monitor?",
-          options: ["Una regla de alerta de métricas con un grupo de acciones", "Una recomendación de Advisor configurada con un umbral de CPU del 80 %", "Una comprobación de Resource Health", "Una prueba de disponibilidad"],
+          options: ["Una regla de alerta de métricas con un grupo de acciones", "Una recomendación de Advisor configurada con un umbral de CPU del 80 %", "Una alerta de registros sobre los registros de actividad", "Una prueba de disponibilidad"],
           explain: "Una regla de alerta define la condición y un grupo de acciones controla a quién se notifica y qué pasa."
         }
       },
@@ -64,13 +64,13 @@ Catalog.module("az-900", {
         type: "multi",
         topic: "Azure Advisor",
         q: "Which two are Azure Advisor recommendation categories?",
-        options: ["Operational Excellence", "Cost", "Billing zones", "Data lineage", "Resource locks"],
+        options: ["Operational Excellence", "Cost", "Compliance", "Governance", "Availability"],
         answers: [0, 1],
         explain: "The five categories are Reliability, Security, Performance, Operational Excellence and Cost.",
         es: {
           topic: "Azure Advisor",
           q: "¿Cuáles son dos categorías de recomendaciones de Azure Advisor?",
-          options: ["Excelencia operativa", "Costo", "Zonas de facturación", "Linaje de datos", "Bloqueos de recursos"],
+          options: ["Excelencia operativa", "Costo", "Cumplimiento", "Gobernanza", "Disponibilidad"],
           explain: "Las cinco categorías son Confiabilidad, Seguridad, Rendimiento, Excelencia operativa y Costo."
         }
       },
@@ -95,9 +95,9 @@ Catalog.module("az-900", {
         q: "Complete the statement about Application Insights.",
         parts: [
           "Application Insights can be set up by adding an SDK or by ",
-          { options: ["enabling an agent without code changes", "deploying an ARM template only", "assigning an Azure Policy"], answer: 0 },
+          { options: ["enabling an agent without code changes", "deploying an ARM template only", "enabling Azure Monitor metrics only"], answer: 0 },
           ", and ",
-          { options: ["availability tests", "resource locks", "budget alerts"], answer: 0 },
+          { options: ["availability tests", "metric alerts", "Resource Health checks"], answer: 0 },
           " send synthetic requests to check the app responds even with little traffic."
         ],
         explain: "Application Insights works through an SDK or a codeless agent, and availability tests send synthetic requests.",
@@ -106,9 +106,9 @@ Catalog.module("az-900", {
           q: "Complete la afirmación sobre Application Insights.",
           parts: [
             "Application Insights se configura agregando un SDK o ",
-            { options: ["habilitando un agente sin cambiar el código", "implementando solo una plantilla ARM", "asignando una directiva de Azure Policy"] },
+            { options: ["habilitando un agente sin cambiar el código", "implementando solo una plantilla ARM", "habilitar solo las métricas de Azure Monitor"] },
             ", y las ",
-            { options: ["pruebas de disponibilidad", "bloqueos de recursos", "alertas de presupuesto"] },
+            { options: ["pruebas de disponibilidad", "las alertas de métricas", "las comprobaciones de Resource Health"] },
             " envían solicitudes sintéticas para comprobar que la aplicación responde aunque haya poco tráfico."
           ],
           explain: "Application Insights funciona con un SDK o un agente sin código, y las pruebas de disponibilidad envían solicitudes sintéticas."
@@ -132,13 +132,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Advisor",
         q: "What can you do with an Azure Advisor recommendation?",
-        options: ["Act on it, postpone it or dismiss it", "Only accept it, since it's applied automatically", "Only export it to the pricing calculator", "Convert it into a resource lock"],
+        options: ["Act on it, postpone it or dismiss it", "Only accept it, since it's applied automatically", "Only act on it within 7 days", "Only assign it to a policy"],
         answer: 0,
         explain: "Each recommendation includes a suggested action you can take now, postpone or dismiss.",
         es: {
           topic: "Azure Advisor",
           q: "¿Qué puede hacer con una recomendación de Azure Advisor?",
-          options: ["Aplicarla, posponerla o descartarla", "Solo aceptarla, porque se aplica automáticamente", "Solo exportarla a la calculadora de precios", "Convertirla en un bloqueo de recursos"],
+          options: ["Aplicarla, posponerla o descartarla", "Solo aceptarla, porque se aplica automáticamente", "Solo actuar sobre ella dentro de 7 días", "Solo asignarla a una directiva"],
           explain: "Cada recomendación incluye una acción sugerida que puede tomar ahora, posponer o descartar."
         }
       },
@@ -161,13 +161,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Monitor",
         q: "Where do you write and run queries against the logs and metrics that Azure Monitor collects?",
-        options: ["Log Analytics", "Azure Service Health", "Azure Advisor", "Azure Resource Manager"],
+        options: ["Log Analytics", "Azure Service Health", "Application Insights", "Azure Monitor workbooks only"],
         answer: 0,
         explain: "Log Analytics is the portal tool for simple filtering and advanced queries on Azure Monitor data.",
         es: {
           topic: "Azure Monitor",
           q: "¿Dónde se escriben y ejecutan consultas sobre los registros y métricas que recopila Azure Monitor?",
-          options: ["Log Analytics", "Azure Service Health", "Azure Advisor", "Azure Resource Manager"],
+          options: ["Log Analytics", "Azure Service Health", "Application Insights", "Solo los libros de Azure Monitor"],
           explain: "Log Analytics es la herramienta del portal para filtrar y hacer consultas avanzadas sobre los datos de Azure Monitor."
         }
       },
@@ -201,9 +201,9 @@ Catalog.module("az-900", {
         q: "Which statement describes Azure Monitor?",
         options: [
           "A platform to collect, analyze and act on data from resources and applications",
-          "A service that estimates the monthly cost of resources",
+          "A service that gives best-practice recommendations",
           "A tool that enforces configuration rules on resources and reports which ones are noncompliant",
-          "A portal with Microsoft's compliance reports"
+          "A dashboard of Azure-wide service status"
         ],
         answer: 0,
         explain: "Azure Monitor gathers logs and metrics centrally and exposes them through dashboards, queries and alerts.",
@@ -212,9 +212,9 @@ Catalog.module("az-900", {
           q: "¿Qué afirmación describe Azure Monitor?",
           options: [
             "Una plataforma para recopilar, analizar y actuar sobre datos de recursos y aplicaciones",
-            "Un servicio que estima el costo mensual de los recursos",
+            "Un servicio que da recomendaciones de prácticas recomendadas",
             "Una herramienta que aplica reglas de configuración a los recursos e informa cuáles no las cumplen",
-            "Un portal con los informes de cumplimiento de Microsoft"
+            "Un panel con el estado de los servicios de Azure en todo el mundo"
           ],
           explain: "Azure Monitor reúne registros y métricas de forma centralizada y los expone en paneles, consultas y alertas."
         }
@@ -268,12 +268,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team wants to know automatically whenever Advisor has a new recommendation. What should it do?",
-            options: ["Set up Advisor notifications", "Apply a resource lock", "Create an ARM template", "Check Azure Status daily"],
+            options: ["Set up Advisor notifications", "Create a metric alert on the subscription", "Configure Service Health alerts", "Check Azure Status daily"],
             answer: 0,
             explain: "You can configure notifications so Advisor alerts you about new recommendations.",
             es: {
               q: "Un equipo quiere enterarse automáticamente cada vez que Advisor tenga una recomendación nueva. ¿Qué debe hacer?",
-              options: ["Configurar notificaciones de Advisor", "Aplicar un bloqueo de recursos", "Crear una plantilla ARM", "Revisar Azure Status todos los días"],
+              options: ["Configurar notificaciones de Advisor", "Crear una alerta de métricas en la suscripción", "Configurar alertas de Service Health", "Revisar Azure Status todos los días"],
               explain: "Puede configurar notificaciones para que Advisor le avise sobre recomendaciones nuevas."
             }
           },
@@ -285,7 +285,7 @@ Catalog.module("az-900", {
               "You can filter recommendations by subscription, resource group or service",
               "It applies every recommendation automatically",
               "It's only available through the Azure CLI",
-              "It estimates the price of resources before deployment"
+              "It only covers cost recommendations"
             ],
             answers: [0, 1],
             explain: "Advisor is built into the portal, covers all subscriptions and supports filtering; you decide what to act on.",
@@ -296,7 +296,7 @@ Catalog.module("az-900", {
                 "Puede filtrar las recomendaciones por suscripción, grupo de recursos o servicio",
                 "Aplica todas las recomendaciones automáticamente",
                 "Solo está disponible mediante la CLI de Azure",
-                "Estima el precio de los recursos antes de implementarlos"
+                "Solo cubre recomendaciones de costo"
               ],
               explain: "Advisor está integrado en el portal, abarca todas las suscripciones y permite filtrar; usted decide qué aplicar."
             }
@@ -351,12 +351,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company wants to be notified automatically about outages and health advisories that affect the Azure services it uses. What should it configure?",
-            options: ["Service Health alerts", "An Advisor cost recommendation", "A ReadOnly lock", "A Log Analytics workspace only"],
+            options: ["Service Health alerts", "Azure Status RSS only", "Advisor notifications", "Resource Health only"],
             answer: 0,
             explain: "Service Health shows events relevant to your environment and supports alerts.",
             es: {
               q: "Una empresa quiere recibir avisos automáticos sobre caídas y avisos de estado que afecten a los servicios de Azure que usa. ¿Qué debe configurar?",
-              options: ["Alertas de Service Health", "Una recomendación de costo de Advisor", "Un bloqueo ReadOnly", "Solo un área de trabajo de Log Analytics"],
+              options: ["Alertas de Service Health", "Solo el RSS de Azure Status", "Las notificaciones de Advisor", "Solo Resource Health"],
               explain: "Service Health muestra los eventos relevantes para su entorno y admite alertas."
             }
           },
@@ -365,9 +365,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about Azure Service Health.",
             parts: [
               "Resource Health tells you whether a problem is ",
-              { options: ["on Azure's side or yours", "caused by your budget", "related to Advisor scores"], answer: 0 },
+              { options: ["on Azure's side or yours", "caused by a policy", "in the paired region"], answer: 0 },
               ", and when an event affects a workload, Service Health provides ",
-              { options: ["links to support", "automatic refunds", "a new region pair"], answer: 0 },
+              { options: ["links to support", "automatic failover", "Advisor recommendations"], answer: 0 },
               "."
             ],
             explain: "Resource Health attributes the issue, and Service Health links to support so you can respond quickly.",
@@ -375,9 +375,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre Azure Service Health.",
               parts: [
                 "Resource Health indica si un problema es ",
-                { options: ["de Azure o suyo", "causado por su presupuesto", "relacionado con la puntuación de Advisor"] },
+                { options: ["de Azure o suyo", "causado por una directiva", "en la región emparejada"] },
                 ", y cuando un evento afecta una carga de trabajo, Service Health ofrece ",
-                { options: ["enlaces al soporte", "reembolsos automáticos", "un nuevo par de regiones"] },
+                { options: ["enlaces al soporte", "una conmutación por error automática", "recomendaciones de Advisor"] },
                 "."
               ],
               explain: "Resource Health atribuye el problema y Service Health enlaza al soporte para responder rápido."
@@ -386,12 +386,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two kinds of events does Service Health show for your environment?",
-            options: ["Planned maintenance", "Health advisories", "Pricing calculator estimates", "Purview data lineage", "Policy initiatives"],
+            options: ["Planned maintenance", "Health advisories", "Advisor recommendations", "Metric alerts", "Budget alerts"],
             answers: [0, 1],
             explain: "Service Health shows outages, planned maintenance and health advisories relevant to you.",
             es: {
               q: "¿Cuáles son dos tipos de eventos que Service Health muestra para su entorno?",
-              options: ["El mantenimiento planificado", "Los avisos de estado", "Las estimaciones de la calculadora de precios", "El linaje de datos de Purview", "Las iniciativas de directivas"],
+              options: ["El mantenimiento planificado", "Los avisos de estado", "Recomendaciones de Advisor", "Alertas de métricas", "Alertas de presupuesto"],
               explain: "Service Health muestra caídas, mantenimiento planificado y avisos de estado relevantes para usted."
             }
           },
@@ -424,12 +424,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A web app runs in another cloud. The team wants to track its request rates, dependency calls and page load times. What should it use?",
-            options: ["Application Insights", "Azure Advisor", "Resource Health", "Azure Status"],
+            options: ["Application Insights", "Log Analytics alone", "Resource Health", "VM Insights"],
             answer: 0,
             explain: "Application Insights monitors performance and usage of web apps in Azure, on-premises or another cloud.",
             es: {
               q: "Una aplicación web se ejecuta en otra nube. El equipo quiere seguir sus tasas de solicitudes, llamadas a dependencias y tiempos de carga de página. ¿Qué debe usar?",
-              options: ["Application Insights", "Azure Advisor", "Resource Health", "Azure Status"],
+              options: ["Application Insights", "Log Analytics solo", "Resource Health", "VM Insights"],
               explain: "Application Insights supervisa el rendimiento y el uso de aplicaciones web en Azure, en el entorno local o en otra nube."
             }
           },
@@ -457,24 +457,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team wants to know its app responds even at night, when there's almost no traffic. Which Application Insights feature helps?",
-            options: ["Availability tests", "Log alerts on CPU", "Advisor recommendations", "Resource locks"],
+            options: ["Availability tests", "Log alerts on CPU", "Resource Health", "Service Health alerts"],
             answer: 0,
             explain: "Availability tests send synthetic requests so you know the app responds during low-traffic periods.",
             es: {
               q: "Un equipo quiere saber que su aplicación responde incluso de noche, cuando casi no hay tráfico. ¿Qué característica de Application Insights ayuda?",
-              options: ["Las pruebas de disponibilidad", "Las alertas de registros sobre la CPU", "Las recomendaciones de Advisor", "Los bloqueos de recursos"],
+              options: ["Las pruebas de disponibilidad", "Alertas de registros sobre la CPU", "Resource Health", "Alertas de Service Health"],
               explain: "Las pruebas de disponibilidad envían solicitudes sintéticas para saber que la aplicación responde en períodos de poco tráfico."
             }
           },
           {
             type: "multi",
             q: "Which two can Application Insights monitor?",
-            options: ["Dependency calls and their performance", "Server performance counters such as CPU and memory", "Azure subscription budgets", "Resource lock changes", "Microsoft compliance reports"],
+            options: ["Dependency calls and their performance", "Server performance counters such as CPU and memory", "Azure outages in your regions", "Advisor cost recommendations", "Policy compliance"],
             answers: [0, 1],
             explain: "It monitors requests, dependencies, page loads, users and server performance counters.",
             es: {
               q: "¿Cuáles son dos elementos que puede supervisar Application Insights?",
-              options: ["Las llamadas a dependencias y su rendimiento", "Los contadores de rendimiento del servidor, como CPU y memoria", "Los presupuestos de la suscripción de Azure", "Los cambios en los bloqueos de recursos", "Los informes de cumplimiento de Microsoft"],
+              options: ["Las llamadas a dependencias y su rendimiento", "Los contadores de rendimiento del servidor, como CPU y memoria", "Las interrupciones de Azure en sus regiones", "Las recomendaciones de costo de Advisor", "El cumplimiento de directivas"],
               explain: "Supervisa solicitudes, dependencias, cargas de página, usuarios y contadores de rendimiento del servidor."
             }
           },
@@ -498,9 +498,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about Azure Monitor alerts.",
             parts: [
               "An alert that emails you when a VM's CPU stays above 80% is a ",
-              { options: ["metric alert", "log alert", "budget alert"], answer: 0 },
+              { options: ["metric alert", "log alert", "activity log alert"], answer: 0 },
               ", while one that watches for an error pattern across several resources is a ",
-              { options: ["log alert", "metric alert", "credit alert"], answer: 0 },
+              { options: ["log alert", "metric alert", "Service Health alert"], answer: 0 },
               "."
             ],
             explain: "Alerts can be metric-based or log-based.",
@@ -508,9 +508,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre las alertas de Azure Monitor.",
               parts: [
                 "Una alerta que le envía un correo cuando la CPU de una máquina virtual se mantiene por encima del 80 % es una ",
-                { options: ["alerta de métricas", "alerta de registros", "alerta de presupuesto"] },
+                { options: ["alerta de métricas", "alerta de registros", "alerta del registro de actividad"] },
                 ", mientras que una que vigila un patrón de error en varios recursos es una ",
-                { options: ["alerta de registros", "alerta de métricas", "alerta de crédito"] },
+                { options: ["alerta de registros", "alerta de métricas", "alerta de Service Health"] },
                 "."
               ],
               explain: "Las alertas pueden basarse en métricas o en registros."

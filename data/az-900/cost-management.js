@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Cost optimization",
         q: "A production SQL workload runs 24/7 on the same VM size and isn't expected to change for years. Which pricing option offers the best long-term savings?",
-        options: ["Reservations", "Spot pricing", "Pay-as-you-go", "Azure Marketplace billing"],
+        options: ["Reservations", "Spot pricing", "Pay-as-you-go", "Azure savings plan for compute"],
         answer: 0,
         explain: "Reservations suit stable, predictable, long-running workloads with a one- or three-year commitment. Spot capacity can be evicted at any time.",
         es: {
           topic: "Optimización de costos",
           q: "Una carga de SQL de producción se ejecuta 24/7 en el mismo tamaño de máquina virtual y no se espera que cambie en años. ¿Qué opción de precios ofrece el mayor ahorro a largo plazo?",
-          options: ["Las reservas", "Los precios de Spot", "El pago por uso", "La facturación de Azure Marketplace"],
+          options: ["Las reservas", "Los precios de Spot", "El pago por uso", "El plan de ahorro de Azure para proceso"],
           explain: "Las reservas son adecuadas para cargas estables, predecibles y de larga duración, con un compromiso de uno o tres años. La capacidad de Spot se puede desalojar en cualquier momento."
         }
       },
@@ -48,13 +48,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Tags",
         q: "Finance wants monthly cost reports per internal cost center across many resource groups and subscriptions. What should the team apply to resources?",
-        options: ["A CostCenter tag", "A resource lock", "A separate region per team", "A Spot pricing policy"],
+        options: ["A CostCenter tag", "A separate subscription per cost center", "A management group per cost center", "A budget per resource group"],
         answer: 0,
         explain: "Tags group resources for cost reporting and allocation to internal cost centers, regardless of where they're deployed.",
         es: {
           topic: "Etiquetas",
           q: "Finanzas quiere informes de costos mensuales por centro de costos interno entre muchos grupos de recursos y suscripciones. ¿Qué debe aplicar el equipo a los recursos?",
-          options: ["Una etiqueta CostCenter", "Un bloqueo de recursos", "Una región distinta por equipo", "Una directiva de precios de Spot"],
+          options: ["Una etiqueta CostCenter", "Una suscripción separada por centro de costos", "Un grupo de administración por centro de costos", "Un presupuesto por grupo de recursos"],
           explain: "Las etiquetas agrupan recursos para informar costos y asignarlos a centros de costos internos, sin importar dónde estén implementados."
         }
       },
@@ -62,13 +62,13 @@ Catalog.module("az-900", {
         type: "multi",
         topic: "Cost factors",
         q: "Which two factors can change the price of the same virtual machine?",
-        options: ["The region where it's deployed", "Operating system licensing", "The name of the resource group", "The number of tags applied", "The color theme of the portal"],
+        options: ["The region where it's deployed", "Operating system licensing", "The resource group's region", "The number of tags applied", "The VM's name"],
         answers: [0, 1],
         explain: "Resource settings such as OS licensing, cores and storage, plus the region, affect cost. Names and tags don't change the price.",
         es: {
           topic: "Factores de costo",
           q: "¿Cuáles son dos factores que pueden cambiar el precio de la misma máquina virtual?",
-          options: ["La región donde se implementa", "Las licencias del sistema operativo", "El nombre del grupo de recursos", "La cantidad de etiquetas aplicadas", "El tema de color del portal"],
+          options: ["La región donde se implementa", "Las licencias del sistema operativo", "La región del grupo de recursos", "La cantidad de etiquetas aplicadas", "El nombre de la máquina virtual"],
           explain: "La configuración del recurso, como las licencias del sistema operativo, los núcleos y el almacenamiento, además de la región, afectan el costo. Los nombres y las etiquetas no cambian el precio."
         }
       },
@@ -93,7 +93,7 @@ Catalog.module("az-900", {
         q: "Complete the statement about budgets.",
         parts: [
           "A budget can be scoped to a subscription, resource group or service type, and when it reaches its threshold it can ",
-          { options: ["trigger automation that shuts down nonproduction resources", "move the resources to a cheaper region", "convert the resources to Spot pricing"], answer: 0 },
+          { options: ["trigger automation that shuts down nonproduction resources", "move the resources to a cheaper tier automatically", "stop billing until the next month"], answer: 0 },
           ". In the Azure portal, budgets are defined by ",
           { options: ["cost", "consumption usage only", "number of resources"], answer: 0 },
           "."
@@ -104,7 +104,7 @@ Catalog.module("az-900", {
           q: "Complete la afirmación sobre los presupuestos.",
           parts: [
             "Un presupuesto puede abarcar una suscripción, un grupo de recursos o un tipo de servicio, y al llegar al umbral puede ",
-            { options: ["disparar una automatización que apague recursos que no son de producción", "mover los recursos a una región más barata", "pasar los recursos a precios de Spot"] },
+            { options: ["disparar una automatización que apague recursos que no son de producción", "pasar los recursos a un nivel más barato automáticamente", "detener la facturación hasta el mes siguiente"] },
             ". En Azure Portal, los presupuestos se definen por ",
             { options: ["costo", "uso de consumo únicamente", "cantidad de recursos"] },
             "."
@@ -119,8 +119,8 @@ Catalog.module("az-900", {
         options: [
           "Associated resources such as disks and network interfaces weren't deprovisioned",
           "Deleted VMs keep billing for 30 days in case the deletion needs to be reverted",
-          "The pricing calculator is still running an estimate",
-          "Tags on the VM keep generating charges"
+          "The VM keeps billing until the end of the month",
+          "Azure keeps billing for the VM's public DNS name"
         ],
         answer: 0,
         explain: "Provisioning a VM also creates storage and networking resources that may not be removed with it, so maintaining the environment matters.",
@@ -130,8 +130,8 @@ Catalog.module("az-900", {
           options: [
             "Los recursos asociados, como discos e interfaces de red, no se desaprovisionaron",
             "Las máquinas virtuales eliminadas se siguen facturando 30 días por si hay que revertir la eliminación",
-            "La calculadora de precios sigue ejecutando una estimación",
-            "Las etiquetas de la máquina virtual siguen generando cargos"
+            "La máquina se sigue facturando hasta fin de mes",
+            "Azure sigue facturando el nombre DNS público de la máquina"
           ],
           explain: "Aprovisionar una máquina virtual también crea recursos de almacenamiento y red que pueden no eliminarse con ella; por eso importa mantener el entorno."
         }
@@ -154,13 +154,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Pricing calculator",
         q: "Which tool should you use to estimate Azure costs, now that the Total Cost of Ownership (TCO) calculator has been retired?",
-        options: ["The pricing calculator", "Cost analysis", "Azure Advisor", "The Service Trust Portal"],
+        options: ["The pricing calculator", "Cost analysis", "Microsoft Cost Management budgets", "Azure Advisor"],
         answer: 0,
         explain: "The pricing calculator estimates costs before deployment. Cost analysis reviews actual spend after resources exist.",
         es: {
           topic: "Calculadora de precios",
           q: "¿Qué herramienta debe usar para estimar costos de Azure, ahora que se retiró la calculadora del costo total de propiedad (TCO)?",
-          options: ["La calculadora de precios", "El análisis de costos", "Azure Advisor", "El Portal de confianza de servicios"],
+          options: ["La calculadora de precios", "El análisis de costos", "Los presupuestos de Microsoft Cost Management", "Azure Advisor"],
           explain: "La calculadora de precios estima costos antes de implementar. El análisis de costos revisa el gasto real cuando los recursos ya existen."
         }
       },
@@ -207,13 +207,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Tags",
         q: "A company wants every new resource to include an Owner tag, and wants removed tags to be reapplied. What should it use?",
-        options: ["Azure Policy", "Cost analysis", "The pricing calculator", "Spot pricing"],
+        options: ["Azure Policy", "A resource lock", "Cost analysis grouped by tag", "A management group"],
         answer: 0,
         explain: "Azure Policy can require tags on new resources and reapply tags that were removed.",
         es: {
           topic: "Etiquetas",
           q: "Una empresa quiere que todo recurso nuevo tenga una etiqueta Owner y que las etiquetas eliminadas se vuelvan a aplicar. ¿Qué debe usar?",
-          options: ["Azure Policy", "El análisis de costos", "La calculadora de precios", "Los precios de Spot"],
+          options: ["Azure Policy", "Un bloqueo de recursos", "El análisis de costos agrupado por etiqueta", "Un grupo de administración"],
           explain: "Azure Policy puede exigir etiquetas en los recursos nuevos y volver a aplicar las que se eliminaron."
         }
       }
@@ -231,12 +231,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A nightly batch data-processing job can be interrupted and restarted without harm. Which option can reduce its cost the most?",
-            options: ["Azure Spot Virtual Machines", "A three-year reservation", "Pay-as-you-go on dedicated VMs", "A larger VM size"],
+            options: ["Azure Spot Virtual Machines", "A three-year reservation", "Pay-as-you-go on dedicated VMs", "Azure savings plan for compute"],
             answer: 0,
             explain: "Spot VMs use unused capacity at lower prices but can be evicted, which suits interruptible workloads.",
             es: {
               q: "Un proceso de datos por lotes nocturno se puede interrumpir y reiniciar sin problemas. ¿Qué opción puede reducir más su costo?",
-              options: ["Las máquinas virtuales de Spot de Azure", "Una reserva a tres años", "El pago por uso en máquinas dedicadas", "Un tamaño de máquina virtual más grande"],
+              options: ["Las máquinas virtuales de Spot de Azure", "Una reserva a tres años", "El pago por uso en máquinas dedicadas", "El plan de ahorro de Azure para proceso"],
               explain: "Las máquinas virtuales de Spot usan capacidad sin usar a menor precio pero pueden desalojarse, lo que encaja con cargas interrumpibles."
             }
           },
@@ -269,8 +269,8 @@ Catalog.module("az-900", {
             options: [
               "Power, labor, taxes and fees vary by location",
               "Each region uses a different currency for billing",
-              "Prices depend on how many tags the resource has",
-              "Only the region closest to the customer is discounted"
+              "Each region has a different SLA",
+              "Prices depend on the resource group's location"
             ],
             answer: 0,
             explain: "Global infrastructure brings global pricing differences driven by local costs.",
@@ -279,8 +279,8 @@ Catalog.module("az-900", {
               options: [
                 "La energía, la mano de obra, los impuestos y las tasas varían según la ubicación",
                 "Cada región factura en una moneda distinta",
-                "El precio depende de cuántas etiquetas tenga el recurso",
-                "Solo tiene descuento la región más cercana al cliente"
+                "Cada región tiene un SLA distinto",
+                "El precio depende de la ubicación del grupo de recursos"
               ],
               explain: "La infraestructura global trae diferencias de precio globales, impulsadas por los costos locales."
             }
@@ -290,9 +290,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about network traffic costs.",
             parts: [
               "Data ",
-              { options: ["leaving", "entering", "stored in"], answer: 0 },
+              { options: ["leaving", "entering", "moving between resource groups"], answer: 0 },
               " Azure datacenters is priced based on ",
-              { options: ["billing zones", "availability zones", "resource groups"], answer: 0 },
+              { options: ["billing zones", "availability zones", "the number of storage accounts"], answer: 0 },
               ", while some inbound transfers are free."
             ],
             explain: "Outbound data transfer pricing is based on billing zones, which are geographic groupings of regions for billing.",
@@ -300,9 +300,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre los costos de tráfico de red.",
               parts: [
                 "Los datos que ",
-                { options: ["salen de", "entran a", "se guardan en"] },
+                { options: ["salen de", "entran a", "que se mueven entre grupos de recursos"] },
                 " los centros de datos de Azure se cobran según las ",
-                { options: ["zonas de facturación", "zonas de disponibilidad", "grupos de recursos"] },
+                { options: ["zonas de facturación", "zonas de disponibilidad", "la cantidad de cuentas de almacenamiento"] },
                 ", mientras que algunas transferencias entrantes son gratuitas."
               ],
               explain: "El precio de la transferencia de datos saliente se basa en zonas de facturación, que son agrupaciones geográficas de regiones con fines de facturación."
@@ -311,12 +311,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two are discount options for predictable or flexible compute usage?",
-            options: ["Reservations", "Azure savings plan for compute", "Resource locks", "Billing zones", "Azure Marketplace certification"],
+            options: ["Reservations", "Azure savings plan for compute", "Pay-as-you-go pricing", "Budget alerts", "Azure Marketplace billing"],
             answers: [0, 1],
             explain: "Reservations commit to specific resources and savings plans commit to an hourly spend, both for one or three years.",
             es: {
               q: "¿Cuáles son dos opciones de descuento para un uso de proceso predecible o flexible?",
-              options: ["Las reservas", "El plan de ahorro de Azure para proceso", "Los bloqueos de recursos", "Las zonas de facturación", "La certificación de Azure Marketplace"],
+              options: ["Las reservas", "El plan de ahorro de Azure para proceso", "El pago por uso", "Las alertas de presupuesto", "La facturación de Azure Marketplace"],
               explain: "Las reservas comprometen recursos específicos y los planes de ahorro, un gasto por hora; ambos por uno o tres años."
             }
           },
@@ -349,12 +349,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team plans a new web app with an App Service plan, a managed database and storage, and wants to compare monthly costs across regions and tiers before deploying. What should it use?",
-            options: ["The pricing calculator", "Cost analysis in Cost Management", "Azure Service Health", "A budget alert"],
+            options: ["The pricing calculator", "Cost analysis in Cost Management", "Azure Service Health", "Azure Advisor cost recommendations"],
             answer: 0,
             explain: "The pricing calculator models a solution and compares estimates across regions, tiers and redundancy before anything is deployed.",
             es: {
               q: "Un equipo planifica una aplicación web nueva con un plan de App Service, una base de datos administrada y almacenamiento, y quiere comparar costos mensuales entre regiones y niveles antes de implementar. ¿Qué debe usar?",
-              options: ["La calculadora de precios", "El análisis de costos de Cost Management", "Azure Service Health", "Una alerta de presupuesto"],
+              options: ["La calculadora de precios", "El análisis de costos de Cost Management", "Azure Service Health", "Las recomendaciones de costo de Azure Advisor"],
               explain: "La calculadora de precios modela una solución y compara estimaciones entre regiones, niveles y redundancia antes de implementar nada."
             }
           },
@@ -376,12 +376,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two can you account for in a pricing calculator estimate for storage?",
-            options: ["The access tier", "The redundancy option", "The resource lock level", "The Azure Policy assignment", "The Advisor score"],
+            options: ["The access tier", "The redundancy option", "The resource group name", "The number of tags", "The Azure Policy assignment"],
             answers: [0, 1],
             explain: "The calculator accounts for storage type, access tier and redundancy, along with compute and network costs.",
             es: {
               q: "¿Cuáles son dos elementos que puede tener en cuenta en una estimación de almacenamiento de la calculadora de precios?",
-              options: ["El nivel de acceso", "La opción de redundancia", "El nivel de bloqueo del recurso", "La asignación de Azure Policy", "La puntuación de Advisor"],
+              options: ["El nivel de acceso", "La opción de redundancia", "El nombre del grupo de recursos", "La cantidad de etiquetas", "La asignación de Azure Policy"],
               explain: "La calculadora considera el tipo de almacenamiento, el nivel de acceso y la redundancia, además de los costos de proceso y red."
             }
           },
@@ -412,9 +412,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about the pricing calculator.",
             parts: [
               "You can estimate ",
-              { options: ["individual resources, a full solution or an example scenario", "only virtual machines", "only resources that are already deployed"], answer: 0 },
+              { options: ["individual resources, a full solution or an example scenario", "only resources in your current subscription", "only resources that are already deployed"], answer: 0 },
               ", and the estimate ",
-              { options: ["doesn't provision anything", "creates the resources in a test subscription", "reserves capacity for 30 days"], answer: 0 },
+              { options: ["doesn't provision anything", "is billed as a reservation", "becomes a budget automatically"], answer: 0 },
               "."
             ],
             explain: "The calculator supports individual resources, solutions and example scenarios, and never provisions resources.",
@@ -422,9 +422,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre la calculadora de precios.",
               parts: [
                 "Puede estimar ",
-                { options: ["recursos individuales, una solución completa o un escenario de ejemplo", "solo máquinas virtuales", "solo recursos ya implementados"] },
+                { options: ["recursos individuales, una solución completa o un escenario de ejemplo", "solo recursos de su suscripción actual", "solo recursos ya implementados"] },
                 ", y la estimación ",
-                { options: ["no aprovisiona nada", "crea los recursos en una suscripción de prueba", "reserva capacidad por 30 días"] },
+                { options: ["no aprovisiona nada", "se factura como una reserva", "se convierte en un presupuesto automáticamente"] },
                 "."
               ],
               explain: "La calculadora admite recursos individuales, soluciones y escenarios de ejemplo, y nunca aprovisiona recursos."
@@ -444,12 +444,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "After a deployment, a manager wants to see where costs accrue by subscription, resource group and service, and how they trend over the month. Which Cost Management feature fits?",
-            options: ["Cost analysis", "The pricing calculator", "Credit alerts", "Resource tags"],
+            options: ["Cost analysis", "The pricing calculator", "Budgets", "Azure Advisor"],
             answer: 0,
             explain: "Cost analysis shows aggregated and accumulated costs in various views to identify where spend accrues and trends.",
             es: {
               q: "Después de una implementación, un gerente quiere ver dónde se acumulan los costos por suscripción, grupo de recursos y servicio, y cómo evolucionan en el mes. ¿Qué característica de Cost Management corresponde?",
-              options: ["El análisis de costos", "La calculadora de precios", "Las alertas de crédito", "Las etiquetas de recursos"],
+              options: ["El análisis de costos", "La calculadora de precios", "Los presupuestos", "Azure Advisor"],
               explain: "El análisis de costos muestra costos agregados y acumulados en distintas vistas para identificar dónde se acumula el gasto y sus tendencias."
             }
           },
@@ -477,12 +477,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team wants nonproduction resources to shut down automatically when a monthly spending threshold is reached. What should it configure?",
-            options: ["A budget that triggers automation", "A credit alert", "A resource tag named Shutdown", "A pricing calculator estimate"],
+            options: ["A budget that triggers automation", "A credit alert", "An Azure Policy with a deny effect", "An Advisor cost recommendation"],
             answer: 0,
             explain: "Budgets can trigger automation that suspends or modifies resources when a threshold is reached.",
             es: {
               q: "Un equipo quiere que los recursos que no son de producción se apaguen automáticamente al llegar a un umbral de gasto mensual. ¿Qué debe configurar?",
-              options: ["Un presupuesto que dispare una automatización", "Una alerta de crédito", "Una etiqueta de recurso llamada Shutdown", "Una estimación en la calculadora de precios"],
+              options: ["Un presupuesto que dispare una automatización", "Una alerta de crédito", "Una directiva de Azure Policy con efecto de denegación", "Una recomendación de costo de Advisor"],
               explain: "Los presupuestos pueden disparar automatizaciones que suspenden o modifican recursos al alcanzar un umbral."
             }
           },
@@ -494,7 +494,7 @@ Catalog.module("az-900", {
               "An alert email is sent to the budget's recipient list",
               "They're available only to Enterprise Agreement customers",
               "They fire only at 90% and 100% of the budget",
-              "They're generated by Azure Advisor"
+              "They stop resources automatically by default"
             ],
             answers: [0, 1],
             explain: "Budget alerts use thresholds you define, appear in cost alerts and email the recipients. Fixed 90%/100% thresholds describe credit alerts.",
@@ -505,7 +505,7 @@ Catalog.module("az-900", {
                 "Se envía un correo de alerta a la lista de destinatarios del presupuesto",
                 "Solo están disponibles para clientes con Contrato Enterprise",
                 "Solo se disparan al 90 % y al 100 % del presupuesto",
-                "Las genera Azure Advisor"
+                "Detienen los recursos automáticamente de forma predeterminada"
               ],
               explain: "Las alertas de presupuesto usan umbrales que usted define, aparecen en las alertas de costos y envían correo a los destinatarios. Los umbrales fijos de 90 % y 100 % corresponden a las alertas de crédito."
             }
@@ -530,9 +530,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about Cost Management.",
             parts: [
               "Cost Management lets you check resource costs, create ",
-              { options: ["alerts based on spend", "virtual machines", "resource locks"], answer: 0 },
+              { options: ["alerts based on spend", "Advisor recommendations", "pricing estimates"], answer: 0 },
               " and create ",
-              { options: ["budgets that can automate resource management", "pricing estimates for new regions", "policies that enforce tags"], answer: 0 },
+              { options: ["budgets that can automate resource management", "Azure Policy assignments that enforce tags", "reservations for idle VMs"], answer: 0 },
               "."
             ],
             explain: "The three pillars are cost analysis, cost alerts and budgets.",
@@ -540,9 +540,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre Cost Management.",
               parts: [
                 "Cost Management permite revisar los costos de los recursos, crear ",
-                { options: ["alertas basadas en el gasto", "máquinas virtuales", "bloqueos de recursos"] },
+                { options: ["alertas basadas en el gasto", "recomendaciones de Advisor", "estimaciones de precios"] },
                 " y crear ",
-                { options: ["presupuestos que pueden automatizar la administración de recursos", "estimaciones de precios para regiones nuevas", "directivas que exijan etiquetas"] },
+                { options: ["presupuestos que pueden automatizar la administración de recursos", "asignaciones de Azure Policy que exigen etiquetas", "reservas para máquinas inactivas"] },
                 "."
               ],
               explain: "Los tres pilares son el análisis de costos, las alertas de costos y los presupuestos."
@@ -585,24 +585,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "What does a resource tag consist of?",
-            options: ["A name and a value", "A policy and an assignment", "A lock and a scope", "A region and a billing zone"],
+            options: ["A name and a value", "A name, a value and a scope", "A key and an expiration date", "A policy and an assignment"],
             answer: 0,
             explain: "Each tag is a name/value pair, and a resource can have one or more tags.",
             es: {
               q: "¿De qué se compone una etiqueta de recurso?",
-              options: ["Un nombre y un valor", "Una directiva y una asignación", "Un bloqueo y un ámbito", "Una región y una zona de facturación"],
+              options: ["Un nombre y un valor", "Un nombre, un valor y un ámbito", "Una clave y una fecha de vencimiento", "Una directiva y una asignación"],
               explain: "Cada etiqueta es un par nombre-valor, y un recurso puede tener una o más etiquetas."
             }
           },
           {
             type: "multi",
             q: "Which two can you use to add, modify or delete resource tags?",
-            options: ["Azure CLI", "Azure Resource Manager templates", "The pricing calculator", "Azure Service Health", "The Service Trust Portal"],
+            options: ["Azure CLI", "Azure Resource Manager templates", "Cost analysis", "Azure Advisor", "The pricing calculator"],
             answers: [0, 1],
             explain: "Tags can be managed through the portal, PowerShell, the Azure CLI, ARM templates or the REST API.",
             es: {
               q: "¿Cuáles son dos herramientas con las que puede agregar, modificar o eliminar etiquetas de recursos?",
-              options: ["La CLI de Azure", "Las plantillas de Azure Resource Manager", "La calculadora de precios", "Azure Service Health", "El Portal de confianza de servicios"],
+              options: ["La CLI de Azure", "Las plantillas de Azure Resource Manager", "El análisis de costos", "Azure Advisor", "La calculadora de precios"],
               explain: "Las etiquetas se administran con el portal, PowerShell, la CLI de Azure, plantillas ARM o la API REST."
             }
           },
@@ -648,9 +648,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about enforcing tags.",
             parts: [
               "To require a tag on every new resource, use ",
-              { options: ["Azure Policy", "Cost analysis", "a resource lock"], answer: 0 },
+              { options: ["Azure Policy", "a management group", "Cost Management"], answer: 0 },
               ", which can also ",
-              { options: ["reapply tags that were removed", "move resources between regions", "lower the price of tagged resources"], answer: 0 },
+              { options: ["reapply tags that were removed", "block deletion of tagged resources", "group costs by tag automatically"], answer: 0 },
               "."
             ],
             explain: "Azure Policy enforces tagging rules and can reapply removed tags.",
@@ -658,9 +658,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre la aplicación obligatoria de etiquetas.",
               parts: [
                 "Para exigir una etiqueta en cada recurso nuevo, use ",
-                { options: ["Azure Policy", "el análisis de costos", "un bloqueo de recursos"] },
+                { options: ["Azure Policy", "un grupo de administración", "Cost Management"] },
                 ", que además puede ",
-                { options: ["volver a aplicar etiquetas eliminadas", "mover recursos entre regiones", "bajar el precio de los recursos etiquetados"] },
+                { options: ["volver a aplicar etiquetas eliminadas", "bloquear la eliminación de recursos etiquetados", "agrupar costos por etiqueta automáticamente"] },
                 "."
               ],
               explain: "Azure Policy aplica reglas de etiquetado y puede volver a aplicar las etiquetas eliminadas."
@@ -703,12 +703,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "What do you commit to with an Azure savings plan for compute?",
-            options: ["An hourly spend amount for one or three years", "A specific VM family and size", "A fixed number of Spot evictions", "A monthly budget alert"],
+            options: ["An hourly spend amount for one or three years", "A specific VM family and size", "A fixed number of VM instances", "A specific region"],
             answer: 0,
             explain: "Savings plans commit to an hourly spend on eligible compute, not to a specific instance type.",
             es: {
               q: "¿Qué se compromete con un plan de ahorro de Azure para proceso?",
-              options: ["Un monto de gasto por hora durante uno o tres años", "Una familia y un tamaño de máquina virtual específicos", "Una cantidad fija de desalojos de Spot", "Una alerta de presupuesto mensual"],
+              options: ["Un monto de gasto por hora durante uno o tres años", "Una familia y un tamaño de máquina virtual específicos", "Una cantidad fija de instancias de máquinas virtuales", "Una región específica"],
               explain: "Los planes de ahorro comprometen un gasto por hora en proceso elegible, no un tipo de instancia."
             }
           },
@@ -718,8 +718,8 @@ Catalog.module("az-900", {
             options: [
               "Moving it to a more predictable pricing model",
               "Keeping it on Spot to keep costs lowest",
-              "Adding tags so Spot capacity isn't reclaimed",
-              "Opening a budget alert to prevent evictions"
+              "Moving it to a larger Spot VM size",
+              "Adding a budget alert to prevent evictions"
             ],
             answer: 0,
             explain: "Spot capacity can be reclaimed, so critical workloads should move to a predictable option.",
@@ -728,8 +728,8 @@ Catalog.module("az-900", {
               options: [
                 "Pasarla a un modelo de precios más predecible",
                 "Mantenerla en Spot para que el costo siga siendo mínimo",
-                "Agregar etiquetas para que no se recupere la capacidad de Spot",
-                "Crear una alerta de presupuesto para evitar desalojos"
+                "Pasarla a un tamaño de máquina de acceso puntual más grande",
+                "Agregar una alerta de presupuesto para evitar desalojos"
               ],
               explain: "La capacidad de Spot se puede recuperar, así que las cargas críticas deben pasar a una opción predecible."
             }
@@ -740,9 +740,9 @@ Catalog.module("az-900", {
             options: [
               "They use unused Azure capacity at reduced prices",
               "Azure can reclaim the capacity when it's needed",
-              "They require a three-year commitment",
+              "They come with an SLA",
               "They're the best fit for 24/7 production databases",
-              "They can't be used for batch jobs"
+              "Their price is fixed for one or three years"
             ],
             answers: [0, 1],
             explain: "Spot is cheap, evictable capacity, suited to fault-tolerant or interruptible workloads.",
@@ -751,9 +751,9 @@ Catalog.module("az-900", {
               options: [
                 "Usan capacidad de Azure sin usar a precios reducidos",
                 "Azure puede recuperar la capacidad cuando la necesita",
-                "Requieren un compromiso de tres años",
+                "Tienen un SLA",
                 "Son lo mejor para bases de datos de producción 24/7",
-                "No se pueden usar para trabajos por lotes"
+                "Su precio queda fijo durante uno o tres años"
               ],
               explain: "Spot es capacidad barata y desalojable, adecuada para cargas tolerantes a fallas o interrumpibles."
             }

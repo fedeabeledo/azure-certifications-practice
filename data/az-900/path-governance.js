@@ -6,13 +6,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Governance and compliance",
       q: "A company wants every new resource to carry a CostCenter tag so finance can report spend per cost center. Which combination delivers this?",
-      options: ["Azure Policy to require the tag, then Cost Management to analyze costs by tag", "A Delete lock on each subscription so tags can't be removed, plus the pricing calculator for reporting", "Azure Advisor recommendations and Resource Health", "Azure Arc and Application Insights"],
+      options: ["Azure Policy to require the tag, then Cost Management to analyze costs by tag", "A Delete lock on each subscription so tags can't be removed, plus the pricing calculator for reporting", "Resource locks to keep tags, plus Advisor cost recommendations", "Management groups per cost center and the pricing calculator"],
       answer: 0,
       explain: "Azure Policy enforces tagging rules, and tags let Cost Management group and report costs.",
       es: {
         topic: "Gobernanza y cumplimiento",
         q: "Una empresa quiere que todo recurso nuevo tenga una etiqueta CostCenter para que finanzas informe el gasto por centro de costos. ¿Qué combinación lo logra?",
-        options: ["Azure Policy para exigir la etiqueta y Cost Management para analizar costos por etiqueta", "Un bloqueo Delete en cada suscripción para que no se quiten etiquetas, más la calculadora de precios para informes", "Las recomendaciones de Azure Advisor y Resource Health", "Azure Arc y Application Insights"],
+        options: ["Azure Policy para exigir la etiqueta y Cost Management para analizar costos por etiqueta", "Un bloqueo Delete en cada suscripción para que no se quiten etiquetas, más la calculadora de precios para informes", "Bloqueos de recursos para conservar etiquetas, más recomendaciones de costo de Advisor", "Grupos de administración por centro de costos y la calculadora de precios"],
         explain: "Azure Policy aplica reglas de etiquetado, y las etiquetas permiten que Cost Management agrupe e informe los costos."
       }
     },
@@ -45,13 +45,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Managing and deploying resources",
       q: "A company manages servers in its datacenter and in another public cloud. It wants Azure Policy and inventory tracking to apply to them from Azure. What should it use?",
-      options: ["Azure Arc", "Azure Cloud Shell", "The pricing calculator", "Microsoft Purview"],
+      options: ["Azure Arc", "Azure Cloud Shell", "Azure Lighthouse", "Azure Migrate"],
       answer: 0,
       explain: "Arc projects non-Azure resources into Resource Manager so Azure governance applies to them.",
       es: {
         topic: "Administración e implementación de recursos",
         q: "Una empresa administra servidores en su centro de datos y en otra nube pública. Quiere que Azure Policy y el seguimiento de inventario se apliquen a ellos desde Azure. ¿Qué debe usar?",
-        options: ["Azure Arc", "Azure Cloud Shell", "La calculadora de precios", "Microsoft Purview"],
+        options: ["Azure Arc", "Azure Cloud Shell", "Azure Lighthouse", "Azure Migrate"],
         explain: "Arc proyecta recursos que no son de Azure en Resource Manager para que se les aplique la gobernanza de Azure."
       }
     },
@@ -59,13 +59,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Cost management",
       q: "Before approving a new project, finance wants an estimated monthly cost for an App Service plan, a database and storage in two candidate regions. What should the team use?",
-      options: ["The pricing calculator", "Cost analysis", "Budget alerts", "Azure Service Health"],
+      options: ["The pricing calculator", "Cost analysis", "Azure Advisor", "Budgets"],
       answer: 0,
       explain: "The pricing calculator estimates costs before deployment; cost analysis reviews actual spend afterward.",
       es: {
         topic: "Administración de costos",
         q: "Antes de aprobar un proyecto, finanzas quiere un costo mensual estimado para un plan de App Service, una base de datos y almacenamiento en dos regiones candidatas. ¿Qué debe usar el equipo?",
-        options: ["La calculadora de precios", "El análisis de costos", "Las alertas de presupuesto", "Azure Service Health"],
+        options: ["La calculadora de precios", "El análisis de costos", "Azure Advisor", "Los presupuestos"],
         explain: "La calculadora de precios estima costos antes de implementar; el análisis de costos revisa el gasto real después."
       }
     },
@@ -90,9 +90,9 @@ Catalog.pathQuiz("az-900", "governance", {
       q: "Complete the statement about pricing options.",
       parts: [
         "A database that runs 24/7 with stable needs fits ",
-        { options: ["Reservations", "Spot pricing", "an Advisor recommendation"], answer: 0 },
+        { options: ["Reservations", "Spot pricing", "pay-as-you-go"], answer: 0 },
         ", while batch jobs that can restart after interruption fit ",
-        { options: ["Spot pricing", "a savings plan only", "a ReadOnly lock"], answer: 0 },
+        { options: ["Spot pricing", "reservations", "pay-as-you-go on dedicated hosts"], answer: 0 },
         "."
       ],
       explain: "Reservations reward predictable usage; Spot offers cheap, evictable capacity for interruptible work.",
@@ -101,9 +101,9 @@ Catalog.pathQuiz("az-900", "governance", {
         q: "Complete la afirmación sobre las opciones de precios.",
         parts: [
           "Una base de datos que funciona 24/7 con necesidades estables encaja con ",
-          { options: ["las reservas", "los precios de Spot", "una recomendación de Advisor"] },
+          { options: ["las reservas", "los precios de Spot", "el pago por uso"] },
           ", mientras que los trabajos por lotes que pueden reiniciarse tras una interrupción encajan con ",
-          { options: ["los precios de Spot", "solo un plan de ahorro", "un bloqueo ReadOnly"] },
+          { options: ["los precios de Spot", "las reservas", "el pago por uso en hosts dedicados"] },
           "."
         ],
         explain: "Las reservas premian el uso predecible; Spot ofrece capacidad barata y desalojable para trabajo interrumpible."
@@ -113,13 +113,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Governance and compliance",
       q: "A critical resource group must not be deleted, but administrators still need to change its resources' settings. What should you apply?",
-      options: ["A Delete lock on the resource group", "A ReadOnly lock on the resource group", "An Azure Policy that denies all changes", "A budget with automation"],
+      options: ["A Delete lock on the resource group", "A ReadOnly lock on the resource group", "An Azure Policy that denies all changes", "A Contributor role assignment only"],
       answer: 0,
       explain: "A Delete lock blocks deletion but allows updates; it's inherited by the resources in the group.",
       es: {
         topic: "Gobernanza y cumplimiento",
         q: "Un grupo de recursos crítico no se debe eliminar, pero los administradores todavía necesitan cambiar la configuración de sus recursos. ¿Qué debe aplicar?",
-        options: ["Un bloqueo Delete en el grupo de recursos", "Un bloqueo ReadOnly en el grupo de recursos", "Una directiva de Azure Policy que niegue todo cambio", "Un presupuesto con automatización"],
+        options: ["Un bloqueo Delete en el grupo de recursos", "Un bloqueo ReadOnly en el grupo de recursos", "Una directiva de Azure Policy que niegue todo cambio", "Solo una asignación del rol Colaborador"],
         explain: "Un bloqueo Delete impide eliminar pero permite actualizar; lo heredan los recursos del grupo."
       }
     },
@@ -153,13 +153,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Monitoring",
       q: "A company wants the operations team emailed when a VM's CPU stays high, and the same contacts notified about Azure outages in its regions. What should it reuse?",
-      options: ["An action group", "A resource lock", "A policy initiative", "A pricing estimate"],
+      options: ["An action group", "A Log Analytics workspace", "An Advisor notification", "A distribution list in each alert"],
       answer: 0,
       explain: "Action groups are reusable across Azure Monitor alerts, Service Health and Advisor.",
       es: {
         topic: "Supervisión",
         q: "Una empresa quiere que se avise por correo al equipo de operaciones cuando la CPU de una máquina virtual se mantiene alta, y que los mismos contactos reciban avisos de caídas de Azure en sus regiones. ¿Qué debe reutilizar?",
-        options: ["Un grupo de acciones", "Un bloqueo de recursos", "Una iniciativa de directivas", "Una estimación de precios"],
+        options: ["Un grupo de acciones", "Un área de trabajo de Log Analytics", "Una notificación de Advisor", "Una lista de distribución en cada alerta"],
         explain: "Los grupos de acciones se reutilizan en las alertas de Azure Monitor, Service Health y Advisor."
       }
     },
@@ -167,13 +167,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Governance and compliance",
       q: "An auditor needs Microsoft's own audit reports about its cloud controls, not your configuration. Where are they?",
-      options: ["The Service Trust Portal", "Azure Policy compliance", "Azure Advisor", "Microsoft Cost Management"],
+      options: ["The Service Trust Portal", "Azure Policy compliance", "Microsoft Defender for Cloud", "Microsoft Purview"],
       answer: 0,
       explain: "The Service Trust Portal provides content about Microsoft's security, privacy and compliance practices.",
       es: {
         topic: "Gobernanza y cumplimiento",
         q: "Un auditor necesita los informes de auditoría propios de Microsoft sobre sus controles en la nube, no sobre su configuración. ¿Dónde están?",
-        options: ["En el Portal de confianza de servicios", "En el cumplimiento de Azure Policy", "En Azure Advisor", "En Microsoft Cost Management"],
+        options: ["En el Portal de confianza de servicios", "En el cumplimiento de Azure Policy", "Microsoft Defender for Cloud", "Microsoft Purview"],
         explain: "El Portal de confianza de servicios ofrece contenido sobre las prácticas de seguridad, privacidad y cumplimiento de Microsoft."
       }
     },
@@ -196,13 +196,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Governance and compliance",
       q: "A company needs to discover and classify sensitive data across Azure, on-premises SQL and Amazon S3, with end-to-end lineage. Which service fits?",
-      options: ["Microsoft Purview", "Azure Policy", "Azure Monitor", "Azure Arc"],
+      options: ["Microsoft Purview", "Azure Policy", "Microsoft Defender for Cloud", "Azure Arc"],
       answer: 0,
       explain: "Purview offers automated discovery, classification and lineage across on-premises, multicloud and SaaS data.",
       es: {
         topic: "Gobernanza y cumplimiento",
         q: "Una empresa necesita descubrir y clasificar datos confidenciales en Azure, SQL local y Amazon S3, con linaje de extremo a extremo. ¿Qué servicio corresponde?",
-        options: ["Microsoft Purview", "Azure Policy", "Azure Monitor", "Azure Arc"],
+        options: ["Microsoft Purview", "Azure Policy", "Microsoft Defender for Cloud", "Azure Arc"],
         explain: "Purview ofrece detección, clasificación y linaje automatizados en datos locales, multinube y SaaS."
       }
     },
@@ -235,13 +235,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Managing and deploying resources",
       q: "An administrator wants a natural-language assistant to help explore services and draft commands, while still reviewing changes before applying them. What fits?",
-      options: ["Copilot in Azure", "Azure Status", "Azure Arc", "A ReadOnly lock"],
+      options: ["Copilot in Azure", "Azure Advisor", "Azure Cloud Shell", "Azure Arc"],
       answer: 0,
       explain: "Copilot in Azure provides contextual guidance; recommendations should still be validated.",
       es: {
         topic: "Administración e implementación de recursos",
         q: "Un administrador quiere un asistente en lenguaje natural que lo ayude a explorar servicios y redactar comandos, revisando igual los cambios antes de aplicarlos. ¿Qué corresponde?",
-        options: ["Copilot en Azure", "Azure Status", "Azure Arc", "Un bloqueo ReadOnly"],
+        options: ["Copilot en Azure", "Azure Advisor", "Azure Cloud Shell", "Azure Arc"],
         explain: "Copilot en Azure ofrece orientación contextual; las recomendaciones se deben validar igual."
       }
     },
@@ -254,7 +254,7 @@ Catalog.pathQuiz("az-900", "governance", {
         "Its recommendations can be postponed or dismissed",
         "It applies all recommendations automatically",
         "It replaces Azure Monitor alerts",
-        "It only works for resources managed by Azure Arc"
+        "It only covers Azure VMs"
       ],
       answers: [0, 1],
       explain: "Advisor gives recommendations in five categories that you can act on, postpone or dismiss.",
@@ -266,7 +266,7 @@ Catalog.pathQuiz("az-900", "governance", {
           "Sus recomendaciones se pueden posponer o descartar",
           "Aplica todas las recomendaciones automáticamente",
           "Reemplaza las alertas de Azure Monitor",
-          "Solo funciona con recursos administrados por Azure Arc"
+          "Solo cubre máquinas virtuales de Azure"
         ],
         explain: "Advisor da recomendaciones en cinco categorías que se pueden aplicar, posponer o descartar."
       }
@@ -279,7 +279,7 @@ Catalog.pathQuiz("az-900", "governance", {
         "All its policy definitions apply to every subscription and resource beneath it",
         "Only the first policy in the initiative is applied",
         "It applies only to the resources created in that management group during the next 30 days",
-        "It locks every resource as ReadOnly"
+        "It applies only to the management group, not its subscriptions"
       ],
       answer: 0,
       explain: "Initiatives group policies, and assignments are inherited by everything beneath the scope.",
@@ -290,7 +290,7 @@ Catalog.pathQuiz("az-900", "governance", {
           "Todas sus definiciones se aplican a cada suscripción y recurso que está debajo",
           "Solo se aplica la primera directiva de la iniciativa",
           "Se aplica solo a los recursos creados en ese grupo de administración durante los próximos 30 días",
-          "Bloquea todos los recursos como ReadOnly"
+          "Se aplica solo al grupo de administración, no a sus suscripciones"
         ],
         explain: "Las iniciativas agrupan directivas, y las asignaciones las hereda todo lo que está debajo del ámbito."
       }
@@ -301,9 +301,9 @@ Catalog.pathQuiz("az-900", "governance", {
       q: "Complete the statement about Azure monitoring tools.",
       parts: [
         "To query the logs that Azure Monitor collects, use ",
-        { options: ["Log Analytics", "Azure Advisor", "the Service Trust Portal"], answer: 0 },
+        { options: ["Log Analytics", "Azure Advisor", "Application Insights"], answer: 0 },
         ", and to be told about planned maintenance in the regions you use, check ",
-        { options: ["Service Health", "Application Insights", "the pricing calculator"], answer: 0 },
+        { options: ["Service Health", "Application Insights", "Azure Advisor"], answer: 0 },
         "."
       ],
       explain: "Log Analytics runs queries on Azure Monitor data; Service Health shows events relevant to your services.",
@@ -312,9 +312,9 @@ Catalog.pathQuiz("az-900", "governance", {
         q: "Complete la afirmación sobre las herramientas de supervisión de Azure.",
         parts: [
           "Para consultar los registros que recopila Azure Monitor, use ",
-          { options: ["Log Analytics", "Azure Advisor", "el Portal de confianza de servicios"] },
+          { options: ["Log Analytics", "Azure Advisor", "Application Insights"] },
           ", y para enterarse del mantenimiento planificado en sus regiones, revise ",
-          { options: ["Service Health", "Application Insights", "la calculadora de precios"] },
+          { options: ["Service Health", "Application Insights", "Azure Advisor"] },
           "."
         ],
         explain: "Log Analytics ejecuta consultas sobre los datos de Azure Monitor; Service Health muestra los eventos relevantes para sus servicios."
@@ -367,13 +367,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Managing and deploying resources",
       q: "Which file format do ARM templates use to declare the resources to deploy?",
-      options: ["JSON", "PowerShell scripts", "Bash scripts", "CSV"],
+      options: ["JSON", "PowerShell scripts", "YAML", "XML"],
       answer: 0,
       explain: "ARM templates are declarative JSON; Bicep is a simpler alternative language.",
       es: {
         topic: "Administración e implementación de recursos",
         q: "¿Qué formato usan las plantillas ARM para declarar los recursos que se implementan?",
-        options: ["JSON", "Scripts de PowerShell", "Scripts de Bash", "CSV"],
+        options: ["JSON", "Scripts de PowerShell", "YAML", "XML"],
         explain: "Las plantillas ARM son JSON declarativo; Bicep es un lenguaje alternativo más simple."
       }
     },
@@ -385,7 +385,7 @@ Catalog.pathQuiz("az-900", "governance", {
         "It enforces the allowed-locations rule just like any other change",
         "It skips the rule, because changes suggested by Copilot are already validated by Microsoft",
         "It applies the rule only after the VM is running",
-        "It converts the VM to Spot pricing"
+        "It audits the change but never blocks it"
       ],
       answer: 0,
       explain: "Azure Policy enforces standards regardless of how a change was proposed.",
@@ -396,7 +396,7 @@ Catalog.pathQuiz("az-900", "governance", {
           "Aplica la regla de ubicaciones permitidas como con cualquier otro cambio",
           "Omite la regla, porque los cambios que sugiere Copilot ya están validados por Microsoft",
           "Aplica la regla solo después de que la máquina esté en ejecución",
-          "Pasa la máquina virtual a precios de Spot"
+          "Audita el cambio pero nunca lo bloquea"
         ],
         explain: "Azure Policy aplica los estándares sin importar cómo se propuso el cambio."
       }
@@ -405,13 +405,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Monitoring",
       q: "An administrator wants to write queries over the log data that Azure Monitor collects from VMs and apps. Which tool should they use?",
-      options: ["Log Analytics", "Azure Advisor recommendations", "Azure Status page", "The pricing calculator"],
+      options: ["Log Analytics", "Azure Advisor recommendations", "Azure Service Health", "Application Insights availability tests"],
       answer: 0,
       explain: "Log Analytics is the Azure portal tool for writing and running log queries on Azure Monitor data.",
       es: {
         topic: "Supervisión",
         q: "Un administrador quiere escribir consultas sobre los datos de registro que Azure Monitor recopila de máquinas virtuales y aplicaciones. ¿Qué herramienta debe usar?",
-        options: ["Log Analytics", "Las recomendaciones de Azure Advisor", "La página de Azure Status", "La calculadora de precios"],
+        options: ["Log Analytics", "Las recomendaciones de Azure Advisor", "Azure Service Health", "Las pruebas de disponibilidad de Application Insights"],
         explain: "Log Analytics es la herramienta de Azure Portal para escribir y ejecutar consultas de registros sobre los datos de Azure Monitor."
       }
     },
@@ -433,13 +433,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Cost management",
       q: "After a team starts replicating data from one Azure region to another, the bill goes up even though no new resources were created. Which cost factor explains it?",
-      options: ["Bandwidth for data moving between regions", "The number of tags on the storage account", "The resource group's location", "Inbound data from the internet"],
+      options: ["Bandwidth for data moving between regions", "The number of resource groups involved", "The storage account's access tier", "Inbound data from the internet"],
       answer: 0,
       explain: "Data transfer between regions and outbound transfers are charged; some inbound transfers are free.",
       es: {
         topic: "Administración de costos",
         q: "Después de que un equipo empieza a replicar datos de una región de Azure a otra, la factura sube aunque no se crearon recursos nuevos. ¿Qué factor de costo lo explica?",
-        options: ["El ancho de banda de los datos que viajan entre regiones", "La cantidad de etiquetas de la cuenta de almacenamiento", "La ubicación del grupo de recursos", "Los datos entrantes desde internet"],
+        options: ["El ancho de banda de los datos que viajan entre regiones", "La cantidad de grupos de recursos involucrados", "El nivel de acceso de la cuenta de almacenamiento", "Los datos entrantes desde internet"],
         explain: "La transferencia de datos entre regiones y las transferencias salientes tienen costo; algunas transferencias entrantes son gratuitas."
       }
     },
@@ -447,13 +447,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Monitoring",
       q: "A team wants a history of planned maintenance and service issues that affected the services and regions it uses. Where should it look?",
-      options: ["Azure Service Health", "Azure Status", "Azure Advisor", "Microsoft Cost Management"],
+      options: ["Azure Service Health", "Azure Status", "Azure Advisor", "Resource Health only"],
       answer: 0,
       explain: "Service Health is personalized to your services and regions and keeps a history of incidents and planned maintenance.",
       es: {
         topic: "Supervisión",
         q: "Un equipo quiere el historial de mantenimientos planeados y problemas de servicio que afectaron a los servicios y regiones que usa. ¿Dónde debe buscar?",
-        options: ["Azure Service Health", "Azure Status", "Azure Advisor", "Microsoft Cost Management"],
+        options: ["Azure Service Health", "Azure Status", "Azure Advisor", "Solo Resource Health"],
         explain: "Service Health se personaliza según sus servicios y regiones y guarda el historial de incidentes y mantenimientos planeados."
       }
     },
@@ -461,13 +461,13 @@ Catalog.pathQuiz("az-900", "governance", {
       type: "single",
       topic: "Cost management",
       q: "A company wants suggestions to resize or shut down underused VMs to lower its bill. Which tool and category provide them?",
-      options: ["Azure Advisor, Cost category", "Azure Monitor, Reliability category", "Azure Policy, audit effect", "Service Health, Resource Health view"],
+      options: ["Azure Advisor, Cost category", "Azure Monitor, Reliability category", "Azure Policy, audit effect", "Cost analysis, forecast view"],
       answer: 0,
       explain: "Advisor's Cost recommendations identify idle and underutilized resources to optimize spend.",
       es: {
         topic: "Administración de costos",
         q: "Una empresa quiere sugerencias para cambiar el tamaño o apagar máquinas virtuales poco usadas y bajar la factura. ¿Qué herramienta y categoría las ofrecen?",
-        options: ["Azure Advisor, categoría Costo", "Azure Monitor, categoría Confiabilidad", "Azure Policy, efecto de auditoría", "Service Health, vista Resource Health"],
+        options: ["Azure Advisor, categoría Costo", "Azure Monitor, categoría Confiabilidad", "Azure Policy, efecto de auditoría", "El análisis de costos, vista de previsión"],
         explain: "Las recomendaciones de Costo de Advisor identifican recursos inactivos o infrautilizados para optimizar el gasto."
       }
     }
