@@ -31,13 +31,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Microsoft Sentinel",
       q: "A SOC must collect logs from AWS, firewalls and Microsoft 365, correlate them and launch a Logic Apps playbook when ransomware is detected. Which single solution covers both needs?",
-      options: ["Microsoft Sentinel", "Microsoft Defender for Cloud Apps", "Azure Firewall Manager", "Defender Vulnerability Management"],
+      options: ["Microsoft Sentinel", "Microsoft Defender for Cloud Apps", "Microsoft Defender XDR", "Microsoft Defender for Cloud"],
       answer: 0,
       explain: "Sentinel combines SIEM (collection and correlation) with SOAR (automation rules and playbooks built on Logic Apps).",
       es: {
         topic: "Microsoft Sentinel",
         q: "Un SOC debe recopilar registros de AWS, firewalls y Microsoft 365, correlacionarlos y ejecutar un cuaderno de estrategias de Logic Apps cuando se detecta ransomware. ¿Qué solución única cubre ambas necesidades?",
-        options: ["Microsoft Sentinel", "Microsoft Defender for Cloud Apps", "Azure Firewall Manager", "Administración de vulnerabilidades de Defender"],
+        options: ["Microsoft Sentinel", "Microsoft Defender for Cloud Apps", "Microsoft Defender XDR", "Microsoft Defender for Cloud"],
         explain: "Sentinel combina SIEM (recopilación y correlación) con SOAR (reglas de automatización y cuadernos de estrategias basados en Logic Apps)."
       }
     },
@@ -74,13 +74,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Azure infrastructure security",
       q: "Two NSG rules match the same inbound packet: priority 200 allows it and priority 100 denies it. What happens?",
-      options: ["The packet is denied", "The packet is allowed", "Both rules are logged and the packet is queued", "The default rule decides"],
+      options: ["The packet is denied", "The packet is allowed", "The more specific rule wins", "Allow wins because it's evaluated last"],
       answer: 0,
       explain: "Rules are processed by priority, lowest number first, and processing stops at the first match.",
       es: {
         topic: "Seguridad de la infraestructura de Azure",
         q: "Dos reglas de un NSG coinciden con el mismo paquete entrante: la de prioridad 200 lo permite y la de prioridad 100 lo deniega. ¿Qué sucede?",
-        options: ["El paquete se deniega", "El paquete se permite", "Se registran ambas reglas y el paquete queda en cola", "Decide la regla predeterminada"],
+        options: ["El paquete se deniega", "El paquete se permite", "Gana la regla más específica", "Gana el permiso porque se evalúa al final"],
         explain: "Las reglas se procesan por prioridad, primero el número más bajo, y el procesamiento se detiene en la primera coincidencia."
       }
     },
@@ -88,13 +88,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "multi",
       topic: "Defender XDR",
       q: "A user clicks a phishing link, malware lands on the laptop and the attacker uses stolen credentials against Active Directory. Which two Defender XDR products detect the endpoint and identity stages?",
-      options: ["Defender for Endpoint", "Defender for Identity", "Defender for Cloud Apps app governance", "Azure DDoS Protection", "Azure Firewall Manager"],
+      options: ["Defender for Endpoint", "Defender for Identity", "Defender for Cloud Apps app governance", "Defender for Office 365", "Defender Vulnerability Management"],
       answers: [0, 1],
       explain: "Defender for Endpoint covers the device; Defender for Identity covers on-premises AD. Defender XDR correlates both into one incident.",
       es: {
         topic: "Defender XDR",
         q: "Un usuario hace clic en un vínculo de phishing, se instala malware en la laptop y el atacante usa credenciales robadas contra Active Directory. ¿Qué dos productos de Defender XDR detectan las etapas de dispositivo e identidad?",
-        options: ["Defender para punto de conexión", "Defender for Identity", "La gobernanza de aplicaciones de Defender for Cloud Apps", "Azure DDoS Protection", "Azure Firewall Manager"],
+        options: ["Defender para punto de conexión", "Defender for Identity", "La gobernanza de aplicaciones de Defender for Cloud Apps", "Defender para Office 365", "Administración de vulnerabilidades de Defender"],
         explain: "Defender para punto de conexión cubre el dispositivo; Defender for Identity cubre AD local. Defender XDR correlaciona ambos en un solo incidente."
       }
     },
@@ -104,9 +104,9 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       q: "Complete the statement about Security Copilot.",
       parts: [
         "Security Copilot workspaces are powered by ",
-        { options: ["security compute units (SCUs)", "Log Analytics workspaces", "Defender plans"], answer: 0 },
+        { options: ["security compute units (SCUs)", "Log Analytics workspaces", "Copilot licenses per user"], answer: 0 },
         ", and an effective prompt includes a goal, context, expectations and ",
-        { options: ["a source", "a budget", "a region"], answer: 0 },
+        { options: ["a source", "a promptbook", "a plugin"], answer: 0 },
         "."
       ],
       explain: "Capacity is provisioned as SCUs; the four elements of an effective prompt are goal, context, expectations and source.",
@@ -115,9 +115,9 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
         q: "Complete la afirmación sobre Security Copilot.",
         parts: [
           "Las áreas de trabajo de Security Copilot funcionan con ",
-          { options: ["unidades de proceso de seguridad (SCU)", "áreas de trabajo de Log Analytics", "planes de Defender"] },
+          { options: ["unidades de proceso de seguridad (SCU)", "áreas de trabajo de Log Analytics", "licencias de Copilot por usuario"] },
           ", y una indicación eficaz incluye un objetivo, contexto, expectativas y ",
-          { options: ["un origen", "un presupuesto", "una región"] },
+          { options: ["un origen", "un libro de indicaciones", "un complemento"] },
           "."
         ],
         explain: "La capacidad se aprovisiona en SCU; los cuatro elementos de una indicación eficaz son objetivo, contexto, expectativas y origen."
@@ -180,13 +180,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Microsoft Sentinel",
       q: "Low-severity alerts from different products, spread over several days, turn out to be one multistage attack. Which Sentinel capability is designed to surface this?",
-      options: ["Fusion correlation", "Watchlists", "Workbooks", "The data lake tier"],
+      options: ["Fusion correlation", "UEBA", "Threat intelligence matching", "Automation rules"],
       answer: 0,
       explain: "Fusion uses machine learning to correlate low-fidelity signals into high-fidelity multistage incidents.",
       es: {
         topic: "Microsoft Sentinel",
         q: "Alertas de baja gravedad de distintos productos, repartidas en varios días, resultan ser un único ataque en varias fases. ¿Qué capacidad de Sentinel está diseñada para detectarlo?",
-        options: ["La correlación Fusion", "Las listas de seguimiento", "Los libros", "El nivel de lago de datos"],
+        options: ["La correlación Fusion", "UEBA", "La coincidencia con inteligencia sobre amenazas", "Las reglas de automatización"],
         explain: "Fusion usa aprendizaje automático para correlacionar señales de baja fidelidad en incidentes de varias fases de alta fidelidad."
       }
     },
@@ -209,13 +209,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "multi",
       topic: "Defender for Cloud",
       q: "Which two are pillars that Defender for Cloud combines as a cloud-native application protection platform (CNAPP)?",
-      options: ["Cloud workload protection (CWPP)", "Cloud security posture management (CSPM)", "Identity governance and PIM", "Email transport rules", "Data loss prevention for endpoints"],
+      options: ["Cloud workload protection (CWPP)", "Cloud security posture management (CSPM)", "Security information and event management (SIEM)", "Extended detection and response (XDR)", "Cloud access security broker (CASB)"],
       answers: [0, 1],
       explain: "Defender for Cloud combines DevSecOps, CSPM, CWPP and AI security.",
       es: {
         topic: "Defender for Cloud",
         q: "¿Cuáles son dos pilares que combina Defender for Cloud como plataforma de protección de aplicaciones nativas de la nube (CNAPP)?",
-        options: ["La protección de cargas de trabajo en la nube (CWPP)", "La administración de la postura de seguridad en la nube (CSPM)", "La gobernanza de identidades y PIM", "Las reglas de transporte de correo", "La prevención de pérdida de datos en puntos de conexión"],
+        options: ["La protección de cargas de trabajo en la nube (CWPP)", "La administración de la postura de seguridad en la nube (CSPM)", "Administración de eventos e información de seguridad (SIEM)", "Detección y respuesta extendidas (XDR)", "Agente de seguridad de acceso a la nube (CASB)"],
         explain: "Defender for Cloud combina DevSecOps, CSPM, CWPP y seguridad de IA."
       }
     },
@@ -223,13 +223,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Azure infrastructure security",
       q: "A company with many VNets across subscriptions wants one central, stateful service to filter outbound traffic by FQDN and apply threat intelligence. What should it deploy?",
-      options: ["Azure Firewall in a hub VNet", "A network security group on every subnet with FQDN-based rules", "Azure DDoS IP Protection", "Azure Bastion Premium"],
+      options: ["Azure Firewall in a hub VNet", "A network security group on every subnet with FQDN-based rules", "Web Application Firewall on Application Gateway", "Azure Firewall Manager alone, without a firewall"],
       answer: 0,
       explain: "Azure Firewall is a centralized, stateful firewall with application (FQDN) rules and threat intelligence; NSGs filter only by IP and port within VNets.",
       es: {
         topic: "Seguridad de la infraestructura de Azure",
         q: "Una empresa con muchas redes virtuales en varias suscripciones quiere un servicio central con estado que filtre el tráfico saliente por FQDN y aplique inteligencia sobre amenazas. ¿Qué debe implementar?",
-        options: ["Azure Firewall en una red virtual central", "Un grupo de seguridad de red en cada subred con reglas basadas en FQDN", "Azure DDoS IP Protection", "Azure Bastion Premium"],
+        options: ["Azure Firewall en una red virtual central", "Un grupo de seguridad de red en cada subred con reglas basadas en FQDN", "Firewall de aplicaciones web en Application Gateway", "Azure Firewall Manager solo, sin un firewall"],
         explain: "Azure Firewall es un firewall centralizado con estado, con reglas de aplicación (FQDN) e inteligencia sobre amenazas; los NSG filtran solo por IP y puerto dentro de las redes virtuales."
       }
     },
@@ -239,9 +239,9 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       q: "Complete the statement about Microsoft Sentinel.",
       parts: [
         "Sentinel maps detection coverage to ",
-        { options: ["MITRE ATT&CK", "ISO 27001", "the CIS benchmark"], answer: 0 },
+        { options: ["MITRE ATT&CK", "the Cyber Kill Chain", "the CIS benchmark"], answer: 0 },
         ", and solutions with connectors, rules and workbooks are deployed from the ",
-        { options: ["Content hub", "Action center", "Service Trust Portal"], answer: 0 },
+        { options: ["Content hub", "data connectors page", "partner catalog"], answer: 0 },
         "."
       ],
       explain: "Coverage is mapped to MITRE ATT&CK tactics and techniques; the Content hub delivers packaged solutions.",
@@ -250,9 +250,9 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
         q: "Complete la afirmación sobre Microsoft Sentinel.",
         parts: [
           "Sentinel asigna la cobertura de detección a ",
-          { options: ["MITRE ATT&CK", "ISO 27001", "el banco de pruebas de CIS"] },
+          { options: ["MITRE ATT&CK", "la Cyber Kill Chain", "el banco de pruebas de CIS"] },
           ", y las soluciones con conectores, reglas y libros se implementan desde el ",
-          { options: ["centro de contenido", "centro de actividades", "Portal de confianza de servicios"] },
+          { options: ["centro de contenido", "página de conectores de datos", "catálogo de partners"] },
           "."
         ],
         explain: "La cobertura se asigna a tácticas y técnicas de MITRE ATT&CK; el centro de contenido entrega soluciones empaquetadas."
@@ -262,13 +262,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Defender XDR",
       q: "Which Defender XDR capability can automatically isolate devices and disable accounts during an attack in progress, without waiting for an analyst?",
-      options: ["Automatic attack disruption", "Attack simulation training", "Threat analytics reports", "Secure Score recommendations"],
+      options: ["Automatic attack disruption", "Attack surface reduction rules", "Threat analytics reports", "Secure Score recommendations"],
       answer: 0,
       explain: "Automatic attack disruption uses high-confidence correlated signals to contain attacks in real time.",
       es: {
         topic: "Defender XDR",
         q: "¿Qué capacidad de Defender XDR puede aislar dispositivos y deshabilitar cuentas automáticamente durante un ataque en curso, sin esperar a un analista?",
-        options: ["La interrupción automática de ataques", "La formación con simulación de ataques", "Los informes de análisis de amenazas", "Las recomendaciones de Secure Score"],
+        options: ["La interrupción automática de ataques", "Las reglas de reducción de la superficie expuesta a ataques", "Los informes de análisis de amenazas", "Las recomendaciones de Secure Score"],
         explain: "La interrupción automática de ataques usa señales correlacionadas de alta confianza para contener ataques en tiempo real."
       }
     },
@@ -300,13 +300,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Defender for Cloud",
       q: "Developers accidentally commit an AI service key to a repository. Which Defender for Cloud capability can find it before deployment?",
-      options: ["Defender for DevOps code scanning", "Defender for Servers", "Just-in-time VM access", "Azure DDoS Protection telemetry"],
+      options: ["Defender for DevOps code scanning", "Defender for Servers", "Just-in-time VM access", "Defender for AI Services"],
       answer: 0,
       explain: "DevOps security shifts checks left and detects exposed secrets in code and configuration files.",
       es: {
         topic: "Defender for Cloud",
         q: "Unos desarrolladores suben por error una clave de un servicio de IA a un repositorio. ¿Qué capacidad de Defender for Cloud puede encontrarla antes de la implementación?",
-        options: ["El análisis de código de Defender for DevOps", "Defender para servidores", "El acceso a máquinas virtuales Just-In-Time", "La telemetría de Azure DDoS Protection"],
+        options: ["El análisis de código de Defender for DevOps", "Defender para servidores", "El acceso a máquinas virtuales Just-In-Time", "Defender for AI Services"],
         explain: "La seguridad de DevOps adelanta los controles y detecta secretos expuestos en archivos de código y configuración."
       }
     },
@@ -329,13 +329,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Defender XDR",
       q: "A team wants to know which domains (devices, identities, cloud, SaaS) are most exposed to ransomware, with a score and target to track progress. What should it use?",
-      options: ["A Security Exposure Management initiative", "A Sentinel watchlist", "A Defender for Office 365 campaign view filtered by ransomware campaigns", "A Key Vault access policy"],
+      options: ["A Security Exposure Management initiative", "Microsoft Secure Score for Devices", "A Defender for Office 365 campaign view filtered by ransomware campaigns", "A Defender for Cloud regulatory standard"],
       answer: 0,
       explain: "Initiatives, such as horizontal threat initiatives for ransomware, group metrics and recommendations with a score and target.",
       es: {
         topic: "Defender XDR",
         q: "Un equipo quiere saber qué dominios (dispositivos, identidades, nube, SaaS) están más expuestos al ransomware, con una puntuación y un objetivo para seguir el avance. ¿Qué debe usar?",
-        options: ["Una iniciativa de la administración de la exposición de seguridad", "Una lista de seguimiento de Sentinel", "La vista de campañas de Defender para Office 365 filtrada por campañas de ransomware", "Una directiva de acceso de Key Vault"],
+        options: ["Una iniciativa de la administración de la exposición de seguridad", "Microsoft Secure Score para dispositivos", "La vista de campañas de Defender para Office 365 filtrada por campañas de ransomware", "Un estándar normativo de Defender for Cloud"],
         explain: "Las iniciativas, como las de amenaza horizontal para ransomware, agrupan métricas y recomendaciones con una puntuación y un objetivo."
       }
     },
@@ -343,13 +343,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Security Copilot",
       q: "Usage spikes during a major incident and exceeds the provisioned SCUs. How is the extra usage handled?",
-      options: ["Overage units are billed on demand, up to a cap you set or unlimited", "Copilot stops answering until the next month", "The extra usage is always free", "Microsoft converts it into a three-year reservation"],
+      options: ["Overage units are billed on demand, up to a cap you set or unlimited", "Copilot stops answering until the next month", "Extra prompts are queued until the next billing hour", "Capacity scales automatically at no extra cost"],
       answer: 0,
       explain: "Provisioned SCUs are billed hourly; overage units are billed on demand and can be capped or unlimited.",
       es: {
         topic: "Security Copilot",
         q: "Durante un incidente grave el uso se dispara y supera las SCU aprovisionadas. ¿Cómo se maneja el uso adicional?",
-        options: ["Las unidades excedentes se facturan a demanda, hasta un límite que usted define o sin límite", "Copilot deja de responder hasta el mes siguiente", "El uso adicional siempre es gratuito", "Microsoft lo convierte en una reserva de tres años"],
+        options: ["Las unidades excedentes se facturan a demanda, hasta un límite que usted define o sin límite", "Copilot deja de responder hasta el mes siguiente", "Las indicaciones adicionales quedan en cola hasta la próxima hora de facturación", "La capacidad escala automáticamente sin costo adicional"],
         explain: "Las SCU aprovisionadas se facturan por hora; las unidades excedentes se facturan a demanda y pueden tener límite o no."
       }
     },
@@ -385,13 +385,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Defender for Cloud",
       q: "A company subject to PCI DSS wants its compliance status shown in Defender for Cloud alongside the default benchmark. What should it do?",
-      options: ["Add the PCI DSS standard to the regulatory compliance dashboard", "Replace MCSB, since only one standard can be active", "Enable Microsoft Sentinel", "Apply a ReadOnly lock to the subscription"],
+      options: ["Add the PCI DSS standard to the regulatory compliance dashboard", "Replace MCSB, since only one standard can be active", "Assign PCI DSS as an Azure Policy initiative outside Defender for Cloud", "Enable Defender for Servers on in-scope VMs"],
       answer: 0,
       explain: "MCSB is the default, but other standards can be added to the regulatory compliance dashboard.",
       es: {
         topic: "Defender for Cloud",
         q: "Una empresa sujeta a PCI DSS quiere ver su estado de cumplimiento en Defender for Cloud junto al banco de pruebas predeterminado. ¿Qué debe hacer?",
-        options: ["Agregar el estándar PCI DSS al panel de cumplimiento normativo", "Reemplazar el MCSB, porque solo puede haber un estándar activo", "Habilitar Microsoft Sentinel", "Aplicar un bloqueo ReadOnly a la suscripción"],
+        options: ["Agregar el estándar PCI DSS al panel de cumplimiento normativo", "Reemplazar el MCSB, porque solo puede haber un estándar activo", "Asignar PCI DSS como iniciativa de Azure Policy fuera de Defender for Cloud", "Habilitar Defender para servidores en las máquinas del alcance"],
         explain: "El MCSB es el predeterminado, pero se pueden agregar otros estándares al panel de cumplimiento normativo."
       }
     },
@@ -399,13 +399,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Microsoft Sentinel",
       q: "A SOC must keep years of logs for investigations at low cost, while recent high-value data stays available for real-time detection. How does Sentinel support this?",
-      options: ["Analytics tier for recent data and data lake tier for long-term storage", "A single tier that keeps all data for 30 days", "Exporting logs to the Service Trust Portal", "Storing logs as Security Copilot sessions"],
+      options: ["Analytics tier for recent data and data lake tier for long-term storage", "A single tier that keeps all data for 30 days", "Basic logs in the analytics tier for everything", "Exporting logs to Defender for Cloud"],
       answer: 0,
       explain: "The analytics tier is a Log Analytics workspace; the data lake tier is mirrored long-term storage.",
       es: {
         topic: "Microsoft Sentinel",
         q: "Un SOC debe conservar años de registros para investigaciones a bajo costo, mientras los datos recientes de alto valor siguen disponibles para la detección en tiempo real. ¿Cómo lo admite Sentinel?",
-        options: ["Nivel de análisis para datos recientes y nivel de lago de datos para almacenamiento a largo plazo", "Un único nivel que conserva todos los datos durante 30 días", "Exportar los registros al Portal de confianza de servicios", "Guardar los registros como sesiones de Security Copilot"],
+        options: ["Nivel de análisis para datos recientes y nivel de lago de datos para almacenamiento a largo plazo", "Un único nivel que conserva todos los datos durante 30 días", "Registros básicos en el nivel de análisis para todo", "Exportar los registros a Defender for Cloud"],
         explain: "El nivel de análisis es un área de trabajo de Log Analytics; el nivel de lago de datos es almacenamiento reflejado a largo plazo."
       }
     },
@@ -413,13 +413,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Defender XDR",
       q: "Users click URLs in emails and Teams messages that only become malicious after delivery. Which Defender for Office 365 feature checks the URL at click time?",
-      options: ["Safe Links", "Safe Attachments", "Message trace", "Threat trackers"],
+      options: ["Safe Links", "Safe Attachments", "Zero-hour auto purge", "Anti-phishing policies"],
       answer: 0,
       explain: "Safe Links scans and verifies URLs when users click them in email and collaboration tools.",
       es: {
         topic: "Defender XDR",
         q: "Los usuarios hacen clic en URL de correos y mensajes de Teams que se vuelven maliciosas después de la entrega. ¿Qué característica de Defender para Office 365 revisa la URL en el momento del clic?",
-        options: ["Vínculos seguros", "Datos adjuntos seguros", "Seguimiento de mensajes", "Rastreadores de amenazas"],
+        options: ["Vínculos seguros", "Datos adjuntos seguros", "La purga automática de hora cero", "Las directivas contra phishing"],
         explain: "Vínculos seguros analiza y verifica las URL cuando los usuarios hacen clic en ellas en el correo y las herramientas de colaboración."
       }
     },

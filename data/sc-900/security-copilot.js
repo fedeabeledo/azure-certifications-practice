@@ -53,8 +53,8 @@ Catalog.module("sc-900", {
         options: [
           "Nothing manual; eligible tenants are provisioned automatically with advance notice",
           "Provision at least 10 SCUs in an Azure subscription and assign them to a workspace manually",
-          "Buy a separate Azure OpenAI subscription",
-          "Deploy Microsoft Sentinel first"
+          "Buy Security Copilot as a separate add-on license per user",
+          "Enable it per user in the Microsoft 365 admin center"
         ],
         answer: 0,
         explain: "For Microsoft 365 E5 and E7 customers, Security Copilot is included and activated with zero-click provisioning after a 7-day notice.",
@@ -64,8 +64,8 @@ Catalog.module("sc-900", {
           options: [
             "Nada manual; los inquilinos aptos se aprovisionan automáticamente con aviso previo",
             "Aprovisionar al menos 10 SCU en una suscripción de Azure y asignarlas a mano a un área de trabajo",
-            "Comprar una suscripción aparte de Azure OpenAI",
-            "Implementar primero Microsoft Sentinel"
+            "Comprar Security Copilot como licencia adicional por usuario",
+            "Habilitarlo usuario por usuario en el Centro de administración de Microsoft 365"
           ],
           explain: "Para clientes de Microsoft 365 E5 y E7, Security Copilot está incluido y se activa sin pasos manuales tras un aviso de 7 días."
         }
@@ -74,13 +74,13 @@ Catalog.module("sc-900", {
         type: "multi",
         topic: "Effective prompts",
         q: "Which two are elements of an effective Security Copilot prompt?",
-        options: ["Goal", "Expectations", "Orchestrator", "Overage", "Capacity"],
+        options: ["Goal", "Expectations", "Severity", "Session", "Workspace"],
         answers: [0, 1],
         explain: "The four elements are goal, context, expectations and source.",
         es: {
           topic: "Indicaciones eficaces",
           q: "¿Cuáles son dos elementos de una indicación eficaz para Security Copilot?",
-          options: ["El objetivo", "Las expectativas", "El orquestador", "El uso por encima de la capacidad", "La capacidad"],
+          options: ["El objetivo", "Las expectativas", "Gravedad", "Sesión", "Área de trabajo"],
           explain: "Los cuatro elementos son objetivo, contexto, expectativas y origen."
         }
       },
@@ -105,9 +105,9 @@ Catalog.module("sc-900", {
         q: "Complete the statement about capacity.",
         parts: [
           "Customers without Microsoft 365 E5 or E7 provision ",
-          { options: ["Security Compute Units (SCUs)", "Azure Policy initiatives", "Sentinel workspaces"], answer: 0 },
+          { options: ["Security Compute Units (SCUs)", "Copilot licenses per analyst", "Azure OpenAI tokens"], answer: 0 },
           ", and can set an ",
-          { options: ["overage amount", "access package", "authentication strength"], answer: 0 },
+          { options: ["overage amount", "auto-scale rule", "Azure budget alert"], answer: 0 },
           " to cover unexpected spikes when provisioned units run out."
         ],
         explain: "SCUs are billed hourly; overage units are billed on demand and can be capped or unlimited.",
@@ -116,9 +116,9 @@ Catalog.module("sc-900", {
           q: "Complete la afirmación sobre la capacidad.",
           parts: [
             "Los clientes sin Microsoft 365 E5 o E7 aprovisionan ",
-            { options: ["unidades de proceso de seguridad (SCU)", "iniciativas de Azure Policy", "áreas de trabajo de Sentinel"] },
+            { options: ["unidades de proceso de seguridad (SCU)", "licencias de Copilot por analista", "tokens de Azure OpenAI"] },
             ", y pueden definir un ",
-            { options: ["monto de uso excedente", "paquete de acceso", "nivel de autenticación"] },
+            { options: ["monto de uso excedente", "regla de escalado automático", "alerta de presupuesto de Azure"] },
             " para cubrir picos inesperados cuando se agotan las unidades aprovisionadas."
           ],
           explain: "Las SCU se facturan por hora; las unidades excedentes se facturan según el uso y pueden tener un tope o ser ilimitadas."
@@ -131,8 +131,8 @@ Catalog.module("sc-900", {
         options: [
           "A role that grants access to Sentinel data, such as Microsoft Sentinel Reader",
           "The Copilot owner role, which grants access to all the security data connected through plugins",
-          "A larger number of SCUs",
-          "A new session"
+          "A larger number of SCUs in the workspace",
+          "Enabling the Sentinel promptbook"
         ],
         answer: 0,
         explain: "Copilot doesn't go beyond your access; plugins may require their own service roles.",
@@ -142,8 +142,8 @@ Catalog.module("sc-900", {
           options: [
             "Un rol que dé acceso a los datos de Sentinel, como Lector de Microsoft Sentinel",
             "El rol de propietario de Copilot, que da acceso a todos los datos de seguridad conectados mediante complementos",
-            "Una cantidad mayor de SCU",
-            "Una sesión nueva"
+            "Una cantidad mayor de SCU en el área de trabajo",
+            "Habilitar el libro de indicaciones de Sentinel"
           ],
           explain: "Copilot no va más allá de su acceso; los complementos pueden requerir sus propios roles del servicio."
         }
@@ -184,7 +184,7 @@ Catalog.module("sc-900", {
         options: [
           "It formats and reviews the response as part of responsible AI",
           "It asks the user to approve the plan",
-          "It trains the foundation model on the response",
+          "It stores the response in the plugin's data source",
           "It sends the response to Microsoft support so a human analyst can review it first"
         ],
         answer: 0,
@@ -195,7 +195,7 @@ Catalog.module("sc-900", {
           options: [
             "Formatea y revisa la respuesta como parte de la IA responsable",
             "Le pide al usuario que apruebe el plan",
-            "Entrena el modelo fundacional con la respuesta",
+            "Guarda la respuesta en el origen de datos del complemento",
             "Envía la respuesta al soporte de Microsoft para que un analista humano la revise antes"
           ],
           explain: "La respuesta se formatea y pasa por controles de seguridad antes de llegar al usuario."
@@ -205,13 +205,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Terminology",
         q: "Which Security Copilot component can autonomously manage high-volume security and IT tasks for specific scenarios?",
-        options: ["Agents", "Prompts", "Sessions", "Process logs"],
+        options: ["Agents", "Promptbooks", "Plugins", "Process logs"],
         answer: 0,
         explain: "Security Copilot agents autonomously handle tasks such as threat protection, identity management or data security.",
         es: {
           topic: "Terminología",
           q: "¿Qué componente de Security Copilot puede administrar de forma autónoma un gran volumen de tareas de seguridad y TI para escenarios específicos?",
-          options: ["Los agentes", "Las indicaciones", "Las sesiones", "Los registros del proceso"],
+          options: ["Los agentes", "Libros de indicaciones", "Complementos", "Los registros del proceso"],
           explain: "Los agentes de Security Copilot se ocupan de forma autónoma de tareas como protección contra amenazas, administración de identidades o seguridad de datos."
         }
       },
@@ -221,9 +221,9 @@ Catalog.module("sc-900", {
         q: "Which prompt follows the guidance for effective prompts best?",
         options: [
           "Summarize incident 15134 in Microsoft Defender XDR as a paragraph for my manager and list the entities involved",
-          "Incident 15134",
-          "Don't give me anything about devices",
-          "Tell me everything"
+          "Summarize incident 15134",
+          "Tell me about incident 15134 and anything else that might be relevant",
+          "Don't include devices in the summary of incident 15134"
         ],
         answer: 0,
         explain: "It has a goal, context, an expected format and a source.",
@@ -232,9 +232,9 @@ Catalog.module("sc-900", {
           q: "¿Qué indicación sigue mejor las recomendaciones para indicaciones eficaces?",
           options: [
             "Resume el incidente 15134 de Microsoft Defender XDR en un párrafo para mi gerente y enumera las entidades involucradas",
-            "Incidente 15134",
-            "No me des nada sobre dispositivos",
-            "Contame todo"
+            "Resume el incidente 15134",
+            "Contame sobre el incidente 15134 y cualquier otra cosa que pueda ser relevante",
+            "No incluyas dispositivos en el resumen del incidente 15134"
           ],
           explain: "Tiene objetivo, contexto, formato esperado y origen."
         }
@@ -255,8 +255,8 @@ Catalog.module("sc-900", {
             q: "Which statement describes Microsoft Security Copilot?",
             options: [
               "An AI-powered, cloud-based security analysis tool that helps analysts respond at machine speed",
-              "An on-premises SIEM that replaces Microsoft Sentinel",
-              "A firewall that filters traffic to Azure resources",
+              "A SIEM that collects and correlates security logs with AI",
+              "An XDR suite that protects endpoints, email and identities",
               "A service that provisions hardened virtual machines so security teams can run their analysis tools"
             ],
             answer: 0,
@@ -265,8 +265,8 @@ Catalog.module("sc-900", {
               q: "¿Qué afirmación describe Microsoft Security Copilot?",
               options: [
                 "Una herramienta de análisis de seguridad en la nube con IA que ayuda a responder a velocidad de máquina",
-                "Un SIEM local que reemplaza a Microsoft Sentinel",
-                "Un firewall que filtra el tráfico hacia los recursos de Azure",
+                "Un SIEM que recopila y correlaciona registros de seguridad con IA",
+                "Un conjunto XDR que protege puntos de conexión, correo e identidades",
                 "Un servicio que aprovisiona máquinas virtuales protegidas para que los equipos de seguridad ejecuten sus herramientas"
               ],
               explain: "Security Copilot ayuda a responder rápido, procesar señales a velocidad de máquina y evaluar la exposición al riesgo."
@@ -278,9 +278,9 @@ Catalog.module("sc-900", {
             options: [
               "Build KQL queries or analyze suspicious scripts",
               "Develop reports for stakeholders",
-              "Provision Azure virtual networks",
-              "Estimate Azure costs before deployment",
-              "Host web applications"
+              "Automatically isolate devices during an attack",
+              "Replace analytics rules in Sentinel",
+              "Train custom models on incident data"
             ],
             answers: [0, 1],
             explain: "Use cases include investigating threats, building KQL, managing posture, troubleshooting IT, managing policies, lifecycle workflows and reports.",
@@ -289,9 +289,9 @@ Catalog.module("sc-900", {
               options: [
                 "Crear consultas KQL o analizar scripts sospechosos",
                 "Preparar informes para las partes interesadas",
-                "Aprovisionar redes virtuales de Azure",
-                "Estimar costos de Azure antes de implementar",
-                "Hospedar aplicaciones web"
+                "Aislar dispositivos automáticamente durante un ataque",
+                "Reemplazar las reglas de análisis de Sentinel",
+                "Entrenar modelos personalizados con datos de incidentes"
               ],
               explain: "Los casos de uso incluyen investigar amenazas, crear KQL, administrar la postura, resolver problemas de TI, administrar directivas, flujos de ciclo de vida e informes."
             }
@@ -324,7 +324,7 @@ Catalog.module("sc-900", {
               "Security Copilot combines large language models with security-specific sources informed by more than ",
               { options: ["65 trillion", "65 million", "6.5 billion"], answer: 0 },
               " daily signals, and integrates with other tools through ",
-              { options: ["plugins", "resource locks", "access packages"], answer: 0 },
+              { options: ["plugins", "connectors", "workbooks"], answer: 0 },
               "."
             ],
             explain: "Plugins connect Microsoft products, non-Microsoft products and open-source intelligence feeds.",
@@ -334,7 +334,7 @@ Catalog.module("sc-900", {
                 "Security Copilot combina modelos de lenguaje grandes con orígenes específicos de seguridad alimentados por más de ",
                 { options: ["65 billones", "65 millones", "6500 millones"] },
                 " de señales diarias, y se integra con otras herramientas mediante ",
-                { options: ["complementos", "bloqueos de recursos", "paquetes de acceso"] },
+                { options: ["complementos", "conectores", "libros"] },
                 "."
               ],
               explain: "Los complementos conectan productos de Microsoft, productos de terceros y fuentes de inteligencia de código abierto."
@@ -404,12 +404,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are capabilities included in the Microsoft Defender XDR plugin?",
-            options: ["Summarize an incident", "Generate KQL queries from natural language", "Create Azure subscriptions", "Assign Microsoft Entra licenses", "Provision SCUs"],
+            options: ["Summarize an incident", "Generate KQL queries from natural language", "Isolate devices automatically", "Create analytics rules in Sentinel", "Approve Phishing Triage verdicts"],
             answers: [0, 1],
             explain: "The Defender XDR plugin includes incident summaries, guided responses, script analysis, KQL generation and incident reports.",
             es: {
               q: "¿Cuáles son dos capacidades incluidas en el complemento de Microsoft Defender XDR?",
-              options: ["Resumir un incidente", "Generar consultas KQL a partir de lenguaje natural", "Crear suscripciones de Azure", "Asignar licencias de Microsoft Entra", "Aprovisionar SCU"],
+              options: ["Resumir un incidente", "Generar consultas KQL a partir de lenguaje natural", "Aislar dispositivos automáticamente", "Crear reglas de análisis en Sentinel", "Aprobar los veredictos de evaluación de phishing"],
               explain: "El complemento de Defender XDR incluye resúmenes de incidentes, respuestas guiadas, análisis de scripts, generación de KQL e informes de incidentes."
             }
           },
@@ -418,9 +418,9 @@ Catalog.module("sc-900", {
             q: "What benefit do Security Copilot workspaces provide?",
             options: [
               "Mapping costs to team budgets and storing session data according to geo-specific regulations",
-              "Removing the need for role permissions",
+              "Giving each team its own plugins and capabilities",
               "Training a private foundation model per team with that team's own incidents and session data",
-              "Replacing Microsoft Entra tenants"
+              "Isolating Copilot data in a separate Microsoft Entra tenant"
             ],
             answer: 0,
             explain: "Workspaces separate environments, help allocate capacity and costs, and support data residency rules.",
@@ -428,9 +428,9 @@ Catalog.module("sc-900", {
               q: "¿Qué ventaja ofrecen las áreas de trabajo de Security Copilot?",
               options: [
                 "Asignar costos a los presupuestos de cada equipo y guardar los datos de sesión según normas geográficas",
-                "Eliminar la necesidad de permisos de rol",
+                "Darle a cada equipo sus propios complementos y capacidades",
                 "Entrenar un modelo fundacional privado por equipo con los incidentes y los datos de sesión de ese equipo",
-                "Reemplazar los inquilinos de Microsoft Entra"
+                "Aislar los datos de Copilot en un inquilino de Microsoft Entra separado"
               ],
               explain: "Las áreas de trabajo separan entornos, ayudan a asignar capacidad y costos, y admiten reglas de residencia de datos."
             }
@@ -464,12 +464,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "After a prompt is submitted, which component determines the initial context and builds a plan using the available capabilities?",
-            options: ["The orchestrator", "The prompt bar", "The process log", "The workspace"],
+            options: ["The orchestrator", "The plugin", "The foundation model", "The promptbook"],
             answer: 0,
             explain: "The orchestrator composes capabilities and builds the plan used to answer the prompt.",
             es: {
               q: "Después de enviar una indicación, ¿qué componente determina el contexto inicial y arma un plan con las capacidades disponibles?",
-              options: ["El orquestador", "La barra de indicaciones", "El registro del proceso", "El área de trabajo"],
+              options: ["El orquestador", "El complemento", "El modelo fundacional", "El libro de indicaciones"],
               explain: "El orquestador combina capacidades y arma el plan para responder la indicación."
             }
           },
@@ -478,9 +478,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about the prompt process.",
             parts: [
               "Once the plan is built, Copilot ",
-              { options: ["executes it to gather the data context", "asks the user to approve each step", "discards the plugins"], answer: 0 },
+              { options: ["executes it to gather the data context", "asks the user to approve each step", "sends it to each plugin owner"], answer: 0 },
               ", and then uses its LLM to ",
-              { options: ["compose a human-readable response", "train itself on the data", "delete the session"], answer: 0 },
+              { options: ["compose a human-readable response", "forward the raw data to the user", "rank the plugins by cost"], answer: 0 },
               "."
             ],
             explain: "Copilot builds context by running the plan and reasoning over plugins, then composes the response.",
@@ -488,9 +488,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre el procesamiento de indicaciones.",
               parts: [
                 "Una vez armado el plan, Copilot ",
-                { options: ["lo ejecuta para reunir el contexto de datos", "le pide al usuario que apruebe cada paso", "descarta los complementos"] },
+                { options: ["lo ejecuta para reunir el contexto de datos", "le pide al usuario que apruebe cada paso", "lo envía a cada responsable de complemento"] },
                 ", y luego usa su modelo de lenguaje para ",
-                { options: ["redactar una respuesta comprensible", "entrenarse con los datos", "eliminar la sesión"] },
+                { options: ["redactar una respuesta comprensible", "reenviar los datos sin procesar al usuario", "ordenar los complementos por costo"] },
                 "."
               ],
               explain: "Copilot arma el contexto ejecutando el plan y razonando sobre los complementos, y luego redacta la respuesta."
@@ -501,9 +501,9 @@ Catalog.module("sc-900", {
             q: "Why is the process log important to the user?",
             options: [
               "It shows which capability produced the response, helping judge whether the source is trusted",
-              "It lets the user edit the foundation model's answer and retrain it with the corrected version",
-              "It records the user's SCU invoice",
-              "It replaces the need for safety checks"
+              "It shows how many SCUs each prompt consumed",
+              "It lets the user choose which LLM answers",
+              "It records the prompts shared with other users"
             ],
             answer: 0,
             explain: "The process log shows the capability used and that safety checks ran.",
@@ -511,9 +511,9 @@ Catalog.module("sc-900", {
               q: "¿Por qué es importante el registro del proceso para el usuario?",
               options: [
                 "Muestra qué capacidad produjo la respuesta, lo que ayuda a juzgar si el origen es confiable",
-                "Permite al usuario editar la respuesta del modelo fundacional y volver a entrenarlo con la versión corregida",
-                "Registra la factura de SCU del usuario",
-                "Reemplaza la necesidad de controles de seguridad"
+                "Muestra cuántas SCU consumió cada indicación",
+                "Permite al usuario elegir qué LLM responde",
+                "Registra las indicaciones compartidas con otros usuarios"
               ],
               explain: "El registro del proceso muestra la capacidad usada y que se ejecutaron controles de seguridad."
             }
@@ -524,9 +524,9 @@ Catalog.module("sc-900", {
             options: [
               "Copilot reasons over the enabled plugins and data sources",
               "The response is formatted and reviewed before it's returned",
-              "The user's data is added to the foundation model's training set",
-              "A new workspace is created for each prompt",
-              "The prompt is forwarded to Microsoft support"
+              "The prompt is sent to every installed plugin in parallel",
+              "The user approves each capability before it runs",
+              "The response is saved to the workspace's data lake"
             ],
             answers: [0, 1],
             explain: "Copilot reasons over plugins and applies responsible AI review before returning a response.",
@@ -535,9 +535,9 @@ Catalog.module("sc-900", {
               options: [
                 "Copilot razona sobre los complementos y orígenes de datos habilitados",
                 "La respuesta se formatea y se revisa antes de devolverla",
-                "Los datos del usuario se agregan al entrenamiento del modelo fundacional",
-                "Se crea un área de trabajo nueva para cada indicación",
-                "La indicación se reenvía al soporte de Microsoft"
+                "La indicación se envía en paralelo a todos los complementos instalados",
+                "El usuario aprueba cada capacidad antes de que se ejecute",
+                "La respuesta se guarda en el lago de datos del área de trabajo"
               ],
               explain: "Copilot razona sobre los complementos y aplica una revisión de IA responsable antes de devolver la respuesta."
             }
@@ -596,9 +596,9 @@ Catalog.module("sc-900", {
             q: "A user wants a list of high-risk unmanaged devices but without any device named \"test\". How should the prompt be phrased?",
             options: [
               "Give me high-risk unmanaged devices; if they're named \"test\", remove them from the list",
-              "Don't show devices",
-              "Show nothing named test",
-              "Devices?"
+              "Don't show devices named test",
+              "Show high-risk devices, not test ones, not managed ones",
+              "List every device, then I'll filter"
             ],
             answer: 0,
             explain: "Give positive instructions about what you want, including how to handle exceptions.",
@@ -606,9 +606,9 @@ Catalog.module("sc-900", {
               q: "Un usuario quiere una lista de dispositivos no administrados de alto riesgo, pero sin los que se llamen \"test\". ¿Cómo debería escribir la indicación?",
               options: [
                 "Dame los dispositivos no administrados de alto riesgo; si se llaman \"test\", quitalos de la lista",
-                "No muestres dispositivos",
-                "No muestres nada que se llame test",
-                "¿Dispositivos?"
+                "No muestres dispositivos llamados test",
+                "Mostrá dispositivos de alto riesgo, no de test, no administrados",
+                "Enumerá todos los dispositivos y después filtro yo"
               ],
               explain: "Conviene dar instrucciones positivas sobre lo que se quiere, incluido cómo tratar las excepciones."
             }
@@ -616,12 +616,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are recommended prompting tips?",
-            options: ["Iterate with follow-up prompts", "Address Copilot directly as \"You\"", "Keep every prompt to a single word", "Describe only what Copilot shouldn't do", "Avoid giving any context"],
+            options: ["Iterate with follow-up prompts", "Address Copilot directly as \"You\"", "Put all questions in one long prompt", "Describe mainly what Copilot shouldn't do", "Start a new session for each follow-up"],
             answers: [0, 1],
             explain: "Be specific, iterate, give context, use positive instructions and address Copilot as \"You\".",
             es: {
               q: "¿Cuáles son dos recomendaciones para escribir indicaciones?",
-              options: ["Iterar con indicaciones de seguimiento", "Dirigirse a Copilot como \"vos\" o \"usted\"", "Limitar cada indicación a una sola palabra", "Describir solo lo que Copilot no debe hacer", "Evitar dar contexto"],
+              options: ["Iterar con indicaciones de seguimiento", "Dirigirse a Copilot como \"vos\" o \"usted\"", "Poner todas las preguntas en una sola indicación larga", "Describir sobre todo lo que Copilot no debe hacer", "Abrir una sesión nueva para cada pregunta de seguimiento"],
               explain: "Ser específico, iterar, dar contexto, usar instrucciones positivas y dirigirse a Copilot en segunda persona."
             }
           },
@@ -647,7 +647,7 @@ Catalog.module("sc-900", {
               "\"Pearl Sleet actor\" is a ",
               { options: ["basic prompt", "better prompt", "promptbook"], answer: 0 },
               "; asking for its activity, indicators of compromise and TTPs adds ",
-              { options: ["a specific goal and detail", "a workspace", "an SCU"], answer: 0 },
+              { options: ["a specific goal and detail", "a promptbook", "a new plugin"], answer: 0 },
               "."
             ],
             explain: "Being specific, clear and concise improves the response.",
@@ -657,7 +657,7 @@ Catalog.module("sc-900", {
                 "\"Pearl Sleet actor\" es una ",
                 { options: ["indicación básica", "indicación mejorada", "libro de indicaciones"] },
                 "; pedir su actividad, indicadores de compromiso y TTP agrega ",
-                { options: ["un objetivo específico y detalle", "un área de trabajo", "una SCU"] },
+                { options: ["un objetivo específico y detalle", "un libro de indicaciones", "un complemento nuevo"] },
                 "."
               ],
               explain: "Ser específico, claro y conciso mejora la respuesta."
@@ -680,8 +680,8 @@ Catalog.module("sc-900", {
             options: [
               "Azure owner or contributor at resource group level, plus Security Administrator in the tenant",
               "Only the Global Administrator role in Microsoft Entra, with no Azure role needed on the subscription or resource group",
-              "Only the Copilot contributor role",
-              "A Microsoft Sentinel Reader role"
+              "Only the Copilot owner role",
+              "Billing Administrator in the tenant"
             ],
             answer: 0,
             explain: "Provisioning needs an Azure subscription, Azure owner or contributor at resource group level and Security Administrator or higher. Entra roles don't grant Azure resource access.",
@@ -690,8 +690,8 @@ Catalog.module("sc-900", {
               options: [
                 "Propietario o colaborador de Azure en el grupo de recursos, más Administrador de seguridad en el inquilino",
                 "Solo el rol de administrador global de Microsoft Entra, sin ningún rol de Azure en la suscripción ni en el grupo de recursos",
-                "Solo el rol de colaborador de Copilot",
-                "Un rol de Lector de Microsoft Sentinel"
+                "Solo el rol de propietario de Copilot",
+                "Administrador de facturación en el inquilino"
               ],
               explain: "Aprovisionar requiere una suscripción de Azure, propietario o colaborador en el grupo de recursos y Administrador de seguridad o superior. Los roles de Entra no dan acceso a recursos de Azure."
             }
@@ -745,12 +745,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two Microsoft Entra roles automatically inherit Copilot owner access?",
-            options: ["Security Administrator", "Global Administrator", "User Administrator", "Helpdesk Administrator", "Guest Inviter"],
+            options: ["Security Administrator", "Global Administrator", "User Administrator", "Security Operator", "Security Reader"],
             answers: [0, 1],
             explain: "Billing, Compliance, Global, Intune and Security Administrators inherit Copilot owner access, along with some Purview roles.",
             es: {
               q: "¿Cuáles son dos roles de Microsoft Entra que heredan automáticamente el acceso de propietario de Copilot?",
-              options: ["Administrador de seguridad", "Administrador global", "Administrador de usuarios", "Administrador del departamento de soporte técnico", "Invitador de invitados"],
+              options: ["Administrador de seguridad", "Administrador global", "Administrador de usuarios", "Operador de seguridad", "Lector de seguridad"],
               explain: "Los administradores de facturación, cumplimiento, global, Intune y seguridad heredan el acceso de propietario de Copilot, junto con algunos roles de Purview."
             }
           },

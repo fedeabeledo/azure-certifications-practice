@@ -11,13 +11,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Defender XDR suite",
         q: "Defender for Endpoint detects a malicious file on a laptop, and the same file is then removed from all mailboxes without anyone acting. Which Defender XDR capability is this?",
-        options: ["Automatic response to threats across products", "Attack simulation training results shared with Defender for Office 365", "Cloud discovery", "Baseline assessment"],
+        options: ["Automatic response to threats across products", "Attack simulation training results shared with Defender for Office 365", "Automatic attack disruption", "Automated investigation in Defender for Endpoint only"],
         answer: 0,
         explain: "When one product detects a threat, it shares it with the others, so Defender for Office 365 removes the file from email automatically.",
         es: {
           topic: "Conjunto Defender XDR",
           q: "Defender para punto de conexión detecta un archivo malicioso en una laptop, y luego ese archivo se elimina de todos los buzones sin que nadie intervenga. ¿Qué capacidad de Defender XDR es esta?",
-          options: ["La respuesta automática a amenazas entre productos", "Los resultados de la formación con simulación de ataques compartidos con Defender para Office 365", "La detección en la nube", "La evaluación de líneas base"],
+          options: ["La respuesta automática a amenazas entre productos", "Los resultados de la formación con simulación de ataques compartidos con Defender para Office 365", "La interrupción automática de ataques", "La investigación automatizada solo en Defender para punto de conexión"],
           explain: "Cuando un producto detecta una amenaza, la comparte con los demás, así que Defender para Office 365 quita el archivo del correo automáticamente."
         }
       },
@@ -52,9 +52,9 @@ Catalog.module("sc-900", {
         q: "Several attack paths converge on a single overprivileged service account before reaching a domain controller. What is that account called, and why prioritize it?",
         options: [
           "A choke point; securing it disrupts multiple attack paths at once",
-          "A critical asset; it must be deleted immediately and recreated with a new name and password",
-          "An initiative; it raises the secure score",
-          "A data connector; it imports Tenable findings"
+          "A critical asset; it should be excluded from attack paths",
+          "An entry point; it's where attacks start",
+          "A blast radius; it limits the damage"
         ],
         answer: 0,
         explain: "Choke points are nodes where multiple attack paths converge, so fixing them breaks several routes.",
@@ -63,9 +63,9 @@ Catalog.module("sc-900", {
           q: "Varias rutas de ataque convergen en una única cuenta de servicio con privilegios excesivos antes de llegar a un controlador de dominio. ¿Cómo se llama esa cuenta y por qué priorizarla?",
           options: [
             "Un punto de estrangulamiento; protegerlo interrumpe varias rutas de ataque a la vez",
-            "Un recurso crítico; se debe eliminar de inmediato y volver a crear con otro nombre y otra contraseña",
-            "Una iniciativa; eleva la puntuación de seguridad",
-            "Un conector de datos; importa hallazgos de Tenable"
+            "Un recurso crítico; se debe excluir de las rutas de ataque",
+            "Un punto de entrada; es donde empiezan los ataques",
+            "Un radio de impacto; limita el daño"
           ],
           explain: "Los puntos de estrangulamiento son nodos donde convergen varias rutas de ataque, así que corregirlos corta varios caminos."
         }
@@ -74,13 +74,13 @@ Catalog.module("sc-900", {
         type: "multi",
         topic: "Defender for Office 365",
         q: "Which two Defender for Office 365 features help respond to threats that are already in mailboxes?",
-        options: ["Zero-hour auto purge (ZAP)", "Automated investigation and response (AIR)", "Connection filtering", "Attack simulation training", "Outbound spam filtering"],
+        options: ["Zero-hour auto purge (ZAP)", "Automated investigation and response (AIR)", "Safe Attachments", "Safe Links", "Attack simulation training"],
         answers: [0, 1],
         explain: "ZAP retroactively neutralizes delivered malicious messages, and AIR runs automated investigations; SIEM integration also supports response.",
         es: {
           topic: "Defender para Office 365",
           q: "¿Cuáles son dos características de Defender para Office 365 que ayudan a responder a amenazas que ya están en los buzones?",
-          options: ["La purga automática de hora cero (ZAP)", "La investigación y respuesta automatizadas (AIR)", "El filtrado de conexiones", "La formación con simulación de ataques", "El filtrado de correo no deseado saliente"],
+          options: ["La purga automática de hora cero (ZAP)", "La investigación y respuesta automatizadas (AIR)", "Datos adjuntos seguros", "Vínculos seguros", "La formación con simulación de ataques"],
           explain: "ZAP neutraliza de forma retroactiva los mensajes maliciosos entregados, y AIR ejecuta investigaciones automatizadas; la integración con SIEM también apoya la respuesta."
         }
       },
@@ -105,9 +105,9 @@ Catalog.module("sc-900", {
         q: "Complete the statement about automatic attack disruption.",
         parts: [
           "Automatic attack disruption uses ",
-          { options: ["high-fidelity signals from across the suite", "a single antivirus signature", "manual analyst approval for each step"], answer: 0 },
+          { options: ["high-fidelity signals from across the suite", "a single antivirus signature", "rules written by each customer"], answer: 0 },
           " to contain attacks in progress, for example by ",
-          { options: ["disabling compromised accounts", "deleting all mailboxes", "turning off MFA"], answer: 0 },
+          { options: ["disabling compromised accounts", "opening a ticket for the SOC", "lowering the incident severity"], answer: 0 },
           " in real time."
         ],
         explain: "It correlates signals into one high-confidence incident and takes actions like isolating devices or disabling accounts.",
@@ -116,9 +116,9 @@ Catalog.module("sc-900", {
           q: "Complete la afirmación sobre la interrupción automática de ataques.",
           parts: [
             "La interrupción automática de ataques usa ",
-            { options: ["señales de alta fidelidad de todo el conjunto", "una única firma de antivirus", "la aprobación manual de un analista en cada paso"] },
+            { options: ["señales de alta fidelidad de todo el conjunto", "una única firma de antivirus", "reglas escritas por cada cliente"] },
             " para contener ataques en curso, por ejemplo ",
-            { options: ["deshabilitando cuentas comprometidas", "eliminando todos los buzones", "desactivando la MFA"] },
+            { options: ["deshabilitando cuentas comprometidas", "abriendo un ticket para el SOC", "bajando la gravedad del incidente"] },
             " en tiempo real."
           ],
           explain: "Correlaciona señales en un incidente de alta confianza y toma acciones como aislar dispositivos o deshabilitar cuentas."
@@ -131,8 +131,8 @@ Catalog.module("sc-900", {
         options: [
           "It raises its priority using threat intelligence and the asset's business value",
           "It treats it like every other vulnerability and lists it in order of discovery, regardless of the device owner",
-          "It ignores it until the next monthly scan",
-          "It forwards it to Microsoft support for patching"
+          "It waits for the next CVSS update to change the score",
+          "It ranks it only by CVSS score"
         ],
         answer: 0,
         explain: "Risk-based prioritization focuses on emerging threats, active breaches and high-value assets.",
@@ -142,8 +142,8 @@ Catalog.module("sc-900", {
           options: [
             "Eleva su prioridad según la inteligencia sobre amenazas y el valor del recurso para el negocio",
             "La trata igual que a cualquier otra vulnerabilidad y la lista en orden de detección, sin importar de quién es el dispositivo",
-            "La ignora hasta el próximo análisis mensual",
-            "La reenvía al soporte de Microsoft para que aplique el parche"
+            "Espera la próxima actualización de CVSS para cambiar la puntuación",
+            "La clasifica solo por puntuación CVSS"
           ],
           explain: "La priorización basada en riesgo se centra en amenazas emergentes, filtraciones activas y recursos de alto valor."
         }
@@ -181,13 +181,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Defender for Cloud Apps",
         q: "What kind of solution is Microsoft Defender for Cloud Apps at its core?",
-        options: ["A cloud access security broker (CASB)", "A web application firewall", "An identity provider", "A SIEM"],
+        options: ["A cloud access security broker (CASB)", "A secure web gateway", "An XDR for SaaS endpoints", "A data loss prevention service"],
         answer: 0,
         explain: "Defender for Cloud Apps is a CASB with SSPM, advanced threat protection and app governance.",
         es: {
           topic: "Defender for Cloud Apps",
           q: "¿Qué tipo de solución es Microsoft Defender for Cloud Apps en su base?",
-          options: ["Un agente de seguridad de acceso a la nube (CASB)", "Un firewall de aplicaciones web", "Un proveedor de identidades", "Un SIEM"],
+          options: ["Un agente de seguridad de acceso a la nube (CASB)", "Una puerta de enlace web segura", "Un XDR para puntos de conexión SaaS", "Un servicio de prevención de pérdida de datos"],
           explain: "Defender for Cloud Apps es un CASB con SSPM, protección avanzada contra amenazas y gobernanza de aplicaciones."
         }
       },
@@ -195,13 +195,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Defender portal",
         q: "A SOC wants one queue with incidents from Defender XDR products and Microsoft Sentinel together. Where do they get it?",
-        options: ["Incidents and alerts in the Microsoft Defender portal", "The Sentinel blade in the Azure portal, which also imports Defender XDR alerts", "The Service Trust Portal", "Microsoft Purview"],
+        options: ["Incidents and alerts in the Microsoft Defender portal", "The Sentinel blade in the Azure portal, which also imports Defender XDR alerts", "The Microsoft Purview portal", "Microsoft Defender for Cloud"],
         answer: 0,
         explain: "The Defender portal is a unified security operations platform with a unified incident queue.",
         es: {
           topic: "Portal de Defender",
           q: "Un SOC quiere una sola cola con los incidentes de los productos de Defender XDR y de Microsoft Sentinel juntos. ¿Dónde la obtiene?",
-          options: ["En Incidentes y alertas del portal de Microsoft Defender", "En la hoja de Sentinel de Azure Portal, que además importa las alertas de Defender XDR", "En el Portal de confianza de servicios", "En Microsoft Purview"],
+          options: ["En Incidentes y alertas del portal de Microsoft Defender", "En la hoja de Sentinel de Azure Portal, que además importa las alertas de Defender XDR", "El portal de Microsoft Purview", "Microsoft Defender for Cloud"],
           explain: "El portal de Defender es una plataforma unificada de operaciones de seguridad con una cola de incidentes unificada."
         }
       },
@@ -211,9 +211,9 @@ Catalog.module("sc-900", {
         q: "Which stages of the attack kill chain does Defender for Identity detect?",
         options: [
           "Reconnaissance, compromised credentials, lateral movements and domain dominance",
-          "Only phishing emails",
+          "Only phishing and credential theft",
           "Only malware execution and persistence on endpoints, through the same agent as Defender for Endpoint",
-          "Only misconfigured storage accounts"
+          "Only misconfigurations in Active Directory"
         ],
         answer: 0,
         explain: "Defender for Identity detects threats throughout the cyberattack kill chain at the identity source.",
@@ -222,9 +222,9 @@ Catalog.module("sc-900", {
           q: "¿Qué etapas de la cadena de ataque detecta Defender for Identity?",
           options: [
             "Reconocimiento, credenciales comprometidas, movimientos laterales y dominio del dominio",
-            "Solo correos de phishing",
+            "Solo phishing y robo de credenciales",
             "Solo la ejecución y persistencia de malware en los puntos de conexión, con el mismo agente que Defender para punto de conexión",
-            "Solo cuentas de almacenamiento mal configuradas"
+            "Solo configuraciones incorrectas en Active Directory"
           ],
           explain: "Defender for Identity detecta amenazas a lo largo de toda la cadena de ataque en el origen de identidad."
         }
@@ -245,9 +245,9 @@ Catalog.module("sc-900", {
             q: "What is Microsoft Defender XDR?",
             options: [
               "A unified pre- and post-breach defense suite across endpoints, identities, email and applications",
-              "A firewall for Azure virtual networks",
+              "A SIEM that replaces Microsoft Sentinel",
               "A governance tool that enforces security policies and resource locks across Azure subscriptions and management groups",
-              "A password manager for employees"
+              "A CNAPP for multicloud workloads"
             ],
             answer: 0,
             explain: "Defender XDR coordinates detection, prevention, investigation and response across domains.",
@@ -255,9 +255,9 @@ Catalog.module("sc-900", {
               q: "¿Qué es Microsoft Defender XDR?",
               options: [
                 "Un conjunto de defensa unificado antes y después de una filtración, para puntos de conexión, identidades, correo y aplicaciones",
-                "Un firewall para redes virtuales de Azure",
+                "Un SIEM que reemplaza a Microsoft Sentinel",
                 "Una herramienta de gobernanza que aplica directivas de seguridad y bloqueos de recursos en suscripciones y grupos de administración de Azure",
-                "Un administrador de contraseñas para empleados"
+                "Una CNAPP para cargas de trabajo multinube"
               ],
               explain: "Defender XDR coordina la detección, la prevención, la investigación y la respuesta entre dominios."
             }
@@ -286,12 +286,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two products are part of the Microsoft Defender XDR suite?",
-            options: ["Microsoft Defender Vulnerability Management", "Microsoft Entra ID Protection", "Azure Firewall", "Azure Key Vault", "Azure Policy"],
+            options: ["Microsoft Defender Vulnerability Management", "Microsoft Entra ID Protection", "Microsoft Defender for Cloud", "Microsoft Sentinel", "Microsoft Purview"],
             answers: [0, 1],
             explain: "The suite includes Defender for Endpoint, Vulnerability Management, Office 365, Identity, Entra ID Protection, Cloud Apps, Defender TI and Exposure Management.",
             es: {
               q: "¿Cuáles son dos productos que forman parte del conjunto Microsoft Defender XDR?",
-              options: ["Administración de vulnerabilidades de Microsoft Defender", "Microsoft Entra ID Protection", "Azure Firewall", "Azure Key Vault", "Azure Policy"],
+              options: ["Administración de vulnerabilidades de Microsoft Defender", "Microsoft Entra ID Protection", "Microsoft Defender for Cloud", "Microsoft Sentinel", "Microsoft Purview"],
               explain: "El conjunto incluye Defender para punto de conexión, Administración de vulnerabilidades, Office 365, Identity, Entra ID Protection, Cloud Apps, Defender TI y Exposure Management."
             }
           },
@@ -315,9 +315,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about Defender XDR.",
             parts: [
               "Defender XDR provides query-based access to ",
-              { options: ["30 days", "7 days", "12 years"], answer: 0 },
+              { options: ["30 days", "90 days", "180 days"], answer: 0 },
               " of historic raw signals for hunting, and Entra ID Protection uses learnings from Entra ID, Microsoft Accounts and ",
-              { options: ["Xbox", "Azure Firewall", "Bing Maps"], answer: 0 },
+              { options: ["Xbox", "Bing", "LinkedIn"], answer: 0 },
               "."
             ],
             explain: "Cross-product hunting covers 30 days of raw data; ID Protection learns from Entra ID, Microsoft Accounts and Xbox.",
@@ -325,9 +325,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre Defender XDR.",
               parts: [
                 "Defender XDR ofrece acceso por consultas a ",
-                { options: ["30 días", "7 días", "12 años"] },
+                { options: ["30 días", "90 días", "180 días"] },
                 " de señales históricas sin procesar para búsquedas, y Entra ID Protection usa aprendizajes de Entra ID, las cuentas Microsoft y ",
-                { options: ["Xbox", "Azure Firewall", "Bing Maps"] },
+                { options: ["Xbox", "Bing", "LinkedIn"] },
                 "."
               ],
               explain: "La búsqueda entre productos cubre 30 días de datos sin procesar; ID Protection aprende de Entra ID, las cuentas Microsoft y Xbox."
@@ -370,24 +370,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A company wants to identify employees likely to fall for phishing and train them before a real attack. Which feature fits?",
-            options: ["Attack simulation training", "Message trace", "Connection filtering", "Quarantine policies"],
+            options: ["Attack simulation training", "Anti-phishing policies", "Threat Explorer", "Safe Links"],
             answer: 0,
             explain: "Attack simulation training runs realistic attacks to find and train vulnerable users.",
             es: {
               q: "Una empresa quiere identificar a los empleados con más probabilidad de caer en phishing y capacitarlos antes de un ataque real. ¿Qué característica corresponde?",
-              options: ["La formación con simulación de ataques", "El seguimiento de mensajes", "El filtrado de conexiones", "Las directivas de cuarentena"],
+              options: ["La formación con simulación de ataques", "Las directivas contra phishing", "El Explorador de amenazas", "Vínculos seguros"],
               explain: "La formación con simulación de ataques ejecuta ataques realistas para encontrar y capacitar a usuarios vulnerables."
             }
           },
           {
             type: "single",
             q: "What does Safe Attachments do after files pass the common virus detection engine?",
-            options: ["Opens them in a virtual environment to observe their behavior", "Deletes all attachments from external senders and notifies the recipient that a file was removed", "Converts them to PDF", "Sends them to the recipient's manager"],
+            options: ["Opens them in a virtual environment to observe their behavior", "Rewrites links in the file to scan them at click time", "Quarantines them until an admin approves", "Checks their hash against threat intelligence only"],
             answer: 0,
             explain: "Safe Attachments detonates files in a virtual environment as an extra layer of protection.",
             es: {
               q: "¿Qué hace Datos adjuntos seguros después de que los archivos pasan el motor común de detección de virus?",
-              options: ["Los abre en un entorno virtual para observar su comportamiento", "Elimina todos los adjuntos de remitentes externos y avisa al destinatario que se quitó un archivo", "Los convierte a PDF", "Los envía al responsable del destinatario"],
+              options: ["Los abre en un entorno virtual para observar su comportamiento", "Reescribe los vínculos del archivo para analizarlos al hacer clic", "Los pone en cuarentena hasta que un administrador los apruebe", "Compara su hash solo con inteligencia sobre amenazas"],
               explain: "Datos adjuntos seguros detona los archivos en un entorno virtual como capa adicional de protección."
             }
           },
@@ -411,9 +411,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about Defender for Office 365.",
             parts: [
               "Defender for Office 365 is available in ",
-              { options: ["Plan 1 and Plan 2", "a single plan", "Basic and Premium"], answer: 0 },
+              { options: ["Plan 1 and Plan 2", "a single plan", "Standard and Strict"], answer: 0 },
               ", and the Phishing Triage Agent requires ",
-              { options: ["Plan 2 and Security Copilot", "Plan 1 only", "Microsoft Sentinel only"], answer: 0 },
+              { options: ["Plan 2 and Security Copilot", "Plan 1 only", "Plan 1 and Microsoft Sentinel"], answer: 0 },
               "."
             ],
             explain: "There are two plans, and the agent needs Plan 2 plus Security Copilot.",
@@ -421,9 +421,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre Defender para Office 365.",
               parts: [
                 "Defender para Office 365 está disponible en ",
-                { options: ["Plan 1 y Plan 2", "un único plan", "Basic y Premium"] },
+                { options: ["Plan 1 y Plan 2", "un único plan", "Estándar y Estricto"] },
                 ", y el agente de evaluación de phishing requiere ",
-                { options: ["el Plan 2 y Security Copilot", "solo el Plan 1", "solo Microsoft Sentinel"] },
+                { options: ["el Plan 2 y Security Copilot", "solo el Plan 1", "el Plan 1 y Microsoft Sentinel"] },
                 "."
               ],
               explain: "Hay dos planes, y el agente necesita el Plan 2 más Security Copilot."
@@ -466,24 +466,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A SOC wants Microsoft experts to proactively hunt threats in its environment and add context to findings. Which service fits?",
-            options: ["Microsoft Defender Experts for Hunting", "Microsoft Secure Score for Devices", "Attack surface reduction rules", "API Explorer"],
+            options: ["Microsoft Defender Experts for Hunting", "Automated investigation and remediation", "Attack surface reduction rules", "Threat analytics reports"],
             answer: 0,
             explain: "Defender Experts for Hunting is a managed threat hunting service.",
             es: {
               q: "Un SOC quiere que expertos de Microsoft busquen amenazas de forma proactiva en su entorno y agreguen contexto a los hallazgos. ¿Qué servicio corresponde?",
-              options: ["Microsoft Defender Experts for Hunting", "Microsoft Secure Score para dispositivos", "Las reglas de reducción de la superficie expuesta a ataques", "El Explorador de API"],
+              options: ["Microsoft Defender Experts for Hunting", "La investigación y corrección automatizadas", "Las reglas de reducción de la superficie expuesta a ataques", "Los informes de análisis de amenazas"],
               explain: "Defender Experts for Hunting es un servicio administrado de búsqueda de amenazas."
             }
           },
           {
             type: "multi",
             q: "Which two technologies does Defender for Endpoint embed?",
-            options: ["Endpoint behavioral sensors in Windows", "Cloud security analytics", "Azure Key Vault HSMs", "Network security groups", "SharePoint retention labels"],
+            options: ["Endpoint behavioral sensors in Windows", "Cloud security analytics", "Network sensors on domain controllers", "Email detonation sandboxes", "Cloud app discovery logs"],
             answers: [0, 1],
             explain: "It uses behavioral sensors, cloud security analytics and threat intelligence.",
             es: {
               q: "¿Cuáles son dos tecnologías que incorpora Defender para punto de conexión?",
-              options: ["Sensores de comportamiento de puntos de conexión en Windows", "Análisis de seguridad en la nube", "HSM de Azure Key Vault", "Grupos de seguridad de red", "Etiquetas de retención de SharePoint"],
+              options: ["Sensores de comportamiento de puntos de conexión en Windows", "Análisis de seguridad en la nube", "Sensores de red en controladores de dominio", "Entornos aislados para detonar correo", "Registros de detección de aplicaciones en la nube"],
               explain: "Usa sensores de comportamiento, análisis de seguridad en la nube e inteligencia sobre amenazas."
             }
           },
@@ -505,12 +505,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Which Defender for Endpoint feature helps assess the security state of devices and identify unprotected systems?",
-            options: ["Microsoft Secure Score for Devices", "Zero-hour auto purge", "Cloud discovery", "Message trace"],
+            options: ["Microsoft Secure Score for Devices", "Device inventory", "Attack surface reduction", "Next-generation protection"],
             answer: 0,
             explain: "Secure Score for Devices assesses device security and recommends actions.",
             es: {
               q: "¿Qué característica de Defender para punto de conexión ayuda a evaluar el estado de seguridad de los dispositivos e identificar sistemas sin protección?",
-              options: ["Microsoft Secure Score para dispositivos", "La purga automática de hora cero", "La detección en la nube", "El seguimiento de mensajes"],
+              options: ["Microsoft Secure Score para dispositivos", "El inventario de dispositivos", "La reducción de la superficie expuesta a ataques", "La protección de próxima generación"],
               explain: "Secure Score para dispositivos evalúa la seguridad de los dispositivos y recomienda acciones."
             }
           }
@@ -528,12 +528,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "IT suspects employees are using unsanctioned SaaS apps. Which Defender for Cloud Apps capability identifies them from network traffic and an app catalog?",
-            options: ["Cloud discovery", "App governance", "Attack simulation training", "Safe Links"],
+            options: ["Cloud discovery", "App governance", "Session controls", "SaaS security posture management"],
             answer: 0,
             explain: "Discovery identifies apps, assesses them against 90+ risk indicators and lets you manage them with policies.",
             es: {
               q: "TI sospecha que los empleados usan aplicaciones SaaS no autorizadas. ¿Qué capacidad de Defender for Cloud Apps las identifica a partir del tráfico de red y un catálogo de aplicaciones?",
-              options: ["La detección en la nube", "La gobernanza de aplicaciones", "La formación con simulación de ataques", "Vínculos seguros"],
+              options: ["La detección en la nube", "La gobernanza de aplicaciones", "Los controles de sesión", "La administración de la postura de seguridad de SaaS"],
               explain: "La detección identifica aplicaciones, las evalúa con más de 90 indicadores de riesgo y permite administrarlas con directivas."
             }
           },
@@ -561,12 +561,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two controls can Defender for Cloud Apps apply to protect sensitive files in SaaS apps?",
-            options: ["Apply a sensitivity label", "Remove external collaborators on confidential files", "Reset a domain controller", "Detonate email attachments", "Create a Bicep template"],
+            options: ["Apply a sensitivity label", "Remove external collaborators on confidential files", "Detonate files in a sandbox before sharing", "Encrypt files with a customer-managed key in Key Vault", "Purge files with zero-hour auto purge"],
             answers: [0, 1],
             explain: "Controls include applying labels, blocking downloads to unmanaged devices and removing external collaborators.",
             es: {
               q: "¿Cuáles son dos controles que puede aplicar Defender for Cloud Apps para proteger archivos confidenciales en aplicaciones SaaS?",
-              options: ["Aplicar una etiqueta de confidencialidad", "Quitar colaboradores externos de archivos confidenciales", "Restablecer un controlador de dominio", "Detonar adjuntos de correo", "Crear una plantilla Bicep"],
+              options: ["Aplicar una etiqueta de confidencialidad", "Quitar colaboradores externos de archivos confidenciales", "Detonar archivos en un entorno aislado antes de compartirlos", "Cifrar archivos con una clave administrada por el cliente en Key Vault", "Purgar archivos con la purga automática de hora cero"],
               explain: "Los controles incluyen aplicar etiquetas, bloquear descargas a dispositivos no administrados y quitar colaboradores externos."
             }
           },
@@ -590,9 +590,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about Defender for Cloud Apps.",
             parts: [
               "Its integration with ",
-              { options: ["Microsoft Purview", "Azure Bastion", "Azure DNS"], answer: 0 },
+              { options: ["Microsoft Purview", "Microsoft Entra ID Protection", "Microsoft Sentinel"], answer: 0 },
               " enables data classification and ",
-              { options: ["data loss prevention", "VM scaling", "BGP routing"], answer: 0 },
+              { options: ["data loss prevention", "attack path analysis", "threat hunting"], answer: 0 },
               " in information protection policies."
             ],
             explain: "Purview integration brings classification types and DLP to Cloud Apps policies.",
@@ -600,9 +600,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre Defender for Cloud Apps.",
               parts: [
                 "Su integración con ",
-                { options: ["Microsoft Purview", "Azure Bastion", "Azure DNS"] },
+                { options: ["Microsoft Purview", "Microsoft Entra ID Protection", "Microsoft Sentinel"] },
                 " permite usar clasificación de datos y ",
-                { options: ["prevención de pérdida de datos", "escalado de máquinas virtuales", "enrutamiento BGP"] },
+                { options: ["prevención de pérdida de datos", "análisis de rutas de ataque", "búsqueda de amenazas"] },
                 " en las directivas de protección de la información."
               ],
               explain: "La integración con Purview aporta tipos de clasificación y DLP a las directivas de Cloud Apps."
@@ -625,8 +625,8 @@ Catalog.module("sc-900", {
             options: [
               "On domain controllers and AD FS and AD CS servers",
               "On every employee laptop, as part of the Defender for Endpoint agent",
-              "In each SaaS application",
-              "On Azure Firewall instances"
+              "On Microsoft Entra Connect servers only",
+              "On network firewalls at the perimeter"
             ],
             answer: 0,
             explain: "Sensors run on on-premises identity infrastructure servers.",
@@ -635,8 +635,8 @@ Catalog.module("sc-900", {
               options: [
                 "En los controladores de dominio y en los servidores de AD FS y AD CS",
                 "En la laptop de cada empleado, como parte del agente de Defender para punto de conexión",
-                "En cada aplicación SaaS",
-                "En las instancias de Azure Firewall"
+                "Solo en servidores de Microsoft Entra Connect",
+                "En los firewalls de red del perímetro"
               ],
               explain: "Los sensores se ejecutan en los servidores de la infraestructura de identidad local."
             }
@@ -667,12 +667,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two remediation actions can Defender for Identity perform on on-premises identities?",
-            options: ["Disable the user in Active Directory", "Reset the user's password", "Delete the user's mailbox", "Wipe the user's phone", "Revoke the user's Azure subscription"],
+            options: ["Disable the user in Active Directory", "Reset the user's password", "Isolate the user's device", "Quarantine the user's email", "Remove the user's sensitivity labels"],
             answers: [0, 1],
             explain: "Examples are disabling the user in AD and forcing a password reset at next sign-in.",
             es: {
               q: "¿Cuáles son dos acciones de corrección que Defender for Identity puede hacer sobre identidades locales?",
-              options: ["Deshabilitar al usuario en Active Directory", "Restablecer la contraseña del usuario", "Eliminar el buzón del usuario", "Borrar el teléfono del usuario", "Revocar la suscripción de Azure del usuario"],
+              options: ["Deshabilitar al usuario en Active Directory", "Restablecer la contraseña del usuario", "Aislar el dispositivo del usuario", "Poner en cuarentena el correo del usuario", "Quitar las etiquetas de confidencialidad del usuario"],
               explain: "Por ejemplo, deshabilitar al usuario en AD y forzar un cambio de contraseña en el próximo inicio de sesión."
             }
           },
@@ -698,7 +698,7 @@ Catalog.module("sc-900", {
               "Defender for Identity delivers an ",
               { options: ["identity threat detection and response (ITDR)", "endpoint detection and response (EDR)", "cloud access security broker (CASB)"], answer: 0 },
               " solution, and it identifies sensitive accounts with the riskiest ",
-              { options: ["lateral movement paths", "storage tiers", "billing zones"], answer: 0 },
+              { options: ["lateral movement paths", "privileged role assignments", "Group Policy settings"], answer: 0 },
               "."
             ],
             explain: "It's an ITDR solution that proactively reports risky lateral movement paths.",
@@ -708,7 +708,7 @@ Catalog.module("sc-900", {
                 "Defender for Identity ofrece una solución de ",
                 { options: ["detección y respuesta a amenazas de identidad (ITDR)", "detección y respuesta de puntos de conexión (EDR)", "agente de seguridad de acceso a la nube (CASB)"] },
                 ", e identifica las cuentas sensibles con las ",
-                { options: ["rutas de movimiento lateral", "niveles de almacenamiento", "zonas de facturación"] },
+                { options: ["rutas de movimiento lateral", "asignaciones de roles con privilegios", "configuraciones de directivas de grupo"] },
                 " más riesgosas."
               ],
               explain: "Es una solución ITDR que informa de forma proactiva las rutas de movimiento lateral riesgosas."
@@ -749,24 +749,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A team wants to scan unmanaged Windows devices for vulnerabilities by providing credentials for remote access. Which feature fits?",
-            options: ["Authenticated scan for Windows", "Browser extensions assessment", "Zero-hour auto purge", "Cloud discovery"],
+            options: ["Authenticated scan for Windows", "Browser extensions assessment", "Agentless scanning for servers", "Network shares assessment"],
             answer: 0,
             explain: "Authenticated scans remotely check unmanaged Windows devices for software vulnerabilities.",
             es: {
               q: "Un equipo quiere analizar dispositivos Windows no administrados en busca de vulnerabilidades proporcionando credenciales de acceso remoto. ¿Qué característica corresponde?",
-              options: ["El análisis autenticado para Windows", "La evaluación de extensiones del explorador", "La purga automática de hora cero", "La detección en la nube"],
+              options: ["El análisis autenticado para Windows", "La evaluación de extensiones del explorador", "El análisis sin agente para servidores", "La evaluación de recursos compartidos de red"],
               explain: "Los análisis autenticados revisan de forma remota los dispositivos Windows no administrados."
             }
           },
           {
             type: "multi",
             q: "Which two assessments does Defender Vulnerability Management provide?",
-            options: ["Digital certificates assessment", "Security baselines assessment against CIS or STIG", "Email attachment detonation", "SaaS app discovery", "Domain controller sensor health"],
+            options: ["Digital certificates assessment", "Security baselines assessment against CIS or STIG", "Attack path analysis", "SaaS posture assessment", "Identity exposure assessment"],
             answers: [0, 1],
             explain: "Assessments include baselines, software, network shares, browser extensions, certificates and hardware/firmware.",
             es: {
               q: "¿Cuáles son dos evaluaciones que ofrece la Administración de vulnerabilidades de Defender?",
-              options: ["La evaluación de certificados digitales", "La evaluación de líneas base de seguridad frente a CIS o STIG", "La detonación de adjuntos de correo", "La detección de aplicaciones SaaS", "El estado de los sensores en controladores de dominio"],
+              options: ["La evaluación de certificados digitales", "La evaluación de líneas base de seguridad frente a CIS o STIG", "El análisis de rutas de ataque", "La evaluación de la postura de SaaS", "La evaluación de la exposición de identidades"],
               explain: "Las evaluaciones incluyen líneas base, software, recursos compartidos de red, extensiones del explorador, certificados y hardware/firmware."
             }
           },
@@ -788,12 +788,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A critical patch can't be installed yet. What can Defender Vulnerability Management offer to reduce risk in the meantime?",
-            options: ["Alternate mitigations or blocking the vulnerable application", "Automatic removal of the affected devices from the domain until the patch can be installed", "Moving the devices to another tenant", "Turning off MFA on those devices"],
+            options: ["Alternate mitigations or blocking the vulnerable application", "Automatic removal of the affected devices from the domain until the patch can be installed", "Lowering the CVE's severity until patched", "Opening a Sentinel incident automatically"],
             answer: 0,
             explain: "It suggests alternate mitigations such as configuration changes and can block vulnerable apps for device groups.",
             es: {
               q: "Todavía no se puede instalar un parche crítico. ¿Qué puede ofrecer la Administración de vulnerabilidades de Defender para reducir el riesgo mientras tanto?",
-              options: ["Mitigaciones alternativas o bloquear la aplicación vulnerable", "Quitar automáticamente del dominio los dispositivos afectados hasta que se pueda instalar el parche", "Mover los dispositivos a otro inquilino", "Desactivar la MFA en esos dispositivos"],
+              options: ["Mitigaciones alternativas o bloquear la aplicación vulnerable", "Quitar automáticamente del dominio los dispositivos afectados hasta que se pueda instalar el parche", "Bajar la gravedad de la CVE hasta que se aplique el parche", "Abrir un incidente de Sentinel automáticamente"],
               explain: "Sugiere mitigaciones alternativas, como cambios de configuración, y puede bloquear aplicaciones vulnerables para grupos de dispositivos."
             }
           }
@@ -837,8 +837,8 @@ Catalog.module("sc-900", {
             options: [
               "It aggregates and enriches data like DNS and WHOIS in one interface",
               "It blocks the domain automatically at every firewall and proxy connected to the tenant",
-              "It deletes emails from that domain",
-              "It registers the domain on the company's behalf"
+              "It isolates devices that contacted the domain",
+              "It scans the domain for vulnerabilities"
             ],
             answer: 0,
             explain: "Defender TI brings disconnected sources together so analysts focus on insight instead of gathering data.",
@@ -847,8 +847,8 @@ Catalog.module("sc-900", {
               options: [
                 "Reúne y enriquece datos como DNS y WHOIS en una sola interfaz",
                 "Bloquea el dominio automáticamente en todos los firewalls y proxies conectados al inquilino",
-                "Elimina los correos de ese dominio",
-                "Registra el dominio en nombre de la empresa"
+                "Aísla los dispositivos que contactaron el dominio",
+                "Analiza el dominio en busca de vulnerabilidades"
               ],
               explain: "Defender TI reúne orígenes desconectados para que los analistas se centren en el análisis en lugar de juntar datos."
             }
@@ -856,12 +856,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are built-in Security Copilot promptbooks for Defender TI?",
-            options: ["Vulnerability impact assessment", "Threat actor profile", "Budget forecast", "Storage tier recommendation", "VPN gateway sizing"],
+            options: ["Vulnerability impact assessment", "Threat actor profile", "Incident investigation", "Phishing triage", "Attack path summary"],
             answers: [0, 1],
             explain: "The two promptbooks generate vulnerability and threat actor reports.",
             es: {
               q: "¿Cuáles son dos libros de indicaciones integrados de Security Copilot para Defender TI?",
-              options: ["Evaluación del impacto de una vulnerabilidad", "Perfil de un actor de amenazas", "Previsión de presupuesto", "Recomendación de nivel de almacenamiento", "Dimensionamiento de una puerta de enlace VPN"],
+              options: ["Evaluación del impacto de una vulnerabilidad", "Perfil de un actor de amenazas", "Investigación de incidentes", "Evaluación de phishing", "Resumen de rutas de ataque"],
               explain: "Los dos libros de indicaciones generan informes sobre vulnerabilidades y actores de amenazas."
             }
           },
@@ -887,7 +887,7 @@ Catalog.module("sc-900", {
               "The standalone Defender TI product is being retired on ",
               { options: ["August 1, 2026", "March 31, 2027", "January 1, 2025"], answer: 0 },
               ", and its capabilities are converging into ",
-              { options: ["Defender XDR and Microsoft Sentinel", "Microsoft Purview only", "Azure Advisor"], answer: 0 },
+              { options: ["Defender XDR and Microsoft Sentinel", "Microsoft Purview", "Defender for Cloud only"], answer: 0 },
               "."
             ],
             explain: "Threat intelligence features remain accessible through the Defender portal.",
@@ -897,7 +897,7 @@ Catalog.module("sc-900", {
                 "El producto independiente Defender TI se retira el ",
                 { options: ["1 de agosto de 2026", "31 de marzo de 2027", "1 de enero de 2025"] },
                 ", y sus capacidades se integran en ",
-                { options: ["Defender XDR y Microsoft Sentinel", "solo Microsoft Purview", "Azure Advisor"] },
+                { options: ["Defender XDR y Microsoft Sentinel", "Microsoft Purview", "solo Defender for Cloud"] },
                 "."
               ],
               explain: "Las funciones de inteligencia sobre amenazas siguen accesibles desde el portal de Defender."
@@ -917,12 +917,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A team wants to see visually how assets connect across on-premises and cloud, for example whether a cloud misconfiguration exposes an on-premises server. What should it use?",
-            options: ["The attack surface map", "Microsoft Secure Score", "Message trace", "Cloud app catalog"],
+            options: ["The attack surface map", "Attack path analysis in Defender for Cloud", "The Sentinel investigation graph", "The device inventory"],
             answer: 0,
             explain: "The attack surface map visualizes the enterprise exposure graph.",
             es: {
               q: "Un equipo quiere ver de forma visual cómo se conectan los recursos entre el entorno local y la nube, por ejemplo si una configuración incorrecta en la nube expone un servidor local. ¿Qué debe usar?",
-              options: ["El mapa de la superficie expuesta a ataques", "Microsoft Secure Score", "El seguimiento de mensajes", "El catálogo de aplicaciones en la nube"],
+              options: ["El mapa de la superficie expuesta a ataques", "El análisis de rutas de ataque de Defender for Cloud", "El gráfico de investigación de Sentinel", "El inventario de dispositivos"],
               explain: "El mapa de la superficie expuesta a ataques visualiza el grafo de exposición empresarial."
             }
           },
@@ -955,8 +955,8 @@ Catalog.module("sc-900", {
             options: [
               "It works at a cross-workload level, connecting endpoints, identities and cloud into attack paths",
               "It only tracks individual CVEs on endpoints, with a more detailed software inventory than Vulnerability Management",
-              "It replaces Defender for Endpoint",
-              "It only covers Microsoft 365 email"
+              "It focuses only on cloud misconfigurations",
+              "It replaces Microsoft Secure Score"
             ],
             answer: 0,
             explain: "Vulnerability Management focuses on CVEs at the endpoint layer and is one data source for Exposure Management.",
@@ -965,8 +965,8 @@ Catalog.module("sc-900", {
               options: [
                 "Trabaja entre cargas de trabajo y conecta puntos de conexión, identidades y nube en rutas de ataque",
                 "Solo sigue CVE individuales en los puntos de conexión, con un inventario de software más detallado que la Administración de vulnerabilidades",
-                "Reemplaza a Defender para punto de conexión",
-                "Solo cubre el correo de Microsoft 365"
+                "Se centra solo en configuraciones incorrectas en la nube",
+                "Reemplaza a Microsoft Secure Score"
               ],
               explain: "La Administración de vulnerabilidades se centra en CVE en la capa de puntos de conexión y es un origen de datos de Exposure Management."
             }
@@ -991,9 +991,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about Security Exposure Management.",
             parts: [
               "At its core is the ",
-              { options: ["enterprise exposure graph", "Content hub", "data lake tier"], answer: 0 },
+              { options: ["enterprise exposure graph", "attack surface map", "Microsoft Secure Score"], answer: 0 },
               ", and it consolidates recommendations organized by ",
-              { options: ["attack surface and issue type", "region and billing zone", "license tier"], answer: 0 },
+              { options: ["attack surface and issue type", "severity only", "product and license"], answer: 0 },
               "."
             ],
             explain: "The exposure graph maps assets; recommendations are grouped by surface (devices, cloud, identity, SaaS, data) and type.",
@@ -1001,9 +1001,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre la administración de la exposición de seguridad.",
               parts: [
                 "En su núcleo está el ",
-                { options: ["grafo de exposición empresarial", "centro de contenido", "nivel de lago de datos"] },
+                { options: ["grafo de exposición empresarial", "mapa de la superficie expuesta a ataques", "Microsoft Secure Score"] },
                 ", y consolida recomendaciones organizadas por ",
-                { options: ["superficie de ataque y tipo de problema", "región y zona de facturación", "nivel de licencia"] },
+                { options: ["superficie de ataque y tipo de problema", "solo gravedad", "producto y licencia"] },
                 "."
               ],
               explain: "El grafo de exposición mapea los recursos; las recomendaciones se agrupan por superficie (dispositivos, nube, identidad, SaaS, datos) y tipo."
@@ -1046,24 +1046,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Which page brings together pending and completed remediation actions from Defender for Endpoint and Defender for Office 365?",
-            options: ["The unified Action center", "SOC optimization", "Learning hub", "Partner catalog"],
+            options: ["The unified Action center", "The incidents queue", "Threat analytics", "Submissions"],
             answer: 0,
             explain: "The Action center lists remediation actions across devices, email and identities.",
             es: {
               q: "¿Qué página reúne las acciones de corrección pendientes y completadas de Defender para punto de conexión y Defender para Office 365?",
-              options: ["El centro de actividades unificado", "La optimización del SOC", "El centro de aprendizaje", "El catálogo de partners"],
+              options: ["El centro de actividades unificado", "La cola de incidentes", "El análisis de amenazas", "Envíos"],
               explain: "El centro de actividades enumera las acciones de corrección en dispositivos, correo e identidades."
             }
           },
           {
             type: "multi",
             q: "Which two Microsoft Entra roles can give access to the Defender portal?",
-            options: ["Security Reader", "Security Operator", "Billing Administrator", "Guest Inviter", "User Administrator only"],
+            options: ["Security Reader", "Security Operator", "User Administrator", "Billing Administrator", "Application Administrator"],
             answers: [0, 1],
             explain: "Roles such as Global Reader or Administrator, Security Reader or Administrator and Security Operator give access.",
             es: {
               q: "¿Cuáles son dos roles de Microsoft Entra que pueden dar acceso al portal de Defender?",
-              options: ["Lector de seguridad", "Operador de seguridad", "Administrador de facturación", "Invitador de invitados", "Solo Administrador de usuarios"],
+              options: ["Lector de seguridad", "Operador de seguridad", "Administrador de usuarios", "Administrador de facturación", "Administrador de aplicaciones"],
               explain: "Roles como Lector o Administrador global, Lector o Administrador de seguridad y Operador de seguridad dan acceso."
             }
           },
@@ -1087,9 +1087,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about the Defender portal.",
             parts: [
               "Hunting queries can be reused to build ",
-              { options: ["custom detection rules", "Bicep modules", "budget alerts"], answer: 0 },
+              { options: ["custom detection rules", "automation rules", "threat analytics reports"], answer: 0 },
               ", and the Cloud security node gives access to ",
-              { options: ["Microsoft Defender for Cloud", "Microsoft Purview", "Azure Advisor"], answer: 0 },
+              { options: ["Microsoft Defender for Cloud", "Microsoft Sentinel", "Microsoft Security Exposure Management"], answer: 0 },
               "."
             ],
             explain: "Custom detection rules run hunting queries automatically; Cloud security brings Defender for Cloud into the portal.",
@@ -1097,9 +1097,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre el portal de Defender.",
               parts: [
                 "Las consultas de búsqueda se pueden reutilizar para crear ",
-                { options: ["reglas de detección personalizadas", "módulos de Bicep", "alertas de presupuesto"] },
+                { options: ["reglas de detección personalizadas", "reglas de automatización", "informes de análisis de amenazas"] },
                 ", y el nodo Seguridad en la nube da acceso a ",
-                { options: ["Microsoft Defender for Cloud", "Microsoft Purview", "Azure Advisor"] },
+                { options: ["Microsoft Defender for Cloud", "Microsoft Sentinel", "Microsoft Security Exposure Management"] },
                 "."
               ],
               explain: "Las reglas de detección personalizadas ejecutan consultas de búsqueda automáticamente; Seguridad en la nube suma Defender for Cloud al portal."
@@ -1145,8 +1145,8 @@ Catalog.module("sc-900", {
             options: [
               "The report also includes analyst steps, automated actions, people involved and comments",
               "The summary is longer, includes every analyst comment and is exported automatically to Sentinel",
-              "They're identical",
-              "The report only lists the devices involved"
+              "The summary includes remediation steps; the report doesn't",
+              "The report covers only Sentinel incidents"
             ],
             answer: 0,
             explain: "Summaries give an overview; reports consolidate the full response history from Sentinel and Defender XDR.",
@@ -1155,8 +1155,8 @@ Catalog.module("sc-900", {
               options: [
                 "El informe también incluye los pasos de los analistas, las acciones automáticas, las personas involucradas y los comentarios",
                 "El resumen es más largo, incluye todos los comentarios de los analistas y se exporta automáticamente a Sentinel",
-                "Son idénticos",
-                "El informe solo enumera los dispositivos involucrados"
+                "El resumen incluye pasos de corrección; el informe no",
+                "El informe cubre solo incidentes de Sentinel"
               ],
               explain: "Los resúmenes dan una visión general; los informes reúnen todo el historial de respuesta de Sentinel y Defender XDR."
             }
@@ -1164,12 +1164,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two features does Copilot in Microsoft Defender XDR (the embedded experience) support?",
-            options: ["Script analysis", "Device and identity summaries", "Provisioning SCUs", "Creating Azure subscriptions", "Configuring Bastion tiers"],
+            options: ["Script analysis", "Device and identity summaries", "Automatic attack disruption", "Creating custom detection rules automatically", "Approving remediation in the Action center"],
             answers: [0, 1],
             explain: "Embedded features include summaries, guided responses, script and file analysis, NL-to-KQL, reports and device/identity summaries.",
             es: {
               q: "¿Cuáles son dos características que admite Copilot en Microsoft Defender XDR (la experiencia integrada)?",
-              options: ["El análisis de scripts", "Los resúmenes de dispositivos e identidades", "El aprovisionamiento de SCU", "La creación de suscripciones de Azure", "La configuración de niveles de Bastion"],
+              options: ["El análisis de scripts", "Los resúmenes de dispositivos e identidades", "La interrupción automática de ataques", "Crear reglas de detección personalizadas automáticamente", "Aprobar correcciones en el centro de actividades"],
               explain: "Las características integradas incluyen resúmenes, respuestas guiadas, análisis de scripts y archivos, conversión a KQL, informes y resúmenes de dispositivos e identidades."
             }
           },
@@ -1193,9 +1193,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about the standalone experience.",
             parts: [
               "Two plugins support Defender XDR in the standalone experience: Microsoft Defender XDR and ",
-              { options: ["Natural language to KQL for Microsoft Defender XDR", "Azure Firewall", "Microsoft Purview"], answer: 0 },
+              { options: ["Natural language to KQL for Microsoft Defender XDR", "Microsoft Sentinel", "Microsoft Defender Threat Intelligence"], answer: 0 },
               ", and a built-in ",
-              { options: ["promptbook", "resource lock", "budget"], answer: 0 },
+              { options: ["promptbook", "agent", "workbook"], answer: 0 },
               " produces an incident investigation report."
             ],
             explain: "The XDR plugin and the NL-to-KQL plugin, plus a built-in incident investigation promptbook.",
@@ -1203,9 +1203,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre la experiencia independiente.",
               parts: [
                 "Dos complementos admiten Defender XDR en la experiencia independiente: Microsoft Defender XDR y ",
-                { options: ["Lenguaje natural a KQL para Microsoft Defender XDR", "Azure Firewall", "Microsoft Purview"] },
+                { options: ["Lenguaje natural a KQL para Microsoft Defender XDR", "Microsoft Sentinel", "Inteligencia sobre amenazas de Microsoft Defender"] },
                 ", y un ",
-                { options: ["libro de indicaciones", "bloqueo de recursos", "presupuesto"] },
+                { options: ["libro de indicaciones", "agente", "libro"] },
                 " integrado genera un informe de investigación de incidentes."
               ],
               explain: "El complemento de XDR y el de lenguaje natural a KQL, más un libro de indicaciones integrado para investigar incidentes."

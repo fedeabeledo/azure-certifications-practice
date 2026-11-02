@@ -11,13 +11,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Web Application Firewall",
         q: "A public web app is hit by an HTTP flood at the application layer. Azure DDoS Protection is already enabled. What should be added?",
-        options: ["A Web Application Firewall", "A second network security group", "Azure Bastion", "Azure Key Vault Premium"],
+        options: ["A Web Application Firewall", "A second network security group", "Azure Firewall Premium with IDPS", "DDoS Network Protection instead of IP Protection"],
         answer: 0,
         explain: "DDoS Protection covers layers 3 and 4. Layer 7 attacks such as HTTP floods need a WAF.",
         es: {
           topic: "Firewall de aplicaciones web",
           q: "Una aplicación web pública recibe una inundación HTTP en la capa de aplicación. La protección contra DDoS de Azure ya está habilitada. ¿Qué se debe agregar?",
-          options: ["Un firewall de aplicaciones web", "Un segundo grupo de seguridad de red", "Azure Bastion", "Azure Key Vault Premium"],
+          options: ["Un firewall de aplicaciones web", "Un segundo grupo de seguridad de red", "Azure Firewall Premium con IDPS", "DDoS Network Protection en lugar de IP Protection"],
           explain: "La protección contra DDoS cubre las capas 3 y 4. Los ataques de capa 7, como las inundaciones HTTP, requieren un WAF."
         }
       },
@@ -64,13 +64,13 @@ Catalog.module("sc-900", {
         type: "multi",
         topic: "Azure DDoS Protection",
         q: "Which two benefits does Azure DDoS Protection add over default infrastructure-level protection?",
-        options: ["Attack telemetry and alerting through Azure Monitor", "Thresholds tuned to the application's expected traffic", "Protection against SQL injection", "Secure RDP access to VMs", "Storage of encryption keys in HSMs"],
+        options: ["Attack telemetry and alerting through Azure Monitor", "Thresholds tuned to the application's expected traffic", "Protection against HTTP floods at layer 7", "Automatic blocking of malicious FQDNs", "Protection for VMs without public IPs"],
         answers: [0, 1],
         explain: "Default protection has a high threshold and no telemetry; DDoS Protection adds tuned profiles, analytics and alerts. SQL injection is a WAF concern.",
         es: {
           topic: "Protección contra DDoS de Azure",
           q: "¿Cuáles son dos ventajas que agrega la protección contra DDoS de Azure frente a la protección predeterminada de la infraestructura?",
-          options: ["Telemetría de ataques y alertas mediante Azure Monitor", "Umbrales ajustados al tráfico esperado de la aplicación", "Protección contra inyección de SQL", "Acceso RDP seguro a las máquinas virtuales", "Almacenamiento de claves de cifrado en HSM"],
+          options: ["Telemetría de ataques y alertas mediante Azure Monitor", "Umbrales ajustados al tráfico esperado de la aplicación", "Protección contra inundaciones HTTP en la capa 7", "Bloqueo automático de FQDN maliciosos", "Protección para máquinas virtuales sin IP pública"],
           explain: "La protección predeterminada tiene un umbral alto y no da telemetría; DDoS Protection suma perfiles ajustados, análisis y alertas. La inyección de SQL es tarea del WAF."
         }
       },
@@ -118,13 +118,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Network segmentation",
         q: "Web servers and database servers should be isolated so a compromised web server can't freely reach the databases. Which Zero Trust principle does segmenting them into subnets support most directly?",
-        options: ["Assume breach", "Verify explicitly", "Use least privilege access", "Secure by default"],
+        options: ["Assume breach", "Verify explicitly", "Use least privilege access", "Defense in depth"],
         answer: 0,
         explain: "Segmentation contains an attacker and limits lateral movement, which is the goal of assume breach.",
         es: {
           topic: "Segmentación de red",
           q: "Los servidores web y los de bases de datos deben aislarse para que un servidor web comprometido no llegue libremente a las bases de datos. ¿Qué principio de Confianza cero respalda más directamente separarlos en subredes?",
-          options: ["Asumir que hay una vulneración", "Verificar explícitamente", "Usar el acceso con privilegios mínimos", "Seguridad de forma predeterminada"],
+          options: ["Asumir que hay una vulneración", "Verificar explícitamente", "Usar el acceso con privilegios mínimos", "Defensa en profundidad"],
           explain: "La segmentación contiene al atacante y limita el movimiento lateral, que es el objetivo de asumir una vulneración."
         }
       },
@@ -132,13 +132,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Azure Key Vault",
         q: "A financial institution needs keys generated and stored in tamper-resistant hardware that they never leave. Which option fits?",
-        options: ["Azure Key Vault Premium tier", "Azure Key Vault Standard tier", "Azure Firewall Premium", "An application security group"],
+        options: ["Azure Key Vault Premium tier", "Azure Key Vault Standard tier", "Azure Disk Encryption with platform-managed keys", "Key Vault Standard with soft delete"],
         answer: 0,
         explain: "The Premium tier offers HSM-protected keys; Standard uses software-based protection.",
         es: {
           topic: "Azure Key Vault",
           q: "Una entidad financiera necesita que las claves se generen y guarden en hardware resistente a manipulaciones del que nunca salgan. ¿Qué opción corresponde?",
-          options: ["El nivel Premium de Azure Key Vault", "El nivel Estándar de Azure Key Vault", "Azure Firewall Premium", "Un grupo de seguridad de aplicaciones"],
+          options: ["El nivel Premium de Azure Key Vault", "El nivel Estándar de Azure Key Vault", "Azure Disk Encryption con claves administradas por la plataforma", "Key Vault Estándar con eliminación temporal"],
           explain: "El nivel Premium ofrece claves protegidas por HSM; el Estándar usa protección por software."
         }
       },
@@ -165,7 +165,7 @@ Catalog.module("sc-900", {
           "NSGs filter traffic within VNets; Azure Firewall is a centralized, stateful firewall across subscriptions and VNets",
           "Azure Firewall replaces NSGs entirely",
           "NSGs filter only outbound traffic from each subnet, while Azure Firewall filters only the inbound traffic from the internet",
-          "They're the same service with different names"
+          "NSGs are stateful; Azure Firewall is stateless"
         ],
         answer: 0,
         explain: "They complement each other for defense in depth.",
@@ -176,7 +176,7 @@ Catalog.module("sc-900", {
             "Los NSG filtran el tráfico dentro de las redes virtuales; Azure Firewall es un firewall centralizado y con estado entre suscripciones y redes",
             "Azure Firewall reemplaza por completo a los NSG",
             "Los NSG filtran solo el tráfico saliente de cada subred, mientras que Azure Firewall filtra solo el tráfico entrante desde internet",
-            "Son el mismo servicio con distinto nombre"
+            "Los NSG tienen estado; Azure Firewall no tiene estado"
           ],
           explain: "Se complementan para lograr defensa en profundidad."
         }
@@ -199,13 +199,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Web Application Firewall",
         q: "A globally distributed web app needs WAF protection that blocks attacks close to their source before traffic reaches its infrastructure. Where should WAF be deployed?",
-        options: ["Azure Front Door", "Azure Application Gateway in one region", "A network security group", "Azure Bastion"],
+        options: ["Azure Front Door", "Azure Application Gateway in one region", "Azure Firewall Premium in a hub VNet", "DDoS Network Protection"],
         answer: 0,
         explain: "WAF on Front Door provides global protection at the edge; Application Gateway WAF is regional.",
         es: {
           topic: "Firewall de aplicaciones web",
           q: "Una aplicación web distribuida globalmente necesita protección WAF que bloquee los ataques cerca de su origen antes de que el tráfico llegue a su infraestructura. ¿Dónde se debe implementar el WAF?",
-          options: ["En Azure Front Door", "En Azure Application Gateway en una región", "En un grupo de seguridad de red", "En Azure Bastion"],
+          options: ["En Azure Front Door", "En Azure Application Gateway en una región", "Azure Firewall Premium en una red virtual central", "DDoS Network Protection"],
           explain: "El WAF en Front Door da protección global en el perímetro; el de Application Gateway es regional."
         }
       }
@@ -244,12 +244,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A company wants per-IP DDoS protection without the DDoS rapid response team or WAF discounts. Which tier fits?",
-            options: ["DDoS IP Protection", "DDoS Network Protection", "Default infrastructure protection", "Azure Firewall Basic"],
+            options: ["DDoS IP Protection", "DDoS Network Protection", "Default infrastructure protection", "Azure Front Door WAF"],
             answer: 0,
             explain: "DDoS IP Protection is pay-per-protected-IP with the same core engineering but without the value-added services.",
             es: {
               q: "Una empresa quiere protección contra DDoS por IP sin el equipo de respuesta rápida ni los descuentos en WAF. ¿Qué nivel corresponde?",
-              options: ["DDoS IP Protection", "DDoS Network Protection", "La protección predeterminada de la infraestructura", "Azure Firewall Basic"],
+              options: ["DDoS IP Protection", "DDoS Network Protection", "La protección predeterminada de la infraestructura", "El WAF de Azure Front Door"],
               explain: "DDoS IP Protection se paga por IP protegida, con la misma ingeniería principal pero sin los servicios adicionales."
             }
           },
@@ -258,9 +258,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about Azure DDoS Protection.",
             parts: [
               "Azure DDoS Protection protects at layers ",
-              { options: ["3 and 4", "7 only", "1 and 2"], answer: 0 },
+              { options: ["3 and 4", "7 only", "3 to 7"], answer: 0 },
               ", and during an active attack it provides reports in ",
-              { options: ["five-minute increments", "daily summaries only", "monthly reports"], answer: 0 },
+              { options: ["five-minute increments", "daily summaries only", "hourly summaries"], answer: 0 },
               "."
             ],
             explain: "It covers network and transport layers, with detailed reports every five minutes and a summary afterward.",
@@ -268,9 +268,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre la protección contra DDoS de Azure.",
               parts: [
                 "La protección contra DDoS de Azure protege en las capas ",
-                { options: ["3 y 4", "7 únicamente", "1 y 2"] },
+                { options: ["3 y 4", "7 únicamente", "3 a 7"] },
                 ", y durante un ataque activo entrega informes en ",
-                { options: ["intervalos de cinco minutos", "resúmenes diarios únicamente", "informes mensuales"] },
+                { options: ["intervalos de cinco minutos", "resúmenes diarios únicamente", "resúmenes por hora"] },
                 "."
               ],
               explain: "Cubre las capas de red y transporte, con informes detallados cada cinco minutos y un resumen al final."
@@ -279,12 +279,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are recommended DDoS best practices?",
-            options: ["Combine DDoS Protection with a WAF", "Have an incident response plan before an attack", "Disable telemetry to save cost", "Rely only on default infrastructure protection", "Expose RDP ports for faster recovery"],
+            options: ["Combine DDoS Protection with a WAF", "Have an incident response plan before an attack", "Rely on default protection for production apps", "Use NSGs instead of a WAF for layer 7", "Enable DDoS Protection only after an attack starts"],
             answers: [0, 1],
             explain: "Best practices include combining with a WAF, designing for resilience, enabling alerts and planning for incidents.",
             es: {
               q: "¿Cuáles son dos buenas prácticas recomendadas contra DDoS?",
-              options: ["Combinar la protección contra DDoS con un WAF", "Tener un plan de respuesta a incidentes antes del ataque", "Desactivar la telemetría para ahorrar", "Depender solo de la protección predeterminada", "Exponer los puertos RDP para recuperarse más rápido"],
+              options: ["Combinar la protección contra DDoS con un WAF", "Tener un plan de respuesta a incidentes antes del ataque", "Confiar en la protección predeterminada para aplicaciones de producción", "Usar NSG en lugar de un WAF para la capa 7", "Habilitar DDoS Protection solo cuando empieza un ataque"],
               explain: "Las buenas prácticas incluyen combinar con un WAF, diseñar para la resiliencia, habilitar alertas y planificar los incidentes."
             }
           },
@@ -317,12 +317,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A company wants one place to define firewall rules and apply them to Azure Firewalls in many subscriptions. What should it use?",
-            options: ["Azure Firewall Manager", "A network security group per subnet", "Azure Bastion", "Azure DDoS IP Protection"],
+            options: ["Azure Firewall Manager", "A network security group per subnet", "Azure Policy with a firewall initiative", "Microsoft Defender for Cloud"],
             answer: 0,
             explain: "Firewall Manager applies common firewall policies across firewalls in the tenant.",
             es: {
               q: "Una empresa quiere un solo lugar donde definir reglas de firewall y aplicarlas a instancias de Azure Firewall en muchas suscripciones. ¿Qué debe usar?",
-              options: ["Azure Firewall Manager", "Un grupo de seguridad de red por subred", "Azure Bastion", "Azure DDoS IP Protection"],
+              options: ["Azure Firewall Manager", "Un grupo de seguridad de red por subred", "Azure Policy con una iniciativa de firewall", "Microsoft Defender for Cloud"],
               explain: "Firewall Manager aplica directivas de firewall comunes a los firewalls del inquilino."
             }
           },
@@ -348,12 +348,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are features of Azure Firewall?",
-            options: ["Application-level filtering by FQDN", "Threat intelligence-based filtering", "Browser-based RDP to VMs", "Storing TLS certificates", "Classifying sensitive documents"],
+            options: ["Application-level filtering by FQDN", "Threat intelligence-based filtering", "Rules based on application security groups only", "Layer 7 DDoS mitigation", "OWASP rule sets for web apps"],
             answers: [0, 1],
             explain: "Azure Firewall offers network and application filtering, NAT, threat intelligence, logging and high availability.",
             es: {
               q: "¿Cuáles son dos características de Azure Firewall?",
-              options: ["Filtrado a nivel de aplicación por FQDN", "Filtrado basado en inteligencia sobre amenazas", "RDP desde el explorador hacia máquinas virtuales", "Almacenamiento de certificados TLS", "Clasificación de documentos confidenciales"],
+              options: ["Filtrado a nivel de aplicación por FQDN", "Filtrado basado en inteligencia sobre amenazas", "Reglas basadas solo en grupos de seguridad de aplicaciones", "Mitigación de DDoS de capa 7", "Conjuntos de reglas OWASP para aplicaciones web"],
               explain: "Azure Firewall ofrece filtrado de red y de aplicación, NAT, inteligencia sobre amenazas, registros y alta disponibilidad."
             }
           },
@@ -378,8 +378,8 @@ Catalog.module("sc-900", {
             options: [
               "It has built-in high availability and can span multiple availability zones",
               "It runs on a single VM in your subscription that restarts automatically within seconds of a failure",
-              "It's deployed in every customer's on-premises datacenter",
-              "It caches all traffic in Azure Key Vault"
+              "Each customer deploys a second firewall as a manual standby",
+              "It falls back to NSG rules during an outage"
             ],
             answer: 0,
             explain: "Built-in high availability and zone support distribute the firewall across separate datacenters.",
@@ -388,8 +388,8 @@ Catalog.module("sc-900", {
               options: [
                 "Tiene alta disponibilidad integrada y puede abarcar varias zonas de disponibilidad",
                 "Se ejecuta en una sola máquina virtual de su suscripción que se reinicia automáticamente segundos después de una falla",
-                "Se implementa en el centro de datos local de cada cliente",
-                "Guarda todo el tráfico en caché en Azure Key Vault"
+                "Cada cliente implementa un segundo firewall como respaldo manual",
+                "Recurre a las reglas de los NSG durante una interrupción"
               ],
               explain: "La alta disponibilidad integrada y la compatibilidad con zonas reparten el firewall en centros de datos separados."
             }
@@ -433,9 +433,9 @@ Catalog.module("sc-900", {
             q: "What's the main advantage of a centralized WAF?",
             options: [
               "A newly discovered vulnerability can be patched in one place instead of in every app",
-              "It removes the need for network security groups",
+              "It inspects traffic between VMs inside the VNet",
               "It provides layer 3 and 4 DDoS mitigation for every public IP address in the virtual network",
-              "It stores application secrets"
+              "It replaces secure coding practices"
             ],
             answer: 0,
             explain: "Centralized WAF simplifies security management and shortens exposure to new threats.",
@@ -443,9 +443,9 @@ Catalog.module("sc-900", {
               q: "¿Cuál es la principal ventaja de un WAF centralizado?",
               options: [
                 "Una vulnerabilidad nueva se corrige en un solo lugar en lugar de en cada aplicación",
-                "Elimina la necesidad de grupos de seguridad de red",
+                "Inspecciona el tráfico entre máquinas virtuales dentro de la red",
                 "Mitiga ataques DDoS de las capas 3 y 4 para todas las IP públicas de la red virtual",
-                "Guarda los secretos de las aplicaciones"
+                "Reemplaza las prácticas de codificación segura"
               ],
               explain: "El WAF centralizado simplifica la administración de la seguridad y acorta la exposición a amenazas nuevas."
             }
@@ -453,12 +453,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two services can host Azure Web Application Firewall?",
-            options: ["Azure Application Gateway", "Azure Front Door", "Azure Bastion", "Azure Key Vault", "Network security groups"],
+            options: ["Azure Application Gateway", "Azure Front Door", "Azure Firewall", "Azure Load Balancer", "Azure DDoS Protection"],
             answers: [0, 1],
             explain: "WAF deploys with Application Gateway, Application Gateway for Containers, Front Door and Azure CDN.",
             es: {
               q: "¿Cuáles son dos servicios que pueden alojar Azure Web Application Firewall?",
-              options: ["Azure Application Gateway", "Azure Front Door", "Azure Bastion", "Azure Key Vault", "Los grupos de seguridad de red"],
+              options: ["Azure Application Gateway", "Azure Front Door", "Azure Firewall", "Azure Load Balancer", "Azure DDoS Protection"],
               explain: "El WAF se implementa con Application Gateway, Application Gateway for Containers, Front Door y Azure CDN."
             }
           },
@@ -467,9 +467,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about WAF deployment options.",
             parts: [
               "WAF on ",
-              { options: ["Application Gateway", "Front Door", "Azure CDN"], answer: 0 },
+              { options: ["Application Gateway", "Front Door", "Azure Firewall"], answer: 0 },
               " provides regional protection with deep HTTP inspection, while WAF on ",
-              { options: ["Front Door", "Application Gateway", "Bastion"], answer: 0 },
+              { options: ["Front Door", "Application Gateway", "Azure Load Balancer"], answer: 0 },
               " provides global protection closer to the source."
             ],
             explain: "Application Gateway WAF is regional; Front Door WAF is global.",
@@ -477,9 +477,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre las opciones de implementación del WAF.",
               parts: [
                 "El WAF en ",
-                { options: ["Application Gateway", "Front Door", "Azure CDN"] },
+                { options: ["Application Gateway", "Front Door", "Azure Firewall"] },
                 " da protección regional con inspección profunda de HTTP, mientras que el WAF en ",
-                { options: ["Front Door", "Application Gateway", "Bastion"] },
+                { options: ["Front Door", "Application Gateway", "Azure Load Balancer"] },
                 " da protección global más cerca del origen."
               ],
               explain: "El WAF de Application Gateway es regional; el de Front Door es global."
@@ -514,36 +514,36 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "What is the fundamental building block for an organization's private network in Azure?",
-            options: ["Azure Virtual Network", "Azure Firewall Manager", "Azure Bastion", "Azure Front Door"],
+            options: ["Azure Virtual Network", "A network security group", "A subnet", "Azure Firewall"],
             answer: 0,
             explain: "VNets provide private networking with Azure's scale, availability and isolation.",
             es: {
               q: "¿Cuál es el componente fundamental de la red privada de una organización en Azure?",
-              options: ["Azure Virtual Network", "Azure Firewall Manager", "Azure Bastion", "Azure Front Door"],
+              options: ["Azure Virtual Network", "Un grupo de seguridad de red", "Una subred", "Azure Firewall"],
               explain: "Las redes virtuales ofrecen redes privadas con la escala, la disponibilidad y el aislamiento de Azure."
             }
           },
           {
             type: "multi",
             q: "Which two are main reasons for network segmentation?",
-            options: ["Isolation of resources", "Governance policies set by the organization", "Lowering storage costs", "Avoiding the need for identity controls", "Increasing internet bandwidth"],
+            options: ["Isolation of resources", "Governance policies set by the organization", "Replacing the need for a firewall", "Allowing all traffic between VNets by default", "Reducing the number of subscriptions"],
             answers: [0, 1],
             explain: "The reasons are grouping related assets, isolating resources and applying governance policies.",
             es: {
               q: "¿Cuáles son dos motivos principales para segmentar la red?",
-              options: ["El aislamiento de los recursos", "Las directivas de gobernanza que define la organización", "Reducir los costos de almacenamiento", "Evitar la necesidad de controles de identidad", "Aumentar el ancho de banda de internet"],
+              options: ["El aislamiento de los recursos", "Las directivas de gobernanza que define la organización", "Eliminar la necesidad de un firewall", "Permitir todo el tráfico entre redes virtuales de forma predeterminada", "Reducir la cantidad de suscripciones"],
               explain: "Los motivos son agrupar recursos relacionados, aislar recursos y aplicar directivas de gobernanza."
             }
           },
           {
             type: "single",
             q: "Two VNets in different regions need to communicate privately and with low latency. What should you use?",
-            options: ["Global virtual network peering", "A public load balancer", "Azure Bastion", "An application security group"],
+            options: ["Global virtual network peering", "A site-to-site VPN over the internet", "Azure Bastion", "Azure Firewall Manager"],
             answer: 0,
             explain: "Peering across regions uses the Azure backbone, not the public internet.",
             es: {
               q: "Dos redes virtuales en regiones distintas deben comunicarse de forma privada y con baja latencia. ¿Qué debe usar?",
-              options: ["El emparejamiento global de redes virtuales", "Un equilibrador de carga público", "Azure Bastion", "Un grupo de seguridad de aplicaciones"],
+              options: ["El emparejamiento global de redes virtuales", "Una VPN de sitio a sitio por internet", "Azure Bastion", "Azure Firewall Manager"],
               explain: "El emparejamiento entre regiones usa la red troncal de Azure, no internet."
             }
           },
@@ -569,7 +569,7 @@ Catalog.module("sc-900", {
               "Network segmentation aligns with the Zero Trust principle of ",
               { options: ["assume breach", "verify explicitly", "least privilege"], answer: 0 },
               ", because it helps prevent an attacker from ",
-              { options: ["spreading laterally through the network", "signing in with MFA", "reading audit logs"], answer: 0 },
+              { options: ["spreading laterally through the network", "bypassing MFA", "launching DDoS attacks"], answer: 0 },
               "."
             ],
             explain: "Each segment boundary is a chance to inspect, filter and contain traffic.",
@@ -579,7 +579,7 @@ Catalog.module("sc-900", {
                 "La segmentación de red se alinea con el principio de Confianza cero de ",
                 { options: ["asumir una vulneración", "verificar explícitamente", "privilegios mínimos"] },
                 ", porque ayuda a impedir que un atacante ",
-                { options: ["se extienda lateralmente por la red", "inicie sesión con MFA", "lea los registros de auditoría"] },
+                { options: ["se extienda lateralmente por la red", "eludir la MFA", "lanzar ataques DDoS"] },
                 "."
               ],
               explain: "Cada límite entre segmentos es una oportunidad para inspeccionar, filtrar y contener el tráfico."
@@ -603,7 +603,7 @@ Catalog.module("sc-900", {
               "Traffic from the virtual network and from the Azure load balancer",
               "All traffic from the internet",
               "Only HTTPS from the internet and traffic from peered virtual networks in other regions",
-              "No traffic at all"
+              "Only traffic from the Azure load balancer"
             ],
             answer: 0,
             explain: "AllowVNetInBound and AllowAzureLoadBalancerInBound are processed before DenyAllInBound.",
@@ -613,7 +613,7 @@ Catalog.module("sc-900", {
                 "El tráfico de la red virtual y del equilibrador de carga de Azure",
                 "Todo el tráfico de internet",
                 "Solo HTTPS desde internet y el tráfico de redes virtuales emparejadas en otras regiones",
-                "Ningún tráfico"
+                "Solo el tráfico del equilibrador de carga de Azure"
               ],
               explain: "AllowVNetInBound y AllowAzureLoadBalancerInBound se procesan antes que DenyAllInBound."
             }
@@ -621,24 +621,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A multi-tier app adds web servers often. The team wants NSG rules to apply automatically to new web servers without tracking IP addresses. What should it use?",
-            options: ["Application security groups", "Azure Firewall Manager", "DDoS Network Protection", "Azure Key Vault"],
+            options: ["Application security groups", "Azure Firewall Manager", "Service tags", "A dynamic NSG per subnet"],
             answer: 0,
             explain: "ASGs group VMs; rules that reference the ASG apply to every VM added to it.",
             es: {
               q: "Una aplicación de varios niveles suma servidores web seguido. El equipo quiere que las reglas del NSG se apliquen solas a los servidores nuevos sin seguir direcciones IP. ¿Qué debe usar?",
-              options: ["Grupos de seguridad de aplicaciones", "Azure Firewall Manager", "DDoS Network Protection", "Azure Key Vault"],
+              options: ["Grupos de seguridad de aplicaciones", "Azure Firewall Manager", "Etiquetas de servicio", "Un NSG dinámico por subred"],
               explain: "Los ASG agrupan máquinas virtuales; las reglas que referencian el ASG se aplican a cada máquina que se agrega."
             }
           },
           {
             type: "multi",
             q: "Which two information points are used to evaluate NSG security rules?",
-            options: ["Source port", "Destination", "User's job title", "VM size", "Resource tags"],
+            options: ["Source port", "Destination", "Application name", "URL path", "FQDN"],
             answers: [0, 1],
             explain: "Rules evaluate source, source port, destination, destination port and protocol.",
             es: {
               q: "¿Cuáles son dos datos que se usan para evaluar las reglas de seguridad de un NSG?",
-              options: ["El puerto de origen", "El destino", "El cargo del usuario", "El tamaño de la máquina virtual", "Las etiquetas del recurso"],
+              options: ["El puerto de origen", "El destino", "Nombre de la aplicación", "Ruta de la URL", "FQDN"],
               explain: "Las reglas evalúan origen, puerto de origen, destino, puerto de destino y protocolo."
             }
           },
@@ -664,7 +664,7 @@ Catalog.module("sc-900", {
               "When traffic matches a rule, ",
               { options: ["processing stops", "all remaining rules are also evaluated", "the rule with the highest number wins"], answer: 0 },
               ", and you can use a ",
-              { options: ["service tag", "budget", "promptbook"], answer: 0 },
+              { options: ["service tag", "application security group of the Azure service", "FQDN tag"], answer: 0 },
               " as source or destination to represent an Azure service's IP prefixes."
             ],
             explain: "First match wins, and service tags or ASGs reduce the number of rules needed.",
@@ -674,7 +674,7 @@ Catalog.module("sc-900", {
                 "Cuando el tráfico coincide con una regla, ",
                 { options: ["el procesamiento se detiene", "se evalúan también las reglas restantes", "gana la regla con el número más alto"] },
                 ", y se puede usar una ",
-                { options: ["etiqueta de servicio", "presupuesto", "libro de indicaciones"] },
+                { options: ["etiqueta de servicio", "grupo de seguridad de aplicaciones del servicio de Azure", "etiqueta FQDN"] },
                 " como origen o destino para representar los prefijos IP de un servicio de Azure."
               ],
               explain: "Gana la primera coincidencia, y las etiquetas de servicio o los ASG reducen la cantidad de reglas necesarias."
@@ -694,12 +694,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Remote developers need RDP and SSH access to VMs, but the company doesn't want to expose management ports to the internet or give the VMs public IPs. What should it deploy?",
-            options: ["Azure Bastion", "A public load balancer", "Azure Front Door with WAF", "DDoS IP Protection"],
+            options: ["Azure Bastion", "A public load balancer", "Just-in-time VM access with public IPs", "Azure Firewall DNAT rules for RDP"],
             answer: 0,
             explain: "Bastion provides RDP/SSH over TLS from the portal using the VMs' private IPs.",
             es: {
               q: "Desarrolladores remotos necesitan acceso RDP y SSH a máquinas virtuales, pero la empresa no quiere exponer puertos de administración a internet ni dar IP públicas a las máquinas. ¿Qué debe implementar?",
-              options: ["Azure Bastion", "Un equilibrador de carga público", "Azure Front Door con WAF", "DDoS IP Protection"],
+              options: ["Azure Bastion", "Un equilibrador de carga público", "Acceso Just-In-Time a máquinas virtuales con IP pública", "Reglas DNAT de Azure Firewall para RDP"],
               explain: "Bastion da RDP/SSH sobre TLS desde el portal usando las IP privadas de las máquinas virtuales."
             }
           },
@@ -729,12 +729,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are benefits of Azure Bastion?",
-            options: ["Protection against port scanning", "No NSGs needed on the Bastion subnet", "Encryption of VM disks", "Application-layer DDoS mitigation", "Classification of sensitive data"],
+            options: ["Protection against port scanning", "No NSGs needed on the Bastion subnet", "Session recording in the Basic tier", "Automatic patching of the target VMs", "MFA built into every RDP session"],
             answers: [0, 1],
             explain: "Bastion avoids exposing VMs, needs no NSGs on its subnet and is hardened by the platform.",
             es: {
               q: "¿Cuáles son dos ventajas de Azure Bastion?",
-              options: ["La protección contra el examen de puertos", "No necesitar NSG en la subred de Bastion", "El cifrado de los discos de las máquinas virtuales", "La mitigación de DDoS en la capa de aplicación", "La clasificación de datos confidenciales"],
+              options: ["La protección contra el examen de puertos", "No necesitar NSG en la subred de Bastion", "Grabación de sesiones en el nivel Básico", "Aplicación automática de parches a las máquinas de destino", "MFA integrada en cada sesión de RDP"],
               explain: "Bastion evita exponer las máquinas virtuales, no requiere NSG en su subred y la plataforma lo mantiene protegido."
             }
           },
@@ -759,7 +759,7 @@ Catalog.module("sc-900", {
             options: [
               "It's a hardened, platform-managed service at the VNet perimeter that Azure keeps up to date",
               "It installs and updates an antivirus agent on every VM in the virtual network automatically, so each VM is patched against new threats",
-              "It blocks all outbound traffic from the VNet",
+              "It encrypts RDP traffic with a customer key",
               "It replaces the operating system on each VM"
             ],
             answer: 0,
@@ -769,7 +769,7 @@ Catalog.module("sc-900", {
               options: [
                 "Es un servicio protegido y administrado por la plataforma en el perímetro de la red virtual, que Azure mantiene actualizado",
                 "Instala y actualiza automáticamente un agente antivirus en cada máquina virtual de la red, para que cada una quede protegida frente a amenazas nuevas",
-                "Bloquea todo el tráfico saliente de la red virtual",
+                "Cifra el tráfico RDP con una clave del cliente",
                 "Reemplaza el sistema operativo de cada máquina virtual"
               ],
               explain: "La protección se concentra en un solo lugar, así que no hace falta proteger cada máquina virtual contra estas vulnerabilidades."
@@ -812,8 +812,8 @@ Catalog.module("sc-900", {
             q: "How are callers authenticated and authorized to access a key vault?",
             options: [
               "Microsoft Entra ID authenticates; Azure RBAC or Key Vault access policies authorize",
-              "A shared password stored in the app configuration",
-              "Network security groups authenticate and authorize",
+              "Key Vault access policies authenticate; Azure RBAC authorizes",
+              "Network rules authenticate; access policies authorize",
               "Azure Bastion authenticates the caller and Azure Firewall authorizes access to the vault"
             ],
             answer: 0,
@@ -822,8 +822,8 @@ Catalog.module("sc-900", {
               q: "¿Cómo se autentica y autoriza a quienes acceden a un almacén de claves?",
               options: [
                 "Microsoft Entra ID autentica; Azure RBAC o las directivas de acceso de Key Vault autorizan",
-                "Con una contraseña compartida guardada en la configuración de la aplicación",
-                "Los grupos de seguridad de red autentican y autorizan",
+                "Las directivas de acceso de Key Vault autentican; Azure RBAC autoriza",
+                "Las reglas de red autentican; las directivas de acceso autorizan",
                 "Azure Bastion autentica a quien llama y Azure Firewall autoriza el acceso al almacén"
               ],
               explain: "Entra ID verifica la identidad, y luego RBAC o las directivas de acceso deciden qué operaciones se permiten."
@@ -832,12 +832,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two Azure services integrate with Key Vault?",
-            options: ["Azure Disk Encryption", "Azure App Service", "Azure Bastion Developer tier", "Network security groups", "Azure DDoS IP Protection"],
+            options: ["Azure Disk Encryption", "Azure App Service", "Azure Bastion", "Azure DDoS Protection", "Network security groups"],
             answers: [0, 1],
             explain: "Key Vault integrates with Disk Encryption, SQL Database and SQL Server, App Service and certificate management.",
             es: {
               q: "¿Cuáles son dos servicios de Azure que se integran con Key Vault?",
-              options: ["Azure Disk Encryption", "Azure App Service", "El nivel Developer de Azure Bastion", "Los grupos de seguridad de red", "Azure DDoS IP Protection"],
+              options: ["Azure Disk Encryption", "Azure App Service", "Azure Bastion", "Azure DDoS Protection", "Grupos de seguridad de red"],
               explain: "Key Vault se integra con Disk Encryption, SQL Database y SQL Server, App Service y la administración de certificados."
             }
           },
@@ -862,8 +862,8 @@ Catalog.module("sc-900", {
             options: [
               "Creating a key vault per application and restricting its secrets to that app and team",
               "Storing all secrets in one shared vault that every application in the subscription can read",
-              "Embedding secrets in each app's source code",
-              "Sharing secrets through network security groups"
+              "One vault with a separate resource lock per secret",
+              "Separate NSGs that filter which app reads each secret"
             ],
             answer: 0,
             explain: "Vaults can segregate secrets so apps access only the vault and operations they're allowed.",
@@ -872,8 +872,8 @@ Catalog.module("sc-900", {
               options: [
                 "Crear un almacén de claves por aplicación y limitar sus secretos a esa aplicación y su equipo",
                 "Guardar todos los secretos en un único almacén compartido que todas las aplicaciones de la suscripción pueden leer",
-                "Incrustar los secretos en el código fuente de cada aplicación",
-                "Compartir secretos mediante grupos de seguridad de red"
+                "Un almacén con un bloqueo de recursos distinto por secreto",
+                "NSG separados que filtran qué aplicación lee cada secreto"
               ],
               explain: "Los almacenes pueden separar secretos para que cada aplicación acceda solo al almacén y las operaciones permitidas."
             }

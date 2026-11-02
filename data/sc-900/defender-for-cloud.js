@@ -11,13 +11,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Cloud security posture management",
         q: "A security lead wants a single number that shows at a glance how secure the multicloud environment is, where higher means lower risk. What should they look at?",
-        options: ["Secure score in Defender for Cloud", "The regulatory compliance dashboard only", "Attack path analysis", "The Defender for DevOps console"],
+        options: ["Secure score in Defender for Cloud", "The regulatory compliance dashboard only", "Attack path analysis", "Microsoft Secure Score for Devices"],
         answer: 0,
         explain: "Secure score aggregates findings into one score: the higher the score, the lower the identified risk.",
         es: {
           topic: "Administración de la postura de seguridad en la nube",
           q: "Un responsable de seguridad quiere un solo número que muestre de un vistazo qué tan seguro es el entorno multinube, donde más alto signifique menos riesgo. ¿Qué debe mirar?",
-          options: ["La puntuación de seguridad de Defender for Cloud", "Solo el panel de cumplimiento normativo", "El análisis de rutas de ataque", "La consola de Defender for DevOps"],
+          options: ["La puntuación de seguridad de Defender for Cloud", "Solo el panel de cumplimiento normativo", "El análisis de rutas de ataque", "Microsoft Secure Score para dispositivos"],
           explain: "La puntuación de seguridad reúne los hallazgos en un solo valor: cuanto más alto, menor es el riesgo identificado."
         }
       },
@@ -53,8 +53,8 @@ Catalog.module("sc-900", {
         options: [
           "The Microsoft cloud security benchmark is assigned automatically as the default initiative",
           "All Defender plans are enabled automatically, and billing starts for every protected resource type",
-          "Every resource gets a ReadOnly lock",
-          "ISO 27001 is assigned as the only standard"
+          "Defender CSPM is enabled with a 30-day trial",
+          "PCI DSS is assigned as the default standard"
         ],
         answer: 0,
         explain: "MCSB is the default built-in initiative and drives the built-in recommendations and secure score.",
@@ -64,8 +64,8 @@ Catalog.module("sc-900", {
           options: [
             "Se asigna automáticamente el punto de referencia de seguridad en la nube de Microsoft como iniciativa predeterminada",
             "Se habilitan automáticamente todos los planes de Defender, y empieza la facturación de cada tipo de recurso protegido y de cada suscripción",
-            "Cada recurso recibe un bloqueo ReadOnly",
-            "Se asigna ISO 27001 como único estándar"
+            "Se habilita Defender CSPM con una prueba de 30 días",
+            "Se asigna PCI DSS como estándar predeterminado"
           ],
           explain: "El MCSB es la iniciativa integrada predeterminada y genera las recomendaciones integradas y la puntuación de seguridad."
         }
@@ -105,9 +105,9 @@ Catalog.module("sc-900", {
         q: "Complete the statement about Defender for Cloud policies.",
         parts: [
           "Security policies in Defender for Cloud are backed by ",
-          { options: ["Azure Policy", "Microsoft Purview", "Azure Bastion"], answer: 0 },
+          { options: ["Azure Policy", "Microsoft Purview", "Microsoft Sentinel analytics rules"], answer: 0 },
           ", and each policy that a resource doesn't comply with produces a ",
-          { options: ["security recommendation", "resource lock", "budget alert"], answer: 0 },
+          { options: ["security recommendation", "security alert", "compliance exemption"], answer: 0 },
           "."
         ],
         explain: "Initiatives group Azure Policy definitions; noncompliance surfaces as recommendations.",
@@ -116,9 +116,9 @@ Catalog.module("sc-900", {
           q: "Complete la afirmación sobre las directivas de Defender for Cloud.",
           parts: [
             "Las directivas de seguridad de Defender for Cloud se basan en ",
-            { options: ["Azure Policy", "Microsoft Purview", "Azure Bastion"] },
+            { options: ["Azure Policy", "Microsoft Purview", "reglas de análisis de Microsoft Sentinel"] },
             ", y cada directiva que un recurso no cumple genera una ",
-            { options: ["recomendación de seguridad", "bloqueo de recursos", "alerta de presupuesto"] },
+            { options: ["recomendación de seguridad", "alerta de seguridad", "exención de cumplimiento"] },
             "."
           ],
           explain: "Las iniciativas agrupan definiciones de Azure Policy; el incumplimiento aparece como recomendaciones."
@@ -142,13 +142,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Cloud security posture management",
         q: "An internet-exposed VM with a known vulnerability can reach a storage account with customer data. Which Defender CSPM feature reveals this chain of risks?",
-        options: ["Attack path analysis", "Secure score", "Threat protection alerts", "Exposed secrets scanning"],
+        options: ["Attack path analysis", "Secure score", "Threat protection alerts", "Defender for Storage malware scanning"],
         answer: 0,
         explain: "Attack path analysis models how vulnerabilities can be chained to reach high-value resources.",
         es: {
           topic: "Administración de la postura de seguridad en la nube",
           q: "Una máquina virtual expuesta a internet con una vulnerabilidad conocida puede llegar a una cuenta de almacenamiento con datos de clientes. ¿Qué característica de Defender CSPM revela esa cadena de riesgos?",
-          options: ["El análisis de rutas de ataque", "La puntuación de seguridad", "Las alertas de protección contra amenazas", "El análisis de secretos expuestos"],
+          options: ["El análisis de rutas de ataque", "La puntuación de seguridad", "Las alertas de protección contra amenazas", "El análisis de malware de Defender for Storage"],
           explain: "El análisis de rutas de ataque modela cómo se pueden encadenar vulnerabilidades para llegar a recursos valiosos."
         }
       },
@@ -171,13 +171,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Enhanced security",
         q: "Which enhanced security feature reduces exposure to brute-force attacks on VM management ports?",
-        options: ["Just-in-time access to management ports", "Secure score", "Asset discovery", "Microsoft cloud security benchmark mapping"],
+        options: ["Just-in-time access to management ports", "Adaptive application controls", "Attack path analysis", "Defender for Resource Manager"],
         answer: 0,
         explain: "Access and application controls include just-in-time, controlled access to management ports on Azure VMs.",
         es: {
           topic: "Seguridad mejorada",
           q: "¿Qué característica de seguridad mejorada reduce la exposición a ataques de fuerza bruta contra los puertos de administración de las máquinas virtuales?",
-          options: ["El acceso justo a tiempo a los puertos de administración", "La puntuación de seguridad", "La detección de recursos", "La correspondencia con el punto de referencia de seguridad de Microsoft"],
+          options: ["El acceso justo a tiempo a los puertos de administración", "Los controles de aplicaciones adaptables", "El análisis de rutas de ataque", "Defender for Resource Manager"],
           explain: "Los controles de acceso y de aplicaciones incluyen acceso controlado y justo a tiempo a los puertos de administración de las máquinas virtuales."
         }
       },
@@ -185,13 +185,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "DevOps security",
         q: "An AI service API key was accidentally committed to a repository. Which Defender for Cloud capability can detect it?",
-        options: ["Defender for DevOps secrets scanning", "Defender for Storage", "Azure DDoS Protection", "Cloud security explorer only"],
+        options: ["Defender for DevOps secrets scanning", "Defender for Storage", "Defender for Resource Manager", "Defender for AI Services"],
         answer: 0,
         explain: "Defender for DevOps finds exposed secrets in code and configuration files, including AI service keys.",
         es: {
           topic: "Seguridad de DevOps",
           q: "Una clave de API de un servicio de IA se subió por error a un repositorio. ¿Qué capacidad de Defender for Cloud puede detectarla?",
-          options: ["El análisis de secretos de Defender for DevOps", "Defender for Storage", "La protección contra DDoS de Azure", "Solo el explorador de seguridad en la nube"],
+          options: ["El análisis de secretos de Defender for DevOps", "Defender for Storage", "Defender for Resource Manager", "Defender for AI Services"],
           explain: "Defender for DevOps encuentra secretos expuestos en código y archivos de configuración, incluidas claves de servicios de IA."
         }
       },
@@ -225,9 +225,9 @@ Catalog.module("sc-900", {
             q: "What is Microsoft Defender for Cloud?",
             options: [
               "A cloud-native application protection platform for Azure, other clouds and on-premises",
-              "A SIEM that only collects and correlates logs from Microsoft 365 workloads and Entra ID",
-              "A firewall that filters traffic between VNets",
-              "An identity provider for external users"
+              "A SIEM and SOAR for multicloud environments",
+              "An XDR suite for endpoints and email",
+              "A governance service that enforces Azure Policy"
             ],
             answer: 0,
             explain: "It's a CNAPP that combines DevSecOps, CSPM, CWPP and AI security across environments.",
@@ -235,9 +235,9 @@ Catalog.module("sc-900", {
               q: "¿Qué es Microsoft Defender for Cloud?",
               options: [
                 "Una plataforma de protección de aplicaciones nativas de la nube para Azure, otras nubes y el entorno local",
-                "Un SIEM que solo recopila y correlaciona registros de las cargas de trabajo de Microsoft 365 y de Entra ID",
-                "Un firewall que filtra el tráfico entre redes virtuales",
-                "Un proveedor de identidades para usuarios externos"
+                "Un SIEM y SOAR para entornos multinube",
+                "Un conjunto XDR para puntos de conexión y correo",
+                "Un servicio de gobernanza que aplica Azure Policy"
               ],
               explain: "Es una CNAPP que combina DevSecOps, CSPM, CWPP y seguridad de IA en distintos entornos."
             }
@@ -268,12 +268,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two can you do with Security Copilot embedded in Defender for Cloud?",
-            options: ["Get remediation guidance for a specific issue", "Delegate a recommendation to the resource owner", "Provision Azure Firewall", "Create Microsoft Entra users", "Buy Defender plans"],
+            options: ["Get remediation guidance for a specific issue", "Delegate a recommendation to the resource owner", "Apply the fix automatically to all subscriptions", "Create a new Azure Policy initiative", "Enable a Defender plan"],
             answers: [0, 1],
             explain: "Copilot helps analyze recommendations, summarize findings, give remediation guidance and delegate recommendations.",
             es: {
               q: "¿Cuáles son dos cosas que puede hacer con Security Copilot integrado en Defender for Cloud?",
-              options: ["Obtener guía de corrección para un problema concreto", "Delegar una recomendación al responsable del recurso", "Aprovisionar Azure Firewall", "Crear usuarios de Microsoft Entra", "Comprar planes de Defender"],
+              options: ["Obtener guía de corrección para un problema concreto", "Delegar una recomendación al responsable del recurso", "Aplicar la corrección automáticamente a todas las suscripciones", "Crear una iniciativa nueva de Azure Policy", "Habilitar un plan de Defender"],
               explain: "Copilot ayuda a analizar recomendaciones, resumir hallazgos, guiar la corrección y delegar recomendaciones."
             }
           },
@@ -297,9 +297,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about Defender for Cloud.",
             parts: [
               "CWPP is delivered through ",
-              { options: ["Microsoft Defender plans", "Azure Policy initiatives", "Purview labels"], answer: 0 },
+              { options: ["Microsoft Defender plans", "Azure Policy initiatives", "Defender CSPM"], answer: 0 },
               " specific to resource types, and Defender for Cloud is now integrated into the ",
-              { options: ["Microsoft Defender portal", "Service Trust Portal", "Azure Pricing Calculator"], answer: 0 },
+              { options: ["Microsoft Defender portal", "Microsoft Purview portal", "Microsoft Entra admin center"], answer: 0 },
               "."
             ],
             explain: "Defender plans such as Defender for Servers deliver CWPP, and Defender for Cloud brings posture management into the Defender portal.",
@@ -307,9 +307,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre Defender for Cloud.",
               parts: [
                 "La CWPP se ofrece mediante ",
-                { options: ["planes de Microsoft Defender", "iniciativas de Azure Policy", "etiquetas de Purview"] },
+                { options: ["planes de Microsoft Defender", "iniciativas de Azure Policy", "Defender CSPM"] },
                 " específicos de cada tipo de recurso, y Defender for Cloud ahora está integrado en el ",
-                { options: ["portal de Microsoft Defender", "Portal de confianza de servicios", "Calculadora de precios de Azure"] },
+                { options: ["portal de Microsoft Defender", "portal de Microsoft Purview", "Centro de administración de Microsoft Entra"] },
                 "."
               ],
               explain: "Planes como Defender for Servers ofrecen la CWPP, y Defender for Cloud suma la administración de la postura al portal de Defender."
@@ -350,24 +350,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "The Microsoft cloud security benchmark builds on controls from which frameworks?",
-            options: ["CIS and NIST", "ISO 9001 and ITIL", "OWASP and COBIT", "GDPR and HIPAA"],
+            options: ["CIS and NIST", "ISO 27001 and SOC 2", "OWASP and MITRE ATT&CK", "PCI DSS and HIPAA"],
             answer: 0,
             explain: "MCSB builds on CIS and NIST controls with a cloud-centric focus, and maps to CIS, NIST and PCI DSS.",
             es: {
               q: "¿En los controles de qué marcos se basa el punto de referencia de seguridad en la nube de Microsoft?",
-              options: ["CIS y NIST", "ISO 9001 e ITIL", "OWASP y COBIT", "GDPR e HIPAA"],
+              options: ["CIS y NIST", "ISO 27001 y SOC 2", "OWASP y MITRE ATT&CK", "PCI DSS y HIPAA"],
               explain: "El MCSB se basa en controles de CIS y NIST con un enfoque en la nube, y se corresponde con CIS, NIST y PCI DSS."
             }
           },
           {
             type: "multi",
             q: "Which two pieces of information does each Defender for Cloud recommendation include?",
-            options: ["Remediation steps", "The affected resources", "The cost of each resource", "The resource owner's password", "A list of available VM sizes"],
+            options: ["Remediation steps", "The affected resources", "The estimated cost to fix it", "The attacker who exploited it", "An automatic fix that's always applied"],
             answers: [0, 1],
             explain: "Recommendations include a description, remediation steps, affected resources, severity and risk factors, and attack path context when available.",
             es: {
               q: "¿Cuáles son dos datos que incluye cada recomendación de Defender for Cloud?",
-              options: ["Los pasos de corrección", "Los recursos afectados", "El costo de cada recurso", "La contraseña del responsable del recurso", "Una lista de tamaños de máquina virtual disponibles"],
+              options: ["Los pasos de corrección", "Los recursos afectados", "El costo estimado de corregirla", "El atacante que la aprovechó", "Una corrección automática que siempre se aplica"],
               explain: "Las recomendaciones incluyen una descripción, pasos de corrección, recursos afectados, gravedad y factores de riesgo, y el contexto de rutas de ataque cuando está disponible."
             }
           },
@@ -391,9 +391,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about recommendations.",
             parts: [
               "Recommendations have a severity of ",
-              { options: ["high, medium or low", "critical only", "pass or fail"], answer: 0 },
+              { options: ["high, medium or low", "critical, high or informational", "pass or fail"], answer: 0 },
               ", which helps teams ",
-              { options: ["focus first on the most impactful actions", "ignore low-cost resources", "skip compliance reviews"], answer: 0 },
+              { options: ["focus first on the most impactful actions", "calculate the secure score", "assign recommendations to owners"], answer: 0 },
               "."
             ],
             explain: "Severity indicates how urgently an issue should be addressed.",
@@ -401,9 +401,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre las recomendaciones.",
               parts: [
                 "Las recomendaciones tienen una gravedad ",
-                { options: ["alta, media o baja", "solo crítica", "de aprobado o desaprobado"] },
+                { options: ["alta, media o baja", "crítica, alta o informativa", "de aprobado o desaprobado"] },
                 ", lo que ayuda a los equipos a ",
-                { options: ["centrarse primero en las acciones de mayor impacto", "ignorar los recursos de bajo costo", "omitir las revisiones de cumplimiento"] },
+                { options: ["centrarse primero en las acciones de mayor impacto", "calcular la puntuación de seguridad", "asignar recomendaciones a responsables"] },
                 "."
               ],
               explain: "La gravedad indica con qué urgencia se debe abordar un problema."
@@ -473,7 +473,7 @@ Catalog.module("sc-900", {
               "Recommendations are grouped into security controls",
               "It's available only with the paid Defender CSPM plan",
               "It improves after fixing any single recommendation",
-              "It measures how much you spend on security"
+              "It's calculated per resource, not per control"
             ],
             answers: [0, 1],
             explain: "Secure score is free, aggregates findings and improves when all recommendations for a resource within a control are fixed.",
@@ -484,7 +484,7 @@ Catalog.module("sc-900", {
                 "Las recomendaciones se agrupan en controles de seguridad",
                 "Solo está disponible con el plan pago Defender CSPM",
                 "Mejora después de corregir cualquier recomendación individual",
-                "Mide cuánto gasta en seguridad"
+                "Se calcula por recurso, no por control"
               ],
               explain: "La puntuación de seguridad es gratuita, reúne los hallazgos y mejora cuando se corrigen todas las recomendaciones de un recurso dentro de un control."
             }
@@ -507,12 +507,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A generative AI app can reach a customer database and is reachable from the internet without proper authentication. Which capability is designed to surface this risk?",
-            options: ["AI security posture management", "Foundational secure score only", "Defender for Resource Manager", "The regulatory compliance dashboard"],
+            options: ["AI security posture management", "Data security posture management", "Defender for AI Services threat protection", "The regulatory compliance dashboard"],
             answer: 0,
             explain: "AI SPM uses attack path analysis to show how AI vulnerabilities can be chained to reach sensitive data.",
             es: {
               q: "Una aplicación de IA generativa puede llegar a una base de datos de clientes y es accesible desde internet sin la autenticación adecuada. ¿Qué capacidad está pensada para mostrar este riesgo?",
-              options: ["La administración de la postura de seguridad de IA", "Solo la puntuación de seguridad básica", "Defender for Resource Manager", "El panel de cumplimiento normativo"],
+              options: ["La administración de la postura de seguridad de IA", "La administración de la postura de seguridad de datos", "La protección contra amenazas de Defender for AI Services", "El panel de cumplimiento normativo"],
               explain: "AI SPM usa el análisis de rutas de ataque para mostrar cómo se encadenan vulnerabilidades de IA hasta llegar a datos confidenciales."
             }
           }
@@ -553,24 +553,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Which product does Microsoft Defender for Servers include for endpoint detection and response?",
-            options: ["Microsoft Defender for Endpoint", "Microsoft Sentinel", "Azure Firewall Premium", "Microsoft Purview"],
+            options: ["Microsoft Defender for Endpoint", "Microsoft Defender for Identity", "Microsoft Defender Vulnerability Management", "Microsoft Sentinel"],
             answer: 0,
             explain: "Defender for Servers includes Defender for Endpoint for comprehensive EDR.",
             es: {
               q: "¿Qué producto incluye Microsoft Defender for Servers para la detección y respuesta en puntos de conexión?",
-              options: ["Microsoft Defender para punto de conexión", "Microsoft Sentinel", "Azure Firewall Premium", "Microsoft Purview"],
+              options: ["Microsoft Defender para punto de conexión", "Microsoft Defender for Identity", "Administración de vulnerabilidades de Microsoft Defender", "Microsoft Sentinel"],
               explain: "Defender for Servers incluye Defender para punto de conexión para un EDR completo."
             }
           },
           {
             type: "multi",
             q: "Which two are enhanced security features of Defender for Cloud?",
-            options: ["Vulnerability scanning for VMs and container registries", "Multicloud protection for AWS and GCP resources", "Free secure score", "Asset discovery", "Microsoft Entra Conditional Access"],
+            options: ["Vulnerability scanning for VMs and container registries", "Multicloud protection for AWS and GCP resources", "Secure score", "Asset discovery", "MCSB recommendations"],
             answers: [0, 1],
             explain: "Enhanced features include EDR, vulnerability scanning, multicloud and hybrid security, threat alerts, compliance tracking and access controls. Secure score and discovery are foundational.",
             es: {
               q: "¿Cuáles son dos características de seguridad mejorada de Defender for Cloud?",
-              options: ["El análisis de vulnerabilidades en máquinas virtuales y registros de contenedores", "La protección multinube de recursos de AWS y GCP", "La puntuación de seguridad gratuita", "La detección de recursos", "El acceso condicional de Microsoft Entra"],
+              options: ["El análisis de vulnerabilidades en máquinas virtuales y registros de contenedores", "La protección multinube de recursos de AWS y GCP", "La puntuación de seguridad", "La detección de recursos", "Las recomendaciones de MCSB"],
               explain: "Las características mejoradas incluyen EDR, análisis de vulnerabilidades, seguridad multinube e híbrida, alertas de amenazas, seguimiento del cumplimiento y controles de acceso. La puntuación y la detección son básicas."
             }
           },
@@ -636,12 +636,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "How does Defender for DevOps help developers prioritize critical code fixes?",
-            options: ["Pull request annotations with code-to-cloud context", "Automatic deletion of vulnerable repositories", "Blocking all deployments until secure score is 100%", "Sending fixes directly to Microsoft support"],
+            options: ["Pull request annotations with code-to-cloud context", "Blocking every pull request with any finding", "Ranking repositories by secure score", "Opening Sentinel incidents for each finding"],
             answer: 0,
             explain: "Code-to-cloud insights and PR annotations guide developers, and admins can assign ownership through workflows.",
             es: {
               q: "¿Cómo ayuda Defender for DevOps a los desarrolladores a priorizar las correcciones críticas de código?",
-              options: ["Con anotaciones en las solicitudes de incorporación de cambios con contexto del código a la nube", "Eliminando automáticamente los repositorios vulnerables", "Bloqueando toda implementación hasta que la puntuación sea 100 %", "Enviando las correcciones directamente al soporte de Microsoft"],
+              options: ["Con anotaciones en las solicitudes de incorporación de cambios con contexto del código a la nube", "Bloqueando toda solicitud de incorporación con cualquier hallazgo", "Ordenando los repositorios por puntuación de seguridad", "Abriendo incidentes de Sentinel por cada hallazgo"],
               explain: "La información del código a la nube y las anotaciones en las PR guían a los desarrolladores, y los administradores pueden asignar responsables con flujos de trabajo."
             }
           },
@@ -652,7 +652,7 @@ Catalog.module("sc-900", {
               "It assesses infrastructure-as-code templates to stop misconfigurations reaching production",
               "Its findings can be correlated with cloud risks in the Defender CSPM plan",
               "It only supports Azure DevOps",
-              "It replaces the need for code reviews",
+              "It replaces runtime workload protection",
               "It works only after code is deployed to production, by scanning the running workloads"
             ],
             answers: [0, 1],
@@ -663,7 +663,7 @@ Catalog.module("sc-900", {
                 "Evalúa plantillas de infraestructura como código para evitar que lleguen errores de configuración a producción",
                 "Sus hallazgos se pueden correlacionar con riesgos de la nube en el plan Defender CSPM",
                 "Solo admite Azure DevOps",
-                "Reemplaza la necesidad de revisar el código",
+                "Reemplaza la protección de cargas de trabajo en ejecución",
                 "Solo funciona después de implementar el código en producción, analizando las cargas en ejecución y sus registros"
               ],
               explain: "Abarca la IaC y se correlaciona con CSPM para una vista del código a la nube, en GitHub, Azure DevOps y GitLab."
@@ -689,9 +689,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about DevOps security.",
             parts: [
               "Defender for DevOps uses a ",
-              { options: ["central console", "separate portal per pipeline", "local agent on each laptop"], answer: 0 },
+              { options: ["central console", "separate portal per pipeline", "Sentinel workbook"], answer: 0 },
               " to protect applications ",
-              { options: ["from code to cloud", "only at runtime", "only in on-premises datacenters"], answer: 0 },
+              { options: ["from code to cloud", "only at runtime", "only in Azure DevOps"], answer: 0 },
               " across multi-pipeline environments."
             ],
             explain: "Security teams manage DevOps posture across pipelines from one console.",
@@ -699,9 +699,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre la seguridad de DevOps.",
               parts: [
                 "Defender for DevOps usa una ",
-                { options: ["consola central", "portal distinto por canalización", "agente local en cada laptop"] },
+                { options: ["consola central", "portal separado por canalización", "libro de Sentinel"] },
                 " para proteger las aplicaciones ",
-                { options: ["del código a la nube", "solo en tiempo de ejecución", "solo en centros de datos locales"] },
+                { options: ["del código a la nube", "solo en tiempo de ejecución", "solo en Azure DevOps"] },
                 " en entornos con varias canalizaciones."
               ],
               explain: "Los equipos de seguridad administran la postura de DevOps de todas las canalizaciones desde una sola consola."
