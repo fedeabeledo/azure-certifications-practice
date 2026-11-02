@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Directory services",
         q: "A company wants to lift and shift a legacy application that needs LDAP and Kerberos authentication and domain join, without deploying or maintaining domain controllers in the cloud. What should it use?",
-        options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Microsoft Entra Conditional Access", "Microsoft Entra External ID"],
+        options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Azure Arc-enabled servers", "A domain controller VM in Azure"],
         answer: 1,
         explain: "Entra Domain Services provides managed domain join, group policy, LDAP and Kerberos/NTLM, with Azure managing the domain controllers. Entra Connect only synchronizes identities.",
         es: {
           topic: "Servicios de directorio",
           q: "Una empresa quiere migrar tal cual una aplicación heredada que necesita autenticación LDAP y Kerberos y unión a dominio, sin implementar ni mantener controladores de dominio en la nube. ¿Qué debe usar?",
-          options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Acceso condicional de Microsoft Entra", "Microsoft Entra External ID"],
+          options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Servidores habilitados para Azure Arc", "Una máquina virtual con controlador de dominio en Azure"],
           explain: "Entra Domain Services ofrece unión a dominio, directiva de grupo, LDAP y Kerberos/NTLM administrados, y Azure se ocupa de los controladores de dominio. Entra Connect solo sincroniza identidades."
         }
       },
@@ -50,13 +50,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Authentication methods",
         q: "A company wants employees to sign in without passwords, using an unphishable hardware device that works over USB, Bluetooth or NFC. Which option fits?",
-        options: ["Windows Hello for Business", "FIDO2 security keys", "A longer password policy", "Single sign-on"],
+        options: ["Windows Hello for Business", "FIDO2 security keys", "Microsoft Authenticator push notifications", "SMS one-time codes"],
         answer: 1,
         explain: "FIDO2 security keys are unphishable hardware devices built on WebAuthn. Windows Hello ties credentials to the user's own Windows PC.",
         es: {
           topic: "Métodos de autenticación",
           q: "Una empresa quiere que los empleados inicien sesión sin contraseñas, con un dispositivo de hardware imposible de suplantar por phishing que funcione por USB, Bluetooth o NFC. ¿Qué opción corresponde?",
-          options: ["Windows Hello para empresas", "Llaves de seguridad FIDO2", "Una directiva de contraseñas más largas", "El inicio de sesión único"],
+          options: ["Windows Hello para empresas", "Llaves de seguridad FIDO2", "Las notificaciones push de Microsoft Authenticator", "Los códigos de un solo uso por SMS"],
           explain: "Las llaves de seguridad FIDO2 son dispositivos de hardware resistentes al phishing basados en WebAuthn. Windows Hello vincula las credenciales al propio equipo Windows del usuario."
         }
       },
@@ -68,7 +68,7 @@ Catalog.module("az-900", {
           "Permissions granted at a parent scope are inherited by its child scopes",
           "It's enforced on actions that pass through Azure Resource Manager",
           "It enforces permissions inside an application's data",
-          "Roles can be assigned only to individual users, never to groups",
+          "A deny in a child scope overrides an Owner role at the parent by default",
           "Being granted a write role removes any read permissions"
         ],
         answers: [0, 1],
@@ -80,7 +80,7 @@ Catalog.module("az-900", {
             "Los permisos concedidos en un ámbito primario los heredan sus ámbitos secundarios",
             "Se aplica a las acciones que pasan por Azure Resource Manager",
             "Aplica permisos dentro de los datos de una aplicación",
-            "Los roles solo se pueden asignar a usuarios individuales, nunca a grupos",
+            "Una denegación en un ámbito secundario anula un rol Propietario del primario de forma predeterminada",
             "Recibir un rol de escritura elimina cualquier permiso de lectura"
           ],
           explain: "RBAC es jerárquico y se aplica mediante Resource Manager. No controla el acceso a nivel de aplicación o datos, funciona con grupos y usa un modelo de permiso donde los permisos se suman."
@@ -90,13 +90,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "External identities",
         q: "A company wants a supplier's users to work with it in Teams shared channels from their own Teams, through a mutual trust, without the supplier's users appearing as guests in its directory. Which capability fits?",
-        options: ["B2B collaboration", "B2B direct connect", "External ID for customers", "Microsoft Entra Domain Services"],
+        options: ["B2B collaboration", "B2B direct connect", "External ID for customers", "Microsoft Entra Connect"],
         answer: 1,
         explain: "B2B direct connect establishes two-way trust with another Entra tenant and currently supports Teams shared channels; those users aren't represented in your directory.",
         es: {
           topic: "Identidades externas",
           q: "Una empresa quiere que los usuarios de un proveedor trabajen con ella en canales compartidos de Teams desde su propio Teams, mediante una confianza mutua, sin que esos usuarios aparezcan como invitados en su directorio. ¿Qué capacidad corresponde?",
-          options: ["Colaboración B2B", "Conexión directa B2B", "External ID para clientes", "Microsoft Entra Domain Services"],
+          options: ["Colaboración B2B", "Conexión directa B2B", "External ID para clientes", "Microsoft Entra Connect"],
           explain: "La conexión directa B2B establece una confianza bidireccional con otro inquilino de Entra y actualmente admite canales compartidos de Teams; esos usuarios no aparecen en su directorio."
         }
       },
@@ -121,9 +121,9 @@ Catalog.module("az-900", {
         q: "Complete the statement about Conditional Access.",
         parts: [
           "In Conditional Access, the ",
-          { options: ["signal", "enforcement", "scope"], answer: 1 },
+          { options: ["signal", "enforcement", "decision"], answer: 1 },
           " is the action that carries out the decision, for example ",
-          { options: ["requiring a second form of authentication", "creating a new subscription", "resizing a virtual machine"], answer: 0 },
+          { options: ["requiring a second form of authentication", "collecting the sign-in location", "evaluating the user's risk"], answer: 0 },
           "."
         ],
         explain: "Conditional Access collects signals, makes a decision and enforces it by allowing, denying or challenging for MFA.",
@@ -132,9 +132,9 @@ Catalog.module("az-900", {
           q: "Complete la afirmación sobre el acceso condicional.",
           parts: [
             "En el acceso condicional, la ",
-            { options: ["señal", "aplicación de la decisión", "ámbito"] },
+            { options: ["señal", "aplicación de la decisión", "decisión"] },
             " es la acción que ejecuta la decisión, por ejemplo ",
-            { options: ["exigir una segunda forma de autenticación", "crear una suscripción nueva", "cambiar el tamaño de una máquina virtual"] },
+            { options: ["exigir una segunda forma de autenticación", "recopilar la ubicación del inicio de sesión", "evaluar el riesgo del usuario"] },
             "."
           ],
           explain: "El acceso condicional recopila señales, toma una decisión y la aplica permitiendo, denegando o solicitando MFA."
@@ -144,13 +144,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Microsoft Defender for Cloud",
         q: "Defender for Cloud generates several related alerts during an attack. Which capability correlates them to show where the attack started and which resources were affected?",
-        options: ["Kill-chain analysis", "Secure score", "Just-in-time VM access", "Azure Policy assignments"],
+        options: ["Kill-chain analysis", "Secure score", "Azure Monitor alert grouping", "Attack path analysis"],
         answer: 0,
         explain: "Kill-chain analysis automatically correlates related alerts to tell the full story of an attack.",
         es: {
           topic: "Microsoft Defender for Cloud",
           q: "Defender for Cloud genera varias alertas relacionadas durante un ataque. ¿Qué capacidad las correlaciona para mostrar dónde empezó el ataque y qué recursos afectó?",
-          options: ["El análisis de la cadena de eliminación", "La puntuación de seguridad", "El acceso a máquinas virtuales justo a tiempo", "Las asignaciones de Azure Policy de la suscripción afectada"],
+          options: ["El análisis de la cadena de eliminación", "La puntuación de seguridad", "La agrupación de alertas de Azure Monitor", "El análisis de rutas de ataque"],
           explain: "El análisis de la cadena de eliminación correlaciona automáticamente las alertas relacionadas para contar la historia completa de un ataque."
         }
       },
@@ -158,13 +158,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Directory services",
         q: "A company wants users to have a consistent experience, including SSO, MFA and self-service password reset, across on-premises Active Directory and Microsoft Entra ID. What synchronizes identities between them?",
-        options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Azure Key Vault", "Conditional Access"],
+        options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Microsoft Entra Domain Services only", "A federation trust with each SaaS app"],
         answer: 1,
         explain: "Microsoft Entra Connect synchronizes user identities between on-premises AD and Entra ID so changes flow between both.",
         es: {
           topic: "Servicios de directorio",
           q: "Una empresa quiere que los usuarios tengan una experiencia coherente, con inicio de sesión único, MFA y restablecimiento de contraseña de autoservicio, entre Active Directory local y Microsoft Entra ID. ¿Qué sincroniza las identidades entre ambos?",
-          options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Azure Key Vault", "El acceso condicional"],
+          options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Solo Microsoft Entra Domain Services", "Una confianza federada con cada aplicación SaaS"],
           explain: "Microsoft Entra Connect sincroniza las identidades de usuario entre AD local y Entra ID para que los cambios fluyan entre ambos."
         }
       },
@@ -189,8 +189,8 @@ Catalog.module("az-900", {
         options: [
           "Because later access relies on that first sign-in",
           "Because SSO stores a separate password for each app and replays it at every sign-in",
-          "Because SSO disables multifactor authentication",
-          "Because SSO only works on managed devices"
+          "Because SSO tokens never expire",
+          "Because each app reauthenticates the user with its own password"
         ],
         answer: 0,
         explain: "With SSO, later connections are based on the first authentication, so strengthening it, for example with MFA, matters.",
@@ -200,8 +200,8 @@ Catalog.module("az-900", {
           options: [
             "Porque el acceso posterior depende de ese primer inicio de sesión",
             "Porque el inicio de sesión único guarda una contraseña distinta para cada aplicación",
-            "Porque el inicio de sesión único desactiva la autenticación multifactor",
-            "Porque el inicio de sesión único solo funciona en dispositivos administrados"
+            "Porque los tokens de SSO nunca vencen",
+            "Porque cada aplicación vuelve a autenticar al usuario con su propia contraseña"
           ],
           explain: "Con el inicio de sesión único, las conexiones posteriores se basan en la primera autenticación, así que reforzarla, por ejemplo con MFA, es clave."
         }
@@ -235,24 +235,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A legacy application can't use modern authentication and needs domain join, group policy and LDAP. The company doesn't want to manage domain controllers in Azure. What should it use?",
-            options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Self-service password reset", "Microsoft Entra Conditional Access"],
+            options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "A domain controller VM in Azure", "Microsoft Entra application proxy"],
             answer: 0,
             explain: "Entra Domain Services provides managed domain services for legacy apps without deploying or maintaining DCs.",
             es: {
               q: "Una aplicación heredada no puede usar autenticación moderna y necesita unión a dominio, directiva de grupo y LDAP. La empresa no quiere administrar controladores de dominio en Azure. ¿Qué debe usar?",
-              options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "El restablecimiento de contraseña de autoservicio", "Acceso condicional de Microsoft Entra"],
+              options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Una máquina virtual con controlador de dominio en Azure", "El proxy de aplicación de Microsoft Entra"],
               explain: "Entra Domain Services ofrece servicios de dominio administrados para aplicaciones heredadas sin implementar ni mantener controladores de dominio."
             }
           },
           {
             type: "single",
             q: "Which tool synchronizes user identities between on-premises Active Directory and Microsoft Entra ID?",
-            options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Application Proxy", "The My Apps portal"],
+            options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Microsoft Entra B2B collaboration", "Azure Arc"],
             answer: 1,
             explain: "Microsoft Entra Connect bridges on-premises AD and Entra ID, so you don't maintain two separate identity sets.",
             es: {
               q: "¿Qué herramienta sincroniza las identidades de usuario entre Active Directory local y Microsoft Entra ID?",
-              options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Application Proxy", "El portal Mis aplicaciones"],
+              options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "La colaboración B2B de Microsoft Entra", "Azure Arc"],
               explain: "Microsoft Entra Connect conecta AD local con Entra ID, para no mantener dos conjuntos de identidades separados."
             }
           },
@@ -308,8 +308,8 @@ Catalog.module("az-900", {
             options: [
               "Detection of suspicious sign-ins at no extra cost",
               "On-premises domain controllers are patched by Microsoft",
-              "Users no longer need any credentials",
-              "Group policy is applied automatically to every SaaS app that users sign in to"
+              "Domain controllers are migrated to Azure automatically",
+              "Group policy applies to cloud apps"
             ],
             answer: 0,
             explain: "On-premises AD doesn't monitor sign-in behavior; connected to Entra ID, suspicious sign-ins can be detected at no extra cost.",
@@ -318,8 +318,8 @@ Catalog.module("az-900", {
               options: [
                 "La detección de inicios de sesión sospechosos sin costo adicional",
                 "Microsoft aplica parches a los controladores de dominio locales",
-                "Los usuarios ya no necesitan ninguna credencial",
-                "La directiva de grupo se aplica automáticamente a todas las aplicaciones SaaS en las que inician sesión los usuarios"
+                "Los controladores de dominio se migran a Azure automáticamente",
+                "Las directivas de grupo se aplican a las aplicaciones en la nube"
               ],
               explain: "El AD local no supervisa el comportamiento de inicio de sesión; conectado a Entra ID, se pueden detectar inicios de sesión sospechosos sin costo adicional."
             }
@@ -377,8 +377,8 @@ Catalog.module("az-900", {
             options: [
               "Later connections build on the first authentication",
               "SSO keeps a separate password for each application",
-              "SSO can't be combined with MFA",
-              "SSO only works with on-premises applications joined to the same domain"
+              "SSO tokens can't be revoked",
+              "SSO replaces MFA after the first sign-in"
             ],
             answer: 0,
             explain: "All later access depends on the first sign-in, so its strength determines SSO's security.",
@@ -396,12 +396,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Which authentication approach offers both high security and high convenience?",
-            options: ["Password plus a second factor", "Passwordless authentication", "Shared accounts", "Security questions only"],
+            options: ["Password plus a second factor", "Passwordless authentication", "Single sign-on with a strong password", "SMS codes only"],
             answer: 1,
             explain: "Passwordless scores highest on both security and convenience. Passwords alone are convenient but low security.",
             es: {
               q: "¿Qué enfoque de autenticación ofrece a la vez alta seguridad y alta comodidad?",
-              options: ["Contraseña más un segundo factor", "Autenticación sin contraseña", "Cuentas compartidas", "Solo preguntas de seguridad"],
+              options: ["Contraseña más un segundo factor", "Autenticación sin contraseña", "Inicio de sesión único con una contraseña segura", "Solo códigos por SMS"],
               explain: "La autenticación sin contraseña es la que mejor puntúa en seguridad y comodidad. Las contraseñas solas son cómodas pero poco seguras."
             }
           },
@@ -411,9 +411,9 @@ Catalog.module("az-900", {
             options: [
               "Fewer passwords and resets",
               "Easier access changes when roles change",
-              "It removes the need for a strong initial authentication",
-              "It requires a separate password for every app, which improves isolation",
-              "It disables multifactor authentication"
+              "It removes the need for MFA after the first sign-in",
+              "It makes a stolen password less damaging",
+              "It replaces authorization in each app"
             ],
             answers: [0, 1],
             explain: "SSO lowers credential incidents and lockout overhead, and ties access to one identity, simplifying lifecycle management.",
@@ -422,9 +422,9 @@ Catalog.module("az-900", {
               options: [
                 "Menos contraseñas y restablecimientos",
                 "Cambios de acceso más simples al cambiar de rol",
-                "Elimina la necesidad de una autenticación inicial sólida",
-                "Exige una contraseña distinta para cada aplicación, lo que mejora el aislamiento",
-                "Desactiva la autenticación multifactor"
+                "Elimina la necesidad de MFA después del primer inicio de sesión",
+                "Hace que una contraseña robada sea menos dañina",
+                "Reemplaza la autorización en cada aplicación"
               ],
               explain: "El inicio de sesión único reduce los incidentes con credenciales y la carga de bloqueos, y vincula el acceso a una identidad, lo que simplifica la administración del ciclo de vida."
             }
@@ -524,24 +524,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Several guest users were invited for a project that has ended. How can the company confirm which guests still need access?",
-            options: ["Run an access review", "Delete the tenant", "Disable SSO for everyone", "Create a new subscription"],
+            options: ["Run an access review", "Turn on Conditional Access for guests", "Remove SSO for external users", "Check the guests' sign-in logs once"],
             answer: 0,
             explain: "Guests or a decision maker can recertify access in an access review, and access can then be removed for those who no longer need it.",
             es: {
               q: "Se invitó a varios usuarios invitados para un proyecto que ya terminó. ¿Cómo puede la empresa confirmar qué invitados siguen necesitando acceso?",
-              options: ["Ejecutar una revisión de acceso", "Eliminar el inquilino", "Desactivar el inicio de sesión único para todos", "Crear una suscripción nueva"],
+              options: ["Ejecutar una revisión de acceso", "Activar el acceso condicional para invitados", "Quitar el SSO para usuarios externos", "Revisar una vez los registros de inicio de sesión de los invitados"],
               explain: "Los invitados o un responsable pueden volver a certificar el acceso en una revisión de acceso, y luego se quita el acceso a quienes ya no lo necesitan."
             }
           },
           {
             type: "multi",
             q: "Which two types of identities can external users bring with them?",
-            options: ["Work accounts", "Social identities such as Google or Facebook", "Only accounts created in your tenant", "Passwords shared by your administrators", "Device serial numbers"],
+            options: ["Work accounts", "Social identities such as Google or Facebook", "On-premises AD accounts synchronized to your tenant", "Accounts created in Microsoft Entra Domain Services", "Managed identities from their Azure subscriptions"],
             answers: [0, 1],
             explain: "External users can bring work accounts, government-issued digital identities or social identities.",
             es: {
               q: "¿Cuáles son dos tipos de identidades que pueden traer los usuarios externos?",
-              options: ["Cuentas profesionales", "Identidades sociales como Google o Facebook", "Solo cuentas creadas en su inquilino", "Contraseñas compartidas por sus administradores", "Números de serie de dispositivos"],
+              options: ["Cuentas profesionales", "Identidades sociales como Google o Facebook", "Cuentas de AD local sincronizadas con su inquilino", "Cuentas creadas en Microsoft Entra Domain Services", "Identidades administradas de sus suscripciones de Azure"],
               explain: "Los usuarios externos pueden traer cuentas profesionales, identidades digitales emitidas por gobiernos o identidades sociales."
             }
           },
@@ -551,7 +551,7 @@ Catalog.module("az-900", {
             options: [
               "They target cross-tenant and consumer access",
               "External identities only work inside your own tenant, for employees who sign in once",
-              "External identities replace authorization",
+              "External identities don't support MFA",
               "They're the same feature with a different name"
             ],
             answer: 0,
@@ -561,7 +561,7 @@ Catalog.module("az-900", {
               options: [
                 "Apuntan al acceso entre inquilinos y de consumidores",
                 "Las identidades externas solo funcionan dentro de su propio inquilino, para empleados que inician sesión una vez",
-                "Las identidades externas reemplazan la autorización",
+                "Las identidades externas no admiten MFA",
                 "Son la misma característica con otro nombre"
               ],
               explain: "Pueden sonar parecidas, pero las identidades externas apuntan al acceso más allá del límite de su inquilino, para socios y consumidores."
@@ -597,12 +597,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company wants users to be prompted for MFA only when they sign in from outside trusted network locations. What should it use?",
-            options: ["Azure RBAC", "Conditional Access", "Microsoft Entra Connect", "Azure Key Vault"],
+            options: ["Azure RBAC", "Conditional Access", "Security defaults", "Per-app MFA settings"],
             answer: 1,
             explain: "Conditional Access evaluates signals such as location and can require MFA only in risky or unexpected situations.",
             es: {
               q: "Una empresa quiere que a los usuarios se les pida MFA solo cuando inician sesión fuera de ubicaciones de red de confianza. ¿Qué debe usar?",
-              options: ["Azure RBAC", "El acceso condicional", "Microsoft Entra Connect", "Azure Key Vault"],
+              options: ["Azure RBAC", "El acceso condicional", "Los valores predeterminados de seguridad", "La configuración de MFA de cada aplicación"],
               explain: "El acceso condicional evalúa señales como la ubicación y puede exigir MFA solo en situaciones riesgosas o inesperadas."
             }
           },
@@ -611,9 +611,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about how Conditional Access works.",
             parts: [
               "During sign-in, Conditional Access collects ",
-              { options: ["signals", "invoices", "backups"], answer: 0 },
+              { options: ["signals", "approvals", "role assignments"], answer: 0 },
               ", makes a ",
-              { options: ["decision", "deployment", "replica"], answer: 0 },
+              { options: ["decision", "role assignment", "risk report"], answer: 0 },
               " based on them, and then enforces it."
             ],
             explain: "Signals (user, location, device, app) lead to a decision, and enforcement allows, denies or challenges for MFA.",
@@ -621,9 +621,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre cómo funciona el acceso condicional.",
               parts: [
                 "Durante el inicio de sesión, el acceso condicional recopila ",
-                { options: ["señales", "facturas", "copias de seguridad"] },
+                { options: ["señales", "aprobaciones", "asignaciones de roles"] },
                 ", toma una ",
-                { options: ["decisión", "implementación", "réplica"] },
+                { options: ["decisión", "asignación de roles", "informe de riesgo"] },
                 " basada en ellas y luego la aplica."
               ],
               explain: "Las señales (usuario, ubicación, dispositivo, aplicación) llevan a una decisión, y la aplicación permite, deniega o solicita MFA."
@@ -655,24 +655,24 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two are signals that Conditional Access can evaluate?",
-            options: ["The user's location", "The device requesting access", "The blob access tier", "The subscription's invoice", "The VM size"],
+            options: ["The user's location", "The device requesting access", "The user's Azure RBAC role", "The app's Key Vault secrets", "The resource group of the app"],
             answers: [0, 1],
             explain: "Signals include who the user is, where they are, the device and the application being accessed.",
             es: {
               q: "¿Cuáles son dos señales que puede evaluar el acceso condicional?",
-              options: ["La ubicación del usuario", "El dispositivo que solicita acceso", "El nivel de acceso de los blobs", "La factura de la suscripción", "El tamaño de la máquina virtual"],
+              options: ["La ubicación del usuario", "El dispositivo que solicita acceso", "El rol de Azure RBAC del usuario", "Los secretos de Key Vault de la aplicación", "El grupo de recursos de la aplicación"],
               explain: "Las señales incluyen quién es el usuario, dónde está, el dispositivo y la aplicación a la que accede."
             }
           },
           {
             type: "single",
             q: "A user at a known location isn't asked for a second factor, but the same user is challenged when signing in from an unexpected location. Which Conditional Access benefit is this?",
-            options: ["A more granular MFA experience", "Single sign-on", "Role inheritance", "Kill-chain analysis"],
+            options: ["A more granular MFA experience", "Single sign-on", "Security defaults", "Passwordless authentication"],
             answer: 0,
             explain: "Conditional Access gives a more granular MFA experience, challenging only when signals are unusual.",
             es: {
               q: "A un usuario en una ubicación conocida no se le pide un segundo factor, pero al mismo usuario sí se le pide cuando inicia sesión desde una ubicación inesperada. ¿Qué ventaja del acceso condicional es esta?",
-              options: ["Una experiencia de MFA más granular", "El inicio de sesión único", "La herencia de roles", "El análisis de la cadena de eliminación"],
+              options: ["Una experiencia de MFA más granular", "El inicio de sesión único", "Los valores predeterminados de seguridad", "La autenticación sin contraseña"],
               explain: "El acceso condicional da una experiencia de MFA más granular, que solo pide el segundo factor cuando las señales son inusuales."
             }
           },
@@ -708,8 +708,8 @@ Catalog.module("az-900", {
             options: [
               "Copy each of the other engineers' role assignments to the new engineer individually",
               "Add the engineer to the engineers' group",
-              "Make the engineer an Owner of the tenant",
-              "Share another engineer's account"
+              "Assign Contributor at the management group",
+              "Give the engineer a custom role with the same permissions"
             ],
             answer: 1,
             explain: "With Azure RBAC, adding someone to a group with a role assignment gives them all its permissions, and new resources covered by the assignment apply to everyone.",
@@ -718,8 +718,8 @@ Catalog.module("az-900", {
               options: [
                 "Copiar al nuevo ingeniero, una por una, las asignaciones de rol de los demás ingenieros",
                 "Agregar al ingeniero al grupo de ingenieros",
-                "Hacer al ingeniero propietario del inquilino",
-                "Compartir la cuenta de otro ingeniero"
+                "Asignar Colaborador en el grupo de administración",
+                "Darle al ingeniero un rol personalizado con los mismos permisos"
               ],
               explain: "Con Azure RBAC, agregar a alguien a un grupo con una asignación de rol le da todos sus permisos, y los recursos nuevos que cubre la asignación se aplican a todos."
             }
@@ -750,12 +750,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Azure RBAC is enforced on any action against an Azure resource that passes through which service?",
-            options: ["Azure Resource Manager", "Microsoft Entra Connect", "Azure DNS", "Azure Key Vault"],
+            options: ["Azure Resource Manager", "Microsoft Entra Connect", "Azure DNS", "Microsoft Entra ID"],
             answer: 0,
             explain: "RBAC is enforced on actions through Resource Manager, typically reached from the portal, Cloud Shell, PowerShell or CLI.",
             es: {
               q: "Azure RBAC se aplica a cualquier acción sobre un recurso de Azure que pase por ¿qué servicio?",
-              options: ["Azure Resource Manager", "Microsoft Entra Connect", "Azure DNS", "Azure Key Vault"],
+              options: ["Azure Resource Manager", "Microsoft Entra Connect", "Azure DNS", "Microsoft Entra ID"],
               explain: "RBAC se aplica a las acciones que pasan por Resource Manager, al que normalmente se accede desde el portal, Cloud Shell, PowerShell o la CLI."
             }
           },
@@ -774,12 +774,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two are valid Azure RBAC scopes?",
-            options: ["A resource group", "A single resource", "An availability zone", "A region", "A blob access tier"],
+            options: ["A resource group", "A single resource", "An availability zone", "A region", "An Azure geography"],
             answers: [0, 1],
             explain: "Scopes are management groups, subscriptions, resource groups and individual resources.",
             es: {
               q: "¿Cuáles son dos ámbitos válidos de Azure RBAC?",
-              options: ["Un grupo de recursos", "Un recurso individual", "Una zona de disponibilidad", "Una región", "Un nivel de acceso de blobs"],
+              options: ["Un grupo de recursos", "Un recurso individual", "Una zona de disponibilidad", "Una región", "Una geografía de Azure"],
               explain: "Los ámbitos son grupos de administración, suscripciones, grupos de recursos y recursos individuales."
             }
           },
@@ -838,7 +838,7 @@ Catalog.module("az-900", {
               "It trusts devices inside the corporate network and verifies only external requests",
               "It assumes breach and verifies every request",
               "It relies on VPN access as the main security boundary",
-              "It allows only personal devices"
+              "It replaces identity controls with network segmentation"
             ],
             answer: 1,
             explain: "Zero Trust assumes the worst case and verifies every request instead of trusting network location.",
@@ -848,7 +848,7 @@ Catalog.module("az-900", {
                 "Confía en los dispositivos de la red corporativa y verifica solo las solicitudes externas",
                 "Asume una vulneración y verifica cada solicitud",
                 "Depende del acceso por VPN como principal límite de seguridad",
-                "Solo permite dispositivos personales"
+                "Reemplaza los controles de identidad por segmentación de red"
               ],
               explain: "Confianza cero asume el peor escenario y verifica cada solicitud en lugar de confiar en la ubicación de red."
             }
@@ -879,12 +879,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Compared with traditional perimeter-based networks, on what basis does Zero Trust grant access?",
-            options: ["Network location", "Authentication", "Device brand", "VPN usage"],
+            options: ["Network location", "Authentication", "Device ownership only", "VPN usage"],
             answer: 1,
             explain: "Zero Trust requires everyone to authenticate and grants access based on authentication rather than location.",
             es: {
               q: "En comparación con las redes tradicionales basadas en perímetro, ¿según qué concede acceso Confianza cero?",
-              options: ["La ubicación de red", "La autenticación", "La marca del dispositivo", "El uso de VPN"],
+              options: ["La ubicación de red", "La autenticación", "Solo la propiedad del dispositivo", "El uso de VPN"],
               explain: "Confianza cero exige que todos se autentiquen y concede acceso según la autenticación, no según la ubicación."
             }
           },
@@ -894,7 +894,7 @@ Catalog.module("az-900", {
             options: [
               "Grant full access because the password was correct",
               "Decide based on identity, device and risk",
-              "Block every sign-in from outside the office permanently",
+              "Require MFA once, then trust the device",
               "Allow access only if the user first connects through a VPN, since the network is then trusted"
             ],
             answer: 1,
@@ -904,7 +904,7 @@ Catalog.module("az-900", {
               options: [
                 "Conceder acceso total porque la contraseña fue correcta",
                 "Decidir según la identidad, el dispositivo y el riesgo",
-                "Bloquear para siempre todo inicio de sesión fuera de la oficina",
+                "Pedir MFA una vez y después confiar en el dispositivo",
                 "Permitir el acceso solo si el usuario se conecta primero por VPN, porque así la red es de confianza"
               ],
               explain: "Las decisiones de Confianza cero son continuas y dependen del contexto: identidad, dispositivo y riesgo, no solo de dónde viene la solicitud."
@@ -962,36 +962,36 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Which defense-in-depth layer is the first line of defense, protecting computing hardware in the datacenter?",
-            options: ["Identity and access", "Physical security", "Perimeter", "Data"],
+            options: ["Identity and access", "Physical security", "Perimeter", "Compute"],
             answer: 1,
             explain: "Physical security, controlling access to buildings and hardware, is the outermost layer and first line of defense.",
             es: {
               q: "¿Qué capa de la defensa en profundidad es la primera línea de defensa y protege el hardware de cómputo en el centro de datos?",
-              options: ["Identidad y acceso", "Seguridad física", "Perímetro", "Datos"],
+              options: ["Identidad y acceso", "Seguridad física", "Perímetro", "Proceso"],
               explain: "La seguridad física, que controla el acceso a los edificios y al hardware, es la capa más externa y la primera línea de defensa."
             }
           },
           {
             type: "single",
             q: "At which layer should you use single sign-on and multifactor authentication, and audit sign-in events and changes?",
-            options: ["Identity and access", "Compute", "Network", "Physical security"],
+            options: ["Identity and access", "Application", "Perimeter", "Physical security"],
             answer: 0,
             explain: "The identity and access layer secures identities, grants only needed access and logs sign-ins and changes.",
             es: {
               q: "¿En qué capa conviene usar inicio de sesión único y autenticación multifactor, y auditar los eventos de inicio de sesión y los cambios?",
-              options: ["Identidad y acceso", "Proceso", "Red", "Seguridad física"],
+              options: ["Identidad y acceso", "Aplicación", "Perímetro", "Seguridad física"],
               explain: "La capa de identidad y acceso protege las identidades, concede solo el acceso necesario y registra los inicios de sesión y los cambios."
             }
           },
           {
             type: "multi",
             q: "Which two controls belong to the data layer?",
-            options: ["Encryption at rest", "Encryption in transit", "DDoS filtering", "Perimeter firewalls", "Security guards at the datacenter"],
+            options: ["Encryption at rest", "Encryption in transit", "Network security groups", "Multifactor authentication", "Just-in-time VM access"],
             answers: [0, 1],
             explain: "The data layer protects data with encryption at rest and in transit, with Key Vault managing keys and secrets.",
             es: {
               q: "¿Cuáles son dos controles que pertenecen a la capa de datos?",
-              options: ["El cifrado en reposo", "El cifrado en tránsito", "El filtrado de DDoS", "Los firewalls perimetrales", "Los guardias de seguridad del centro de datos"],
+              options: ["El cifrado en reposo", "El cifrado en tránsito", "Grupos de seguridad de red", "Autenticación multifactor", "Acceso Just-In-Time a máquinas virtuales"],
               explain: "La capa de datos protege los datos con cifrado en reposo y en tránsito, y Key Vault administra las claves y los secretos."
             }
           },
@@ -1001,8 +1001,8 @@ Catalog.module("az-900", {
             options: [
               "To rely on one very strong perimeter layer so attackers never get inside",
               "To slow an attack with layered mechanisms",
-              "To replace the need for identity controls",
-              "To make all resources publicly accessible"
+              "To concentrate controls at the identity layer",
+              "To make every layer independent of the others"
             ],
             answer: 1,
             explain: "Layered mechanisms slow an attack aimed at data, and if one layer is breached the next is already in place.",
@@ -1011,8 +1011,8 @@ Catalog.module("az-900", {
               options: [
                 "Depender de una única capa perimetral muy sólida para que los atacantes nunca entren",
                 "Frenar un ataque con mecanismos en capas",
-                "Reemplazar la necesidad de controles de identidad",
-                "Hacer que todos los recursos sean accesibles públicamente"
+                "Concentrar los controles en la capa de identidad",
+                "Hacer que cada capa sea independiente de las demás"
               ],
               explain: "Los mecanismos por capas frenan un ataque dirigido a los datos, y si una capa se vulnera, la siguiente ya está lista."
             }
@@ -1046,24 +1046,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team stores database connection strings, encryption keys and TLS certificates in configuration files. Which Azure service should it use instead?",
-            options: ["Azure Key Vault", "Azure DNS", "Microsoft Entra Connect", "Azure Files"],
+            options: ["Azure Key Vault", "Azure Files with encryption at rest", "Azure Table Storage", "A private storage container"],
             answer: 0,
             explain: "Key Vault securely stores and controls access to secrets, keys and certificates, centralizing them instead of keeping them in code or config files.",
             es: {
               q: "Un equipo guarda cadenas de conexión a bases de datos, claves de cifrado y certificados TLS en archivos de configuración. ¿Qué servicio de Azure debería usar en su lugar?",
-              options: ["Azure Key Vault", "Azure DNS", "Microsoft Entra Connect", "Azure Files"],
+              options: ["Azure Key Vault", "Azure Files con cifrado en reposo", "Azure Table Storage", "Un contenedor de almacenamiento privado"],
               explain: "Key Vault almacena de forma segura y controla el acceso a secretos, claves y certificados, centralizándolos en lugar de dejarlos en el código o en archivos de configuración."
             }
           },
           {
             type: "single",
             q: "How can applications retrieve secrets from Key Vault at runtime while reducing hard-coded credentials?",
-            options: ["By using managed identities", "By embedding the vault password in the code", "By emailing secrets to developers", "By disabling access control on the vault"],
+            options: ["By using managed identities", "By embedding the vault password in the code", "By storing the vault URL and an access key in app settings", "By using a shared service account password"],
             answer: 0,
             explain: "Retrieving secrets with managed identities removes hard-coded credentials and improves secret governance.",
             es: {
               q: "¿Cómo pueden las aplicaciones obtener secretos de Key Vault en tiempo de ejecución reduciendo las credenciales escritas en el código?",
-              options: ["Usando identidades administradas", "Incluyendo la contraseña del almacén en el código", "Enviando los secretos por correo a los desarrolladores", "Desactivando el control de acceso del almacén"],
+              options: ["Usando identidades administradas", "Incluyendo la contraseña del almacén en el código", "Guardando la URL del almacén y una clave de acceso en la configuración de la app", "Usando la contraseña de una cuenta de servicio compartida"],
               explain: "Obtener secretos con identidades administradas elimina las credenciales escritas en el código y mejora la gobernanza de secretos."
             }
           },
@@ -1073,9 +1073,9 @@ Catalog.module("az-900", {
             options: [
               "Control who can access keys and secrets",
               "Rotate and update keys over time",
-              "Store secrets directly in application code",
-              "Remove the need for encryption in transit",
-              "Stop auditing key usage"
+              "Encrypt data in transit automatically",
+              "Replace Azure RBAC",
+              "Store application logs"
             ],
             answers: [0, 1],
             explain: "Key management helps control access, rotate keys and audit usage, supporting security and compliance.",
@@ -1084,9 +1084,9 @@ Catalog.module("az-900", {
               options: [
                 "Controlar quién puede acceder a las claves y los secretos",
                 "Rotar y actualizar las claves con el tiempo",
-                "Guardar los secretos directamente en el código de la aplicación",
-                "Eliminar la necesidad del cifrado en tránsito",
-                "Dejar de auditar el uso de las claves"
+                "Cifrar los datos en tránsito automáticamente",
+                "Reemplazar Azure RBAC",
+                "Almacenar los registros de aplicaciones"
               ],
               explain: "La administración de claves ayuda a controlar el acceso, rotar las claves y auditar su uso, lo que contribuye a la seguridad y el cumplimiento."
             }
@@ -1143,12 +1143,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A security team needs one service that monitors Azure, on-premises and multicloud resources, recommends improvements to security posture and raises threat alerts. What should it use?",
-            options: ["Azure Key Vault", "Microsoft Defender for Cloud", "Microsoft Entra Conditional Access", "Microsoft Entra Connect"],
+            options: ["Microsoft Sentinel", "Microsoft Defender for Cloud", "Azure Policy", "Azure Advisor"],
             answer: 1,
             explain: "Defender for Cloud is a security posture management and threat protection service across cloud, on-premises, hybrid and multicloud resources.",
             es: {
               q: "Un equipo de seguridad necesita un solo servicio que supervise recursos de Azure, locales y multinube, recomiende mejoras de la postura de seguridad y genere alertas de amenazas. ¿Qué debe usar?",
-              options: ["Azure Key Vault", "Microsoft Defender for Cloud", "Acceso condicional de Microsoft Entra", "Microsoft Entra Connect"],
+              options: ["Microsoft Sentinel", "Microsoft Defender for Cloud", "Azure Policy", "Azure Advisor"],
               explain: "Defender for Cloud es un servicio de administración de la postura de seguridad y protección contra amenazas para recursos en la nube, locales, híbridos y multinube."
             }
           },
@@ -1181,8 +1181,8 @@ Catalog.module("az-900", {
             options: [
               "Connect them with Azure Arc",
               "Move every server to Azure first",
-              "Configure a site-to-site VPN so Defender for Cloud can scan them over the tunnel",
-              "Assign the Reader role to the servers"
+              "Install Microsoft Sentinel on each server",
+              "Enable Defender for Cloud on the on-premises network"
             ],
             answer: 0,
             explain: "Azure Arc extends Defender plans to non-Azure machines; then you enable the enhanced security features.",
@@ -1191,8 +1191,8 @@ Catalog.module("az-900", {
               options: [
                 "Conectarlos con Azure Arc",
                 "Trasladar primero todos los servidores a Azure",
-                "Configurar una VPN de sitio a sitio para que Defender for Cloud los analice por el túnel",
-                "Asignar el rol de lector a los servidores"
+                "Instalar Microsoft Sentinel en cada servidor",
+                "Habilitar Defender for Cloud en la red local"
               ],
               explain: "Azure Arc extiende los planes de Defender a máquinas fuera de Azure; luego se habilitan las características de seguridad mejoradas."
             }
@@ -1202,9 +1202,9 @@ Catalog.module("az-900", {
             q: "For a connected AWS environment, which of the following can Defender for Cloud do?",
             options: [
               "Extend Defender for Servers protections to EC2 instances",
-              "Replace AWS identity management with Entra ID automatically",
-              "Move AWS resources into Azure subscriptions",
-              "Only read AWS invoices"
+              "Apply Azure Policy directly to AWS accounts",
+              "Migrate EC2 instances to Azure VMs",
+              "Replace AWS Security Hub"
             ],
             answer: 0,
             explain: "Defender for Cloud can extend CSPM recommendations, Defender for Containers to EKS and Defender for Servers to EC2.",
@@ -1212,9 +1212,9 @@ Catalog.module("az-900", {
               q: "En un entorno de AWS conectado, ¿cuál de las siguientes acciones puede realizar Defender for Cloud?",
               options: [
                 "Extender las protecciones de Defender for Servers a las instancias EC2",
-                "Reemplazar automáticamente la administración de identidades de AWS por Entra ID",
-                "Trasladar los recursos de AWS a suscripciones de Azure",
-                "Solo leer las facturas de AWS"
+                "Aplicar Azure Policy directamente a cuentas de AWS",
+                "Migrar instancias EC2 a máquinas virtuales de Azure",
+                "Reemplazar AWS Security Hub"
               ],
               explain: "Defender for Cloud puede extender recomendaciones de CSPM, Defender for Containers a EKS y Defender for Servers a EC2."
             }
@@ -1225,9 +1225,9 @@ Catalog.module("az-900", {
             options: [
               "Describe details of the affected resources",
               "Suggest remediation steps",
-              "Automatically delete the affected resources",
-              "Cover only Azure virtual machines",
-              "Prevent alerts from being exported"
+              "Automatically remediate every resource",
+              "Cover only Azure resources",
+              "Replace Microsoft Sentinel"
             ],
             answers: [0, 1],
             explain: "Alerts describe affected resources, suggest remediation and sometimes can trigger a logic app; they can be exported.",
@@ -1236,9 +1236,9 @@ Catalog.module("az-900", {
               options: [
                 "Describen los detalles de los recursos afectados",
                 "Sugieren pasos de corrección",
-                "Eliminan automáticamente los recursos afectados",
-                "Solo cubren máquinas virtuales de Azure",
-                "Impiden que las alertas se exporten"
+                "Corregir automáticamente cada recurso",
+                "Cubrir solo recursos de Azure",
+                "Reemplazar a Microsoft Sentinel"
               ],
               explain: "Las alertas describen los recursos afectados, sugieren correcciones y a veces pueden activar una aplicación lógica; además se pueden exportar."
             }

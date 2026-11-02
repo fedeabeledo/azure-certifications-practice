@@ -6,13 +6,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Core architecture",
       q: "A company must keep running if one datacenter fails, without moving its data out of the region. What should it use?",
-      options: ["Availability zones", "A region pair", "A management group", "A sovereign region"],
+      options: ["Availability zones", "A region pair", "Locally redundant storage", "An availability set"],
       answer: 0,
       explain: "Availability zones are physically separate datacenters within a region. A region pair would move data to another region.",
       es: {
         topic: "Arquitectura principal",
         q: "Una empresa debe seguir funcionando si falla un centro de datos, sin sacar sus datos de la región. ¿Qué debe usar?",
-        options: ["Zonas de disponibilidad", "Un par de regiones", "Un grupo de administración", "Una región soberana"],
+        options: ["Zonas de disponibilidad", "Un par de regiones", "El almacenamiento con redundancia local", "Un conjunto de disponibilidad"],
         explain: "Las zonas de disponibilidad son centros de datos físicamente separados dentro de una región. Un par de regiones llevaría los datos a otra región."
       }
     },
@@ -45,13 +45,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Compute",
       q: "An image upload should trigger a short piece of code that creates a thumbnail, and the company wants to pay only while the code runs. Which service fits?",
-      options: ["Azure Functions", "Azure Virtual Machines", "Azure Kubernetes Service", "Azure Virtual Desktop"],
+      options: ["Azure Functions", "Azure Virtual Machines", "Virtual machine scale sets", "Azure App Service"],
       answer: 0,
       explain: "Functions are event-driven and serverless; you pay for the CPU time used. VMs and AKS keep resources running.",
       es: {
         topic: "Proceso",
         q: "La carga de una imagen debe activar un fragmento de código breve que cree una miniatura, y la empresa quiere pagar solo mientras el código se ejecuta. ¿Qué servicio corresponde?",
-        options: ["Azure Functions", "Azure Virtual Machines", "Azure Kubernetes Service", "Azure Virtual Desktop"],
+        options: ["Azure Functions", "Azure Virtual Machines", "Conjuntos de escalado de máquinas virtuales", "Azure App Service"],
         explain: "Functions es sin servidor y controlado por eventos; se paga por el tiempo de CPU usado. Las máquinas virtuales y AKS mantienen recursos en ejecución."
       }
     },
@@ -59,13 +59,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Networking",
       q: "A bank needs a private connection from its datacenter to Azure that doesn't travel over the public internet. What should it use?",
-      options: ["Azure ExpressRoute", "A site-to-site VPN", "Virtual network peering", "A point-to-site VPN"],
+      options: ["Azure ExpressRoute", "A site-to-site VPN", "Virtual network peering", "Azure Virtual WAN with internet breakout"],
       answer: 0,
       explain: "ExpressRoute is a private connection through a connectivity provider. VPNs are encrypted but travel over the internet.",
       es: {
         topic: "Redes",
         q: "Un banco necesita una conexión privada desde su centro de datos hasta Azure que no pase por internet. ¿Qué debe usar?",
-        options: ["Azure ExpressRoute", "Una VPN de sitio a sitio", "El emparejamiento de redes virtuales", "Una VPN de punto a sitio"],
+        options: ["Azure ExpressRoute", "Una VPN de sitio a sitio", "El emparejamiento de redes virtuales", "Azure Virtual WAN con salida a internet"],
         explain: "ExpressRoute es una conexión privada a través de un proveedor de conectividad. Las VPN están cifradas pero viajan por internet."
       }
     },
@@ -98,13 +98,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Identity and security",
       q: "A legacy application needs domain join, Group Policy and Kerberos, but the company doesn't want to deploy or maintain domain controllers in Azure. What should it use?",
-      options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Microsoft Entra Conditional Access", "Microsoft Defender for Cloud"],
+      options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Microsoft Entra Conditional Access", "A domain controller VM in Azure"],
       answer: 0,
       explain: "Entra Domain Services provides managed domain services; Azure handles the domain controllers. Entra Connect only synchronizes identities.",
       es: {
         topic: "Identidad y seguridad",
         q: "Una aplicación heredada necesita unión a dominio, directiva de grupo y Kerberos, pero la empresa no quiere implementar ni mantener controladores de dominio en Azure. ¿Qué debe usar?",
-        options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Acceso condicional de Microsoft Entra", "Microsoft Defender for Cloud"],
+        options: ["Microsoft Entra Domain Services", "Microsoft Entra Connect", "Acceso condicional de Microsoft Entra", "Una máquina virtual con controlador de dominio en Azure"],
         explain: "Entra Domain Services ofrece servicios de dominio administrados; Azure se ocupa de los controladores. Entra Connect solo sincroniza identidades."
       }
     },
@@ -152,13 +152,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Storage",
       q: "A company must move about 60 TB of data to Azure, but its internet bandwidth is limited. What should it use?",
-      options: ["Azure Data Box", "AzCopy", "Azure Storage Explorer", "Azure File Sync"],
+      options: ["Azure Data Box", "AzCopy", "Azure Migrate", "Azure File Sync"],
       answer: 0,
       explain: "Data Box is a physical device shipped to you, ideal for tens of terabytes with limited bandwidth. AzCopy and Storage Explorer transfer over the network.",
       es: {
         topic: "Almacenamiento",
         q: "Una empresa debe mover unos 60 TB de datos a Azure, pero su ancho de banda de internet es limitado. ¿Qué debe usar?",
-        options: ["Azure Data Box", "AzCopy", "Explorador de Azure Storage", "Azure File Sync"],
+        options: ["Azure Data Box", "AzCopy", "Azure Migrate", "Azure File Sync"],
         explain: "Data Box es un dispositivo físico que se envía al cliente, ideal para decenas de terabytes con poco ancho de banda. AzCopy y el Explorador de Storage transfieren por la red."
       }
     },
@@ -170,7 +170,7 @@ Catalog.pathQuiz("az-900", "architecture", {
         "Permissions assigned at a parent scope are inherited by child scopes",
         "It's enforced through Azure Resource Manager",
         "It controls access inside an application's own data model",
-        "It denies by default once any role is assigned",
+        "A deny at a child scope always overrides Owner at the parent",
         "It only works with individual users, not groups"
       ],
       answers: [0, 1],
@@ -182,7 +182,7 @@ Catalog.pathQuiz("az-900", "architecture", {
           "Los permisos asignados en un ámbito primario los heredan los ámbitos secundarios",
           "Se aplica mediante Azure Resource Manager",
           "Controla el acceso dentro del modelo de datos propio de una aplicación",
-          "Deniega de forma predeterminada en cuanto se asigna un rol",
+          "Una denegación en un ámbito secundario siempre anula al Propietario del primario",
           "Solo funciona con usuarios individuales, no con grupos"
         ],
         explain: "RBAC es jerárquico y lo aplica Resource Manager. Funciona con grupos, usa un modelo de permiso y no controla el acceso a nivel de aplicación o datos."
@@ -192,13 +192,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Networking",
       q: "Which resource filters inbound and outbound traffic to Azure resources with security rules based on source, destination, port and protocol?",
-      options: ["A network security group", "A route table", "A virtual network peering", "A VPN gateway"],
+      options: ["A network security group", "A route table", "A virtual network peering", "Azure Firewall Manager"],
       answer: 0,
       explain: "NSGs contain inbound and outbound security rules. Route tables control routing, peering connects VNets and VPN gateways connect networks.",
       es: {
         topic: "Redes",
         q: "¿Qué recurso filtra el tráfico entrante y saliente de los recursos de Azure con reglas de seguridad según origen, destino, puerto y protocolo?",
-        options: ["Un grupo de seguridad de red", "Una tabla de rutas", "Un emparejamiento de redes virtuales", "Una puerta de enlace VPN"],
+        options: ["Un grupo de seguridad de red", "Una tabla de rutas", "Un emparejamiento de redes virtuales", "Azure Firewall Manager"],
         explain: "Los NSG contienen reglas de seguridad de entrada y salida. Las tablas de rutas controlan el enrutamiento, el emparejamiento une redes virtuales y las puertas de enlace VPN conectan redes."
       }
     },
@@ -260,13 +260,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Identity and security",
       q: "A company wants employees to sign in once and access many apps, while keeping on-premises Active Directory identities in sync with the cloud. Which service synchronizes the identities?",
-      options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Azure Key Vault", "Azure Arc"],
+      options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Microsoft Entra B2B collaboration", "Microsoft Entra Conditional Access"],
       answer: 0,
       explain: "Entra Connect synchronizes users between on-premises AD and Entra ID so there's one set of identities.",
       es: {
         topic: "Identidad y seguridad",
         q: "Una empresa quiere que los empleados inicien sesión una vez y accedan a muchas aplicaciones, manteniendo sincronizadas con la nube las identidades de su Active Directory local. ¿Qué servicio sincroniza las identidades?",
-        options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "Azure Key Vault", "Azure Arc"],
+        options: ["Microsoft Entra Connect", "Microsoft Entra Domain Services", "La colaboración B2B de Microsoft Entra", "El acceso condicional de Microsoft Entra"],
         explain: "Entra Connect sincroniza usuarios entre AD local y Entra ID para que haya un solo conjunto de identidades."
       }
     },
@@ -278,7 +278,7 @@ Catalog.pathQuiz("az-900", "architecture", {
         "Planned updates are rolled out to one region of the pair at a time",
         "Region pairs are typically at least 300 miles apart",
         "All services replicate and fail over automatically",
-        "Every region is paired with one in a different geography",
+        "Every region is paired with one in another geography",
         "Region pairs replace the need for availability zones"
       ],
       answers: [0, 1],
@@ -290,7 +290,7 @@ Catalog.pathQuiz("az-900", "architecture", {
           "Las actualizaciones planificadas se aplican a una región del par por vez",
           "Los pares de regiones suelen estar separados por al menos 300 millas",
           "Todos los servicios replican y conmutan por error automáticamente",
-          "Cada región está emparejada con una de otra geografía",
+          "Cada región está emparejada con otra de una geografía distinta",
           "Los pares de regiones eliminan la necesidad de zonas de disponibilidad"
         ],
         explain: "Los pares reciben actualizaciones escalonadas y recuperación prioritaria, suelen estar a más de 300 millas y permanecen en la misma geografía (Brasil Sur es la excepción). No todos los servicios replican automáticamente."
@@ -300,13 +300,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Compute",
       q: "A support team wants to deliver full Windows desktops to many users from Azure, with apps and data kept in Azure-hosted sessions instead of on local devices. Which service fits?",
-      options: ["Azure Virtual Desktop", "Azure Functions", "Azure Container Apps", "Azure Virtual Machine Scale Sets"],
+      options: ["Azure Virtual Desktop", "Azure Functions", "Windows VMs with RDP for each user", "Azure Bastion"],
       answer: 0,
       explain: "Azure Virtual Desktop centralizes desktop and app delivery, supports single- and multi-session and keeps data in Azure.",
       es: {
         topic: "Proceso",
         q: "Un equipo de soporte quiere ofrecer escritorios Windows completos a muchos usuarios desde Azure, con aplicaciones y datos en sesiones hospedadas en Azure en lugar de en los dispositivos locales. ¿Qué servicio corresponde?",
-        options: ["Azure Virtual Desktop", "Azure Functions", "Azure Container Apps", "Azure Virtual Machine Scale Sets"],
+        options: ["Azure Virtual Desktop", "Azure Functions", "Máquinas virtuales Windows con RDP para cada usuario", "Azure Bastion"],
         explain: "Azure Virtual Desktop centraliza la entrega de escritorios y aplicaciones, admite sesión única y multisesión, y mantiene los datos en Azure."
       }
     },
@@ -339,13 +339,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Identity and security",
       q: "Which Azure service manages the security posture of resources across Azure, on-premises and other clouds, with recommendations and threat protection?",
-      options: ["Microsoft Defender for Cloud", "Azure Key Vault", "Microsoft Entra Connect", "Microsoft Entra Conditional Access"],
+      options: ["Microsoft Defender for Cloud", "Microsoft Sentinel", "Azure Policy", "Azure Advisor"],
       answer: 0,
       explain: "Defender for Cloud manages security posture and extends protections to other clouds; Key Vault stores secrets, keys and certificates.",
       es: {
         topic: "Identidad y seguridad",
         q: "¿Qué servicio de Azure administra la postura de seguridad de los recursos en Azure, en el entorno local y en otras nubes, con recomendaciones y protección contra amenazas?",
-        options: ["Microsoft Defender for Cloud", "Azure Key Vault", "Microsoft Entra Connect", "Acceso condicional de Microsoft Entra"],
+        options: ["Microsoft Defender for Cloud", "Microsoft Sentinel", "Azure Policy", "Azure Advisor"],
         explain: "Defender for Cloud administra la postura de seguridad y extiende sus protecciones a otras nubes; Key Vault guarda secretos, claves y certificados."
       }
     },
@@ -372,7 +372,7 @@ Catalog.pathQuiz("az-900", "architecture", {
         "Everything beneath that management group",
         "Only the management group object itself",
         "Only resources created after the assignment",
-        "Only subscriptions in the same region"
+        "Only subscriptions directly under it, not their resources"
       ],
       answer: 0,
       explain: "Permissions on a management group are inherited by everything beneath it, so you don't assign them one by one.",
@@ -383,7 +383,7 @@ Catalog.pathQuiz("az-900", "architecture", {
           "A todo lo que está debajo de ese grupo de administración",
           "Solo al objeto del grupo de administración",
           "Solo a los recursos creados después de asignarlo",
-          "Solo a las suscripciones de la misma región"
+          "Solo las suscripciones directamente debajo, no sus recursos"
         ],
         explain: "Los permisos de un grupo de administración los hereda todo lo que está debajo, así que no hace falta asignarlos uno por uno."
       }
@@ -417,13 +417,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Identity and security",
       q: "A partner organization's users need access to a shared Teams channel through a mutual trust, without being added to your directory as guests. Which capability fits?",
-      options: ["B2B direct connect", "B2B collaboration", "Microsoft Entra Domain Services", "Conditional Access"],
+      options: ["B2B direct connect", "B2B collaboration", "Microsoft Entra Domain Services", "Microsoft Entra Connect"],
       answer: 0,
       explain: "B2B direct connect sets up a two-way trust with another Entra tenant and currently supports Teams shared channels; users don't appear in your directory.",
       es: {
         topic: "Identidad y seguridad",
         q: "Los usuarios de una organización asociada necesitan acceder a un canal compartido de Teams mediante una confianza mutua, sin agregarse a su directorio como invitados. ¿Qué capacidad corresponde?",
-        options: ["Conexión directa B2B", "Colaboración B2B", "Microsoft Entra Domain Services", "Acceso condicional"],
+        options: ["Conexión directa B2B", "Colaboración B2B", "Microsoft Entra Domain Services", "Microsoft Entra Connect"],
         explain: "La conexión directa B2B establece una confianza bidireccional con otro inquilino de Entra y actualmente admite canales compartidos de Teams; los usuarios no aparecen en su directorio."
       }
     },
@@ -431,13 +431,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Networking",
       q: "A company wants an Azure SQL resource reachable only from inside its virtual network, using a private IP address from the VNet's address space. What should it use?",
-      options: ["A private endpoint", "A public endpoint", "A public load balancer", "Azure DNS alias records"],
+      options: ["A private endpoint", "A public endpoint", "A service endpoint", "Virtual network peering"],
       answer: 0,
       explain: "Private endpoints live inside a VNet with a private IP. Public endpoints have a public IP reachable from anywhere.",
       es: {
         topic: "Redes",
         q: "Una empresa quiere que un recurso de Azure SQL solo sea accesible desde su red virtual, con una IP privada del espacio de direcciones de la red. ¿Qué debe usar?",
-        options: ["Un punto de conexión privado", "Un punto de conexión público", "Un equilibrador de carga público", "Registros de alias de Azure DNS"],
+        options: ["Un punto de conexión privado", "Un punto de conexión público", "Un punto de conexión de servicio", "El emparejamiento de redes virtuales"],
         explain: "Los puntos de conexión privados están dentro de una red virtual con una IP privada. Los públicos tienen una IP pública accesible desde cualquier lugar."
       }
     },
@@ -459,13 +459,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "multi",
       topic: "Core architecture",
       q: "Which two are required to create an Azure free account?",
-      options: ["A phone number", "A credit card for identity verification", "An Enterprise Agreement", "An existing paid subscription", "A Microsoft Entra ID P2 license"],
+      options: ["A phone number", "A credit card for identity verification", "An Azure subscription created by a partner", "A Microsoft 365 license", "A business email domain"],
       answers: [0, 1],
       explain: "The free account requires a phone number, a card for verification and a Microsoft or GitHub account. The student offer doesn't need a card.",
       es: {
         topic: "Arquitectura principal",
         q: "¿Cuáles son dos requisitos para crear una cuenta gratuita de Azure?",
-        options: ["Un número de teléfono", "Una tarjeta de crédito para verificar la identidad", "Un Contrato Enterprise", "Una suscripción paga existente", "Una licencia de Microsoft Entra ID P2"],
+        options: ["Un número de teléfono", "Una tarjeta de crédito para verificar la identidad", "Una suscripción de Azure creada por un partner", "Una licencia de Microsoft 365", "Un dominio de correo empresarial"],
         explain: "La cuenta gratuita requiere un número de teléfono, una tarjeta para verificación y una cuenta de Microsoft o GitHub. La oferta para estudiantes no necesita tarjeta."
       }
     },
@@ -473,13 +473,13 @@ Catalog.pathQuiz("az-900", "architecture", {
       type: "single",
       topic: "Networking",
       q: "A company uses ExpressRoute and wants a backup path so connectivity continues if the circuit fails. What can it add?",
-      options: ["A site-to-site VPN gateway as failover", "A second resource group in another region", "A network security group", "Azure DNS alias records"],
+      options: ["A site-to-site VPN gateway as failover", "Virtual network peering to the datacenter", "ExpressRoute Global Reach", "A point-to-site VPN for each server"],
       answer: 0,
       explain: "A VPN gateway over the internet can serve as a secure failover path for ExpressRoute.",
       es: {
         topic: "Redes",
         q: "Una empresa usa ExpressRoute y quiere una ruta de respaldo para que la conectividad continúe si falla el circuito. ¿Qué puede agregar?",
-        options: ["Una VPN de sitio a sitio de respaldo", "Un segundo grupo de recursos", "Un grupo de seguridad de red", "Registros de alias de Azure DNS que apunten a otra región"],
+        options: ["Una VPN de sitio a sitio de respaldo", "El emparejamiento de redes virtuales con el centro de datos", "ExpressRoute Global Reach", "Una VPN de punto a sitio para cada servidor"],
         explain: "Una puerta de enlace VPN por internet puede servir como ruta segura de conmutación por error para ExpressRoute."
       }
     }

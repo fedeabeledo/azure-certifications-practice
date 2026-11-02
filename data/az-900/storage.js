@@ -50,13 +50,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Data migration",
         q: "A company needs to move 70 TB of data to Azure once, but its internet bandwidth is limited. What should it use?",
-        options: ["AzCopy over the internet", "Azure Data Box", "Azure File Sync", "Azure Storage Explorer"],
+        options: ["AzCopy over the internet", "Azure Data Box", "Azure File Sync", "Azure Migrate"],
         answer: 1,
         explain: "Data Box is a physical device shipped to you, ideal for tens of terabytes when bandwidth is limited. AzCopy and Storage Explorer transfer over the network.",
         es: {
           topic: "Migración de datos",
           q: "Una empresa necesita trasladar 70 TB de datos a Azure una sola vez, pero su ancho de banda de internet es limitado. ¿Qué debe usar?",
-          options: ["AzCopy por internet", "Azure Data Box", "Azure File Sync", "Explorador de Azure Storage"],
+          options: ["AzCopy por internet", "Azure Data Box", "Azure File Sync", "Azure Migrate"],
           explain: "Data Box es un dispositivo físico que se envía al cliente, ideal para decenas de terabytes cuando el ancho de banda es limitado. AzCopy y el Explorador de Storage transfieren por la red."
         }
       },
@@ -144,13 +144,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Storage services",
         q: "Application components need to exchange millions of messages for asynchronous processing. Which storage service fits?",
-        options: ["Azure Blobs", "Azure Queues", "Azure Tables", "Azure Disks"],
+        options: ["Azure Blobs", "Azure Queues", "Azure Tables", "Azure Files"],
         answer: 1,
         explain: "Queue storage holds large numbers of messages for asynchronous processing and is often paired with Azure Functions.",
         es: {
           topic: "Servicios de almacenamiento",
           q: "Los componentes de una aplicación necesitan intercambiar millones de mensajes para procesarlos de forma asíncrona. ¿Qué servicio de almacenamiento corresponde?",
-          options: ["Azure Blobs", "Azure Queues", "Azure Tables", "Azure Disks"],
+          options: ["Azure Blobs", "Azure Queues", "Azure Tables", "Azure Files"],
           explain: "Queue Storage guarda grandes cantidades de mensajes para procesamiento asíncrono y suele combinarse con Azure Functions."
         }
       },
@@ -172,13 +172,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "File movement",
         q: "An administrator on macOS wants a graphical interface to upload, download and move blobs between storage accounts. What should the administrator use?",
-        options: ["The AzCopy command-line tool", "Azure Storage Explorer", "Azure File Sync", "Azure Data Box"],
+        options: ["The AzCopy command-line tool", "Azure Storage Explorer", "Azure Cloud Shell", "Azure File Sync"],
         answer: 1,
         explain: "Storage Explorer is a standalone GUI app for Windows, macOS and Linux that uses AzCopy behind the scenes.",
         es: {
           topic: "Movimiento de archivos",
           q: "Un administrador en macOS quiere una interfaz gráfica para subir, descargar y mover blobs entre cuentas de almacenamiento. ¿Qué debe usar?",
-          options: ["La herramienta de línea de comandos AzCopy", "Explorador de Azure Storage", "Azure File Sync", "Azure Data Box"],
+          options: ["La herramienta de línea de comandos AzCopy", "Explorador de Azure Storage", "Azure Cloud Shell", "Azure File Sync"],
           explain: "El Explorador de Storage es una aplicación gráfica independiente para Windows, macOS y Linux que usa AzCopy por detrás."
         }
       },
@@ -186,13 +186,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Storage services",
         q: "A migrated application needs a managed SMB file share that Windows, Linux and macOS clients can mount, with no servers to patch. What should you use?",
-        options: ["Azure Files", "Azure Disks", "Azure Tables", "Azure Queues"],
+        options: ["Azure Files", "Azure Disks", "Azure Disks shared across VMs", "Azure Blob Storage with NFS"],
         answer: 0,
         explain: "Azure Files offers fully managed SMB and NFS shares; SMB shares are reachable from Windows, Linux and macOS.",
         es: {
           topic: "Servicios de almacenamiento",
           q: "Una aplicación migrada necesita un recurso compartido SMB administrado que puedan montar clientes Windows, Linux y macOS, sin servidores a los que aplicar parches. ¿Qué debe usar?",
-          options: ["Azure Files", "Azure Disks", "Azure Tables", "Azure Queues"],
+          options: ["Azure Files", "Azure Disks", "Azure Disks compartidos entre máquinas virtuales", "Azure Blob Storage con NFS"],
           explain: "Azure Files ofrece recursos compartidos SMB y NFS totalmente administrados; los SMB son accesibles desde Windows, Linux y macOS."
         }
       },
@@ -264,7 +264,7 @@ Catalog.module("az-900", {
               "https://contoso.queue.core.windows.net",
               "https://queue.contoso.core.windows.net",
               "https://contoso.blob.core.windows.net/queue",
-              "https://core.windows.net/contoso/queue"
+              "https://contoso.queues.azure.com"
             ],
             answer: 0,
             explain: "Endpoints combine the account name and the service: <account>.blob, .dfs, .file, .queue or .table followed by core.windows.net.",
@@ -274,7 +274,7 @@ Catalog.module("az-900", {
                 "https://contoso.queue.core.windows.net",
                 "https://queue.contoso.core.windows.net",
                 "https://contoso.blob.core.windows.net/queue",
-                "https://core.windows.net/contoso/queue"
+                "https://contoso.queues.azure.com"
               ],
               explain: "Los puntos de conexión combinan el nombre de la cuenta y el servicio: <cuenta>.blob, .dfs, .file, .queue o .table seguido de core.windows.net."
             }
@@ -557,12 +557,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team needs to store large amounts of structured, non-relational data in a NoSQL store. Which service fits?",
-            options: ["Azure Tables", "Azure Disks", "Azure Queues", "Azure Files"],
+            options: ["Azure Tables", "Azure Blobs", "Azure Queues", "Azure SQL Database"],
             answer: 0,
             explain: "Azure Table storage is a NoSQL store for structured, non-relational data.",
             es: {
               q: "Un equipo necesita guardar grandes cantidades de datos estructurados no relacionales en un almacén NoSQL. ¿Qué servicio corresponde?",
-              options: ["Azure Tables", "Azure Disks", "Azure Queues", "Azure Files"],
+              options: ["Azure Tables", "Azure Blobs", "Azure Queues", "Azure SQL Database"],
               explain: "Azure Table Storage es un almacén NoSQL para datos estructurados no relacionales."
             }
           },
@@ -572,9 +572,9 @@ Catalog.module("az-900", {
             options: [
               "Data is encrypted automatically",
               "Azure maintains the hardware",
-              "Data is only accessible from inside Azure",
-              "Customers patch the storage servers themselves during maintenance windows",
-              "Storage can't scale beyond the capacity of a single region"
+              "Customers choose the physical disks used",
+              "Every account includes unlimited free egress",
+              "Archive tier data can be read instantly"
             ],
             answers: [0, 1],
             explain: "Azure Storage is durable, secure (encrypted by default), scalable, managed and accessible globally over HTTP or HTTPS.",
@@ -583,9 +583,9 @@ Catalog.module("az-900", {
               options: [
                 "Los datos se cifran automáticamente",
                 "Azure mantiene el hardware",
-                "Los datos solo son accesibles desde dentro de Azure",
-                "Los clientes aplican parches a los servidores de almacenamiento en ventanas de mantenimiento",
-                "El almacenamiento no puede escalar más allá de la capacidad de una región"
+                "Los clientes eligen los discos físicos que se usan",
+                "Cada cuenta incluye salida de datos gratuita ilimitada",
+                "Los datos del nivel de archivo se pueden leer al instante"
               ],
               explain: "Azure Storage es duradero, seguro (cifrado por defecto), escalable, administrado y accesible globalmente por HTTP o HTTPS."
             }
@@ -593,12 +593,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Messages placed in Azure Queue storage need to trigger background actions automatically. Which service is commonly paired with Queue storage for this?",
-            options: ["Azure Functions", "Azure Data Box", "Azure DNS", "Azure Virtual Desktop"],
+            options: ["Azure Functions", "Azure Event Hubs", "Azure File Sync", "Azure Data Factory"],
             answer: 0,
             explain: "Queue storage is commonly paired with Azure Functions so messages trigger background actions.",
             es: {
               q: "Los mensajes que se colocan en Azure Queue Storage deben activar acciones en segundo plano automáticamente. ¿Qué servicio suele combinarse con Queue Storage para esto?",
-              options: ["Azure Functions", "Azure Data Box", "Azure DNS", "Azure Virtual Desktop"],
+              options: ["Azure Functions", "Azure Event Hubs", "Azure File Sync", "Azure Data Factory"],
               explain: "Queue Storage suele combinarse con Azure Functions para que los mensajes activen acciones en segundo plano."
             }
           },
@@ -643,12 +643,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company wants a single portal to assess its on-premises servers, databases and web apps and then migrate them to Azure. What should it use?",
-            options: ["Azure Data Box", "Azure Migrate", "Azure Storage Explorer", "AzCopy"],
+            options: ["Azure Data Box", "Azure Migrate", "Azure Site Recovery", "Azure Arc"],
             answer: 1,
             explain: "Azure Migrate is a hub for discovery, assessment and migration, with integrated tools for servers, databases and web apps.",
             es: {
               q: "Una empresa quiere un único portal para evaluar sus servidores, bases de datos y aplicaciones web locales y luego migrarlos a Azure. ¿Qué debe usar?",
-              options: ["Azure Data Box", "Azure Migrate", "Explorador de Azure Storage", "AzCopy"],
+              options: ["Azure Data Box", "Azure Migrate", "Azure Site Recovery", "Azure Arc"],
               explain: "Azure Migrate es un centro de detección, evaluación y migración, con herramientas integradas para servidores, bases de datos y aplicaciones web."
             }
           },
@@ -682,7 +682,7 @@ Catalog.module("az-900", {
               "A Data Box device has a maximum usable storage capacity of ",
               { options: ["8 terabytes", "80 terabytes", "800 terabytes"], answer: 1 },
               ", and after an import its disks are wiped in accordance with ",
-              { options: ["NIST 800-88r1", "ISO 27001", "SOC 2"], answer: 0 },
+              { options: ["NIST 800-88r1", "FIPS 140-2", "SOC 2"], answer: 0 },
               " standards."
             ],
             explain: "Data Box holds up to 80 TB usable, and disks are wiped following NIST 800-88r1 once the import is uploaded.",
@@ -692,7 +692,7 @@ Catalog.module("az-900", {
                 "Un dispositivo Data Box tiene una capacidad de almacenamiento utilizable máxima de ",
                 { options: ["8 terabytes", "80 terabytes", "800 terabytes"] },
                 ", y después de una importación sus discos se borran según los estándares ",
-                { options: ["NIST 800-88r1", "ISO 27001", "SOC 2"] },
+                { options: ["NIST 800-88r1", "FIPS 140-2", "SOC 2"] },
                 "."
               ],
               explain: "Data Box admite hasta 80 TB utilizables, y los discos se borran según NIST 800-88r1 una vez que se cargan los datos importados."
@@ -705,8 +705,8 @@ Catalog.module("az-900", {
               "One-time bulk migration of on-premises data to Azure",
               "Periodic large uploads where online transfer is too slow",
               "Real-time replication of a production database",
-              "Bi-directional synchronization of a file server",
-              "Copying a single file from the command line"
+              "Ongoing synchronization of a branch file server",
+              "Small daily uploads over a fast connection"
             ],
             answers: [0, 1],
             explain: "Data Box handles bulk one-time migrations, periodic large uploads and large exports. Real-time sync and single-file copies use other tools.",
@@ -716,8 +716,8 @@ Catalog.module("az-900", {
                 "Una migración masiva única de datos locales a Azure",
                 "Cargas grandes periódicas cuando la transferencia en línea es demasiado lenta",
                 "La replicación en tiempo real de una base de datos de producción",
-                "La sincronización bidireccional de un servidor de archivos",
-                "Copiar un solo archivo desde la línea de comandos"
+                "La sincronización continua de un servidor de archivos de una sucursal",
+                "Cargas diarias chicas por una conexión rápida"
               ],
               explain: "Data Box sirve para migraciones masivas únicas, cargas grandes periódicas y exportaciones grandes. La sincronización en tiempo real y las copias de archivos sueltos usan otras herramientas."
             }
@@ -778,7 +778,7 @@ Catalog.module("az-900", {
               "Bi-directionally, based on timestamps",
               "One way, from source to destination",
               "Bi-directionally, comparing file metadata on both sides",
-              "Only when triggered by Azure File Sync"
+              "One way, from destination back to source"
             ],
             answer: 1,
             explain: "AzCopy sync is one-direction: you choose source and destination. It doesn't sync bi-directionally.",
@@ -788,7 +788,7 @@ Catalog.module("az-900", {
                 "En ambos sentidos, según las marcas de tiempo",
                 "En un sentido, del origen al destino",
                 "En ambos sentidos, comparando los metadatos de los archivos en cada lado",
-                "Solo cuando la activa Azure File Sync"
+                "En un solo sentido, desde el destino hacia el origen"
               ],
               explain: "La sincronización de AzCopy es en un solo sentido: usted elige origen y destino. No sincroniza en ambos sentidos."
             }
@@ -796,24 +796,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company wants frequently accessed files to stay on its local Windows server while infrequently accessed files are kept in Azure until requested. Which Azure File Sync feature provides this?",
-            options: ["Cloud tiering", "One-direction sync", "Data Box import", "Alias records"],
+            options: ["Cloud tiering", "Blob lifecycle management to the cool tier", "Azure Data Box import", "AzCopy sync on a schedule"],
             answer: 0,
             explain: "Cloud tiering keeps the most frequently accessed files local and leaves the rest in the cloud until someone needs them.",
             es: {
               q: "Una empresa quiere que los archivos más usados queden en su servidor Windows local mientras los poco usados se guardan en Azure hasta que se soliciten. ¿Qué característica de Azure File Sync lo permite?",
-              options: ["La organización en niveles en la nube", "La sincronización en un solo sentido", "La importación con Data Box", "Los registros de alias"],
+              options: ["La organización en niveles en la nube", "La administración del ciclo de vida de blobs al nivel esporádico", "La importación con Azure Data Box", "La sincronización programada con AzCopy"],
               explain: "La organización en niveles en la nube mantiene locales los archivos más usados y deja el resto en la nube hasta que alguien los necesite."
             }
           },
           {
             type: "single",
             q: "What does Azure Storage Explorer use behind the scenes to perform file and blob management tasks?",
-            options: ["Azure File Sync", "AzCopy", "Azure Data Box", "Azure Migrate"],
+            options: ["Azure File Sync", "AzCopy", "The Azure CLI", "Azure PowerShell"],
             answer: 1,
             explain: "Storage Explorer is a GUI that uses AzCopy on the back end.",
             es: {
               q: "¿Qué usa por detrás el Explorador de Azure Storage para realizar las tareas de administración de archivos y blobs?",
-              options: ["Azure File Sync", "AzCopy", "Azure Data Box", "Azure Migrate"],
+              options: ["Azure File Sync", "AzCopy", "La CLI de Azure", "Azure PowerShell"],
               explain: "El Explorador de Storage es una interfaz gráfica que usa AzCopy internamente."
             }
           },
@@ -823,9 +823,9 @@ Catalog.module("az-900", {
             options: [
               "Access data locally over SMB, NFS or FTPS",
               "Replace a failed local server with a new one",
-              "Copy blobs between two cloud providers from the command line",
-              "Ship data offline on a physical device when bandwidth is limited",
-              "Run the sync agent only on Linux servers with NFS enabled"
+              "Synchronize blobs between storage accounts",
+              "Move 80 TB offline on a physical device",
+              "Sync files to Azure Blob Storage containers"
             ],
             answers: [0, 1],
             explain: "File Sync supports local access with Windows Server protocols, many caches worldwide, easy server replacement and cloud tiering.",
@@ -834,9 +834,9 @@ Catalog.module("az-900", {
               options: [
                 "Acceder a los datos localmente por SMB, NFS o FTPS",
                 "Reemplazar un servidor local que falló por uno nuevo",
-                "Copiar blobs entre dos proveedores de nube desde la línea de comandos",
-                "Enviar datos sin conexión en un dispositivo físico cuando el ancho de banda es limitado",
-                "Ejecutar el agente de sincronización solo en servidores Linux con NFS"
+                "Sincronizar blobs entre cuentas de almacenamiento",
+                "Mover 80 TB sin conexión en un dispositivo físico",
+                "Sincronizar archivos con contenedores de Azure Blob Storage"
               ],
               explain: "File Sync admite el acceso local con protocolos de Windows Server, muchas cachés en todo el mundo, reemplazo sencillo de servidores y organización en niveles en la nube."
             }
