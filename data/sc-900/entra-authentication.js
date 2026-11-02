@@ -25,13 +25,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Multifactor authentication",
         q: "A small company on Microsoft Entra ID Free wants to require MFA for administrators and block legacy authentication at no extra cost. What should it use?",
-        options: ["Conditional Access policies", "Security defaults", "Privileged Identity Management", "Custom banned password lists"],
+        options: ["Conditional Access policies", "Security defaults", "Privileged Identity Management", "Microsoft Entra ID Protection risk policies"],
         answer: 1,
         explain: "Security defaults enforce MFA registration, MFA for admins and block legacy authentication at no extra cost. Conditional Access requires P1 or P2.",
         es: {
           topic: "Autenticación multifactor",
           q: "Una empresa pequeña con Microsoft Entra ID Free quiere exigir MFA a los administradores y bloquear la autenticación heredada sin costo adicional. ¿Qué debe usar?",
-          options: ["Directivas de acceso condicional", "Valores predeterminados de seguridad", "Privileged Identity Management", "Listas personalizadas de contraseñas prohibidas"],
+          options: ["Directivas de acceso condicional", "Valores predeterminados de seguridad", "Privileged Identity Management", "Las directivas de riesgo de Microsoft Entra ID Protection"],
           explain: "Los valores predeterminados de seguridad exigen el registro en MFA, MFA para administradores y bloquean la autenticación heredada sin costo adicional. El acceso condicional requiere P1 o P2."
         }
       },
@@ -39,13 +39,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Self-service password reset",
         q: "A user lost their phone and has no other registered authentication method. Which Microsoft Entra capability helps them regain access without help desk judgment?",
-        options: ["Self-service password reset with security questions", "Account recovery", "A custom banned password list", "Security defaults"],
+        options: ["Self-service password reset with security questions", "Account recovery", "A Temporary Access Pass the user issues to themselves", "Security defaults"],
         answer: 1,
         explain: "SSPR needs at least one registered method. Account recovery re-establishes trust through a certified identity verification provider, such as Verified ID with Face Check.",
         es: {
           topic: "Autoservicio de restablecimiento de contraseña",
           q: "Un usuario perdió su teléfono y no tiene otro método de autenticación registrado. ¿Qué capacidad de Microsoft Entra le permite recuperar el acceso sin depender del criterio del soporte técnico?",
-          options: ["El autoservicio de restablecimiento de contraseña con preguntas de seguridad", "La recuperación de cuentas", "Una lista personalizada de contraseñas prohibidas", "Los valores predeterminados de seguridad"],
+          options: ["El autoservicio de restablecimiento de contraseña con preguntas de seguridad", "La recuperación de cuentas", "Un pase de acceso temporal que el propio usuario se emite", "Los valores predeterminados de seguridad"],
           explain: "SSPR necesita al menos un método registrado. La recuperación de cuentas restablece la confianza mediante un proveedor certificado de verificación de identidad, como Verified ID con Face Check."
         }
       },
@@ -118,13 +118,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Authentication methods",
         q: "A new employee has no credentials yet and needs to sign in once to register a passkey. What should an administrator issue?",
-        options: ["A Temporary Access Pass", "An email one-time passcode", "A security question", "A custom banned password"],
+        options: ["A Temporary Access Pass", "An email one-time passcode", "A security question", "A self-service password reset link"],
         answer: 0,
         explain: "TAP is a time-limited passcode used to sign in and register other methods, including passwordless ones.",
         es: {
           topic: "Métodos de autenticación",
           q: "Un empleado nuevo todavía no tiene credenciales y necesita iniciar sesión una vez para registrar una clave de acceso. ¿Qué debe emitir un administrador?",
-          options: ["Un pase de acceso temporal", "Un código de un solo uso por correo", "Una pregunta de seguridad", "Una contraseña prohibida personalizada"],
+          options: ["Un pase de acceso temporal", "Un código de un solo uso por correo", "Una pregunta de seguridad", "Un vínculo de autoservicio de restablecimiento de contraseña"],
           explain: "El pase de acceso temporal (TAP) es un código con límite de tiempo que sirve para iniciar sesión y registrar otros métodos, incluidos los sin contraseña."
         }
       },
@@ -158,13 +158,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Password protection",
         q: "An attacker tries the password Summer2026! against thousands of accounts, a few attempts each, to avoid lockouts. Which Microsoft Entra capability is designed to block the passwords used in this attack?",
-        options: ["Password protection", "Smart lockout with a Temporary Access Pass", "Password writeback", "QR code authentication"],
+        options: ["Password protection", "Smart lockout with a Temporary Access Pass", "Password writeback", "Number matching in security defaults"],
         answer: 0,
         explain: "This is password spray. The global banned password list is built from telemetry on real password spray attacks.",
         es: {
           topic: "Protección de contraseñas",
           q: "Un atacante prueba la contraseña Verano2026! contra miles de cuentas, pocos intentos por cada una, para evitar bloqueos. ¿Qué capacidad de Microsoft Entra está pensada para bloquear las contraseñas de este ataque?",
-          options: ["La protección de contraseñas", "El bloqueo inteligente con un pase de acceso temporal", "La escritura diferida de contraseñas", "La autenticación con código QR"],
+          options: ["La protección de contraseñas", "El bloqueo inteligente con un pase de acceso temporal", "La escritura diferida de contraseñas", "La coincidencia de números de los valores predeterminados de seguridad"],
           explain: "Esto es una difusión de contraseñas (password spray). La lista global de contraseñas prohibidas se construye con telemetría de ataques reales de este tipo."
         }
       },
@@ -311,7 +311,7 @@ Catalog.module("sc-900", {
               "An open standard for time-based codes",
               "A Microsoft protocol for federating cloud apps with on-premises AD FS",
               "A biometric standard used by Windows Hello",
-              "A list of banned passwords"
+              "The FIDO2 standard for hardware security keys"
             ],
             answer: 0,
             explain: "OATH specifies how time-based one-time password codes are generated, in software apps or hardware tokens.",
@@ -321,7 +321,7 @@ Catalog.module("sc-900", {
                 "Un estándar abierto para códigos basados en el tiempo",
                 "Un protocolo de Microsoft para federar aplicaciones en la nube con AD FS local",
                 "Un estándar biométrico que usa Windows Hello",
-                "Una lista de contraseñas prohibidas"
+                "El estándar FIDO2 para llaves de seguridad de hardware"
               ],
               explain: "OATH especifica cómo se generan los códigos de contraseña de un solo uso basados en el tiempo, en aplicaciones de software o tokens de hardware."
             }
@@ -357,7 +357,7 @@ Catalog.module("sc-900", {
             q: "A user signs in with a password and then approves a prompt with their fingerprint on their phone. Which categories of factors were used?",
             options: [
               "Something you know, something you have and something you are",
-              "Only something you know",
+              "Something you know and something you have, but nothing you are",
               "Something you know and something you are, but nothing you have",
               "Only something you have"
             ],
@@ -367,7 +367,7 @@ Catalog.module("sc-900", {
               q: "Un usuario inicia sesión con una contraseña y luego aprueba una notificación con su huella en el teléfono. ¿Qué categorías de factores usó?",
               options: [
                 "Algo que sabe, algo que tiene y algo que es",
-                "Solo algo que sabe",
+                "Algo que sabe y algo que tiene, pero nada que es",
                 "Algo que sabe y algo que es, pero nada que tenga",
                 "Solo algo que tiene"
               ],
@@ -412,24 +412,24 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two can be used as verification methods for Microsoft Entra multifactor authentication?",
-            options: ["OATH hardware token", "Temporary Access Pass", "Security questions", "A second password", "Email one-time passcode"],
+            options: ["OATH hardware token", "Temporary Access Pass", "Security questions", "An app password generated in My Account", "Email one-time passcode"],
             answers: [0, 1],
             explain: "MFA methods include Authenticator, Windows Hello, passkeys, CBA, external methods, TAP, OATH tokens, SMS and voice. Security questions and email OTP are for SSPR.",
             es: {
               q: "¿Cuáles son dos métodos de verificación que se pueden usar con la autenticación multifactor de Microsoft Entra?",
-              options: ["Token OATH de hardware", "Pase de acceso temporal", "Preguntas de seguridad", "Una segunda contraseña", "Código de un solo uso por correo"],
+              options: ["Token OATH de hardware", "Pase de acceso temporal", "Preguntas de seguridad", "Una contraseña de aplicación generada en Mi cuenta", "Código de un solo uso por correo"],
               explain: "Los métodos de MFA incluyen Authenticator, Windows Hello, claves de acceso, CBA, métodos externos, TAP, tokens OATH, SMS y voz. Las preguntas de seguridad y el código por correo son para SSPR."
             }
           },
           {
             type: "single",
             q: "Attackers bombard a user with MFA push prompts hoping the user approves one out of annoyance. Which measure in security defaults helps prevent this?",
-            options: ["Number matching", "Blocking SMS", "Custom banned password lists for push-enabled users", "Password writeback"],
+            options: ["Number matching", "Blocking SMS", "Limiting push notifications to business hours", "Password writeback"],
             answer: 0,
             explain: "Number matching requires the user to type the number shown on the sign-in screen, preventing MFA fatigue approvals.",
             es: {
               q: "Unos atacantes bombardean a un usuario con notificaciones de MFA esperando que apruebe una por cansancio. ¿Qué medida de los valores predeterminados de seguridad ayuda a evitarlo?",
-              options: ["La coincidencia de números", "El bloqueo de SMS", "Las listas personalizadas de contraseñas prohibidas", "La escritura diferida de contraseñas"],
+              options: ["La coincidencia de números", "El bloqueo de SMS", "Limitar las notificaciones push al horario laboral", "La escritura diferida de contraseñas"],
               explain: "La coincidencia de números exige que el usuario escriba el número que aparece en la pantalla de inicio de sesión, lo que evita aprobaciones por fatiga de MFA."
             }
           },
@@ -498,12 +498,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A hybrid organization wants passwords that users reset in the cloud to apply immediately to their on-premises Active Directory accounts. What should be enabled?",
-            options: ["Password writeback", "The custom banned password list", "Security defaults", "Number matching"],
+            options: ["Password writeback", "Password hash synchronization", "Security defaults", "Number matching"],
             answer: 0,
             explain: "Password writeback writes password changes from Entra ID back to on-premises AD.",
             es: {
               q: "Una organización híbrida quiere que las contraseñas que los usuarios restablecen en la nube se apliquen de inmediato a sus cuentas de Active Directory local. ¿Qué debe habilitar?",
-              options: ["La escritura diferida de contraseñas", "La lista personalizada de contraseñas prohibidas", "Los valores predeterminados de seguridad", "La coincidencia de números"],
+              options: ["La escritura diferida de contraseñas", "La sincronización de hash de contraseñas", "Los valores predeterminados de seguridad", "La coincidencia de números"],
               explain: "La escritura diferida de contraseñas escribe los cambios de contraseña de Entra ID en el AD local."
             }
           },
@@ -535,9 +535,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about SSPR configuration.",
             parts: [
               "Administrators set the number of methods required to reset a password to ",
-              { options: ["one or two", "three or four", "exactly five"], answer: 0 },
+              { options: ["one or two", "three or four", "two or three"], answer: 0 },
               ", and can require users to reconfirm their information every ",
-              { options: ["0 to 730 days", "1 to 7 days", "5 years at most"], answer: 0 },
+              { options: ["0 to 730 days", "1 to 7 days", "1 to 365 days"], answer: 0 },
               "."
             ],
             explain: "One or two methods can be required, and reconfirmation can be set between 0 and 730 days.",
@@ -545,9 +545,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre la configuración de SSPR.",
               parts: [
                 "Los administradores definen que la cantidad de métodos necesarios para restablecer una contraseña sea ",
-                { options: ["uno o dos", "tres o cuatro", "exactamente cinco"] },
+                { options: ["uno o dos", "tres o cuatro", "dos o tres"] },
                 ", y pueden exigir que los usuarios reconfirmen su información cada ",
-                { options: ["0 a 730 días", "1 a 7 días", "5 años como máximo"] },
+                { options: ["0 a 730 días", "1 a 7 días", "1 a 365 días"] },
                 "."
               ],
               explain: "Se pueden exigir uno o dos métodos, y la reconfirmación se puede configurar entre 0 y 730 días."
@@ -582,12 +582,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Contoso wants to stop users from choosing passwords containing its brand name and headquarters city. What should it configure?",
-            options: ["A custom banned password list", "The global banned password list", "Security defaults", "A Temporary Access Pass"],
+            options: ["A custom banned password list", "The global banned password list", "Security defaults", "Smart lockout"],
             answer: 0,
             explain: "Custom banned password lists hold organization-specific terms like brand names, products and locations. The global list isn't configurable.",
             es: {
               q: "Contoso quiere impedir que los usuarios elijan contraseñas que contengan su marca y la ciudad de su sede. ¿Qué debe configurar?",
-              options: ["Una lista personalizada de contraseñas prohibidas", "La lista global de contraseñas prohibidas", "Los valores predeterminados de seguridad", "Un pase de acceso temporal"],
+              options: ["Una lista personalizada de contraseñas prohibidas", "La lista global de contraseñas prohibidas", "Los valores predeterminados de seguridad", "El bloqueo inteligente"],
               explain: "Las listas personalizadas contienen términos propios de la organización, como marcas, productos y ubicaciones. La lista global no se configura."
             }
           },

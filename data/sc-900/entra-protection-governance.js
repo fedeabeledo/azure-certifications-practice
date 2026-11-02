@@ -64,13 +64,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Microsoft Entra Verified ID",
         q: "A user's identity was confirmed during account recovery with a government ID and Face Check. What does the user receive to sign in and re-register authentication methods?",
-        options: ["A Temporary Access Pass", "A new security question", "A permanent Global administrator role", "A custom banned password"],
+        options: ["A Temporary Access Pass", "A new security question", "A self-service password reset link", "An external authentication method"],
         answer: 0,
         explain: "After verification, a verifiable credential goes into Authenticator and the user gets a TAP to sign in and re-register methods.",
         es: {
           topic: "Microsoft Entra Verified ID",
           q: "La identidad de un usuario se confirmó en la recuperación de cuentas con un documento oficial y Face Check. ¿Qué recibe el usuario para iniciar sesión y volver a registrar sus métodos de autenticación?",
-          options: ["Un pase de acceso temporal", "Una nueva pregunta de seguridad", "El rol de administrador global de forma permanente", "Una contraseña prohibida personalizada"],
+          options: ["Un pase de acceso temporal", "Una nueva pregunta de seguridad", "Un vínculo de autoservicio de restablecimiento de contraseña", "Un método de autenticación externo"],
           explain: "Después de la verificación, se emite una credencial verificable en Authenticator y el usuario recibe un TAP para iniciar sesión y volver a registrar métodos."
         }
       },
@@ -95,9 +95,9 @@ Catalog.module("sc-900", {
         q: "Complete the statement about the identity lifecycle.",
         parts: [
           "Many organizations model the identity lifecycle as ",
-          { options: ["join, move and leave", "plan, build and run", "detect, investigate and remediate"], answer: 0 },
+          { options: ["join, move and leave", "request, approve and review", "detect, investigate and remediate"], answer: 0 },
           ", and ID Governance can automate it with ",
-          { options: ["lifecycle workflows", "authentication strengths", "Global Secure Access"], answer: 0 },
+          { options: ["lifecycle workflows", "authentication strengths", "access reviews"], answer: 0 },
           " triggered by events like a start date."
         ],
         explain: "Lifecycle workflows run tasks at key events such as before a new employee starts, when they change status and when they leave.",
@@ -106,9 +106,9 @@ Catalog.module("sc-900", {
           q: "Complete la afirmación sobre el ciclo de vida de la identidad.",
           parts: [
             "Muchas organizaciones modelan el ciclo de vida de la identidad como ",
-            { options: ["incorporación, cambio y salida", "planificar, construir y operar", "detectar, investigar y corregir"] },
+            { options: ["incorporación, cambio y salida", "solicitar, aprobar y revisar", "detectar, investigar y corregir"] },
             ", y ID Governance puede automatizarlo con ",
-            { options: ["flujos de trabajo de ciclo de vida", "niveles de autenticación", "el acceso seguro global"] },
+            { options: ["flujos de trabajo de ciclo de vida", "niveles de autenticación", "revisiones de acceso"] },
             " que se activan con eventos como la fecha de ingreso."
           ],
           explain: "Los flujos de trabajo de ciclo de vida ejecutan tareas en momentos clave, como antes del ingreso de un empleado, cuando cambia de situación y cuando se va."
@@ -118,13 +118,13 @@ Catalog.module("sc-900", {
         type: "multi",
         topic: "Microsoft Entra Security Copilot integration",
         q: "Which two are Microsoft Entra agents available through Security Copilot?",
-        options: ["Conditional Access Optimization Agent", "Identity Risk Management Agent", "Password Writeback Monitoring Agent", "Azure Cost Agent", "Teams Meeting Compliance Agent"],
+        options: ["Conditional Access Optimization Agent", "Identity Risk Management Agent", "Access Review Agent for guests", "Password Protection Agent", "Teams Meeting Compliance Agent"],
         answers: [0, 1],
         explain: "The Conditional Access Optimization Agent recommends policy improvements; the Identity Risk Management Agent (preview) helps investigate ID Protection risks.",
         es: {
           topic: "Integración de Microsoft Entra con Security Copilot",
           q: "¿Cuáles son dos agentes de Microsoft Entra disponibles mediante Security Copilot?",
-          options: ["Agente de optimización del acceso condicional", "Agente de administración de riesgos de identidad", "Agente de supervisión de la escritura diferida de contraseñas", "Agente de costos de Azure", "Agente de cumplimiento de reuniones de Teams"],
+          options: ["Agente de optimización del acceso condicional", "Agente de administración de riesgos de identidad", "Agente de revisión de acceso para invitados", "Agente de protección de contraseñas", "Agente de cumplimiento de reuniones de Teams"],
           explain: "El agente de optimización del acceso condicional recomienda mejoras en las directivas; el agente de administración de riesgos de identidad (versión preliminar) ayuda a investigar riesgos de ID Protection."
         }
       },
@@ -160,13 +160,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Microsoft Entra ID Protection",
         q: "A company wants users with medium user risk to be automatically remediated by completing a secure password reset. What should it enable?",
-        options: ["Risk-based Conditional Access", "A custom banned password list that forces a password change", "Security defaults only", "An access package"],
+        options: ["Risk-based Conditional Access", "An access review of risky users", "Security defaults", "An access package"],
         answer: 0,
         explain: "Risk-based Conditional Access can require MFA, a strong method or a secure password reset; completing it remediates the risk automatically.",
         es: {
           topic: "Microsoft Entra ID Protection",
           q: "Una empresa quiere que los usuarios con riesgo de usuario medio se corrijan automáticamente completando un restablecimiento seguro de contraseña. ¿Qué debe habilitar?",
-          options: ["Acceso condicional basado en riesgo", "Una lista personalizada de contraseñas prohibidas que fuerce un cambio de contraseña", "Solo los valores predeterminados de seguridad", "Un paquete de acceso"],
+          options: ["Acceso condicional basado en riesgo", "Una revisión de acceso de los usuarios riesgosos", "Los valores predeterminados de seguridad", "Un paquete de acceso"],
           explain: "El acceso condicional basado en riesgo puede exigir MFA, un método seguro o un restablecimiento seguro de contraseña; completarlo corrige el riesgo automáticamente."
         }
       },
@@ -189,13 +189,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Microsoft Entra Security Copilot integration",
         q: "An analyst opens the risky users report in the Microsoft Entra admin center and asks for a summary of one user's risk. Which Security Copilot experience is this?",
-        options: ["The embedded experience", "The standalone experience", "The Security Store", "A lifecycle workflow"],
+        options: ["The embedded experience", "The standalone experience", "The Security Store", "A Conditional Access Optimization Agent run"],
         answer: 0,
         explain: "Embedded experiences build Copilot into Entra admin center workflows, such as summarizing risky users. The standalone experience is the Security Copilot portal.",
         es: {
           topic: "Integración de Microsoft Entra con Security Copilot",
           q: "Un analista abre el informe de usuarios riesgosos en el Centro de administración de Microsoft Entra y pide un resumen del riesgo de un usuario. ¿Qué experiencia de Security Copilot es?",
-          options: ["La experiencia integrada", "La experiencia independiente", "La Security Store", "Un flujo de trabajo de ciclo de vida"],
+          options: ["La experiencia integrada", "La experiencia independiente", "La Security Store", "Una ejecución del agente de optimización del acceso condicional"],
           explain: "Las experiencias integradas incorporan Copilot en los flujos del Centro de administración de Entra, como resumir usuarios riesgosos. La experiencia independiente es el portal de Security Copilot."
         }
       }
@@ -213,12 +213,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A company wants new hires to have accounts in Microsoft Entra ID and Active Directory created automatically from Workday so they're productive on day one. What should it use?",
-            options: ["HR inbound provisioning", "Access reviews scheduled on each start date", "Privileged Identity Management", "Terms of use"],
+            options: ["HR inbound provisioning", "Access reviews scheduled on each start date", "Privileged Identity Management", "Microsoft Entra Cloud Sync"],
             answer: 0,
             explain: "Inbound provisioning from HR sources maintains user identities in Entra ID and AD automatically.",
             es: {
               q: "Una empresa quiere que las cuentas de los nuevos empleados en Microsoft Entra ID y Active Directory se creen automáticamente desde Workday para que sean productivos desde el primer día. ¿Qué debe usar?",
-              options: ["El aprovisionamiento entrante de RR. HH.", "Las revisiones de acceso programadas en cada fecha de ingreso", "Privileged Identity Management", "Los términos de uso"],
+              options: ["El aprovisionamiento entrante de RR. HH.", "Las revisiones de acceso programadas en cada fecha de ingreso", "Privileged Identity Management", "Microsoft Entra Cloud Sync"],
               explain: "El aprovisionamiento entrante desde orígenes de RR. HH. mantiene automáticamente las identidades de usuario en Entra ID y AD."
             }
           },
@@ -249,8 +249,8 @@ Catalog.module("sc-900", {
             options: [
               "Which identities should have access to which resources?",
               "Can auditors verify that the controls are working effectively?",
-              "Which VM size is cheapest for a workload?",
-              "Which Azure region has the lowest latency?",
+              "Which sign-ins should require phishing-resistant MFA?",
+              "Which private apps can be reached without a VPN?",
               "How should documents be labeled for sensitivity?"
             ],
             answers: [0, 1],
@@ -260,8 +260,8 @@ Catalog.module("sc-900", {
               options: [
                 "¿Qué identidades deben tener acceso a qué recursos?",
                 "¿Pueden los auditores verificar que los controles funcionan de forma eficaz?",
-                "¿Qué tamaño de máquina virtual es el más barato para una carga de trabajo?",
-                "¿Qué región de Azure tiene la menor latencia?",
+                "¿Qué inicios de sesión deben requerir MFA resistente a phishing?",
+                "¿A qué aplicaciones privadas se puede llegar sin VPN?",
                 "¿Cómo deben etiquetarse los documentos según su confidencialidad?"
               ],
               explain: "Las cuatro preguntas abarcan quién debe tener acceso, qué hace con él, si hay controles y si los auditores pueden verificarlos."
@@ -274,7 +274,7 @@ Catalog.module("sc-900", {
               "Dynamic groups use ",
               { options: ["attribute-based rules", "manual approvals", "access packages"], answer: 0 },
               " to determine membership, and when a user's attributes change the system ",
-              { options: ["evaluates all dynamic group rules in the directory", "waits for the next access review", "sends the change to PIM"], answer: 0 },
+              { options: ["evaluates all dynamic group rules in the directory", "waits for the next access review", "updates membership only after an administrator approves"], answer: 0 },
               "."
             ],
             explain: "When an attribute changes, all dynamic group rules are re-evaluated to add or remove the user.",
@@ -284,7 +284,7 @@ Catalog.module("sc-900", {
                 "Los grupos dinámicos usan ",
                 { options: ["reglas basadas en atributos", "aprobaciones manuales", "paquetes de acceso"] },
                 " para determinar la pertenencia, y cuando cambian los atributos de un usuario el sistema ",
-                { options: ["evalúa todas las reglas de grupos dinámicos del directorio", "espera a la próxima revisión de acceso", "envía el cambio a PIM"] },
+                { options: ["evalúa todas las reglas de grupos dinámicos del directorio", "espera a la próxima revisión de acceso", "actualiza la pertenencia solo cuando un administrador lo aprueba"] },
                 "."
               ],
               explain: "Cuando cambia un atributo, se vuelven a evaluar todas las reglas de grupos dinámicos para agregar o quitar al usuario."
@@ -331,12 +331,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A group gives guests access to sensitive content. Who should be asked to confirm that the guests still have a legitimate business need?",
-            options: ["The group owner, through an access review", "Every guest's home tenant administrator", "Microsoft support", "Nobody; guests never lose access"],
+            options: ["The group owner, through an access review", "Every guest's home tenant administrator", "A global administrator, through PIM", "The guests themselves, through terms of use"],
             answer: 0,
             explain: "Access reviews can ask group owners to confirm they still need guests in their groups.",
             es: {
               q: "Un grupo da a invitados acceso a contenido sensible. ¿A quién se le debe pedir que confirme que los invitados siguen teniendo una necesidad empresarial legítima?",
-              options: ["Al propietario del grupo, mediante una revisión de acceso", "Al administrador del inquilino de origen de cada invitado", "Al soporte de Microsoft", "A nadie; los invitados nunca pierden el acceso"],
+              options: ["Al propietario del grupo, mediante una revisión de acceso", "Al administrador del inquilino de origen de cada invitado", "Un administrador global, mediante PIM", "Los propios invitados, mediante términos de uso"],
               explain: "Las revisiones de acceso pueden pedir a los propietarios de grupos que confirmen si siguen necesitando a los invitados."
             }
           },
@@ -369,7 +369,7 @@ Catalog.module("sc-900", {
               "Multi-stage access reviews support up to ",
               { options: ["three", "five", "ten"], answer: 0 },
               " stages, and recurring reviews can run at frequencies such as ",
-              { options: ["weekly, monthly, quarterly or annually", "only once per tenant", "every minute"], answer: 0 },
+              { options: ["weekly, monthly, quarterly or annually", "only once per review", "daily or hourly"], answer: 0 },
               "."
             ],
             explain: "Up to three stages are supported, and recurrence can be weekly, monthly, quarterly or annually.",
@@ -379,7 +379,7 @@ Catalog.module("sc-900", {
                 "Las revisiones de acceso de varias fases admiten hasta ",
                 { options: ["tres", "cinco", "diez"] },
                 " fases, y las revisiones periódicas se pueden ejecutar con frecuencias como ",
-                { options: ["semanal, mensual, trimestral o anual", "una sola vez por inquilino", "cada minuto"] },
+                { options: ["semanal, mensual, trimestral o anual", "solo una vez por revisión", "diaria o por hora"] },
                 "."
               ],
               explain: "Se admiten hasta tres fases, y la periodicidad puede ser semanal, mensual, trimestral o anual."
@@ -388,24 +388,24 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two signals do AI-powered recommendations in access reviews analyze?",
-            options: ["User sign-in activity", "User-to-group affiliation", "The user's password length", "The VM SKU in use", "The user's sensitivity labels"],
+            options: ["User sign-in activity", "User-to-group affiliation", "The user's authentication methods", "The user's risk level in ID Protection", "The user's sensitivity labels"],
             answers: [0, 1],
             explain: "Smart recommendations analyze sign-in activity, user-to-group affiliation and other context; peer outliers may need more scrutiny.",
             es: {
               q: "¿Cuáles son dos señales que analizan las recomendaciones con IA de las revisiones de acceso?",
-              options: ["La actividad de inicio de sesión del usuario", "La afinidad entre usuario y grupo", "La longitud de la contraseña del usuario", "La SKU de máquina virtual en uso", "Las etiquetas de confidencialidad del usuario"],
+              options: ["La actividad de inicio de sesión del usuario", "La afinidad entre usuario y grupo", "Los métodos de autenticación del usuario", "El nivel de riesgo del usuario en ID Protection", "Las etiquetas de confidencialidad del usuario"],
               explain: "Las recomendaciones inteligentes analizan la actividad de inicio de sesión, la afinidad usuario-grupo y otros datos de contexto; los usuarios atípicos respecto de sus pares pueden requerir más análisis."
             }
           },
           {
             type: "single",
             q: "Where do you recertify users' assignments to Microsoft Entra roles or Azure resource roles?",
-            options: ["In the Privileged Identity Management experience", "In the Global Secure Access dashboard", "In the custom banned password list", "In Microsoft Entra Connect"],
+            options: ["In the Privileged Identity Management experience", "In the Global Secure Access dashboard", "In entitlement management access packages", "In Microsoft Entra Connect"],
             answer: 0,
             explain: "Role assignment recertification for Entra and Azure resource roles happens in the PIM experience.",
             es: {
               q: "¿Dónde se recertifican las asignaciones de usuarios a roles de Microsoft Entra o roles de recursos de Azure?",
-              options: ["En la experiencia de Privileged Identity Management", "En el panel del acceso seguro global", "En la lista personalizada de contraseñas prohibidas", "En Microsoft Entra Connect"],
+              options: ["En la experiencia de Privileged Identity Management", "En el panel del acceso seguro global", "En los paquetes de acceso de la administración de derechos", "En Microsoft Entra Connect"],
               explain: "La recertificación de asignaciones de roles de Entra y de recursos de Azure se hace en la experiencia de PIM."
             }
           },
@@ -460,12 +460,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two resources can an access package include?",
-            options: ["Membership of Microsoft 365 Groups", "SharePoint Online sites", "Azure virtual networks", "Privileged role activation in PIM", "Banned password terms"],
+            options: ["Membership of Microsoft 365 Groups", "SharePoint Online sites", "Azure Key Vault secrets", "Privileged role activation in PIM", "Conditional Access policies"],
             answers: [0, 1],
             explain: "Access packages can include security groups, Microsoft 365 Groups, enterprise apps and SharePoint Online sites.",
             es: {
               q: "¿Cuáles son dos recursos que puede incluir un paquete de acceso?",
-              options: ["Pertenencia a grupos de Microsoft 365", "Sitios de SharePoint Online", "Redes virtuales de Azure", "Activación de roles con privilegios en PIM", "Términos de contraseñas prohibidas"],
+              options: ["Pertenencia a grupos de Microsoft 365", "Sitios de SharePoint Online", "Secretos de Azure Key Vault", "Activación de roles con privilegios en PIM", "Directivas de acceso condicional"],
               explain: "Los paquetes de acceso pueden incluir grupos de seguridad, grupos de Microsoft 365, aplicaciones empresariales y sitios de SharePoint Online."
             }
           },
@@ -577,12 +577,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A user has an eligible assignment to the Security Administrator role. What must they do before using it?",
-            options: ["Activate the role, choosing a duration and giving a reason", "Nothing; eligible assignments are always active", "Ask Microsoft support to enable it", "Reset their password"],
+            options: ["Activate the role, choosing a duration and giving a reason", "Nothing; eligible assignments are always active", "Wait for the next access review to approve it", "Register a FIDO2 key for the role"],
             answer: 0,
             explain: "Eligible members must activate the role within the configured maximum duration and provide a reason; approval may also be required.",
             es: {
               q: "Un usuario tiene una asignación apta al rol Administrador de seguridad. ¿Qué debe hacer antes de usarlo?",
-              options: ["Activar el rol eligiendo una duración y dando un motivo", "Nada; las asignaciones aptas siempre están activas", "Pedir al soporte de Microsoft que lo habilite", "Restablecer su contraseña"],
+              options: ["Activar el rol eligiendo una duración y dando un motivo", "Nada; las asignaciones aptas siempre están activas", "Esperar a que la próxima revisión de acceso lo apruebe", "Registrar una llave FIDO2 para el rol"],
               explain: "Los miembros aptos deben activar el rol dentro de la duración máxima configurada y dar un motivo; también puede requerirse aprobación."
             }
           },
@@ -591,9 +591,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about the PIM workflow.",
             parts: [
               "The basic PIM workflow is assign, activate, approve or deny, and ",
-              { options: ["extend or renew", "encrypt", "delete"], answer: 0 },
+              { options: ["extend or renew", "review", "audit"], answer: 0 },
               ". Delegated approvers are notified by ",
-              { options: ["email", "SMS only", "a Teams channel only"], answer: 0 },
+              { options: ["email", "SMS", "a Teams channel only"], answer: 0 },
               " when a request is pending."
             ],
             explain: "Approvers receive email notifications; users can extend an assignment nearing expiration or renew one that expired.",
@@ -601,9 +601,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre el flujo de trabajo de PIM.",
               parts: [
                 "El flujo básico de PIM es asignar, activar, aprobar o denegar, y ",
-                { options: ["extender o renovar", "cifrar", "eliminar"] },
+                { options: ["extender o renovar", "revisar", "auditar"] },
                 ". Los aprobadores delegados reciben una notificación por ",
-                { options: ["correo electrónico", "SMS únicamente", "un canal de Teams únicamente"] },
+                { options: ["correo electrónico", "SMS", "un canal de Teams únicamente"] },
                 " cuando hay una solicitud pendiente."
               ],
               explain: "Los aprobadores reciben notificaciones por correo; los usuarios pueden extender una asignación a punto de vencer o renovar una vencida."
@@ -612,12 +612,12 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two can PIM manage?",
-            options: ["Azure roles at any scope", "Just-in-time group membership", "Web content filtering categories", "Custom banned password lists for privileged accounts", "Verifiable credential issuance"],
+            options: ["Azure roles at any scope", "Just-in-time group membership", "Access packages for guests", "Conditional Access policies for admins", "Verifiable credential issuance"],
             answers: [0, 1],
             explain: "PIM works with Microsoft Entra roles, Azure roles and PIM for Groups.",
             es: {
               q: "¿Cuáles son dos elementos que puede administrar PIM?",
-              options: ["Roles de Azure en cualquier ámbito", "Pertenencia justo a tiempo a grupos", "Categorías de filtrado de contenido web", "Listas personalizadas de contraseñas prohibidas para cuentas con privilegios", "La emisión de credenciales verificables"],
+              options: ["Roles de Azure en cualquier ámbito", "Pertenencia justo a tiempo a grupos", "Paquetes de acceso para invitados", "Directivas de acceso condicional para administradores", "La emisión de credenciales verificables"],
               explain: "PIM funciona con roles de Microsoft Entra, roles de Azure y PIM para grupos."
             }
           },
@@ -628,7 +628,7 @@ Catalog.module("sc-900", {
               "Eligible must be activated first; active is usable right away",
               "Eligible is permanent; active always expires after one hour",
               "Eligible applies only to guests; active only to members",
-              "There's no difference"
+              "Active needs approval each time; eligible doesn't"
             ],
             answer: 0,
             explain: "Eligible members must activate or request approval; active members already have the privileges.",
@@ -638,7 +638,7 @@ Catalog.module("sc-900", {
                 "La apta se debe activar antes; la activa se puede usar de inmediato",
                 "La apta es permanente; la activa siempre vence a la hora",
                 "La apta se aplica solo a invitados; la activa, solo a miembros",
-                "No hay diferencia"
+                "La activa requiere aprobación cada vez; la apta no"
               ],
               explain: "Los miembros aptos deben activar o solicitar aprobación; los activos ya tienen los privilegios."
             }
@@ -672,12 +672,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A user signs in from Buenos Aires and, 20 minutes later, from Tokyo. What does ID Protection detect?",
-            options: ["Atypical travel, a sign-in risk", "Leaked credentials, a user risk", "A dynamic group change", "A PIM activation"],
+            options: ["Atypical travel, a sign-in risk", "Leaked credentials, a user risk", "Password spray, a user risk", "Anonymous IP address, a user risk"],
             answer: 0,
             explain: "Atypical travel (two sign-ins from geographically distant locations) is a sign-in risk detection.",
             es: {
               q: "Un usuario inicia sesión desde Buenos Aires y, 20 minutos después, desde Tokio. ¿Qué detecta ID Protection?",
-              options: ["Un viaje atípico, un riesgo de inicio de sesión", "Credenciales filtradas, un riesgo de usuario", "Un cambio de grupo dinámico", "Una activación de PIM"],
+              options: ["Un viaje atípico, un riesgo de inicio de sesión", "Credenciales filtradas, un riesgo de usuario", "Difusión de contraseñas, un riesgo de usuario", "Dirección IP anónima, un riesgo de usuario"],
               explain: "El viaje atípico (dos inicios de sesión desde ubicaciones geográficamente lejanas) es una detección de riesgo de inicio de sesión."
             }
           },
@@ -705,24 +705,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Automated remediation isn't enabled. Which manual actions can an administrator take on detected risks?",
-            options: ["Dismiss or confirm the risk", "Only delete the user", "Only export them to storage", "Assign a custom role"],
+            options: ["Dismiss or confirm the risk", "Only delete the user", "Only block the user permanently", "Only force an access review"],
             answer: 0,
             explain: "Admins review risks in the portal, the API or Defender XDR and can dismiss, confirm safe or confirm compromise.",
             es: {
               q: "No está habilitada la corrección automática. ¿Qué acciones manuales puede tomar un administrador sobre los riesgos detectados?",
-              options: ["Descartar o confirmar el riesgo", "Solo eliminar al usuario", "Solo exportarlos a almacenamiento", "Asignar un rol personalizado"],
+              options: ["Descartar o confirmar el riesgo", "Solo eliminar al usuario", "Solo bloquear al usuario de forma permanente", "Solo forzar una revisión de acceso"],
               explain: "Los administradores revisan los riesgos en el portal, la API o Defender XDR y pueden descartarlos, confirmarlos como seguros o como comprometidos."
             }
           },
           {
             type: "multi",
             q: "Which two destinations can ID Protection data be sent to for further analysis?",
-            options: ["A Log Analytics workspace", "Event Hubs", "A custom banned password list", "An access package", "A Conditional Access named location"],
+            options: ["A Log Analytics workspace", "Event Hubs", "Microsoft Purview Data Map", "A Defender for Cloud workspace", "The Service Trust Portal"],
             answers: [0, 1],
             explain: "Data can be exported through Microsoft Graph APIs, sent to Log Analytics, archived to storage or streamed to Event Hubs, for example to feed a SIEM.",
             es: {
               q: "¿Cuáles son dos destinos a los que se pueden enviar datos de ID Protection para su análisis?",
-              options: ["Un área de trabajo de Log Analytics", "Event Hubs", "Una lista personalizada de contraseñas prohibidas", "Un paquete de acceso", "Una ubicación con nombre del acceso condicional"],
+              options: ["Un área de trabajo de Log Analytics", "Event Hubs", "El mapa de datos de Microsoft Purview", "Un área de trabajo de Defender for Cloud", "El Portal de confianza de servicios"],
               explain: "Los datos se pueden exportar mediante las API de Microsoft Graph, enviar a Log Analytics, archivar en almacenamiento o transmitir a Event Hubs, por ejemplo para alimentar un SIEM."
             }
           },
@@ -731,9 +731,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about ID Protection.",
             parts: [
               "ID Protection helps detect, investigate and remediate identity-based risks for user identities and ",
-              { options: ["workload identities", "storage accounts", "virtual networks"], answer: 0 },
+              { options: ["workload identities", "guest accounts only", "devices"], answer: 0 },
               ", using trillions of daily signals from sources including Microsoft Entra ID, Microsoft Accounts and ",
-              { options: ["Xbox", "Azure Pricing Calculator", "SharePoint templates"], answer: 0 },
+              { options: ["Xbox", "Microsoft Defender for Cloud only", "Microsoft Purview"], answer: 0 },
               "."
             ],
             explain: "Detections come from signals across Entra ID, Microsoft Accounts and gaming with Xbox.",
@@ -741,9 +741,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre ID Protection.",
               parts: [
                 "ID Protection ayuda a detectar, investigar y corregir riesgos basados en la identidad para identidades de usuario e ",
-                { options: ["identidades de carga de trabajo", "cuentas de almacenamiento", "redes virtuales"] },
+                { options: ["identidades de carga de trabajo", "solo cuentas de invitado", "dispositivos"] },
                 ", con billones de señales diarias de orígenes que incluyen Microsoft Entra ID, las cuentas Microsoft y ",
-                { options: ["Xbox", "la Calculadora de precios de Azure", "plantillas de SharePoint"] },
+                { options: ["Xbox", "solo Microsoft Defender for Cloud", "Microsoft Purview"] },
                 "."
               ],
               explain: "Las detecciones provienen de señales de Entra ID, las cuentas Microsoft y los juegos con Xbox."
@@ -801,24 +801,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Which trust system does Microsoft Entra Verified ID use?",
-            options: ["did:web, tied to the issuer's web domain", "A private blockchain operated by each tenant, where every credential is recorded", "Shared passwords between issuer and verifier", "Kerberos tickets"],
+            options: ["did:web, tied to the issuer's web domain", "A private blockchain operated by each tenant, where every credential is recorded", "did:ion on the Bitcoin network", "SAML federation between issuer and verifier"],
             answer: 0,
             explain: "With did:web, trust comes from the reputation of the issuer's web domain.",
             es: {
               q: "¿Qué sistema de confianza usa Microsoft Entra Verified ID?",
-              options: ["did:web, ligado al dominio web del emisor", "Una cadena de bloques privada que opera cada inquilino, donde se registra cada credencial", "Contraseñas compartidas entre emisor y verificador", "Vales de Kerberos"],
+              options: ["did:web, ligado al dominio web del emisor", "Una cadena de bloques privada que opera cada inquilino, donde se registra cada credencial", "did:ion en la red de Bitcoin", "Federación SAML entre emisor y verificador"],
               explain: "Con did:web, la confianza surge de la reputación del dominio web del emisor."
             }
           },
           {
             type: "single",
             q: "What does Verified ID Face Check share with the relying organization?",
-            options: ["Only the match result", "The user's full ID document image", "The user's biometric template", "The user's password hash"],
+            options: ["Only the match result", "The user's full ID document image", "The user's biometric template", "The selfie taken during verification"],
             answer: 0,
             explain: "Face Check matches a real-time selfie to the ID photo and shares only the result, preserving privacy.",
             es: {
               q: "¿Qué comparte Face Check de Verified ID con la organización que lo usa?",
-              options: ["Solo el resultado de la coincidencia", "La imagen completa del documento de identidad", "La plantilla biométrica del usuario", "El hash de la contraseña del usuario"],
+              options: ["Solo el resultado de la coincidencia", "La imagen completa del documento de identidad", "La plantilla biométrica del usuario", "La selfie tomada durante la verificación"],
               explain: "Face Check compara una selfie en tiempo real con la foto del documento y solo comparte el resultado, lo que preserva la privacidad."
             }
           },
@@ -827,9 +827,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about verifiable credentials.",
             parts: [
               "Verifiers read metadata such as public keys from the ",
-              { options: ["verifiable data registry", "custom banned password list", "PIM audit history"], answer: 0 },
+              { options: ["verifiable data registry", "issuer's Microsoft Entra tenant", "user's digital wallet"], answer: 0 },
               ", and Microsoft works with standards bodies such as the W3C and the ",
-              { options: ["Decentralized Identity Foundation", "Cloud Native Computing Foundation", "PCI Security Standards Council"], answer: 0 },
+              { options: ["Decentralized Identity Foundation", "FIDO Alliance", "PCI Security Standards Council"], answer: 0 },
               "."
             ],
             explain: "The verifiable data registry is the underlying trust network; Microsoft collaborates with the W3C and DIF.",
@@ -837,9 +837,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre las credenciales verificables.",
               parts: [
                 "Los verificadores leen metadatos como las claves públicas del ",
-                { options: ["registro de datos verificable", "lista personalizada de contraseñas prohibidas", "historial de auditoría de PIM"] },
+                { options: ["registro de datos verificable", "inquilino de Microsoft Entra del emisor", "billetera digital del usuario"] },
                 ", y Microsoft colabora con organismos de estándares como el W3C y la ",
-                { options: ["Decentralized Identity Foundation", "Cloud Native Computing Foundation", "PCI Security Standards Council"] },
+                { options: ["Decentralized Identity Foundation", "FIDO Alliance", "PCI Security Standards Council"] },
                 "."
               ],
               explain: "El registro de datos verificable es la red de confianza subyacente; Microsoft colabora con el W3C y la DIF."
@@ -886,24 +886,24 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "An analyst types \"List the recent risky sign-ins for karita@woodgrovebank.com\" at securitycopilot.microsoft.com. Which experience is this?",
-            options: ["The standalone experience", "The embedded experience", "A lifecycle workflow", "An access review"],
+            options: ["The standalone experience", "The embedded experience", "The Microsoft Entra admin center agent", "A promptbook in the Defender portal"],
             answer: 0,
             explain: "The standalone experience is the Security Copilot portal with natural language prompts and the Entra plugin's skills.",
             es: {
               q: "Un analista escribe \"Enumera los inicios de sesión riesgosos recientes de karita@woodgrovebank.com\" en securitycopilot.microsoft.com. ¿Qué experiencia es?",
-              options: ["La experiencia independiente", "La experiencia integrada", "Un flujo de trabajo de ciclo de vida", "Una revisión de acceso"],
+              options: ["La experiencia independiente", "La experiencia integrada", "El agente del Centro de administración de Microsoft Entra", "Un libro de indicaciones en el portal de Defender"],
               explain: "La experiencia independiente es el portal de Security Copilot con prompts en lenguaje natural y las capacidades del complemento de Entra."
             }
           },
           {
             type: "single",
             q: "Which Microsoft Entra agent scans the tenant every 24 hours for new users, apps and agent identities not covered by policies and suggests changes?",
-            options: ["Conditional Access Optimization Agent", "Identity Risk Management Agent", "The PIM approver", "The Cloud Sync agent"],
+            options: ["Conditional Access Optimization Agent", "Identity Risk Management Agent", "Access Review Agent", "The Cloud Sync agent"],
             answer: 0,
             explain: "The Conditional Access Optimization Agent evaluates policies against best practices and Zero Trust and recommends next steps.",
             es: {
               q: "¿Qué agente de Microsoft Entra examina el inquilino cada 24 horas en busca de usuarios, aplicaciones e identidades de agente nuevos sin directivas y sugiere cambios?",
-              options: ["El agente de optimización del acceso condicional", "El agente de administración de riesgos de identidad", "El aprobador de PIM", "El agente de Cloud Sync"],
+              options: ["El agente de optimización del acceso condicional", "El agente de administración de riesgos de identidad", "Agente de revisión de acceso", "El agente de Cloud Sync"],
               explain: "El agente de optimización del acceso condicional evalúa las directivas según los procedimientos recomendados y la Confianza cero, y recomienda próximos pasos."
             }
           },
@@ -938,7 +938,7 @@ Catalog.module("sc-900", {
               "Agents are configured in the Agents section of the Microsoft Entra admin center",
               "Agents run with global administrator rights by default",
               "Agents can only be triggered manually",
-              "Agents replace Conditional Access"
+              "Agents apply policy changes without any admin review"
             ],
             answers: [0, 1],
             explain: "Each agent gets its own identity with specific read and write permissions, and can run on a schedule or manually.",
@@ -949,7 +949,7 @@ Catalog.module("sc-900", {
                 "Los agentes se configuran en la sección Agentes del Centro de administración de Microsoft Entra",
                 "Los agentes se ejecutan con derechos de administrador global de forma predeterminada",
                 "Los agentes solo se pueden activar manualmente",
-                "Los agentes reemplazan el acceso condicional"
+                "Los agentes aplican cambios de directivas sin revisión del administrador"
               ],
               explain: "Cada agente tiene su propia identidad con permisos específicos de lectura y escritura, y puede ejecutarse de forma programada o manual."
             }
@@ -959,9 +959,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about Security Copilot.",
             parts: [
               "Microsoft Entra is one of the Microsoft ",
-              { options: ["plugins", "subscriptions", "tenants"], answer: 0 },
+              { options: ["plugins", "workspaces", "promptbooks"], answer: 0 },
               " for Security Copilot, and partner-built agents can be discovered through the ",
-              { options: ["Security Store", "Azure Marketplace only", "PIM audit history"], answer: 0 },
+              { options: ["Security Store", "Azure Marketplace only", "Microsoft Entra admin center"], answer: 0 },
               " embedded in the Microsoft Entra admin center."
             ],
             explain: "The Entra plugin feeds Security Copilot; the Security Store is embedded in the admin center to discover, buy and deploy agents.",
@@ -969,9 +969,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre Security Copilot.",
               parts: [
                 "Microsoft Entra es uno de los ",
-                { options: ["complementos", "suscripciones", "inquilinos"] },
+                { options: ["complementos", "áreas de trabajo", "libros de indicaciones"] },
                 " de Microsoft para Security Copilot, y los agentes de partners se pueden descubrir en la ",
-                { options: ["Security Store", "Azure Marketplace únicamente", "historial de auditoría de PIM"] },
+                { options: ["Security Store", "Azure Marketplace únicamente", "Centro de administración de Microsoft Entra"] },
                 " integrada en el Centro de administración de Microsoft Entra."
               ],
               explain: "El complemento de Entra alimenta a Security Copilot; la Security Store está integrada en el centro de administración para descubrir, comprar e implementar agentes."

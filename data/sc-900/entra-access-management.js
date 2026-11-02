@@ -25,13 +25,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Global Secure Access",
         q: "A company wants to replace its VPN so remote users get access only to specific private apps instead of the whole network. Which solution fits?",
-        options: ["Microsoft Entra Private Access", "Microsoft Entra Internet Access", "Azure RBAC", "Microsoft Entra password protection"],
+        options: ["Microsoft Entra Private Access", "Microsoft Entra Internet Access", "Azure RBAC", "Azure VPN Gateway point-to-site"],
         answer: 0,
         explain: "Private Access replaces legacy VPNs with Zero Trust Network Access, granting per-app access to private resources.",
         es: {
           topic: "Acceso seguro global",
           q: "Una empresa quiere reemplazar su VPN para que los usuarios remotos accedan solo a aplicaciones privadas específicas y no a toda la red. ¿Qué solución corresponde?",
-          options: ["Microsoft Entra Private Access", "Microsoft Entra Internet Access", "Azure RBAC", "La protección de contraseñas de Microsoft Entra"],
+          options: ["Microsoft Entra Private Access", "Microsoft Entra Internet Access", "Azure RBAC", "La conexión de punto a sitio de Azure VPN Gateway"],
           explain: "Private Access reemplaza las VPN heredadas con acceso a la red de confianza cero (ZTNA), que concede acceso por aplicación a los recursos privados."
         }
       },
@@ -95,7 +95,7 @@ Catalog.module("sc-900", {
         q: "Complete the statement about Global Secure Access.",
         parts: [
           "Global Secure Access is Microsoft's ",
-          { options: ["Security Service Edge (SSE)", "SIEM", "data loss prevention"], answer: 0 },
+          { options: ["Security Service Edge (SSE)", "SIEM", "Cloud Access Security Broker (CASB) only"], answer: 0 },
           " solution, and it uses a ",
           { options: ["client on the end-user device", "domain controller agent", "VPN gateway in each region"], answer: 0 },
           " to route specific traffic profiles through the service."
@@ -106,7 +106,7 @@ Catalog.module("sc-900", {
           q: "Complete la afirmación sobre el acceso seguro global.",
           parts: [
             "El acceso seguro global es la solución de ",
-            { options: ["Security Service Edge (SSE)", "SIEM", "prevención de pérdida de datos"] },
+            { options: ["Security Service Edge (SSE)", "SIEM", "solo agente de seguridad de acceso a la nube (CASB)"] },
             " de Microsoft, y usa un ",
             { options: ["cliente en el dispositivo del usuario final", "agente en el controlador de dominio", "puerta de enlace VPN en cada región"] },
             " para enrutar perfiles de tráfico específicos a través del servicio."
@@ -118,13 +118,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Conditional Access",
         q: "An organization wants to block downloads of sensitive documents from unmanaged devices but still let users view them in the browser. Which Conditional Access control fits?",
-        options: ["Block access", "A session control (App Control)", "Require a password change", "Require terms of use"],
+        options: ["Block access", "A session control (App Control)", "Require an approved client app", "Require a compliant device"],
         answer: 1,
         explain: "App Control uses Defender for Cloud Apps signals to block download, cut, copy and print within an allowed session.",
         es: {
           topic: "Acceso condicional",
           q: "Una organización quiere bloquear la descarga de documentos sensibles desde dispositivos no administrados, pero seguir permitiendo verlos en el explorador. ¿Qué control de acceso condicional corresponde?",
-          options: ["Bloquear el acceso", "Un control de sesión (App Control)", "Requerir cambiar la contraseña", "Requerir términos de uso"],
+          options: ["Bloquear el acceso", "Un control de sesión (App Control)", "Requerir una aplicación cliente aprobada", "Requerir un dispositivo compatible"],
           explain: "App Control usa señales de Defender for Cloud Apps para bloquear la descarga, cortar, copiar e imprimir dentro de una sesión permitida."
         }
       },
@@ -132,13 +132,13 @@ Catalog.module("sc-900", {
         type: "multi",
         topic: "Global Secure Access",
         q: "Which two are features of Microsoft Entra Internet Access?",
-        options: ["Web content filtering", "Prompt injection protection", "Quick Access to private resources by FQDN", "Custom banned password lists", "Privileged role activation"],
+        options: ["Web content filtering", "Prompt injection protection", "Quick Access to private resources by FQDN", "Network connectors for private apps", "Per-app access to on-premises file servers"],
         answers: [0, 1],
         explain: "Internet Access includes web content filtering, universal Conditional Access, TLS inspection, threat intelligence, prompt injection protection and universal CAE. Quick Access belongs to Private Access.",
         es: {
           topic: "Acceso seguro global",
           q: "¿Cuáles son dos características de Microsoft Entra Internet Access?",
-          options: ["El filtrado de contenido web", "La protección contra inyección de prompts", "El acceso rápido a recursos privados por FQDN", "Las listas personalizadas de contraseñas prohibidas", "La activación de roles con privilegios"],
+          options: ["El filtrado de contenido web", "La protección contra inyección de prompts", "El acceso rápido a recursos privados por FQDN", "Conectores de red para aplicaciones privadas", "Acceso por aplicación a servidores de archivos locales"],
           explain: "Internet Access incluye filtrado de contenido web, acceso condicional universal, inspección de TLS, inteligencia sobre amenazas, protección contra inyección de prompts y CAE universal. El acceso rápido pertenece a Private Access."
         }
       },
@@ -225,9 +225,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about Conditional Access.",
             parts: [
               "Conditional Access is Microsoft's ",
-              { options: ["Zero Trust policy engine", "password vault", "SIEM solution"], answer: 0 },
+              { options: ["Zero Trust policy engine", "identity provider", "authentication method"], answer: 0 },
               ", and at their simplest its policies are ",
-              { options: ["if-then statements", "firewall rules", "encryption keys"], answer: 0 },
+              { options: ["if-then statements", "firewall rules", "access reviews"], answer: 0 },
               "."
             ],
             explain: "Conditional Access takes signals into account to enforce decisions: if a user wants to access a resource, then they must complete an action.",
@@ -235,9 +235,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre el acceso condicional.",
               parts: [
                 "El acceso condicional es el ",
-                { options: ["motor de directivas de Confianza cero", "almacén de contraseñas", "solución SIEM"] },
+                { options: ["motor de directivas de Confianza cero", "proveedor de identidades", "método de autenticación"] },
                 " de Microsoft, y en su forma más simple sus directivas son ",
-                { options: ["instrucciones si-entonces", "reglas de firewall", "claves de cifrado"] },
+                { options: ["instrucciones si-entonces", "reglas de firewall", "revisiones de acceso"] },
                 "."
               ],
               explain: "El acceso condicional tiene en cuenta señales para aplicar decisiones: si un usuario quiere acceder a un recurso, entonces debe completar una acción."
@@ -281,24 +281,24 @@ Catalog.module("sc-900", {
           {
             type: "multi",
             q: "Which two are grant requirements available in Conditional Access?",
-            options: ["Require a compliant device", "Require a hybrid joined device", "Require a custom banned password", "Require a Temporary Access Pass", "Require a VPN connection to the corporate network"],
+            options: ["Require a compliant device", "Require a hybrid joined device", "Require a Verified ID credential", "Require a Temporary Access Pass", "Require a VPN connection to the corporate network"],
             answers: [0, 1],
             explain: "Grant requirements include MFA, authentication strength, compliant device, hybrid joined device, approved client app, password change and terms of use.",
             es: {
               q: "¿Cuáles son dos requisitos de concesión disponibles en el acceso condicional?",
-              options: ["Requerir un dispositivo compatible", "Requerir un dispositivo unido híbrido", "Requerir una contraseña prohibida personalizada", "Requerir un pase de acceso temporal", "Requerir una conexión VPN a la red corporativa"],
+              options: ["Requerir un dispositivo compatible", "Requerir un dispositivo unido híbrido", "Requerir una credencial de Verified ID", "Requerir un pase de acceso temporal", "Requerir una conexión VPN a la red corporativa"],
               explain: "Los requisitos de concesión incluyen MFA, nivel de autenticación, dispositivo compatible, dispositivo unido híbrido, aplicación cliente aprobada, cambio de contraseña y términos de uso."
             }
           },
           {
             type: "single",
             q: "An organization wants to block access to Microsoft Security Copilot whenever a user's insider risk is elevated. What should it use?",
-            options: ["A Conditional Access policy using insider risk", "Security defaults", "A custom role without Copilot permissions", "Password protection"],
+            options: ["A Conditional Access policy using insider risk", "Security defaults", "A custom role without Copilot permissions", "An access review of Copilot users"],
             answer: 0,
             explain: "Conditional Access can protect AI services, including blocking access when insider risk is elevated.",
             es: {
               q: "Una organización quiere bloquear el acceso a Microsoft Security Copilot cuando el riesgo interno de un usuario es elevado. ¿Qué debe usar?",
-              options: ["Una directiva de acceso condicional con riesgo interno", "Los valores predeterminados de seguridad", "Un rol personalizado sin permisos sobre Copilot", "La protección de contraseñas"],
+              options: ["Una directiva de acceso condicional con riesgo interno", "Los valores predeterminados de seguridad", "Un rol personalizado sin permisos sobre Copilot", "Una revisión de acceso de los usuarios de Copilot"],
               explain: "El acceso condicional puede proteger servicios de IA, incluido bloquear el acceso cuando el riesgo interno es elevado."
             }
           },
@@ -381,8 +381,8 @@ Catalog.module("sc-900", {
             options: [
               "Brokers traffic to the private resource",
               "Filters websites by content category",
-              "Syncs passwords to on-premises AD",
-              "Stores banned password lists"
+              "Syncs on-premises identities to Microsoft Entra ID",
+              "Restores the user's source IP for Conditional Access"
             ],
             answer: 0,
             explain: "Private Access uses enterprise applications as containers for private resources and a connector to broker the traffic.",
@@ -391,8 +391,8 @@ Catalog.module("sc-900", {
               options: [
                 "Intermedia el tráfico hacia el recurso privado",
                 "Filtra sitios web por categoría de contenido",
-                "Sincroniza contraseñas con AD local",
-                "Guarda las listas de contraseñas prohibidas"
+                "Sincroniza identidades locales con Microsoft Entra ID",
+                "Restaura la IP de origen del usuario para el acceso condicional"
               ],
               explain: "Private Access usa aplicaciones empresariales como contenedores de recursos privados y un conector que intermedia el tráfico."
             }
@@ -404,8 +404,8 @@ Catalog.module("sc-900", {
               "Limiting lateral movement via VPN",
               "A perimeter for internet assets",
               "Classifying documents with sensitivity labels before they're shared",
-              "Managing Azure subscription budgets",
-              "Replacing Windows Hello for Business"
+              "Monitoring identity risk with ID Protection",
+              "Granting just-in-time admin roles"
             ],
             answers: [0, 1],
             explain: "SSE also helps improve service in remote locations like branch offices.",
@@ -415,8 +415,8 @@ Catalog.module("sc-900", {
                 "Limitar el movimiento lateral por VPN",
                 "Un perímetro para los recursos en internet",
                 "Clasificar documentos con etiquetas de confidencialidad antes de compartirlos",
-                "Administrar los presupuestos de las suscripciones de Azure",
-                "Reemplazar Windows Hello para empresas"
+                "Supervisar el riesgo de identidad con ID Protection",
+                "Conceder roles de administrador Just-In-Time"
               ],
               explain: "SSE también ayuda a mejorar el servicio en ubicaciones remotas, como sucursales."
             }
@@ -426,9 +426,9 @@ Catalog.module("sc-900", {
             q: "Complete the statement about licensing.",
             parts: [
               "Microsoft Entra Internet Access requires ",
-              { options: ["the Microsoft Entra Suite or a standalone license", "only Microsoft Entra ID Free", "an Azure Firewall"], answer: 0 },
+              { options: ["the Microsoft Entra Suite or a standalone license", "only Microsoft Entra ID Free", "Microsoft Entra ID P2 only"], answer: 0 },
               ", while Internet Access for Microsoft Services is included with Microsoft Entra ID ",
-              { options: ["P1 or P2", "Free", "Verified ID"], answer: 0 },
+              { options: ["P1 or P2", "Free", "P2 only"], answer: 0 },
               "."
             ],
             explain: "Internet Access for all traffic needs the Entra Suite or a standalone license; the Microsoft Services variant comes with P1 or P2.",
@@ -436,9 +436,9 @@ Catalog.module("sc-900", {
               q: "Complete la afirmación sobre las licencias.",
               parts: [
                 "Microsoft Entra Internet Access requiere ",
-                { options: ["Microsoft Entra Suite o una licencia independiente", "solo Microsoft Entra ID Free", "un Azure Firewall"] },
+                { options: ["Microsoft Entra Suite o una licencia independiente", "solo Microsoft Entra ID Free", "solo Microsoft Entra ID P2"] },
                 ", mientras que Internet Access para Microsoft Services viene incluido con Microsoft Entra ID ",
-                { options: ["P1 o P2", "Free", "Verified ID"] },
+                { options: ["P1 o P2", "Free", "solo P2"] },
                 "."
               ],
               explain: "Internet Access para todo el tráfico requiere Entra Suite o una licencia independiente; la variante para Microsoft Services viene con P1 o P2."
@@ -447,12 +447,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Administrators want to find unauthorized AI applications employees are using across the organization. Which Global Secure Access capability helps?",
-            options: ["Shadow AI discovery", "Source IP restoration", "Custom roles", "Password writeback"],
+            options: ["Shadow AI discovery", "Source IP restoration", "Web content filtering by category", "Universal tenant restrictions"],
             answer: 0,
             explain: "Shadow AI discovery identifies unmanaged AI apps so admins can understand and control AI usage.",
             es: {
               q: "Los administradores quieren encontrar las aplicaciones de IA no autorizadas que usan los empleados en la organización. ¿Qué capacidad del acceso seguro global ayuda?",
-              options: ["La detección de IA en la sombra", "La restauración de la IP de origen", "Los roles personalizados", "La escritura diferida de contraseñas"],
+              options: ["La detección de IA en la sombra", "La restauración de la IP de origen", "El filtrado de contenido web por categoría", "Las restricciones de inquilino universales"],
               explain: "La detección de IA en la sombra identifica aplicaciones de IA no administradas para que los administradores entiendan y controlen su uso."
             }
           },
@@ -524,7 +524,7 @@ Catalog.module("sc-900", {
               "Granting permissions with a custom role starts by creating a ",
               { options: ["role definition", "Conditional Access policy", "security group"], answer: 0 },
               " and then creating a ",
-              { options: ["role assignment", "banned password list", "named location"], answer: 0 },
+              { options: ["role assignment", "Conditional Access policy", "named location"], answer: 0 },
               " at a specified scope."
             ],
             explain: "Custom roles are a two-step process: define the permissions, then assign the role to users or groups at a scope.",
@@ -534,7 +534,7 @@ Catalog.module("sc-900", {
                 "Conceder permisos con un rol personalizado empieza por crear una ",
                 { options: ["definición de rol", "directiva de acceso condicional", "grupo de seguridad"] },
                 " y luego crear una ",
-                { options: ["asignación de rol", "lista de contraseñas prohibidas", "ubicación con nombre"] },
+                { options: ["asignación de rol", "directiva de acceso condicional", "ubicación con nombre"] },
                 " en un ámbito especificado."
               ],
               explain: "Los roles personalizados son un proceso de dos pasos: definir los permisos y luego asignar el rol a usuarios o grupos en un ámbito."
@@ -543,12 +543,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "An administrator needs to grant someone permission to manage virtual machines in a resource group. Which access control system applies?",
-            options: ["Azure RBAC", "Microsoft Entra RBAC", "Exchange RBAC", "Security defaults"],
+            options: ["Azure RBAC", "Microsoft Entra RBAC", "Exchange RBAC", "Microsoft Entra custom roles"],
             answer: 0,
             explain: "Azure RBAC controls Azure resources like VMs and storage through Azure Resource Manager.",
             es: {
               q: "Un administrador necesita dar a alguien permiso para administrar máquinas virtuales en un grupo de recursos. ¿Qué sistema de control de acceso se aplica?",
-              options: ["Azure RBAC", "Microsoft Entra RBAC", "El RBAC de Exchange", "Los valores predeterminados de seguridad"],
+              options: ["Azure RBAC", "Microsoft Entra RBAC", "El RBAC de Exchange", "Los roles personalizados de Microsoft Entra"],
               explain: "Azure RBAC controla recursos de Azure como máquinas virtuales y almacenamiento mediante Azure Resource Manager."
             }
           },

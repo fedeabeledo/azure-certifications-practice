@@ -8,7 +8,7 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       q: "ID Protection reports a high sign-in risk for a user. The company wants the user to prove their identity automatically before access continues. Which combination fits?",
       options: [
         "Risk-based Conditional Access requiring MFA",
-        "A custom banned password list",
+        "A user risk policy requiring a password reset",
         "An access review of the user's groups",
         "A PIM eligible assignment"
       ],
@@ -19,7 +19,7 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
         q: "ID Protection informa un riesgo de inicio de sesión alto para un usuario. La empresa quiere que el usuario demuestre su identidad automáticamente antes de continuar. ¿Qué combinación corresponde?",
         options: [
           "Acceso condicional basado en riesgo que exija MFA",
-          "Una lista personalizada de contraseñas prohibidas",
+          "Una directiva de riesgo de usuario que exija restablecer la contraseña",
           "Una revisión de acceso de sus grupos",
           "Una asignación apta en PIM"
         ],
@@ -137,13 +137,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "multi",
       topic: "Access management",
       q: "Which two can be required as grant controls in a Conditional Access policy?",
-      options: ["Terms of use", "Authentication strength", "A custom banned password list", "An access review", "A Verified ID credential issuer"],
+      options: ["Terms of use", "Authentication strength", "Sign-in frequency", "Require a Temporary Access Pass", "App enforced restrictions"],
       answers: [0, 1],
       explain: "Grant controls include MFA, authentication strength, compliant or hybrid joined device, approved client app, password change and terms of use.",
       es: {
         topic: "Administración de acceso",
         q: "¿Cuáles son dos elementos que se pueden exigir como controles de concesión en una directiva de acceso condicional?",
-        options: ["Términos de uso", "Nivel de autenticación", "Una lista personalizada de contraseñas prohibidas", "Una revisión de acceso", "Un emisor de credenciales de Verified ID"],
+        options: ["Términos de uso", "Nivel de autenticación", "Frecuencia de inicio de sesión", "Requerir un pase de acceso temporal", "Restricciones aplicadas por la aplicación"],
         explain: "Los controles de concesión incluyen MFA, nivel de autenticación, dispositivo compatible o unido híbrido, aplicación cliente aprobada, cambio de contraseña y términos de uso."
       }
     },
@@ -229,13 +229,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Microsoft Entra ID and identity types",
       q: "An Azure web app needs to read secrets from Azure Key Vault without developers storing any credentials, and the identity should disappear when the app is deleted. What should you use?",
-      options: ["A system-assigned managed identity", "A user account with a strong password", "A guest user", "A user-assigned managed identity shared across apps"],
+      options: ["A system-assigned managed identity", "A service principal with a client secret", "A guest user", "A user-assigned managed identity shared across apps"],
       answer: 0,
       explain: "Managed identities remove credential management; system-assigned ones share the resource's lifecycle.",
       es: {
         topic: "Microsoft Entra ID y tipos de identidad",
         q: "Una aplicación web de Azure necesita leer secretos de Azure Key Vault sin que los desarrolladores guarden credenciales, y la identidad debe desaparecer cuando se elimine la aplicación. ¿Qué debe usar?",
-        options: ["Una identidad administrada asignada por el sistema", "Una cuenta de usuario con contraseña segura", "Un usuario invitado", "Una identidad administrada asignada por el usuario compartida entre aplicaciones"],
+        options: ["Una identidad administrada asignada por el sistema", "Una entidad de servicio con un secreto de cliente", "Un usuario invitado", "Una identidad administrada asignada por el usuario compartida entre aplicaciones"],
         explain: "Las identidades administradas eliminan la gestión de credenciales; las asignadas por el sistema comparten el ciclo de vida del recurso."
       }
     },
@@ -257,13 +257,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Access management",
       q: "A company wants to see which unmanaged generative AI apps employees use and block prompt injection attacks against approved AI services. Which solution provides both?",
-      options: ["Global Secure Access", "Privileged Identity Management", "Microsoft Entra Cloud Sync", "Access reviews"],
+      options: ["Global Secure Access", "Privileged Identity Management", "Microsoft Entra Private Access", "Microsoft Entra ID Protection"],
       answer: 0,
       explain: "Global Secure Access includes shadow AI discovery and prompt injection protection.",
       es: {
         topic: "Administración de acceso",
         q: "Una empresa quiere ver qué aplicaciones de IA generativa no administradas usan los empleados y bloquear ataques de inyección de prompts contra los servicios de IA aprobados. ¿Qué solución ofrece ambas cosas?",
-        options: ["El acceso seguro global", "Privileged Identity Management", "Microsoft Entra Cloud Sync", "Las revisiones de acceso"],
+        options: ["El acceso seguro global", "Privileged Identity Management", "Microsoft Entra Private Access", "Microsoft Entra ID Protection"],
         explain: "El acceso seguro global incluye la detección de IA en la sombra y la protección contra la inyección de prompts."
       }
     },
@@ -271,13 +271,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Protection and governance",
       q: "When an employee moves from Sales to Finance, their group memberships and app roles should change automatically based on the department attribute. What should you use?",
-      options: ["Dynamic groups or automatic assignment policies", "A Temporary Access Pass", "An access review whenever the department changes", "Microsoft Entra Verified ID"],
+      options: ["Dynamic groups or automatic assignment policies", "An access package with manager approval", "An access review whenever the department changes", "Microsoft Entra Verified ID"],
       answer: 0,
       explain: "Automatic assignment policies and dynamic groups add and remove access based on user attributes.",
       es: {
         topic: "Protección y gobernanza",
         q: "Cuando un empleado pasa de Ventas a Finanzas, sus pertenencias a grupos y roles de aplicaciones deben cambiar automáticamente según el atributo de departamento. ¿Qué debe usar?",
-        options: ["Grupos dinámicos o directivas de asignación automática", "Un pase de acceso temporal", "Una revisión de acceso cada vez que cambia el área", "Microsoft Entra Verified ID"],
+        options: ["Grupos dinámicos o directivas de asignación automática", "Un paquete de acceso con aprobación del responsable", "Una revisión de acceso cada vez que cambia el área", "Microsoft Entra Verified ID"],
         explain: "Las directivas de asignación automática y los grupos dinámicos agregan y quitan acceso según los atributos del usuario."
       }
     },
@@ -289,7 +289,7 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
         "Voice calls can be used ",
         { options: ["only as a secondary factor", "only as a primary factor", "as primary or secondary"], answer: 0 },
         ", while a Temporary Access Pass can be used ",
-        { options: ["as primary or secondary", "only for SSPR", "only by guests"], answer: 0 },
+        { options: ["as primary or secondary", "only as a secondary factor", "only for guests"], answer: 0 },
         "."
       ],
       explain: "Voice calls are secondary only (MFA and SSPR); TAP can be a primary method and also satisfy MFA.",
@@ -300,7 +300,7 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
           "Las llamadas de voz se pueden usar ",
           { options: ["solo como factor secundario", "solo como factor principal", "como principal o secundario"] },
           ", mientras que un pase de acceso temporal se puede usar ",
-          { options: ["como principal o secundario", "solo para SSPR", "solo por invitados"] },
+          { options: ["como principal o secundario", "solo como factor secundario", "solo para invitados"] },
           "."
         ],
         explain: "Las llamadas de voz son solo secundarias (MFA y SSPR); el TAP puede ser método principal y también satisfacer MFA."
@@ -325,13 +325,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Protection and governance",
       q: "A security team wants an AI agent to review Conditional Access policies daily and flag new users and apps not covered by any policy. What should it turn on?",
-      options: ["The CA Optimization Agent", "Security defaults with a daily policy report", "The Identity secure score", "A multi-stage access review"],
+      options: ["The CA Optimization Agent", "Security defaults with a daily policy report", "The Identity secure score", "The Identity Risk Management Agent"],
       answer: 0,
       explain: "This Microsoft Entra agent scans the tenant every 24 hours against best practices and Zero Trust and suggests next steps.",
       es: {
         topic: "Protección y gobernanza",
         q: "Un equipo de seguridad quiere que un agente de IA revise las directivas de acceso condicional a diario y señale usuarios y aplicaciones nuevos sin directiva. ¿Qué debe activar?",
-        options: ["El agente de optimización del CA", "Los valores predeterminados de seguridad", "La puntuación de seguridad de la identidad", "Una revisión de acceso de varias fases"],
+        options: ["El agente de optimización del CA", "Los valores predeterminados de seguridad", "La puntuación de seguridad de la identidad", "El agente de administración de riesgos de identidad"],
         explain: "Este agente de Microsoft Entra examina el inquilino cada 24 horas según los procedimientos recomendados y la Confianza cero, y sugiere próximos pasos."
       }
     },
@@ -382,13 +382,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Microsoft Entra ID and identity types",
       q: "Several AI agents of the same type need consistent policies, and the organization wants one place that holds the credentials used to create them. What should it define?",
-      options: ["An agent identity blueprint", "A Microsoft 365 group", "One managed identity per agent", "A guest user"],
+      options: ["An agent identity blueprint", "A user-assigned managed identity", "One managed identity per agent", "An app registration with a shared secret"],
       answer: 0,
       explain: "A blueprint defines a class of agent, holds the credentials and lets administrators apply policies to all agents created from it.",
       es: {
         topic: "Microsoft Entra ID y tipos de identidad",
         q: "Varios agentes de IA del mismo tipo necesitan directivas coherentes, y la organización quiere un único lugar que guarde las credenciales usadas para crearlos. ¿Qué debe definir?",
-        options: ["Un plano técnico de identidad de agente", "Un grupo de Microsoft 365", "Una identidad administrada por agente", "Un usuario invitado"],
+        options: ["Un plano técnico de identidad de agente", "Una identidad administrada asignada por el usuario", "Una identidad administrada por agente", "Un registro de aplicación con un secreto compartido"],
         explain: "Un plano técnico define una clase de agente, guarda las credenciales y permite aplicar directivas a todos los agentes creados a partir de él."
       }
     },
@@ -396,13 +396,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "multi",
       topic: "Access management",
       q: "Which two are features of Microsoft Entra Internet Access for Microsoft Services?",
-      options: ["Compliant network check", "Universal tenant restrictions", "Quick Access to private apps", "Privileged role activation", "Access packages"],
+      options: ["Compliant network check", "Universal tenant restrictions", "Quick Access to private apps", "Web content filtering", "Shadow AI discovery"],
       answers: [0, 1],
       explain: "It includes compliant network check, universal tenant restrictions, source IP restoration and enriched Microsoft 365 logs.",
       es: {
         topic: "Administración de acceso",
         q: "¿Cuáles son dos características de Microsoft Entra Internet Access para Microsoft Services?",
-        options: ["La comprobación de red compatible", "Las restricciones universales de inquilinos", "El acceso rápido a aplicaciones privadas", "La activación de roles con privilegios", "Los paquetes de acceso"],
+        options: ["La comprobación de red compatible", "Las restricciones universales de inquilinos", "El acceso rápido a aplicaciones privadas", "El filtrado de contenido web", "La detección de IA en la sombra"],
         explain: "Incluye la comprobación de red compatible, las restricciones universales de inquilinos, la restauración de la IP de origen y los registros enriquecidos de Microsoft 365."
       }
     },
@@ -410,13 +410,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Authentication",
       q: "A company already uses Duo Security for MFA and wants users to satisfy Microsoft Entra MFA with it. What should it configure?",
-      options: ["An external authentication method", "Authenticator Lite", "A Temporary Access Pass", "Password writeback"],
+      options: ["An external authentication method", "Authenticator Lite", "A Temporary Access Pass", "Federation with AD FS"],
       answer: 0,
       explain: "External authentication methods integrate a non-Microsoft MFA provider so users can satisfy MFA with the existing solution.",
       es: {
         topic: "Autenticación",
         q: "Una empresa ya usa Duo Security para MFA y quiere que los usuarios satisfagan la MFA de Microsoft Entra con esa solución. ¿Qué debe configurar?",
-        options: ["Un método de autenticación externo", "Authenticator Lite", "Un pase de acceso temporal", "La escritura diferida de contraseñas"],
+        options: ["Un método de autenticación externo", "Authenticator Lite", "Un pase de acceso temporal", "La federación con AD FS"],
         explain: "Los métodos de autenticación externos integran un proveedor de MFA ajeno a Microsoft para que los usuarios cumplan la MFA con la solución existente."
       }
     }
