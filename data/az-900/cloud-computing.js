@@ -77,9 +77,9 @@ Catalog.module("az-900", {
                   options: [
                     "No upfront costs for hardware or datacenter infrastructure",
                     "A fixed monthly bill regardless of usage",
-                    "The cloud provider becomes responsible for your data",
+                    "Predictable spending fixed by contract for three years",
                     "The ability to release resources when demand decreases",
-                    "A guaranteed lower cost than on-premises in every scenario"
+                    "Lower total cost than on-premises in every scenario"
                   ],
                   answers: [0, 3],
                   explain: "No upfront costs and releasing resources when demand drops are listed benefits. The bill follows usage, data always stays with you, and nothing guarantees lower cost in every case.",
@@ -89,9 +89,9 @@ Catalog.module("az-900", {
                     options: [
                       "Sin costos iniciales de hardware ni de infraestructura del centro de datos",
                       "Una factura mensual fija independientemente del uso",
-                      "El proveedor de nube pasa a ser responsable de sus datos",
+                      "Un gasto predecible fijado por contrato durante tres años",
                       "La posibilidad de liberar recursos cuando disminuye la demanda",
-                      "Un costo garantizado menor que el local en cualquier escenario"
+                      "Un costo total menor que en el entorno local en cualquier escenario"
                     ],
                     explain: "No tener costos iniciales y liberar recursos cuando baja la demanda son ventajas listadas. La factura sigue al uso, los datos siempre son responsabilidad suya y nada garantiza un costo menor en todos los casos."
                   }
@@ -206,7 +206,7 @@ Catalog.module("az-900", {
                     "Applications suffer degraded performance",
                     "The provider bills the unused capacity as OpEx",
                     "It overspends on infrastructure that sits idle",
-                    "Responsibility for the idle servers shifts to the hardware vendor"
+                    "It can release the extra servers to lower its bill"
                   ],
                   answer: 2,
                   explain: "Overestimating means paying for idle infrastructure. Degraded performance is what happens when you underestimate.",
@@ -217,7 +217,7 @@ Catalog.module("az-900", {
                       "Las aplicaciones sufren un rendimiento degradado",
                       "El proveedor factura la capacidad sin usar como OpEx",
                       "Gasta de más en infraestructura que queda ociosa",
-                      "La responsabilidad sobre los servidores ociosos pasa al fabricante del hardware"
+                      "Puede liberar los servidores sobrantes para bajar la factura"
                     ],
                     explain: "Sobrestimar significa pagar por infraestructura ociosa. El rendimiento degradado es lo que ocurre cuando se subestima."
                   }
@@ -275,12 +275,12 @@ Catalog.module("az-900", {
                     {
                       type: "multi",
                       q: "Cloud services extend beyond traditional IT infrastructure. Which two are examples of these extended offerings?",
-                      options: ["Internet of Things (IoT)", "Machine learning (ML)", "Physical rack installation", "On-site network cabling", "Hardware procurement contracts"],
+                      options: ["Internet of Things (IoT)", "Machine learning (ML)", "Virtual machines", "Storage", "Networking"],
                       answers: [0, 1],
                       explain: "Beyond virtual machines, storage, databases and networking, cloud services include IoT, machine learning and AI. The other options are on-premises tasks, not cloud services.",
                       es: {
                         q: "Los servicios en la nube van más allá de la infraestructura de TI tradicional. ¿Cuáles son dos ejemplos de esas ofertas ampliadas?",
-                        options: ["Internet de las cosas (IoT)", "Aprendizaje automático (ML)", "Instalación física de racks", "Cableado de red en el sitio", "Contratos de compra de hardware"],
+                        options: ["Internet de las cosas (IoT)", "Aprendizaje automático (ML)", "Máquinas virtuales", "Almacenamiento", "Redes"],
                         explain: "Además de máquinas virtuales, almacenamiento, bases de datos y redes, los servicios en la nube incluyen IoT, aprendizaje automático e IA. Las otras opciones son tareas locales, no servicios en la nube."
                       }
                     },
@@ -290,8 +290,8 @@ Catalog.module("az-900", {
                       options: [
                         "Buy and configure extra physical servers months in advance",
                         "Add cloud compute capacity for the launch and scale it down afterward",
-                        "Keep the extra capacity running permanently in case traffic returns",
-                        "Delay the launch until a new datacenter is built"
+                        "Reserve the peak capacity for three years",
+                        "Scale up a single VM permanently to the largest size"
                       ],
                       answer: 1,
                       explain: "Deploying capacity only for the launch and scaling down afterward improves agility and aligns spending to actual demand. Buying servers months ahead is the traditional approach the cloud avoids.",
@@ -300,8 +300,8 @@ Catalog.module("az-900", {
                         options: [
                           "Comprar y configurar servidores físicos adicionales con meses de anticipación",
                           "Agregar capacidad de cómputo en la nube para el lanzamiento y reducirla después",
-                          "Dejar la capacidad adicional siempre encendida por si vuelve el tráfico",
-                          "Postergar el lanzamiento hasta construir un nuevo centro de datos"
+                          "Reservar la capacidad máxima durante tres años",
+                          "Escalar verticalmente una sola máquina virtual de forma permanente al tamaño más grande"
                         ],
                         explain: "Implementar capacidad solo para el lanzamiento y reducirla después mejora la agilidad y alinea el gasto con la demanda real. Comprar servidores con meses de anticipación es el enfoque tradicional que la nube evita."
                       }
@@ -335,7 +335,7 @@ Catalog.module("az-900", {
                       options: [
                         "Because services delivered over the internet aren't limited by your own physical facilities",
                         "Because the company still buys the hardware, but it's installed faster",
-                        "Because cloud providers don't use physical datacenters",
+                        "Because the provider guarantees unlimited capacity in every region",
                         "Because the company signs a long-term capacity contract in advance"
                       ],
                       answer: 0,
@@ -345,7 +345,7 @@ Catalog.module("az-900", {
                         options: [
                           "Porque los servicios entregados por internet no dependen de sus propias instalaciones físicas",
                           "Porque la empresa sigue comprando el hardware, pero se instala más rápido",
-                          "Porque los proveedores de nube no usan centros de datos físicos",
+                          "Porque el proveedor garantiza capacidad ilimitada en todas las regiones",
                           "Porque la empresa firma por adelantado un contrato de capacidad a largo plazo"
                         ],
                         explain: "Entregar servicios a través de internet libera de los límites físicos del centro de datos propio, así que se puede ampliar la infraestructura sin construir uno. Los proveedores de nube sí operan centros de datos físicos."
@@ -584,7 +584,7 @@ Catalog.module("az-900", {
                         "No capital expenditures to scale up",
                         "Data isn't collocated with other tenants' data",
                         "You pay only for what you use",
-                        "Anyone who wants to purchase services can use the resources"
+                        "The provider maintains the hardware for you"
                       ],
                       answers: [0, 2],
                       explain: "Complete control and data kept apart from other tenants are private cloud traits. No CapEx, pay-per-use and general availability describe public cloud.",
@@ -595,7 +595,7 @@ Catalog.module("az-900", {
                           "No hay gastos de capital para escalar",
                           "Los datos no comparten ubicación con los de otros inquilinos",
                           "Solo paga lo que usa",
-                          "Cualquiera que quiera comprar servicios puede usar los recursos"
+                          "El proveedor mantiene el hardware por usted"
                         ],
                         explain: "El control total y los datos separados de otros inquilinos son rasgos de la nube privada. Sin CapEx, el pago por uso y la disponibilidad general describen a la nube pública."
                       }
@@ -757,8 +757,8 @@ Catalog.module("az-900", {
                       options: [
                         "Adding virtual machines within minutes and removing them later",
                         "Ordering, installing and provisioning additional hardware, power and cooling",
-                        "Releasing unused resources to lower the bill",
-                        "Changing the pay-as-you-go pricing tier"
+                        "Moving the app to a different region",
+                        "Requesting a higher SLA from the hardware vendor"
                       ],
                       answer: 1,
                       explain: "In a traditional datacenter, more capacity means ordering, installing and provisioning hardware, power and cooling. Adding and removing VMs on demand is what the cloud allows.",
@@ -767,8 +767,8 @@ Catalog.module("az-900", {
                         options: [
                           "Agregar máquinas virtuales en minutos y quitarlas después",
                           "Pedir, instalar y aprovisionar hardware, energía y refrigeración adicionales",
-                          "Liberar recursos sin usar para reducir la factura",
-                          "Cambiar el nivel de precios de pago por uso"
+                          "Mover la aplicación a otra región",
+                          "Pedir un SLA más alto al proveedor del hardware"
                         ],
                         explain: "En un centro de datos tradicional, sumar capacidad significa pedir, instalar y aprovisionar hardware, energía y refrigeración. Agregar y quitar máquinas virtuales a petición es lo que permite la nube."
                       }
@@ -777,20 +777,20 @@ Catalog.module("az-900", {
                       type: "single",
                       q: "Traffic to a cloud-hosted application drops sharply after a product launch. What should you do to keep costs aligned with demand?",
                       options: [
-                        "Keep all virtual machines running so they're ready for the next launch",
-                        "Buy dedicated hardware for the next peak",
+                        "Scale up the remaining VMs so they're ready for the next launch",
+                        "Switch to a higher SLA tier",
                         "Scale back in by removing the virtual machines you no longer need",
-                        "Move the application back on-premises"
+                        "Add a load balancer to spread the remaining traffic"
                       ],
                       answer: 2,
                       explain: "In the cloud you pay only for what you use, so you scale in when traffic subsides. Idle virtual machines keep generating cost.",
                       es: {
                         q: "El tráfico de una aplicación hospedada en la nube cae bruscamente después del lanzamiento de un producto. ¿Qué debe hacer para mantener los costos alineados con la demanda?",
                         options: [
-                          "Mantener todas las máquinas virtuales encendidas para tenerlas listas en el próximo lanzamiento",
-                          "Comprar hardware dedicado para el próximo pico",
+                          "Escalar verticalmente las máquinas restantes para que estén listas para el próximo lanzamiento",
+                          "Pasar a un nivel de SLA más alto",
                           "Reducir horizontalmente quitando las máquinas virtuales que ya no necesita",
-                          "Volver a llevar la aplicación al entorno local"
+                          "Agregar un equilibrador de carga para repartir el tráfico restante"
                         ],
                         explain: "En la nube solo se paga lo que se usa, así que se reduce la capacidad cuando baja el tráfico. Las máquinas virtuales ociosas siguen generando costo."
                       }
@@ -802,7 +802,7 @@ Catalog.module("az-900", {
                         "You pay a fixed annual fee that covers unlimited usage",
                         "You pay for the maximum capacity you might ever need",
                         "You typically pay only for the services you consume",
-                        "You pay only for resources while they are idle"
+                        "You pay a fixed monthly rate per subscription"
                       ],
                       answer: 2,
                       explain: "Pay-as-you-go means paying for what you consume, which helps you plan and manage operating costs, run infrastructure efficiently and scale as needs change.",
@@ -812,7 +812,7 @@ Catalog.module("az-900", {
                           "Paga una tarifa anual fija que cubre un uso ilimitado",
                           "Paga por la capacidad máxima que podría llegar a necesitar",
                           "Normalmente paga solo por los servicios que consume",
-                          "Paga por los recursos solo mientras están ociosos"
+                          "Paga una tarifa mensual fija por suscripción"
                         ],
                         explain: "Pago por uso significa pagar lo que se consume, lo que ayuda a planificar y administrar los costos operativos, usar la infraestructura de forma eficiente y escalar según cambien las necesidades."
                       }

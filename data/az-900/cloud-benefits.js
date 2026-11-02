@@ -78,13 +78,13 @@ Catalog.module("az-900", {
         type: "multi",
         topic: "Reliability and predictability",
         q: "Which two cloud concepts support performance predictability?",
-        options: ["Autoscaling", "Load balancing", "The Azure Pricing Calculator", "Real-time cost tracking", "Governance templates"],
+        options: ["Autoscaling", "Load balancing", "Service-level agreements", "Deployment templates", "Cloud-based auditing"],
         answers: [0, 1],
         explain: "Autoscaling and load balancing, along with high availability, support performance predictability. The Pricing Calculator and cost tracking support cost predictability.",
         es: {
           topic: "Confiabilidad y previsibilidad",
           q: "¿Cuáles son dos conceptos de la nube que contribuyen a la previsibilidad del rendimiento?",
-          options: ["El escalado automático", "El equilibrio de carga", "La Calculadora de precios de Azure", "El seguimiento de costos en tiempo real", "Las plantillas de gobernanza"],
+          options: ["El escalado automático", "El equilibrio de carga", "Los acuerdos de nivel de servicio", "Las plantillas de implementación", "La auditoría en la nube"],
           explain: "El escalado automático y el equilibrio de carga, junto con la alta disponibilidad, contribuyen a la previsibilidad del rendimiento. La Calculadora de precios y el seguimiento de costos contribuyen a la previsibilidad de costos."
         }
       },
@@ -111,7 +111,7 @@ Catalog.module("az-900", {
           "Add more virtual machines to spread the load",
           "Keep them at their current size so there's headroom for future growth",
           "Right-size them to reduce overprovisioning",
-          "Move them to an on-premises datacenter"
+          "Move them to a higher SLA tier"
         ],
         answer: 2,
         explain: "Right-sizing, choosing efficient services and configurations, reduces overprovisioning and waste. Keeping idle capacity 'just in case' is the waste the practice targets.",
@@ -122,7 +122,7 @@ Catalog.module("az-900", {
             "Agregar más máquinas virtuales para repartir la carga",
             "Dejarlas con el tamaño actual para tener margen ante el crecimiento futuro",
             "Ajustar su tamaño para reducir el sobreaprovisionamiento",
-            "Trasladarlas a un centro de datos local"
+            "Pasarlas a un nivel de SLA más alto"
           ],
           explain: "Ajustar el tamaño, eligiendo servicios y configuraciones eficientes, reduce el sobreaprovisionamiento y el desperdicio. Mantener capacidad ociosa \"por las dudas\" es justamente el desperdicio que la práctica ataca."
         }
@@ -173,8 +173,8 @@ Catalog.module("az-900", {
         options: [
           "Adjusting the amount of resources to meet changing demand",
           "Keeping resources available despite disruptions",
-          "Forecasting the cost of cloud spend",
-          "Applying patches automatically"
+          "Recovering after a regional disaster",
+          "Keeping costs predictable"
         ],
         answer: 1,
         explain: "High availability is about keeping resources available when needed, whatever happens. Adjusting resources to demand is scalability; forecasting cost is predictability.",
@@ -184,8 +184,8 @@ Catalog.module("az-900", {
           options: [
             "En ajustar la cantidad de recursos para satisfacer una demanda cambiante",
             "En mantener los recursos disponibles pese a las interrupciones",
-            "En pronosticar el costo del gasto en la nube",
-            "En aplicar parches automáticamente"
+            "Recuperarse después de un desastre regional",
+            "Mantener los costos predecibles"
           ],
           explain: "La alta disponibilidad busca que los recursos estén disponibles cuando se necesitan, pase lo que pase. Ajustar recursos a la demanda es escalabilidad; pronosticar costos es previsibilidad."
         }
@@ -194,13 +194,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Manageability",
         q: "An operations team wants to automate recurring management tasks in its cloud environment. Which tools fit this need?",
-        options: ["Service-level agreements", "The Azure Pricing Calculator", "CLI or PowerShell scripts", "DDoS protection"],
+        options: ["Load balancing", "Cost analysis", "CLI or PowerShell scripts", "Metric-based alerts"],
         answer: 2,
         explain: "The CLI and PowerShell, along with APIs, let you script and automate management. SLAs, the Pricing Calculator and DDoS protection serve other purposes.",
         es: {
           topic: "Capacidad de administración",
           q: "Un equipo de operaciones quiere automatizar tareas de administración recurrentes en su entorno en la nube. ¿Qué herramientas responden a esa necesidad?",
-          options: ["Los acuerdos de nivel de servicio", "La Calculadora de precios de Azure", "Scripts de la CLI o de PowerShell", "La protección contra DDoS"],
+          options: ["El equilibrio de carga", "El análisis de costos", "Scripts de la CLI o de PowerShell", "Alertas basadas en métricas"],
           explain: "La CLI y PowerShell, junto con las API, permiten escribir scripts y automatizar la administración. Los SLA, la Calculadora de precios y la protección contra DDoS sirven para otros fines."
         }
       },
@@ -256,12 +256,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Where are Azure's uptime guarantees for a service documented?",
-            options: ["In service-level agreements (SLAs)", "In the Azure Well-Architected Framework", "In the shared responsibility model", "In the Azure Pricing Calculator"],
+            options: ["In service-level agreements (SLAs)", "In the Azure Well-Architected Framework", "In the Azure Advisor reliability recommendations", "In Azure Service Health"],
             answer: 0,
             explain: "Azure's uptime guarantees depend on the service and are part of its service-level agreements.",
             es: {
               q: "¿Dónde se documentan las garantías de tiempo de actividad de un servicio de Azure?",
-              options: ["En los acuerdos de nivel de servicio (SLA)", "En el Marco de buena arquitectura de Azure", "En el modelo de responsabilidad compartida", "En la Calculadora de precios de Azure"],
+              options: ["En los acuerdos de nivel de servicio (SLA)", "En el Marco de buena arquitectura de Azure", "En las recomendaciones de confiabilidad de Azure Advisor", "En Azure Service Health"],
               explain: "Las garantías de tiempo de actividad de Azure dependen del servicio y forman parte de sus acuerdos de nivel de servicio."
             }
           },
@@ -318,9 +318,9 @@ Catalog.module("az-900", {
             options: [
               "Handling increased demand by adding resources",
               "Reducing costs by reducing resources when demand drops",
-              "Guaranteed 100% uptime for every service",
-              "Removing the need for service-level agreements",
-              "A fixed monthly cost regardless of demand"
+              "Recovering automatically from a regional outage",
+              "Keeping resources available despite failures",
+              "Knowing your monthly bill in advance"
             ],
             answers: [0, 1],
             explain: "Scalability lets you add resources for peaks and, because you pay for what you use, reduce them and the cost when demand drops.",
@@ -329,9 +329,9 @@ Catalog.module("az-900", {
               options: [
                 "Atender un aumento de la demanda agregando recursos",
                 "Reducir costos disminuyendo recursos cuando baja la demanda",
-                "Un tiempo de actividad garantizado del 100 % para todos los servicios",
-                "Eliminar la necesidad de acuerdos de nivel de servicio",
-                "Un costo mensual fijo sin importar la demanda"
+                "Recuperarse automáticamente de una interrupción regional",
+                "Mantener los recursos disponibles pese a las fallas",
+                "Conocer de antemano la factura mensual"
               ],
               explain: "La escalabilidad permite agregar recursos para los picos y, como se paga lo que se usa, reducirlos junto con el costo cuando baja la demanda."
             }
@@ -412,12 +412,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Before migrating, the finance team wants an estimate of potential cloud spend. What should it use?",
-            options: ["Azure Arc", "A service-level agreement", "The Azure Pricing Calculator", "A load balancer"],
+            options: ["Cost analysis in Microsoft Cost Management", "Azure Advisor cost recommendations", "The Azure Pricing Calculator", "Budget alerts"],
             answer: 2,
             explain: "The Azure Pricing Calculator estimates potential cloud spend, which supports cost predictability.",
             es: {
               q: "Antes de migrar, el equipo de finanzas quiere una estimación del gasto posible en la nube. ¿Qué debe usar?",
-              options: ["Azure Arc", "Un acuerdo de nivel de servicio", "La Calculadora de precios de Azure", "Un equilibrador de carga"],
+              options: ["El análisis de costos de Microsoft Cost Management", "Las recomendaciones de costo de Azure Advisor", "La Calculadora de precios de Azure", "Las alertas de presupuesto"],
               explain: "La Calculadora de precios de Azure estima el gasto posible en la nube, lo que contribuye a la previsibilidad de costos."
             }
           },
@@ -473,24 +473,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Your company needs deployed resources to meet its technical standards and regulatory requirements, and to update them at scale when standards change. What helps most?",
-            options: ["Configuring each resource manually", "Deployment templates", "Vertical scaling", "The Azure Pricing Calculator"],
+            options: ["Configuring each resource manually", "Deployment templates", "Cloud-based auditing alone", "Metric-based alerts"],
             answer: 1,
             explain: "Templates make deployed resources meet your standards and requirements, and let you update resources at scale as standards change.",
             es: {
               q: "Su empresa necesita que los recursos implementados cumplan sus estándares técnicos y requisitos normativos, y poder actualizarlos a escala cuando cambien los estándares. ¿Qué ayuda más?",
-              options: ["Configurar cada recurso manualmente", "Las plantillas de implementación", "El escalado vertical", "La Calculadora de precios de Azure"],
+              options: ["Configurar cada recurso manualmente", "Las plantillas de implementación", "La auditoría en la nube por sí sola", "Las alertas basadas en métricas"],
               explain: "Las plantillas hacen que los recursos implementados cumplan sus estándares y requisitos, y permiten actualizarlos a escala cuando cambian los estándares."
             }
           },
           {
             type: "single",
             q: "Which cloud capability flags resources that are out of compliance with your baseline and provides mitigation strategies?",
-            options: ["Load balancing", "Autoscaling", "Cloud-based auditing", "Service-level agreements"],
+            options: ["Deployment templates", "Metric-based alerts", "Cloud-based auditing", "Health monitoring"],
             answer: 2,
             explain: "Cloud-based auditing identifies resources out of compliance with your baseline and suggests how to mitigate.",
             es: {
               q: "¿Qué capacidad de la nube marca los recursos que no cumplen con su línea base y propone estrategias de mitigación?",
-              options: ["El equilibrio de carga", "El escalado automático", "La auditoría basada en la nube", "Los acuerdos de nivel de servicio"],
+              options: ["Las plantillas de implementación", "Las alertas basadas en métricas", "La auditoría basada en la nube", "La supervisión del estado"],
               explain: "La auditoría basada en la nube identifica los recursos que no cumplen con su línea base y sugiere cómo mitigarlo."
             }
           },
@@ -523,8 +523,8 @@ Catalog.module("az-900", {
             options: [
               "The customer must handle DDoS attacks alone in every cloud service type",
               "Cloud providers are typically well suited to handle DDoS attacks",
-              "DDoS attacks only affect on-premises environments, never cloud services",
-              "DDoS protection is only available when you use IaaS"
+              "DDoS protection is the customer's job in IaaS, the provider's in PaaS",
+              "DDoS attacks are prevented by the SLA"
             ],
             answer: 1,
             explain: "The module notes that cloud providers are typically well suited to handle DDoS attacks, which makes your network more robust and secure.",
@@ -533,8 +533,8 @@ Catalog.module("az-900", {
               options: [
                 "El cliente debe gestionar solo los ataques DDoS en todos los tipos de servicio en la nube",
                 "Los proveedores de nube suelen estar bien preparados para gestionar ataques DDoS",
-                "Los ataques DDoS solo afectan a los entornos locales, nunca a los servicios en la nube",
-                "La protección contra DDoS solo está disponible si usa IaaS"
+                "La protección DDoS es tarea del cliente en IaaS y del proveedor en PaaS",
+                "El SLA evita los ataques DDoS"
               ],
               explain: "El módulo indica que los proveedores de nube suelen estar bien preparados para gestionar ataques DDoS, lo que hace más robusta y segura su red."
             }
@@ -542,12 +542,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two cloud capabilities support governance and compliance?",
-            options: ["Templates that enforce your standards", "Cloud-based auditing", "Vertical scaling", "The Azure Pricing Calculator", "Load balancing"],
+            options: ["Templates that enforce your standards", "Cloud-based auditing", "Autoscaling", "Metric-based alerts", "Service-level agreements"],
             answers: [0, 1],
             explain: "Templates keep deployments within your standards, and auditing flags resources that drift out of compliance. The other options address performance or cost.",
             es: {
               q: "¿Cuáles son dos capacidades de la nube que contribuyen a la gobernanza y el cumplimiento?",
-              options: ["Las plantillas que aplican sus estándares", "La auditoría basada en la nube", "El escalado vertical", "La Calculadora de precios de Azure", "El equilibrio de carga"],
+              options: ["Las plantillas que aplican sus estándares", "La auditoría basada en la nube", "El escalado automático", "Las alertas basadas en métricas", "Los acuerdos de nivel de servicio"],
               explain: "Las plantillas mantienen las implementaciones dentro de sus estándares y la auditoría marca los recursos que dejan de cumplir. Las otras opciones apuntan al rendimiento o al costo."
             }
           },
@@ -691,8 +691,8 @@ Catalog.module("az-900", {
             options: [
               "Leave it running so developers never wait",
               "Automatically shut it down overnight and on weekends",
-              "Scale it up so it finishes work faster",
-              "Duplicate it in a second region"
+              "Move it to a cheaper region",
+              "Scale it down to the smallest size permanently"
             ],
             answer: 1,
             explain: "Shutting down an environment outside business hours reduces unnecessary consumption while still meeting the team's needs.",
@@ -701,8 +701,8 @@ Catalog.module("az-900", {
               options: [
                 "Dejarlo encendido para que los desarrolladores nunca esperen",
                 "Apagarlo automáticamente por la noche y los fines de semana",
-                "Escalarlo verticalmente para que termine el trabajo más rápido",
-                "Duplicarlo en una segunda región"
+                "Moverlo a una región más barata",
+                "Reducirlo de forma permanente al tamaño más chico"
               ],
               explain: "Apagar un entorno fuera del horario laboral reduce el consumo innecesario y sigue cubriendo las necesidades del equipo."
             }
@@ -713,9 +713,9 @@ Catalog.module("az-900", {
             options: [
               "Turning off or deallocating resources that aren't in use",
               "Scaling resources down when demand decreases",
-              "Overprovisioning to handle any possible peak",
-              "Keeping test environments running permanently",
-              "Choosing the largest virtual machine size by default"
+              "Deploying in every region for redundancy",
+              "Reserving capacity for the largest expected peak",
+              "Running workloads on premium storage by default"
             ],
             answers: [0, 1],
             explain: "Deallocating unused resources and scaling down with demand reduce waste. The other options create the overprovisioning the practices aim to avoid.",
@@ -724,9 +724,9 @@ Catalog.module("az-900", {
               options: [
                 "Apagar o desasignar los recursos que no se usan",
                 "Reducir los recursos cuando disminuye la demanda",
-                "Sobreaprovisionar para cubrir cualquier pico posible",
-                "Mantener los entornos de prueba encendidos de forma permanente",
-                "Elegir por defecto el tamaño de máquina virtual más grande"
+                "Implementar en todas las regiones por redundancia",
+                "Reservar capacidad para el pico más alto esperado",
+                "Ejecutar las cargas en almacenamiento premium de forma predeterminada"
               ],
               explain: "Desasignar recursos sin uso y reducirlos según la demanda disminuye el desperdicio. Las otras opciones generan el sobreaprovisionamiento que las prácticas buscan evitar."
             }
@@ -736,9 +736,9 @@ Catalog.module("az-900", {
             q: "Why can cloud computing improve resource efficiency compared with many on-premises environments?",
             options: [
               "Large-scale operation can improve utilization compared with isolated environments",
-              "Cloud datacenters don't consume energy",
+              "Cloud resources consume no energy when deployed",
               "Customers no longer need to optimize their deployments",
-              "Every cloud resource scales down automatically when it's idle"
+              "Customers can no longer overprovision resources"
             ],
             answer: 0,
             explain: "Large-scale operation can improve utilization compared with isolated on-premises environments. Teams still need to optimize to get the benefit.",
@@ -746,9 +746,9 @@ Catalog.module("az-900", {
               q: "¿Por qué la informática en la nube puede mejorar la eficiencia de los recursos frente a muchos entornos locales?",
               options: [
                 "Porque operar a gran escala puede mejorar el aprovechamiento frente a entornos aislados",
-                "Porque los centros de datos en la nube no consumen energía",
+                "Los recursos en la nube no consumen energía una vez implementados",
                 "Porque los clientes ya no necesitan optimizar sus implementaciones",
-                "Porque todos los recursos en la nube se reducen solos cuando están ociosos"
+                "Los clientes ya no pueden sobreaprovisionar recursos"
               ],
               explain: "Operar a gran escala puede mejorar el aprovechamiento frente a entornos locales aislados. Los equipos igual necesitan optimizar para obtener el beneficio."
             }
@@ -758,9 +758,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about sustainability habits.",
             parts: [
               "At a fundamentals level, sustainability in the cloud is tied to good operational habits: right-size, ",
-              { options: ["overprovision", "automate", "duplicate"], answer: 1 },
+              { options: ["overprovision", "automate", "replicate"], answer: 1 },
               ", monitor, and ",
-              { options: ["continuously optimize", "buy capacity ahead", "centralize everything"], answer: 0 },
+              { options: ["continuously optimize", "reserve peak capacity", "scale up by default"], answer: 0 },
               "."
             ],
             explain: "The unit sums it up as right-size, automate, monitor and continuously optimize.",
@@ -768,9 +768,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre los hábitos de sostenibilidad.",
               parts: [
                 "En lo fundamental, la sostenibilidad en la nube está ligada a buenos hábitos operativos: ajustar el tamaño, ",
-                { options: ["sobreaprovisionar", "automatizar", "duplicar"] },
+                { options: ["sobreaprovisionar", "automatizar", "replicar"] },
                 ", supervisar y ",
-                { options: ["optimizar continuamente", "comprar capacidad por adelantado", "centralizar todo"] },
+                { options: ["optimizar continuamente", "reservar capacidad pico", "escalar verticalmente por defecto"] },
                 "."
               ],
               explain: "La unidad lo resume en ajustar el tamaño, automatizar, supervisar y optimizar continuamente."
@@ -782,8 +782,8 @@ Catalog.module("az-900", {
             options: [
               "Deploying extra capacity just in case",
               "Choosing efficient services and configurations",
-              "Disabling monitoring to save resources",
-              "Scaling up every time an alert fires"
+              "Adding a load balancer",
+              "Moving to a higher SLA tier"
             ],
             answer: 1,
             explain: "Choosing efficient services and configurations is the listed practice for reducing overprovisioning. Monitoring is needed to find optimization opportunities.",
@@ -792,8 +792,8 @@ Catalog.module("az-900", {
               options: [
                 "Implementar capacidad adicional por las dudas",
                 "Elegir servicios y configuraciones eficientes",
-                "Desactivar la supervisión para ahorrar recursos",
-                "Escalar verticalmente cada vez que salta una alerta"
+                "Agregar un equilibrador de carga",
+                "Pasar a un nivel de SLA más alto"
               ],
               explain: "Elegir servicios y configuraciones eficientes es la práctica listada para reducir el sobreaprovisionamiento. La supervisión es necesaria para encontrar oportunidades de optimización."
             }

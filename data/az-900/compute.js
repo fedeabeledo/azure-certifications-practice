@@ -11,13 +11,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Functions",
         q: "Code must run only when a user uploads an image, finish in a few seconds, and the team doesn't want to maintain any VMs or containers. Which compute option fits best?",
-        options: ["Azure Virtual Machines", "Azure Kubernetes Service", "Azure Functions", "Azure Virtual Desktop"],
+        options: ["Azure Virtual Machines", "Azure Kubernetes Service", "Azure Functions", "Azure App Service"],
         answer: 2,
         explain: "Functions are event-driven and serverless: an event wakes the code, it finishes quickly and you pay only for the CPU time used. VMs and AKS would keep resources running.",
         es: {
           topic: "Azure Functions",
           q: "Un código debe ejecutarse solo cuando un usuario sube una imagen, terminar en pocos segundos, y el equipo no quiere mantener máquinas virtuales ni contenedores. ¿Qué opción de proceso es la más adecuada?",
-          options: ["Azure Virtual Machines", "Azure Kubernetes Service", "Azure Functions", "Azure Virtual Desktop"],
+          options: ["Azure Virtual Machines", "Azure Kubernetes Service", "Azure Functions", "Azure App Service"],
           explain: "Functions es sin servidor y basado en eventos: un evento activa el código, termina rápido y solo se paga el tiempo de CPU usado. Las máquinas virtuales y AKS mantendrían recursos en ejecución."
         }
       },
@@ -50,13 +50,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Virtual machines",
         q: "A company runs identical web servers on VMs and wants them to scale out automatically on a schedule and during load peaks, with traffic distributed among them. What should it use?",
-        options: ["Availability sets", "Virtual machine scale sets", "A single larger VM", "Azure Virtual Desktop host pools"],
+        options: ["Availability sets", "Virtual machine scale sets", "A single larger VM", "Azure Container Instances"],
         answer: 1,
         explain: "Scale sets manage groups of identical, load-balanced VMs and scale them automatically by demand or schedule. Availability sets improve resiliency but don't scale.",
         es: {
           topic: "Máquinas virtuales",
           q: "Una empresa ejecuta servidores web idénticos en máquinas virtuales y quiere que escalen automáticamente según un horario y durante los picos de carga, con el tráfico repartido entre ellos. ¿Qué debe usar?",
-          options: ["Conjuntos de disponibilidad", "Conjuntos de escalado de máquinas virtuales", "Una sola máquina virtual más grande", "Grupos de hosts de Azure Virtual Desktop"],
+          options: ["Conjuntos de disponibilidad", "Conjuntos de escalado de máquinas virtuales", "Una sola máquina virtual más grande", "Azure Container Instances"],
           explain: "Los conjuntos de escalado administran grupos de máquinas virtuales idénticas con equilibrio de carga y las escalan automáticamente según la demanda o un horario. Los conjuntos de disponibilidad mejoran la resiliencia pero no escalan."
         }
       },
@@ -64,13 +64,13 @@ Catalog.module("az-900", {
         type: "multi",
         topic: "Containers",
         q: "Which two are PaaS container offerings that remove container management overhead?",
-        options: ["Azure Container Instances", "Azure Container Apps", "Azure Virtual Machines", "Virtual machine availability sets", "Azure Virtual Desktop"],
+        options: ["Azure Container Instances", "Azure Container Apps", "Azure Batch pools of VMs", "Virtual machine scale sets", "Azure Virtual Machines with Docker"],
         answers: [0, 1],
         explain: "Container Instances and Container Apps are both PaaS; you upload containers and the service runs them. Container Apps adds built-in load balancing and scaling.",
         es: {
           topic: "Contenedores",
           q: "¿Cuáles son dos ofertas de contenedores PaaS que eliminan la carga de administrar contenedores?",
-          options: ["Azure Container Instances", "Azure Container Apps", "Azure Virtual Machines", "Conjuntos de disponibilidad de máquinas virtuales", "Azure Virtual Desktop"],
+          options: ["Azure Container Instances", "Azure Container Apps", "Grupos de máquinas virtuales de Azure Batch", "Conjuntos de escalado de máquinas virtuales", "Azure Virtual Machines con Docker"],
           explain: "Container Instances y Container Apps son PaaS; se suben los contenedores y el servicio los ejecuta. Container Apps suma equilibrio de carga y escalado integrados."
         }
       },
@@ -78,13 +78,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure Virtual Desktop",
         q: "Contractors need to use corporate Windows apps from their personal devices, and the company doesn't want app data stored on those devices. Which service fits best?",
-        options: ["Azure Functions", "Azure Virtual Desktop", "Azure Container Instances", "Azure IoT Edge"],
+        options: ["Azure App Service", "Azure Virtual Desktop", "Azure Container Instances", "Microsoft Entra application proxy"],
         answer: 1,
         explain: "Azure Virtual Desktop keeps desktops and apps in Azure-hosted sessions, reducing data exposure on local devices, and works from many device types.",
         es: {
           topic: "Azure Virtual Desktop",
           q: "Unos contratistas necesitan usar aplicaciones corporativas de Windows desde sus dispositivos personales, y la empresa no quiere que los datos de las aplicaciones queden en esos dispositivos. ¿Qué servicio es el más adecuado?",
-          options: ["Azure Functions", "Azure Virtual Desktop", "Azure Container Instances", "Azure IoT Edge"],
+          options: ["Azure App Service", "Azure Virtual Desktop", "Azure Container Instances", "El proxy de aplicación de Microsoft Entra"],
           explain: "Azure Virtual Desktop mantiene los escritorios y las aplicaciones en sesiones hospedadas en Azure, lo que reduce la exposición de datos en los dispositivos locales, y funciona desde muchos tipos de dispositivo."
         }
       },
@@ -132,13 +132,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "AI, machine learning, and IoT",
         q: "A data science team needs to experiment with, train and manage the lifecycle of its own custom models. Which Azure option fits?",
-        options: ["Azure AI services", "Azure Machine Learning", "Azure IoT Central", "Azure App Service"],
+        options: ["Azure AI services", "Azure Machine Learning", "Azure OpenAI Service", "Azure App Service"],
         answer: 1,
         explain: "Azure Machine Learning is for custom model development and management. Azure AI services provide prebuilt features through APIs.",
         es: {
           topic: "IA, aprendizaje automático e IoT",
           q: "Un equipo de ciencia de datos necesita experimentar, entrenar y administrar el ciclo de vida de sus propios modelos personalizados. ¿Qué opción de Azure corresponde?",
-          options: ["Los servicios de Azure AI", "Azure Machine Learning", "Azure IoT Central", "Azure App Service"],
+          options: ["Los servicios de Azure AI", "Azure Machine Learning", "Azure OpenAI Service", "Azure App Service"],
           explain: "Azure Machine Learning sirve para desarrollar y administrar modelos personalizados. Los servicios de Azure AI ofrecen funciones prediseñadas mediante API."
         }
       },
@@ -146,13 +146,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Application hosting",
         q: "A web app needs a background task that runs a script in the same context as the app, either on a schedule or when triggered. Which App Service feature fits?",
-        options: ["API apps", "WebJobs", "Mobile apps", "Deployment slots for DNS"],
+        options: ["API apps", "WebJobs", "Mobile apps", "Azure Functions in a separate app"],
         answer: 1,
         explain: "WebJobs run programs or scripts in the same context as a web, API or mobile app, scheduled or triggered, often for background tasks.",
         es: {
           topic: "Hospedaje de aplicaciones",
           q: "Una aplicación web necesita una tarea en segundo plano que ejecute un script en el mismo contexto que la aplicación, según un horario o cuando se active. ¿Qué característica de App Service corresponde?",
-          options: ["Aplicaciones de API", "WebJobs", "Aplicaciones móviles", "Ranuras de implementación para DNS"],
+          options: ["Aplicaciones de API", "WebJobs", "Aplicaciones móviles", "Azure Functions en una aplicación separada"],
           explain: "WebJobs ejecuta programas o scripts en el mismo contexto que una aplicación web, de API o móvil, de forma programada o al activarse, a menudo para tareas en segundo plano."
         }
       },
@@ -160,13 +160,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Containers",
         q: "A company deploys a large fleet of containers and needs a service to manage their lifecycle. What should it use?",
-        options: ["Azure Container Instances", "Azure Kubernetes Service", "Azure Functions", "Virtual machine availability sets"],
+        options: ["Azure Container Instances", "Azure Kubernetes Service", "Azure Functions", "Azure Container Registry"],
         answer: 1,
         explain: "AKS is a container orchestration service that simplifies managing a fleet of containers. Container Instances is the simplest way to run a single container.",
         es: {
           topic: "Contenedores",
           q: "Una empresa implementa una gran flota de contenedores y necesita un servicio que administre su ciclo de vida. ¿Qué debe usar?",
-          options: ["Azure Container Instances", "Azure Kubernetes Service", "Azure Functions", "Conjuntos de disponibilidad de máquinas virtuales"],
+          options: ["Azure Container Instances", "Azure Kubernetes Service", "Azure Functions", "Azure Container Registry"],
           explain: "AKS es un servicio de orquestación de contenedores que simplifica la administración de una flota. Container Instances es la forma más simple de ejecutar un solo contenedor."
         }
       },
@@ -174,13 +174,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Virtual machines",
         q: "You deploy an Azure VM from a prebuilt image. Who is responsible for patching and updating the operating system inside the VM?",
-        options: ["Microsoft, because the image came from Azure", "You, because VMs are IaaS", "The image publisher", "Nobody; VMs update themselves"],
+        options: ["Microsoft, because the image came from Azure", "You, because VMs are IaaS", "The image publisher", "Microsoft, if the VM uses a Marketplace image"],
         answer: 1,
         explain: "VMs remove the need to buy hardware, but as IaaS you still manage patching, updates and configuration inside the VM.",
         es: {
           topic: "Máquinas virtuales",
           q: "Implementa una máquina virtual de Azure a partir de una imagen prediseñada. ¿Quién es responsable de aplicar parches y actualizar el sistema operativo dentro de la máquina virtual?",
-          options: ["Microsoft, porque la imagen vino de Azure", "Usted, porque las máquinas virtuales son IaaS", "El editor de la imagen", "Nadie; las máquinas virtuales se actualizan solas"],
+          options: ["Microsoft, porque la imagen vino de Azure", "Usted, porque las máquinas virtuales son IaaS", "El publicador de la imagen", "Microsoft, si la máquina usa una imagen de Marketplace"],
           explain: "Las máquinas virtuales eliminan la necesidad de comprar hardware, pero como son IaaS usted sigue administrando parches, actualizaciones y configuración dentro de ellas."
         }
       },
@@ -252,7 +252,7 @@ Catalog.module("az-900", {
               "In Standard_D2s_v5, the \"2\" indicates ",
               { options: ["the hardware generation", "the number of vCPUs", "the region"], answer: 1 },
               ", and the \"s\" indicates ",
-              { options: ["Premium SSD support", "a spot instance", "a second data disk"], answer: 0 },
+              { options: ["Premium SSD support", "a spot instance", "a smaller, cost-optimized size"], answer: 0 },
               "."
             ],
             explain: "D is the family (general purpose), 2 is the vCPU count, s means Premium SSD support and v5 is the hardware generation.",
@@ -262,7 +262,7 @@ Catalog.module("az-900", {
                 "En Standard_D2s_v5, el \"2\" indica ",
                 { options: ["la generación de hardware", "la cantidad de vCPU", "la región"] },
                 ", y la \"s\" indica ",
-                { options: ["compatibilidad con SSD Premium", "una instancia de acceso puntual", "un segundo disco de datos"] },
+                { options: ["compatibilidad con SSD Premium", "una instancia de acceso puntual", "un tamaño más chico y optimizado para costos"] },
                 "."
               ],
               explain: "D es la familia (uso general), 2 es la cantidad de vCPU, s significa compatibilidad con SSD Premium y v5 es la generación de hardware."
@@ -271,12 +271,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "You need to create and manage a group of identical, load-balanced VMs that scale in or out automatically. What should you use?",
-            options: ["Availability sets with fault domains", "Virtual machine scale sets", "Fault domains", "A generalized VM image"],
+            options: ["Availability sets with fault domains", "Virtual machine scale sets", "Azure Load Balancer with manually created VMs", "Availability zones"],
             answer: 1,
             explain: "Scale sets centralize configuration, integrate with load balancing and scale automatically by demand or schedule.",
             es: {
               q: "Necesita crear y administrar un grupo de máquinas virtuales idénticas, con equilibrio de carga, que escalen automáticamente. ¿Qué debe usar?",
-              options: ["Conjuntos de disponibilidad con dominios de error", "Conjuntos de escalado de máquinas virtuales", "Dominios de error", "Una imagen generalizada de máquina virtual"],
+              options: ["Conjuntos de disponibilidad con dominios de error", "Conjuntos de escalado de máquinas virtuales", "Azure Load Balancer con máquinas creadas a mano", "Las zonas de disponibilidad"],
               explain: "Los conjuntos de escalado centralizan la configuración, se integran con el equilibrio de carga y escalan automáticamente según la demanda o un horario."
             }
           },
@@ -298,9 +298,9 @@ Catalog.module("az-900", {
             options: [
               "Size: purpose, number of processor cores and amount of RAM",
               "Networking: VNet, public IP and ports",
+              "The availability zone's power provider",
               "A management group to host the VM",
-              "A sovereign region license",
-              "Microsoft-managed operating system patching for the VM"
+              "The physical host server"
             ],
             answers: [0, 1],
             explain: "You choose size, storage disks and networking. OS patching stays with you, and management groups organize subscriptions, not VMs.",
@@ -309,9 +309,9 @@ Catalog.module("az-900", {
               options: [
                 "El tamaño: propósito, cantidad de núcleos de procesador y cantidad de RAM",
                 "La red: red virtual, dirección IP pública y configuración de puertos",
-                "Un grupo de administración donde hospedar la máquina virtual",
-                "Una licencia de región soberana",
-                "La aplicación de parches del sistema operativo administrada por Microsoft"
+                "El proveedor de energía de la zona de disponibilidad",
+                "Un grupo de administración para alojar la máquina",
+                "El servidor físico de host"
               ],
               explain: "Se eligen el tamaño, los discos de almacenamiento y la red. Los parches del sistema operativo siguen a su cargo, y los grupos de administración organizan suscripciones, no máquinas virtuales."
             }
@@ -319,12 +319,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company keeps failover capacity in Azure so it can run critical workloads there if its primary site becomes unavailable. Which VM use case is this?",
-            options: ["Testing and development", "Disaster recovery", "Lift and shift migration", "Cloud application hosting"],
+            options: ["Lift-and-shift migration", "Disaster recovery", "Extending the datacenter for capacity", "Cloud application hosting"],
             answer: 1,
             explain: "Disaster recovery means keeping failover capacity in Azure for when the primary site is down.",
             es: {
               q: "Una empresa mantiene capacidad de conmutación por error en Azure para ejecutar allí sus cargas críticas si su sitio principal deja de estar disponible. ¿Qué caso de uso de máquinas virtuales es este?",
-              options: ["Pruebas y desarrollo", "Recuperación ante desastres", "Migración tal cual (lift and shift)", "Hospedaje de aplicaciones en la nube"],
+              options: ["Migración lift-and-shift", "Recuperación ante desastres", "Ampliar el centro de datos para tener capacidad", "Hospedaje de aplicaciones en la nube"],
               explain: "La recuperación ante desastres consiste en mantener capacidad de conmutación por error en Azure para cuando el sitio principal no está disponible."
             }
           },
@@ -357,24 +357,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A support team works in shifts and needs every shift to get the same tools, access policies and security controls on standardized cloud-hosted desktops. Which service fits best?",
-            options: ["Azure Functions", "Azure Virtual Desktop", "Azure Container Instances", "Azure App Service"],
+            options: ["Azure Arc-enabled servers", "Azure Virtual Desktop", "Virtual machine scale sets", "Azure Bastion"],
             answer: 1,
             explain: "Azure Virtual Desktop centralizes desktop and app delivery, which is exactly the unit's support-team example.",
             es: {
               q: "Un equipo de soporte trabaja por turnos y necesita que cada turno tenga las mismas herramientas, directivas de acceso y controles de seguridad en escritorios estandarizados hospedados en la nube. ¿Qué servicio es el más adecuado?",
-              options: ["Azure Functions", "Azure Virtual Desktop", "Azure Container Instances", "Azure App Service"],
+              options: ["Servidores habilitados para Azure Arc", "Azure Virtual Desktop", "Conjuntos de escalado de máquinas virtuales", "Azure Bastion"],
               explain: "Azure Virtual Desktop centraliza la entrega de escritorios y aplicaciones, que es justamente el ejemplo del equipo de soporte de la unidad."
             }
           },
           {
             type: "single",
             q: "Which service does Azure Virtual Desktop integrate with for identity and access controls?",
-            options: ["Azure DNS", "Microsoft Entra ID", "Azure IoT Hub", "Azure Kubernetes Service"],
+            options: ["Active Directory Federation Services only", "Microsoft Entra ID", "Azure Key Vault", "Microsoft Intune only"],
             answer: 1,
             explain: "Users connect through Microsoft Entra ID, which handles identity and access for Azure Virtual Desktop.",
             es: {
               q: "¿Con qué servicio se integra Azure Virtual Desktop para los controles de identidad y acceso?",
-              options: ["Azure DNS", "Microsoft Entra ID", "Azure IoT Hub", "Azure Kubernetes Service"],
+              options: ["Solo Active Directory Federation Services", "Microsoft Entra ID", "Azure Key Vault", "Solo Microsoft Intune"],
               explain: "Los usuarios se conectan a través de Microsoft Entra ID, que gestiona la identidad y el acceso de Azure Virtual Desktop."
             }
           },
@@ -384,9 +384,9 @@ Catalog.module("az-900", {
             options: [
               "It helps reduce data exposure on local devices",
               "It centralizes desktop and app delivery in Azure",
-              "It requires installing every app locally on each device",
-              "It supports only single-session experiences",
-              "It can only be used from inside the corporate office"
+              "It removes the need for Windows licenses",
+              "It runs desktops on the user's local hardware",
+              "It replaces Microsoft Entra ID for sign-in"
             ],
             answers: [0, 1],
             explain: "Apps and data can stay in Azure-hosted sessions and delivery is centralized. It supports single- and multi-session and works from many locations and devices.",
@@ -395,9 +395,9 @@ Catalog.module("az-900", {
               options: [
                 "Ayuda a reducir la exposición de datos en los dispositivos locales",
                 "Centraliza la entrega de escritorios y aplicaciones en Azure",
-                "Exige instalar cada aplicación localmente en cada dispositivo",
-                "Solo admite experiencias de sesión única",
-                "Solo se puede usar desde dentro de la oficina corporativa"
+                "Elimina la necesidad de licencias de Windows",
+                "Ejecuta los escritorios en el hardware local del usuario",
+                "Reemplaza a Microsoft Entra ID para iniciar sesión"
               ],
               explain: "Las aplicaciones y los datos pueden quedar en sesiones hospedadas en Azure y la entrega está centralizada. Admite sesión única y multisesión y funciona desde muchos lugares y dispositivos."
             }
@@ -409,7 +409,7 @@ Catalog.module("az-900", {
               "Azure Virtual Desktop supports ",
               { options: ["only single-session", "single-session and multi-session", "only multi-session"], answer: 1 },
               " Windows experiences, and apps and data can remain in ",
-              { options: ["Azure-hosted sessions", "local hard drives", "removable USB devices"], answer: 0 },
+              { options: ["Azure-hosted sessions", "the user's OneDrive only", "a local cache on each device"], answer: 0 },
               "."
             ],
             explain: "AVD offers both session types and keeps apps and data in Azure-hosted sessions instead of on local devices.",
@@ -419,7 +419,7 @@ Catalog.module("az-900", {
                 "Azure Virtual Desktop admite experiencias de Windows ",
                 { options: ["solo de sesión única", "de sesión única y multisesión", "solo multisesión"] },
                 ", y las aplicaciones y los datos pueden quedar en ",
-                { options: ["sesiones hospedadas en Azure", "discos duros locales", "dispositivos USB extraíbles"] },
+                { options: ["sesiones hospedadas en Azure", "solo en el OneDrive del usuario", "una caché local en cada dispositivo"] },
                 "."
               ],
               explain: "AVD ofrece ambos tipos de sesión y mantiene las aplicaciones y los datos en sesiones hospedadas en Azure en lugar de en los dispositivos locales."
@@ -431,8 +431,8 @@ Catalog.module("az-900", {
             options: [
               "It's often easier to operate",
               "It always costs less than any VM",
-              "It requires one subscription per user",
-              "It only works for a single user group"
+              "It doesn't require any Azure subscription",
+              "It removes the need for identity controls"
             ],
             answer: 0,
             explain: "For a full desktop for many users with centralized management, AVD is often easier to operate than separate VM-based desktops per group.",
@@ -441,8 +441,8 @@ Catalog.module("az-900", {
               options: [
                 "Suele ser más fácil de operar",
                 "Siempre cuesta menos que cualquier máquina virtual",
-                "Requiere una suscripción por usuario",
-                "Solo funciona para un único grupo de usuarios"
+                "No requiere ninguna suscripción de Azure",
+                "Elimina la necesidad de controles de identidad"
               ],
               explain: "Para ofrecer un escritorio completo a muchos usuarios con administración centralizada, AVD suele ser más fácil de operar que escritorios separados basados en máquinas virtuales por grupo."
             }
@@ -513,7 +513,7 @@ Catalog.module("az-900", {
               "Scale just the back end",
               "Scale all three parts together, since they share one OS",
               "Move the whole website to a larger VM",
-              "Restart the front end to free up capacity for the back end"
+              "Move the back end to Azure Functions"
             ],
             answer: 0,
             explain: "In a microservice architecture each part can be maintained, scaled or updated independently.",
@@ -523,7 +523,7 @@ Catalog.module("az-900", {
                 "Escalar únicamente el back-end",
                 "Escalar las tres partes juntas, porque comparten un sistema operativo",
                 "Trasladar todo el sitio a una máquina virtual más grande",
-                "Reiniciar el front-end para liberarle capacidad al back-end"
+                "Mover el back-end a Azure Functions"
               ],
               explain: "En una arquitectura de microservicios cada parte se puede mantener, escalar o actualizar de forma independiente."
             }
@@ -535,8 +535,8 @@ Catalog.module("az-900", {
               "You don't manage the operating system for a container",
               "Containers are lightweight and can restart quickly after a crash",
               "Each container runs its own full operating system that you manage",
-              "Only one container can run on a host",
-              "Containers can't be scaled out dynamically"
+              "Containers always require Kubernetes",
+              "Containers can only run Linux apps"
             ],
             answers: [0, 1],
             explain: "Containers are lighter and more agile than VMs: no OS to manage, quick to create, scale and restart, and many can run on one host.",
@@ -546,8 +546,8 @@ Catalog.module("az-900", {
                 "En un contenedor no se administra el sistema operativo",
                 "Los contenedores son livianos y se reinician rápido después de una falla",
                 "Cada contenedor ejecuta su propio sistema operativo completo que usted administra",
-                "Solo puede ejecutarse un contenedor por host",
-                "Los contenedores no se pueden escalar horizontalmente de forma dinámica"
+                "Los contenedores siempre requieren Kubernetes",
+                "Los contenedores solo pueden ejecutar aplicaciones Linux"
               ],
               explain: "Los contenedores son más livianos y ágiles que las máquinas virtuales: no hay sistema operativo que administrar, se crean, escalan y reinician rápido, y muchos pueden correr en un host."
             }
@@ -617,20 +617,20 @@ Catalog.module("az-900", {
             type: "single",
             q: "How does Azure charge for a function running in the serverless model?",
             options: [
-              "A fixed monthly fee per function",
+              "Per function app per month",
               "Only for the CPU time used",
-              "For a dedicated VM that stays running all month to host the function",
-              "Per user who calls the function"
+              "For the App Service plan size you choose",
+              "Per HTTP request only, regardless of duration"
             ],
             answer: 1,
             explain: "Functions run when triggered and resources are deallocated when they finish, so you're charged only for CPU time while running.",
             es: {
               q: "¿Cómo cobra Azure una función que se ejecuta en el modelo sin servidor?",
               options: [
-                "Una tarifa mensual fija por función",
+                "Por aplicación de funciones por mes",
                 "Solo el tiempo de CPU usado",
-                "Una máquina virtual dedicada que queda encendida todo el mes para alojar la función",
-                "Por cada usuario que llama a la función"
+                "Por el tamaño del plan de App Service que elige",
+                "Solo por solicitud HTTP, sin importar la duración"
               ],
               explain: "Las funciones se ejecutan cuando se activan y los recursos se liberan al terminar, así que solo se cobra el tiempo de CPU durante la ejecución."
             }
@@ -642,7 +642,7 @@ Catalog.module("az-900", {
               "By default, functions are ",
               { options: ["stateful", "stateless", "persistent"], answer: 1 },
               ". Functions that keep track of prior activity through a context are called ",
-              { options: ["Durable Functions", "WebJobs", "Container Apps"], answer: 0 },
+              { options: ["Durable Functions", "WebJobs", "Logic Apps"], answer: 0 },
               "."
             ],
             explain: "Stateless functions behave as if they restart on each event; Durable Functions are the stateful option.",
@@ -652,7 +652,7 @@ Catalog.module("az-900", {
                 "De forma predeterminada, las funciones son ",
                 { options: ["con estado", "sin estado", "persistentes"] },
                 ". Las funciones que registran la actividad previa mediante un contexto se llaman ",
-                { options: ["Durable Functions", "WebJobs", "Container Apps"] },
+                { options: ["Durable Functions", "WebJobs", "Logic Apps"] },
                 "."
               ],
               explain: "Las funciones sin estado se comportan como si se reiniciaran en cada evento; Durable Functions es la opción con estado."
@@ -665,8 +665,8 @@ Catalog.module("az-900", {
               "Work triggered by a REST request that completes within seconds",
               "Processing a message sent by another Azure service",
               "A process that must keep a VM running around the clock",
-              "Providing full Windows desktops to remote workers",
-              "Orchestrating a fleet of containers"
+              "Hosting a full Windows desktop session",
+              "A long-running batch job that holds state for hours"
             ],
             answers: [0, 1],
             explain: "Functions suit quick work triggered by an event, timer or message. Always-on VMs, desktops and container fleets are other services.",
@@ -676,8 +676,8 @@ Catalog.module("az-900", {
                 "Trabajo activado por una solicitud REST que termina en segundos",
                 "Procesar un mensaje enviado por otro servicio de Azure",
                 "Un proceso que debe mantener una máquina virtual encendida todo el día",
-                "Ofrecer escritorios completos de Windows a trabajadores remotos",
-                "Orquestar una flota de contenedores"
+                "Hospedar una sesión completa de escritorio Windows",
+                "Un trabajo por lotes largo que conserva el estado durante horas"
               ],
               explain: "Functions sirve para trabajo rápido activado por un evento, un temporizador o un mensaje. Las máquinas virtuales siempre encendidas, los escritorios y las flotas de contenedores son otros servicios."
             }
@@ -687,9 +687,9 @@ Catalog.module("az-900", {
             q: "Demand for a processing task is highly variable and unpredictable. Why might Azure Functions be a good choice?",
             options: [
               "Functions scale automatically based on demand",
-              "Functions require you to pre-provision capacity for the peak",
-              "Functions run on a fixed number of instances",
-              "Functions only run during business hours"
+              "Functions always run on dedicated hardware",
+              "Functions are billed at a fixed rate",
+              "Functions keep state between runs by default"
             ],
             answer: 0,
             explain: "Functions scale automatically with demand, which suits variable workloads.",
@@ -697,9 +697,9 @@ Catalog.module("az-900", {
               q: "La demanda de una tarea de procesamiento es muy variable e impredecible. ¿Por qué Azure Functions podría ser una buena opción?",
               options: [
                 "Porque Functions escala automáticamente según la demanda",
-                "Porque Functions exige aprovisionar capacidad para el pico",
-                "Porque Functions se ejecuta en una cantidad fija de instancias",
-                "Porque Functions solo se ejecuta en horario laboral"
+                "Las funciones siempre se ejecutan en hardware dedicado",
+                "Las funciones se facturan con una tarifa fija",
+                "Las funciones conservan el estado entre ejecuciones de forma predeterminada"
               ],
               explain: "Functions escala automáticamente con la demanda, lo que sirve para cargas variables."
             }
@@ -778,24 +778,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Which Azure service enables secure, bi-directional communication between cloud services and IoT devices?",
-            options: ["Azure IoT Central", "Azure IoT Hub", "Azure IoT Edge", "Azure Machine Learning"],
+            options: ["Azure IoT Central", "Azure IoT Hub", "Azure IoT Edge", "Azure Event Grid"],
             answer: 1,
             explain: "IoT Hub handles secure two-way communication. IoT Central is a simplified SaaS platform; IoT Edge runs workloads on edge devices.",
             es: {
               q: "¿Qué servicio de Azure permite una comunicación segura y bidireccional entre los servicios en la nube y los dispositivos IoT?",
-              options: ["Azure IoT Central", "Azure IoT Hub", "Azure IoT Edge", "Azure Machine Learning"],
+              options: ["Azure IoT Central", "Azure IoT Hub", "Azure IoT Edge", "Azure Event Grid"],
               explain: "IoT Hub gestiona la comunicación segura en ambos sentidos. IoT Central es una plataforma SaaS simplificada; IoT Edge ejecuta cargas en dispositivos perimetrales."
             }
           },
           {
             type: "single",
             q: "A factory needs some processing to run on devices close to where data is generated, applying model updates locally. Which service enables this?",
-            options: ["Azure IoT Edge", "Azure IoT Central", "Azure DNS", "Azure Virtual Desktop"],
+            options: ["Azure IoT Edge", "Azure IoT Central", "Azure IoT Hub", "Azure Functions"],
             answer: 0,
             explain: "IoT Edge extends cloud capabilities to edge devices so workloads can run near the data, applying insights and model updates from the cloud.",
             es: {
               q: "Una fábrica necesita que parte del procesamiento se ejecute en dispositivos cercanos a donde se generan los datos, aplicando actualizaciones de modelos de forma local. ¿Qué servicio lo permite?",
-              options: ["Azure IoT Edge", "Azure IoT Central", "Azure DNS", "Azure Virtual Desktop"],
+              options: ["Azure IoT Edge", "Azure IoT Central", "Azure IoT Hub", "Azure Functions"],
               explain: "IoT Edge extiende las capacidades de la nube a los dispositivos perimetrales para que las cargas se ejecuten cerca de los datos, aplicando información y actualizaciones de modelos desde la nube."
             }
           },
@@ -806,7 +806,7 @@ Catalog.module("az-900", {
               "Azure IoT Central is a simplified ",
               { options: ["IaaS", "PaaS", "SaaS"], answer: 2 },
               " IoT platform, while Azure OpenAI Service supports ",
-              { options: ["generative AI", "DNS resolution", "VM scaling"], answer: 0 },
+              { options: ["generative AI", "classic machine learning", "device telemetry"], answer: 0 },
               " scenarios such as chat and content generation."
             ],
             explain: "IoT Central is SaaS for solution builders. Azure OpenAI Service supports generative AI with built-in security and governance controls.",
@@ -816,7 +816,7 @@ Catalog.module("az-900", {
                 "Azure IoT Central es una plataforma de IoT ",
                 { options: ["IaaS", "PaaS", "SaaS"] },
                 " simplificada, mientras que Azure OpenAI Service admite escenarios de ",
-                { options: ["IA generativa", "resolución de DNS", "escalado de máquinas virtuales"] },
+                { options: ["IA generativa", "aprendizaje automático clásico", "telemetría de dispositivos"] },
                 ", como chat y generación de contenido."
               ],
               explain: "IoT Central es SaaS para creadores de soluciones. Azure OpenAI Service admite IA generativa con controles de seguridad y gobernanza integrados."
@@ -828,8 +828,8 @@ Catalog.module("az-900", {
             options: [
               "As a separate compute category, like VMs or containers",
               "As a pattern combining Azure AI with your app logic",
-              "As a type of IoT device",
-              "As a storage tier optimized for AI training data"
+              "As a feature of Azure IoT Edge",
+              "As a replacement for Azure Functions"
             ],
             answer: 1,
             explain: "Agentic applications combine a model with instructions, context and tools; in Azure you build them from AI services and Azure OpenAI plus your logic, not as a separate compute category.",
@@ -838,8 +838,8 @@ Catalog.module("az-900", {
               options: [
                 "Como una categoría de proceso aparte, como los contenedores",
                 "Como un patrón que combina Azure AI con la lógica de su aplicación",
-                "Como un tipo de dispositivo IoT",
-                "Como un nivel de almacenamiento para datos de IA"
+                "Como una característica de Azure IoT Edge",
+                "Como reemplazo de Azure Functions"
               ],
               explain: "Las aplicaciones agénticas combinan un modelo con instrucciones, contexto y herramientas; en Azure se construyen con los servicios de IA y Azure OpenAI más su lógica, no como una categoría de proceso aparte."
             }
@@ -847,12 +847,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two are Azure IoT services?",
-            options: ["Azure IoT Hub", "Azure IoT Edge", "Azure Machine Learning", "Azure OpenAI Service", "Azure DNS"],
+            options: ["Azure IoT Hub", "Azure IoT Edge", "Azure Machine Learning", "Azure OpenAI Service", "Azure Event Grid"],
             answers: [0, 1],
             explain: "IoT Hub, IoT Central and IoT Edge are the IoT services in the unit.",
             es: {
               q: "¿Cuáles son dos servicios de Azure IoT?",
-              options: ["Azure IoT Hub", "Azure IoT Edge", "Azure Machine Learning", "Azure OpenAI Service", "Azure DNS"],
+              options: ["Azure IoT Hub", "Azure IoT Edge", "Azure Machine Learning", "Azure OpenAI Service", "Azure Event Grid"],
               explain: "IoT Hub, IoT Central e IoT Edge son los servicios de IoT de la unidad."
             }
           },
@@ -885,12 +885,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team wants to host a web app in Python with automatic scaling and high availability, deploying continuously from GitHub, without managing infrastructure. What should it use?",
-            options: ["Azure Virtual Machines", "Azure App Service", "Azure Virtual Desktop", "Azure IoT Hub"],
+            options: ["Azure Virtual Machines", "Azure App Service", "Azure Container Instances", "Azure Functions"],
             answer: 1,
             explain: "App Service hosts web apps, APIs and mobile back ends in many languages, with automatic scaling, high availability and automated deployments from GitHub, Azure DevOps or any Git repo.",
             es: {
               q: "Un equipo quiere hospedar una aplicación web en Python con escalado automático y alta disponibilidad, implementando de forma continua desde GitHub, sin administrar infraestructura. ¿Qué debe usar?",
-              options: ["Azure Virtual Machines", "Azure App Service", "Azure Virtual Desktop", "Azure IoT Hub"],
+              options: ["Azure Virtual Machines", "Azure App Service", "Azure Container Instances", "Azure Functions"],
               explain: "App Service hospeda aplicaciones web, API y back-ends móviles en muchos lenguajes, con escalado automático, alta disponibilidad e implementaciones automatizadas desde GitHub, Azure DevOps o cualquier repositorio Git."
             }
           },
@@ -920,12 +920,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Which application hosting option gives you maximum control of the hosting environment?",
-            options: ["Azure App Service", "Containers", "Virtual machines", "WebJobs"],
+            options: ["Azure App Service", "Containers", "Virtual machines", "Azure Functions"],
             answer: 2,
             explain: "VMs give maximum control and let you configure the environment exactly as you want. On the hosting spectrum, App Service requires the least operational effort.",
             es: {
               q: "¿Qué opción de hospedaje de aplicaciones le da el máximo control del entorno de hospedaje?",
-              options: ["Azure App Service", "Contenedores", "Máquinas virtuales", "WebJobs"],
+              options: ["Azure App Service", "Contenedores", "Máquinas virtuales", "Azure Functions"],
               explain: "Las máquinas virtuales dan el máximo control y permiten configurar el entorno exactamente como se quiera. En el espectro de hospedaje, App Service requiere el menor esfuerzo operativo."
             }
           },
@@ -935,9 +935,9 @@ Catalog.module("az-900", {
             options: [
               "It supports both Windows and Linux",
               "It supports automated deployments from GitHub, Azure DevOps or any Git repo",
-              "It requires you to patch the host operating system",
-              "It only supports .NET applications",
-              "It can only host static web pages"
+              "It requires you to patch the host OS",
+              "It only supports Windows",
+              "It only hosts web apps, not APIs"
             ],
             answers: [0, 1],
             explain: "App Service runs on Windows and Linux, supports continuous deployment and many languages, and handles the infrastructure for you.",
@@ -946,9 +946,9 @@ Catalog.module("az-900", {
               options: [
                 "Admite tanto Windows como Linux",
                 "Admite implementaciones automatizadas desde GitHub, Azure DevOps o cualquier repositorio Git",
-                "Exige aplicar parches al sistema operativo del host",
-                "Solo admite aplicaciones .NET",
-                "Solo puede hospedar páginas web estáticas"
+                "Requiere que usted aplique parches al sistema operativo del host",
+                "Solo admite Windows",
+                "Solo hospeda aplicaciones web, no API"
               ],
               explain: "App Service funciona en Windows y Linux, admite implementación continua y muchos lenguajes, y se ocupa de la infraestructura por usted."
             }
@@ -958,7 +958,7 @@ Catalog.module("az-900", {
             q: "Complete the statement about Azure App Service.",
             parts: [
               "Azure App Service is an ",
-              { options: ["HTTP", "SMB", "FTP-only"], answer: 0 },
+              { options: ["HTTP", "SMB", "TCP"], answer: 0 },
               "-based service, and on the hosting spectrum it requires ",
               { options: ["less operational effort", "more control and configuration", "more operating system patching"], answer: 0 },
               " than virtual machines."
@@ -968,7 +968,7 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre Azure App Service.",
               parts: [
                 "Azure App Service es un servicio basado en ",
-                { options: ["HTTP", "SMB", "solo FTP"] },
+                { options: ["HTTP", "SMB", "TCP"] },
                 ", y en el espectro de hospedaje requiere ",
                 { options: ["menos esfuerzo operativo", "más control y configuración", "más parches del sistema operativo"] },
                 " que las máquinas virtuales."
@@ -979,12 +979,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Which App Service capability provides high availability for hosted apps?",
-            options: ["Built-in load balancing and traffic manager", "Availability sets that you configure manually", "A dedicated domain controller", "Manual failover scripts"],
+            options: ["Built-in load balancing and traffic manager", "Availability sets that you configure manually", "Availability zones you must configure manually", "A VM scale set you manage"],
             answer: 0,
             explain: "App Service's built-in load balancing and traffic manager provide high availability, shared by all app styles.",
             es: {
               q: "¿Qué capacidad de App Service ofrece alta disponibilidad para las aplicaciones hospedadas?",
-              options: ["El equilibrio de carga y el administrador de tráfico integrados", "Conjuntos de disponibilidad que usted configura manualmente", "Un controlador de dominio dedicado", "Scripts manuales de conmutación por error"],
+              options: ["El equilibrio de carga y el administrador de tráfico integrados", "Conjuntos de disponibilidad que usted configura manualmente", "Zonas de disponibilidad que debe configurar a mano", "Un conjunto de escalado de máquinas virtuales que usted administra"],
               explain: "El equilibrio de carga y el administrador de tráfico integrados de App Service ofrecen alta disponibilidad, compartida por todos los estilos de aplicación."
             }
           },

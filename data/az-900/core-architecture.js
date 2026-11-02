@@ -14,7 +14,7 @@ Catalog.module("az-900", {
         options: [
           "Several availability zones in the same region, with zone-redundant services",
           "Its paired region, configuring replication where needed",
-          "A larger virtual machine size",
+          "A virtual machine scale set across fault domains",
           "A second resource group in the same region with a copy of every resource"
         ],
         answer: 1,
@@ -25,7 +25,7 @@ Catalog.module("az-900", {
           options: [
             "Varias zonas de disponibilidad de la misma región, con servicios con redundancia de zona",
             "Su región emparejada, configurando la replicación donde haga falta",
-            "Un tamaño de máquina virtual más grande",
+            "Un conjunto de escalado de máquinas virtuales entre dominios de error",
             "Un segundo grupo de recursos en la misma región con una copia de cada recurso"
           ],
           explain: "Las zonas de disponibilidad protegen ante fallas de centros de datos dentro de una región; un evento que afecta a toda la región requiere una segunda región. Para eso están los pares de regiones, pero no todos los servicios replican automáticamente, así que el cliente puede tener que configurarlo."
@@ -38,8 +38,8 @@ Catalog.module("az-900", {
         options: [
           "Create the assignment on each resource group",
           "Group the subscriptions in a management group and assign the role there",
-          "Move the subscriptions into one resource group and assign it there",
-          "Create a new Azure account for the team"
+          "Create a custom role and attach it to each subscription",
+          "Assign the role at the root of each subscription's largest resource group"
         ],
         answer: 1,
         explain: "Permissions assigned on a management group are inherited by all subscriptions, resource groups and resources beneath it, so there's no need to script assignments one by one.",
@@ -49,8 +49,8 @@ Catalog.module("az-900", {
           options: [
             "Crear la asignación en cada grupo de recursos",
             "Agrupar las suscripciones en un grupo de administración y asignar el rol ahí",
-            "Mover las suscripciones a un grupo de recursos y asignar el rol ahí",
-            "Crear una nueva cuenta de Azure para el equipo"
+            "Crear un rol personalizado y vincularlo a cada suscripción",
+            "Asignar el rol en el grupo de recursos más grande de cada suscripción"
           ],
           explain: "Los permisos asignados en un grupo de administración los heredan todas las suscripciones, grupos de recursos y recursos que dependen de él, así que no hace falta hacer asignaciones una por una."
         }
@@ -84,13 +84,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure accounts",
         q: "A student wants to explore Azure but doesn't have a credit card. Which offer fits?",
-        options: ["The Azure free account", "The Azure free student account", "A pay-as-you-go subscription", "A Cloud Solution Provider plan"],
+        options: ["The Azure free account", "The Azure free student account", "A pay-as-you-go subscription", "An Azure free account with a prepaid card"],
         answer: 1,
         explain: "The student offer can be created without a credit card and includes credit and free developer tools. The regular free account requires a card for identity verification.",
         es: {
           topic: "Cuentas de Azure",
           q: "Un estudiante quiere explorar Azure pero no tiene tarjeta de crédito. ¿Qué oferta le corresponde?",
-          options: ["La cuenta gratuita de Azure", "La cuenta gratuita de Azure para estudiantes", "Una suscripción de pago por uso", "Un plan de Proveedor de soluciones en la nube"],
+          options: ["La cuenta gratuita de Azure", "La cuenta gratuita de Azure para estudiantes", "Una suscripción de pago por uso", "Una cuenta gratuita de Azure con una tarjeta prepaga"],
           explain: "La oferta para estudiantes se puede crear sin tarjeta de crédito e incluye crédito y herramientas de desarrollo gratuitas. La cuenta gratuita común requiere una tarjeta para verificar la identidad."
         }
       },
@@ -164,13 +164,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Azure accounts",
         q: "A team works under a single Azure account and wants development, test and production kept apart, with separate costs and access rules. What should it create?",
-        options: ["A separate Azure account per developer", "Separate subscriptions for each environment", "A single resource group for everything", "One availability zone per environment"],
+        options: ["A separate Azure account per developer", "Separate subscriptions for each environment", "A single resource group for everything", "Separate management groups under one subscription"],
         answer: 1,
         explain: "One account can hold several subscriptions; separating environments into subscriptions gives each its own billing and access boundary.",
         es: {
           topic: "Cuentas de Azure",
           q: "Un equipo trabaja con una sola cuenta de Azure y quiere separar desarrollo, pruebas y producción, con costos y reglas de acceso propios. ¿Qué debe crear?",
-          options: ["Una cuenta de Azure distinta por desarrollador", "Suscripciones separadas para cada entorno", "Un único grupo de recursos para todo", "Una zona de disponibilidad por entorno"],
+          options: ["Una cuenta de Azure distinta por desarrollador", "Suscripciones separadas para cada entorno", "Un único grupo de recursos para todo", "Grupos de administración separados dentro de una suscripción"],
           explain: "Una cuenta puede tener varias suscripciones; separar los entornos en suscripciones le da a cada uno su propio límite de facturación y de acceso."
         }
       },
@@ -192,13 +192,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Physical infrastructure",
         q: "Which of the following is a global Azure service that doesn't require you to choose a region when you use it?",
-        options: ["Azure Traffic Manager", "A virtual machine", "A managed disk", "A specific VM size"],
+        options: ["Azure Traffic Manager", "Azure Virtual Network", "Azure SQL Database", "Azure Storage account"],
         answer: 0,
         explain: "Microsoft Entra ID, Azure Traffic Manager and Azure DNS are global services. VMs and disks are deployed to a region, and some VM sizes exist only in certain regions.",
         es: {
           topic: "Infraestructura física",
           q: "¿Cuál de los siguientes es un servicio global de Azure que no requiere elegir una región para usarlo?",
-          options: ["Azure Traffic Manager", "Una máquina virtual", "Un disco administrado", "Un tamaño de máquina virtual específico"],
+          options: ["Azure Traffic Manager", "Azure Virtual Network", "Azure SQL Database", "Una cuenta de Azure Storage"],
           explain: "Microsoft Entra ID, Azure Traffic Manager y Azure DNS son servicios globales. Las máquinas virtuales y los discos se implementan en una región, y algunos tamaños solo existen en ciertas regiones."
         }
       },
@@ -206,13 +206,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "What is Azure",
         q: "A developer wants to add language, vision and generative AI capabilities to an existing application. Which Azure offering fits?",
-        options: ["Azure DNS", "Azure OpenAI Service", "Azure management groups", "Availability zones"],
+        options: ["Azure Machine Learning", "Azure OpenAI Service", "Azure IoT Central", "Azure App Service"],
         answer: 1,
         explain: "Azure AI services and Azure OpenAI Service add language, vision, speech and generative AI capabilities to applications.",
         es: {
           topic: "Qué es Azure",
           q: "Un desarrollador quiere agregar capacidades de lenguaje, visión e IA generativa a una aplicación existente. ¿Qué oferta de Azure corresponde?",
-          options: ["Azure DNS", "Azure OpenAI Service", "Los grupos de administración de Azure", "Las zonas de disponibilidad"],
+          options: ["Azure Machine Learning", "Azure OpenAI Service", "Azure IoT Central", "Azure App Service"],
           explain: "Los servicios de Azure AI y Azure OpenAI Service agregan capacidades de lenguaje, visión, voz e IA generativa a las aplicaciones."
         }
       },
@@ -267,12 +267,12 @@ Catalog.module("az-900", {
           {
             type: "multi",
             q: "Which two Azure offerings let you add language, vision, speech or generative AI capabilities to your applications?",
-            options: ["Azure AI services", "Azure OpenAI Service", "Azure DNS", "Azure Traffic Manager", "Microsoft Entra ID"],
+            options: ["Azure AI services", "Azure OpenAI Service", "Azure Machine Learning designer only", "Azure IoT Central", "Azure Functions"],
             answers: [0, 1],
             explain: "Azure AI services and Azure OpenAI Service provide those capabilities. DNS and Traffic Manager are networking services; Entra ID handles identity.",
             es: {
               q: "¿Cuáles son dos ofertas de Azure que permiten agregar capacidades de lenguaje, visión, voz o IA generativa a sus aplicaciones?",
-              options: ["Los servicios de Azure AI", "Azure OpenAI Service", "Azure DNS", "Azure Traffic Manager", "Microsoft Entra ID"],
+              options: ["Los servicios de Azure AI", "Azure OpenAI Service", "Solo el diseñador de Azure Machine Learning", "Azure IoT Central", "Azure Functions"],
               explain: "Los servicios de Azure AI y Azure OpenAI Service brindan esas capacidades. DNS y Traffic Manager son servicios de red; Entra ID gestiona la identidad."
             }
           },
@@ -282,8 +282,8 @@ Catalog.module("az-900", {
             options: [
               "By reserving capacity for the yearly peak in advance",
               "By scaling resources for the spike and back down afterward",
-              "By moving the app to a sovereign region",
-              "By assigning the app to a management group"
+              "By moving the app to a region with lower prices",
+              "By scaling the VM up once to the peak size"
             ],
             answer: 1,
             explain: "The unit's example: scale up or out as demand grows, then scale back, so you don't pay for idle capacity year-round.",
@@ -292,8 +292,8 @@ Catalog.module("az-900", {
               options: [
                 "Reservando de antemano capacidad para el pico anual",
                 "Permitiendo escalar los recursos durante el pico y reducirlos después",
-                "Trasladando la aplicación a una región soberana",
-                "Asignando la aplicación a un grupo de administración"
+                "Moviendo la aplicación a una región con precios más bajos",
+                "Escalando la máquina verticalmente una vez al tamaño pico"
               ],
               explain: "El ejemplo de la unidad: escalar a medida que crece la demanda y luego reducir, para no pagar capacidad ociosa todo el año."
             }
@@ -303,9 +303,9 @@ Catalog.module("az-900", {
             q: "Complete the statement about what Azure offers.",
             parts: [
               "Azure provides ",
-              { options: ["dozens of", "hundreds of", "exactly 65"], answer: 1 },
+              { options: ["dozens of", "hundreds of", "over 10,000"], answer: 1 },
               " services, from running existing applications on ",
-              { options: ["virtual machines", "only mainframes", "physical servers shipped to Microsoft"], answer: 0 },
+              { options: ["virtual machines", "bare-metal servers only", "on-premises hypervisors"], answer: 0 },
               " to exploring new paradigms such as intelligent bots and generative AI."
             ],
             explain: "Azure has hundreds of services spanning VMs to generative AI. The number 65 refers to always-free services in the free account.",
@@ -313,9 +313,9 @@ Catalog.module("az-900", {
               q: "Complete la afirmación sobre lo que ofrece Azure.",
               parts: [
                 "Azure ofrece ",
-                { options: ["decenas de", "cientos de", "exactamente 65"] },
+                { options: ["decenas de", "cientos de", "más de 10 000"] },
                 " servicios, desde ejecutar aplicaciones existentes en ",
-                { options: ["máquinas virtuales", "solo mainframes", "servidores físicos enviados a Microsoft"] },
+                { options: ["máquinas virtuales", "solo servidores físicos dedicados", "hipervisores locales"] },
                 " hasta explorar nuevos paradigmas como bots inteligentes e IA generativa."
               ],
               explain: "Azure tiene cientos de servicios, desde máquinas virtuales hasta IA generativa. El número 65 corresponde a los servicios siempre gratuitos de la cuenta gratuita."
@@ -385,12 +385,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "What do you need in order to create and use Azure services?",
-            options: ["A management group", "An Azure subscription", "A sovereign region", "An on-premises domain controller"],
+            options: ["A management group", "An Azure subscription", "A resource group created by Microsoft", "A Microsoft Entra ID P1 license"],
             answer: 1,
             explain: "Creating and using Azure services requires a subscription. When you create an account, a subscription is created for you.",
             es: {
               q: "¿Qué necesita para crear y usar servicios de Azure?",
-              options: ["Un grupo de administración", "Una suscripción de Azure", "Una región soberana", "Un controlador de dominio local"],
+              options: ["Un grupo de administración", "Una suscripción de Azure", "Un grupo de recursos creado por Microsoft", "Una licencia de Microsoft Entra ID P1"],
               explain: "Crear y usar servicios de Azure requiere una suscripción. Cuando crea una cuenta, se crea una suscripción automáticamente."
             }
           },
@@ -400,9 +400,9 @@ Catalog.module("az-900", {
             options: [
               "Directly from Microsoft",
               "Through a Microsoft partner",
-              "Only through a domain registrar",
-              "Only by sending a purchase order to the datacenter in your region",
-              "Only after completing an official Microsoft training course"
+              "Through a Cloud Solution Provider only",
+              "Only through an Enterprise Agreement",
+              "Only with a free student account"
             ],
             answers: [0, 1],
             explain: "You can buy directly from Microsoft or through a partner; Cloud Solution Provider partners offer complete managed-cloud solutions.",
@@ -411,9 +411,9 @@ Catalog.module("az-900", {
               options: [
                 "Directamente a Microsoft",
                 "A través de un socio de Microsoft",
-                "Solo a través de un registrador de dominios",
-                "Solo enviando una orden de compra al centro de datos de su región",
-                "Solo después de completar un curso oficial de Microsoft"
+                "Solo a través de un proveedor de soluciones en la nube",
+                "Solo mediante un Contrato Enterprise",
+                "Solo con una cuenta gratuita para estudiantes"
               ],
               explain: "Se puede comprar directamente a Microsoft o a través de un socio; los Proveedores de soluciones en la nube ofrecen soluciones completas de nube administrada."
             }
@@ -425,7 +425,7 @@ Catalog.module("az-900", {
               "To charge you monthly for always-free services",
               "Only to verify your identity",
               "To pay in advance for the 12 months of popular products included in the offer",
-              "To pay for support plans automatically"
+              "To pay for overages if you exceed the free credit automatically"
             ],
             answer: 1,
             explain: "The card is used only to verify your identity. Charges start only if you upgrade.",
@@ -435,7 +435,7 @@ Catalog.module("az-900", {
                 "Para cobrarle mensualmente los servicios siempre gratuitos",
                 "Solo para verificar su identidad",
                 "Para pagar por adelantado los 12 meses de productos populares incluidos en la oferta",
-                "Para pagar automáticamente planes de soporte"
+                "Para pagar automáticamente el excedente si supera el crédito gratuito"
               ],
               explain: "La tarjeta se usa solo para verificar su identidad. Los cargos empiezan únicamente si actualiza la suscripción."
             }
@@ -472,7 +472,7 @@ Catalog.module("az-900", {
             options: [
               "A single datacenter with its own dedicated power, cooling and networking",
               "An area with one or more datacenters linked by a low-latency network",
-              "A group of subscriptions that share billing",
+              "A pair of datacenters in the same city",
               "A physically and logically isolated instance of Azure for government use"
             ],
             answer: 1,
@@ -482,7 +482,7 @@ Catalog.module("az-900", {
               options: [
                 "Un único centro de datos con energía, refrigeración y red propias",
                 "Un área con uno o más centros de datos unidos por una red de baja latencia",
-                "Un grupo de suscripciones que comparten la facturación",
+                "Un par de centros de datos en la misma ciudad",
                 "Una instancia de Azure aislada física y lógicamente para uso gubernamental"
               ],
               explain: "Una región es un área geográfica con uno o más centros de datos conectados por una red de baja latencia. Las instancias gubernamentales aisladas son regiones soberanas."
@@ -514,12 +514,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "An application must survive the failure of a single datacenter, but its data must stay within one Azure region for compliance. What should you use?",
-            options: ["Availability zones in that region", "The region's paired region, with geo-replication", "A sovereign region", "A single larger datacenter in the same region"],
+            options: ["Availability zones in that region", "The region's paired region, with geo-replication", "A sovereign region", "A virtual machine scale set in one datacenter"],
             answer: 0,
             explain: "Spreading workloads across availability zones protects against datacenter failures while staying in the same region. A paired region would move data to another region.",
             es: {
               q: "Una aplicación debe sobrevivir a la falla de un solo centro de datos, pero sus datos deben quedarse en una región de Azure por cumplimiento. ¿Qué debe usar?",
-              options: ["Zonas de disponibilidad de esa región", "La región emparejada, con replicación geográfica", "Una región soberana", "Un único centro de datos más grande en la misma región"],
+              options: ["Zonas de disponibilidad de esa región", "La región emparejada, con replicación geográfica", "Una región soberana", "Un conjunto de escalado de máquinas virtuales en un centro de datos"],
               explain: "Repartir las cargas entre zonas de disponibilidad protege ante fallas de centros de datos sin salir de la región. Una región emparejada llevaría los datos a otra región."
             }
           },
@@ -635,9 +635,9 @@ Catalog.module("az-900", {
             q: "You're setting up a temporary development environment with several resources. What's the simplest way to remove everything when you're done?",
             options: [
               "Use one resource group, then delete it",
-              "Delete a management group",
-              "Delete the Azure account",
-              "Move the resources to another region"
+              "Apply a Delete lock, then remove it",
+              "Put each resource in its own subscription",
+              "Tag the resources and delete them by tag in the portal"
             ],
             answer: 0,
             explain: "Deleting a resource group deletes everything in it, which makes a dedicated group ideal for temporary environments.",
@@ -645,9 +645,9 @@ Catalog.module("az-900", {
               q: "Está armando un entorno de desarrollo temporal con varios recursos. ¿Cuál es la forma más simple de quitar todo al terminar?",
               options: [
                 "Usar un grupo de recursos y después eliminarlo",
-                "Eliminar un grupo de administración",
-                "Eliminar la cuenta de Azure",
-                "Mover los recursos a otra región"
+                "Aplicar un bloqueo Delete y después quitarlo",
+                "Poner cada recurso en su propia suscripción",
+                "Etiquetar los recursos y eliminarlos por etiqueta en el portal"
               ],
               explain: "Eliminar un grupo de recursos elimina todo lo que contiene, por eso un grupo dedicado es ideal para entornos temporales."
             }
@@ -682,12 +682,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Your company wants to restrict VM locations to one region across dozens of production subscriptions, and subscription owners must not be able to override the rule. Where should you apply the policy?",
-            options: ["On each virtual machine", "On each resource group inside the production subscriptions", "On a management group", "On the Azure account"],
+            options: ["On each virtual machine", "On each resource group inside the production subscriptions", "On a management group", "On each production subscription"],
             answer: 2,
             explain: "A policy on a management group is inherited by all subscriptions and VMs beneath it, and resource or subscription owners can't override it.",
             es: {
               q: "Su empresa quiere restringir la ubicación de las máquinas virtuales a una región en decenas de suscripciones de producción, y los propietarios de las suscripciones no deben poder anular la regla. ¿Dónde debe aplicar la directiva?",
-              options: ["En cada máquina virtual", "En cada grupo de recursos de las suscripciones de producción", "En un grupo de administración", "En la cuenta de Azure"],
+              options: ["En cada máquina virtual", "En cada grupo de recursos de las suscripciones de producción", "En un grupo de administración", "En cada suscripción de producción"],
               explain: "Una directiva en un grupo de administración la heredan todas las suscripciones y máquinas virtuales que dependen de él, y los propietarios de recursos o suscripciones no pueden anularla."
             }
           },
@@ -718,12 +718,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Finance wants separate invoices for production and for development and testing. What should you do?",
-            options: ["Create separate resource groups", "Create separate subscriptions", "Create separate availability zones", "Tag the resources with the environment name"],
+            options: ["Create separate resource groups", "Create separate subscriptions", "Create separate management groups", "Tag the resources with the environment name"],
             answer: 1,
             explain: "Subscriptions are billing boundaries: Azure generates separate billing reports and invoices for each one.",
             es: {
               q: "Finanzas quiere facturas separadas para producción y para desarrollo y pruebas. ¿Qué debe hacer?",
-              options: ["Crear grupos de recursos separados", "Crear suscripciones separadas", "Crear zonas de disponibilidad separadas", "Etiquetar los recursos con el nombre del entorno"],
+              options: ["Crear grupos de recursos separados", "Crear suscripciones separadas", "Crear grupos de administración separados", "Etiquetar los recursos con el nombre del entorno"],
               explain: "Las suscripciones son límites de facturación: Azure genera informes de facturación y facturas separados para cada una."
             }
           },

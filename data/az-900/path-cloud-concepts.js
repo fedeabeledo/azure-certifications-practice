@@ -6,13 +6,13 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
       type: "single",
       topic: "Cloud computing",
       q: "A company runs workloads on Azure, in a private cloud in its own datacenter, and on a second public cloud provider. It wants to manage all of these environments from one place. What should it use?",
-      options: ["Azure VMware Solution", "Azure Arc", "A service-level agreement", "The Azure Pricing Calculator"],
+      options: ["Azure VMware Solution", "Azure Arc", "Azure Resource Manager templates only", "Microsoft Entra Connect"],
       answer: 1,
       explain: "Azure Arc manages public, private, hybrid and multicloud environments. Azure VMware Solution is for running VMware workloads in Azure.",
       es: {
         topic: "Informática en la nube",
         q: "Una empresa ejecuta cargas de trabajo en Azure, en una nube privada en su propio centro de datos y en un segundo proveedor de nube pública. Quiere administrar todos estos entornos desde un solo lugar. ¿Qué debe usar?",
-        options: ["Azure VMware Solution", "Azure Arc", "Un acuerdo de nivel de servicio", "La Calculadora de precios de Azure"],
+        options: ["Azure VMware Solution", "Azure Arc", "Solo plantillas de Azure Resource Manager", "Microsoft Entra Connect"],
         explain: "Azure Arc administra entornos públicos, privados, híbridos y multinube. Azure VMware Solution sirve para ejecutar cargas de trabajo de VMware en Azure."
       }
     },
@@ -45,13 +45,13 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
       type: "single",
       topic: "Cloud computing",
       q: "A company wants to stop buying servers up front and instead pay monthly according to what it uses. Which change in spending does this describe?",
-      options: ["From OpEx to CapEx", "From CapEx to OpEx", "From fixed cost to capital investment", "From pay-as-you-go to reserved hardware"],
+      options: ["From OpEx to CapEx", "From CapEx to OpEx", "From variable cost to fixed cost", "From OpEx to reserved capacity"],
       answer: 1,
       explain: "Up-front purchases of physical infrastructure are CapEx. Paying for cloud services as you consume them is OpEx.",
       es: {
         topic: "Informática en la nube",
         q: "Una empresa quiere dejar de comprar servidores por adelantado y pasar a pagar mensualmente según lo que usa. ¿Qué cambio en el gasto describe esto?",
-        options: ["De OpEx a CapEx", "De CapEx a OpEx", "De costo fijo a inversión de capital", "De pago por uso a hardware reservado"],
+        options: ["De OpEx a CapEx", "De CapEx a OpEx", "De costo variable a costo fijo", "De OpEx a capacidad reservada"],
         explain: "Las compras iniciales de infraestructura física son CapEx. Pagar los servicios en la nube a medida que se consumen es OpEx."
       }
     },
@@ -99,13 +99,13 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
       type: "single",
       topic: "Cloud benefits",
       q: "An online store's traffic triples during a sale. The team wants additional containers to be added automatically and removed when the sale ends. Which capability does this describe?",
-      options: ["Vertical scaling", "Horizontal scaling", "High availability through SLAs", "Cost predictability"],
+      options: ["Vertical scaling", "Horizontal scaling", "High availability", "Reliability"],
       answer: 1,
       explain: "Adding and removing instances such as containers or VMs, automatically or manually, is horizontal scaling (out and in).",
       es: {
         topic: "Ventajas de la nube",
         q: "El tráfico de una tienda en línea se triplica durante una oferta. El equipo quiere que se agreguen contenedores automáticamente y que se quiten cuando termine la oferta. ¿Qué capacidad describe esto?",
-        options: ["Escalado vertical", "Escalado horizontal", "Alta disponibilidad mediante SLA", "Previsibilidad de costos"],
+        options: ["Escalado vertical", "Escalado horizontal", "La alta disponibilidad", "La confiabilidad"],
         explain: "Agregar y quitar instancias, como contenedores o máquinas virtuales, de forma automática o manual, es escalado horizontal."
       }
     },
@@ -276,8 +276,8 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
       options: [
         "It overspends on idle infrastructure",
         "Its applications suffer degraded performance",
-        "Its cloud bill increases automatically",
-        "Its data residency changes"
+        "It pays for idle capacity in the cloud",
+        "It must shift spending from OpEx to CapEx"
       ],
       answer: 1,
       explain: "Underestimating capacity leads to degraded performance; overestimating leads to paying for idle infrastructure.",
@@ -287,8 +287,8 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
         options: [
           "Gasta de más en infraestructura ociosa",
           "Sus aplicaciones sufren un rendimiento degradado",
-          "Su factura de nube aumenta automáticamente",
-          "Cambia la residencia de sus datos"
+          "Paga capacidad ociosa en la nube",
+          "Debe pasar el gasto de OpEx a CapEx"
         ],
         explain: "Subestimar la capacidad lleva a un rendimiento degradado; sobrestimarla lleva a pagar infraestructura ociosa."
       }
@@ -402,9 +402,9 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
         q: "Complete la afirmación sobre la previsibilidad.",
         parts: [
           "El escalado automático y el equilibrio de carga respaldan la ",
-          { options: ["previsibilidad del rendimiento", "previsibilidad de los costos", "gobernanza"] },
+          { options: ["previsibilidad del rendimiento", "previsibilidad de los costos", "la confiabilidad"] },
           ", mientras que la Calculadora de precios de Azure respalda la ",
-          { options: ["previsibilidad de los costos", "alta disponibilidad", "confiabilidad"] },
+          { options: ["previsibilidad de los costos", "alta disponibilidad", "la gobernanza"] },
           "."
         ],
         explain: "La previsibilidad del rendimiento se apoya en el escalado automático, el equilibrio de carga y la alta disponibilidad; la de los costos, en el seguimiento, el análisis y la Calculadora de precios."
@@ -466,13 +466,13 @@ Catalog.pathQuiz("az-900", "cloud-concepts", {
       type: "single",
       topic: "Cloud benefits",
       q: "A company wants its deployed resources to meet its standards automatically and to be alerted when resources drift out of compliance. Which cloud benefit does this describe?",
-      options: ["Governance", "Scalability", "High availability", "Performance predictability"],
+      options: ["Governance", "Manageability", "Reliability", "Performance predictability"],
       answer: 0,
       explain: "Templates keep deployments within standards and cloud auditing flags noncompliant resources and suggests mitigations.",
       es: {
         topic: "Ventajas de la nube",
         q: "Una empresa quiere que sus recursos implementados cumplan sus estándares automáticamente y recibir alertas cuando un recurso deje de cumplirlos. ¿Qué ventaja de la nube describe esto?",
-        options: ["La gobernanza", "La escalabilidad", "La alta disponibilidad", "La previsibilidad del rendimiento"],
+        options: ["La gobernanza", "La capacidad de administración", "La confiabilidad", "La previsibilidad del rendimiento"],
         explain: "Las plantillas mantienen las implementaciones dentro de los estándares y la auditoría en la nube señala los recursos que no cumplen y sugiere cómo corregirlos."
       }
     },
