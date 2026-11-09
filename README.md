@@ -20,6 +20,7 @@ Es un sitio estático sin build ni dependencias. Se sirve tal cual desde GitHub 
 - **Dos modos.** En Práctica se corrige cada pregunta al responderla. En Examen no hay correcciones hasta el final, y hay cronómetro, marcar para revisar y pantalla de revisión.
 - **Formatos del examen real:** opción única, selección múltiple, bloques Sí/No, desplegables y arrastrar y soltar.
 - **Orden aleatorio.** Cada vez que empezás un cuestionario se mezclan las opciones de cada pregunta, así la respuesta correcta no cae siempre en el mismo lugar.
+- **Siguiente cuestionario.** Al terminar uno, el resultado sugiere el siguiente en orden de estudio: la próxima unidad, el integral del módulo después de su última unidad, el integral del learning path después de su último módulo, la primera unidad del learning path siguiente y, al final, el simulacro de la certificación si existe.
 - **Puntaje por selección.** Cada selección correcta vale un punto, como en el examen.
 - **Privacidad.** No se guardan respuestas. El navegador solo recuerda el idioma elegido y qué secciones quedaron abiertas.
 

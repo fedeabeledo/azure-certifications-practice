@@ -63,7 +63,7 @@ const UI = {
     examResult: "Resultado del examen", practiceResult: "Resultado de la práctica", scoreLine: (a, b, p) => `${a} de ${b} puntos · ${p}%`,
     time: t => ` · tiempo ${t}`, good: "Buen resultado: revisá igual las explicaciones de lo que fallaste.", bad: "Repasá los temas con menos puntos y volvé a intentarlo.",
     scaled: "El puntaje del examen real es escalado, así que este porcentaje no se traduce directo a esa escala.",
-    byTopic: "Por tema", retry: "Volver a intentar", reviewAnswers: "Revisión de respuestas", general: "General"
+    byTopic: "Por tema", retry: "Volver a intentar", reviewAnswers: "Revisión de respuestas", general: "General", nextUp: "Siguiente", goNext: "Ir al siguiente"
   },
   en: {
     brand: "Azure Certifications Practice", studyGroup: "Certification practice", homeTitle: "Microsoft certification quizzes",
@@ -104,7 +104,7 @@ const UI = {
     examResult: "Exam result", practiceResult: "Practice result", scoreLine: (a, b, p) => `${a} of ${b} points · ${p}%`,
     time: t => ` · time ${t}`, good: "Good result: still read the explanations for what you missed.", bad: "Review the topics with the fewest points and try again.",
     scaled: "The real exam uses a scaled score, so this percentage doesn't map directly to it.",
-    byTopic: "By topic", retry: "Try again", reviewAnswers: "Answer review", general: "General"
+    byTopic: "By topic", retry: "Try again", reviewAnswers: "Answer review", general: "General", nextUp: "Up next", goNext: "Go to next"
   }
 };
 const T = () => UI[lang];
@@ -131,6 +131,21 @@ for (const cert of window.CATALOG) {
       }
     }
   }
+}
+// Study order per cert: units, then the module review, then the path review after its last module, and the practice exam last.
+// Each quiz suggests the next one in that order; the practice exam suggests nothing.
+for (const cert of window.CATALOG) {
+  const order = [];
+  for (const path of cert.paths) {
+    for (const mod of path.modules || []) {
+      for (const unit of mod.units || []) order.push(idFor.unit(cert, unit));
+      order.push(idFor.module(cert, mod));
+    }
+    order.push(idFor.path(cert, path));
+  }
+  order.push(idFor.cert(cert));
+  const ids = order.filter(id => index.has(id));
+  ids.forEach((id, i) => { if (i + 1 < ids.length) index.get(id).next = ids[i + 1]; });
 }
 // Questions as the exam counts them: each Yes/No statement is one question
 const qCount = quiz => quiz.items.reduce((s, it) => s + (it.type === "yesno" ? it.statements.length : 1), 0);
@@ -568,6 +583,14 @@ function renderReview() {
 }
 
 /* ---------- Results ---------- */
+// Suggests the next quiz in study order; empty after the last one
+function nextCard(entry) {
+  const nx = entry.next && index.get(entry.next);
+  if (!nx) return "";
+  const t = T();
+  return `<section class="next-up"><div><span class="eyebrow">${t.nextUp} · ${t.kind[nx.kind]}</span>
+    <strong>${esc(titleFor(nx))}</strong></div><a class="btn primary" href="#${entry.next}">${t.goNext}</a></section>`;
+}
 function finish() {
   S.end = S.end || Date.now(); stopClock();
   view = finish;
@@ -588,8 +611,9 @@ function finish() {
     <header class="score-head"><span class="eyebrow">${S.mode === "exam" ? t.examResult : t.practiceResult}</span>
       <h1>${t.scoreLine(got, max, pct)}</h1>
       <p>${esc(titleFor(entry))}${S.mode === "exam" ? t.time(elapsed()) : ""}. ${pct >= 80 ? t.good : t.bad} ${t.scaled}</p></header>
+    ${nextCard(entry)}
     ${breakdown}
-    <div class="actions"><button class="btn primary" id="retry" type="button">${t.retry}</button><a class="btn secondary" href="#">${t.backIndex}</a></div>
+    <div class="actions"><button class="btn ${entry.next ? "secondary" : "primary"}" id="retry" type="button">${t.retry}</button><a class="btn secondary" href="#">${t.backIndex}</a></div>
     <section class="rev-list"><span class="eyebrow">${t.reviewAnswers}</span>
       ${locItems.map((it, i) => {
         const [a, b] = perItem[i], cls = a === b ? "full" : a ? "part" : "zero";
