@@ -29,10 +29,10 @@ Catalog.cert({
     },
     {
       id: "priva-purview",
-      name: "Introduction to Microsoft Priva and Microsoft Purview",
-      es: { name: "Introducción a Microsoft Priva y Microsoft Purview" },
+      name: "Introduction to Microsoft Purview and Microsoft's privacy principles",
+      es: { name: "Introducción a los principios de privacidad de Microsoft Purview y Microsoft" },
       url: "https://learn.microsoft.com/en-us/training/paths/describe-capabilities-of-microsoft-compliance-solutions/",
-      modules: []
+      modules: ["stp-privacy"]
     }
   ]
 });
