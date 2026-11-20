@@ -10,7 +10,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Insider Risk Management with adaptive protection applying an endpoint DLP policy",
         "Communication Compliance with a policy that removes messages in Teams",
         "eDiscovery with a hold on the user's OneDrive and a review set",
-        "Compliance Manager with an improvement action assigned to the user's manager for follow-up"
+        "Compliance Manager with an improvement action"
       ],
       answer: 0,
       explain: "IRM detects departing-user data theft and sets a risk level; adaptive protection then applies DLP controls such as blocking copies to USB.",
@@ -21,7 +21,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Insider Risk Management con protección adaptable que aplique una directiva DLP de punto de conexión",
           "Cumplimiento de comunicaciones con una directiva que quite mensajes en Teams",
           "eDiscovery con una retención sobre el OneDrive del usuario y un conjunto de revisión",
-          "El Administrador de cumplimiento con una acción de mejora asignada al responsable del usuario para seguimiento"
+          "El Administrador de cumplimiento con una acción de mejora"
         ],
         explain: "IRM detecta el robo de datos de usuarios que se van y asigna un nivel de riesgo; la protección adaptable aplica entonces controles DLP, como bloquear copias a USB."
       }
@@ -59,7 +59,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "The Service Trust Portal; no, Microsoft doesn't use customer data for advertising",
         "Compliance Manager; no, unless the customer opts in to anonymized sharing",
         "The Service Trust Portal; yes, but only aggregated and anonymized data",
-        "Microsoft Purview Audit, under the penetration test activities; no, data is never processed for any purpose"
+        "Microsoft Purview Audit; no, data is never processed"
       ],
       answer: 0,
       explain: "Pen test attestations are in the STP's Reports, Whitepapers, and Artifacts section, and Microsoft doesn't mine customer data for advertising.",
@@ -70,7 +70,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "En el Portal de confianza de servicios; no, Microsoft no usa los datos de clientes para publicidad",
           "En el Administrador de cumplimiento; no, salvo que el cliente acepte compartir datos anonimizados",
           "En el Portal de confianza de servicios; sí, pero solo datos agregados y anonimizados",
-          "En Auditoría de Microsoft Purview, en las actividades de pruebas de penetración; no, los datos nunca se procesan para nada"
+          "Auditoría de Microsoft Purview; no, los datos nunca se procesan"
         ],
         explain: "Las certificaciones de pruebas de penetración están en la sección Informes, notas del producto y artefactos del STP, y Microsoft no analiza datos de clientes con fines publicitarios."
       }
@@ -98,7 +98,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Escalate the case to eDiscovery (Premium)",
         "Assign the user an Elevated risk level manually",
         "Open a Communication Compliance policy for the user",
-        "Mark the user's files as regulatory records so they can never be deleted by anyone"
+        "Mark the user's files as regulatory records"
       ],
       answer: 0,
       explain: "Insider risk cases can be escalated to eDiscovery (Premium) for legal investigation, where holds and review sets preserve evidence.",
@@ -109,7 +109,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Escalar el caso a eDiscovery (Premium)",
           "Asignarle al usuario un nivel de riesgo Elevado a mano",
           "Crear una directiva de Cumplimiento de comunicaciones para el usuario",
-          "Marcar los archivos del usuario como registros normativos para que nadie pueda eliminarlos nunca"
+          "Marcar los archivos del usuario como registros normativos"
         ],
         explain: "Los casos de riesgo interno se pueden escalar a eDiscovery (Premium) para la investigación legal, donde las retenciones y los conjuntos de revisión conservan la evidencia."
       }
@@ -122,7 +122,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "An exact data match (EDM) classifier",
         "A trainable classifier seeded with HR documents",
         "A named entity SIT for person names",
-        "A higher proximity value with the same regex and a keyword list of HR terms"
+        "A higher proximity value for the regex"
       ],
       answer: 0,
       explain: "EDM matches exact values from a database, which removes false positives from numbers that only share the format.",
@@ -133,7 +133,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "A un clasificador de coincidencia exacta de datos (EDM)",
           "A un clasificador entrenable alimentado con documentos de RR. HH.",
           "A un SIT de entidad con nombre para nombres de personas",
-          "A un valor de proximidad más alto con la misma regex y una lista de palabras clave de RR. HH."
+          "Un valor de proximidad más alto para la regex"
         ],
         explain: "EDM detecta valores exactos de una base de datos, lo que elimina los falsos positivos de números que solo comparten el formato."
       }
@@ -146,7 +146,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Compliance Manager with an AI regulation assessment",
         "The Service Trust Portal's regional resources",
         "DSPM AI observability for all agents",
-        "Communication Compliance with policies for Copilot prompts and every Copilot Studio app"
+        "Communication Compliance for Copilot prompts"
       ],
       answer: 0,
       explain: "Compliance Manager provides regulatory templates for AI regulations, with improvement actions you can assign and document.",
@@ -157,7 +157,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "El Administrador de cumplimiento con una evaluación de normativa de IA",
           "Los recursos regionales del Portal de confianza de servicios",
           "La observabilidad de IA de DSPM para todos los agentes",
-          "Cumplimiento de comunicaciones con directivas para las indicaciones de Copilot y cada aplicación de Copilot Studio"
+          "Cumplimiento de comunicaciones para indicaciones de Copilot"
         ],
         explain: "El Administrador de cumplimiento ofrece plantillas de normativas de IA, con acciones de mejora que se pueden asignar y documentar."
       }
@@ -195,7 +195,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Unified Catalog data products with self-service access policies",
         "Data Map scans scheduled every hour",
         "Data lifecycle retention policies on the sales sites",
-        "Information Protection auto-labeling of every sales file with a Confidential label"
+        "Information Protection auto-labeling of every sales file as Confidential"
       ],
       answer: 0,
       explain: "Data products make trusted data easy to find, and access policies let users request access without going through the central team.",
@@ -206,7 +206,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Productos de datos del Catálogo unificado con directivas de acceso de autoservicio",
           "Análisis de Data Map programados cada hora",
           "Directivas de retención del ciclo de vida en los sitios de ventas",
-          "El etiquetado automático de Information Protection de cada archivo de ventas con la etiqueta Confidencial"
+          "El etiquetado automático de Information Protection de cada archivo de ventas como Confidencial"
         ],
         explain: "Los productos de datos hacen fácil encontrar datos confiables, y las directivas de acceso permiten solicitarlo sin pasar por el equipo central."
       }
@@ -245,7 +245,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Mail access events are Audit (Premium) intelligent insights",
         "Audit (Standard) keeps only 7 days of records",
         "Audit (Standard) doesn't cover Exchange Online",
-        "Audit records can only be read with eDiscovery (Premium) review sets and a hold"
+        "Audit records can only be read through eDiscovery (Premium) review sets"
       ],
       answer: 0,
       explain: "Standard keeps 180 days but doesn't include intelligent insights such as when mail items were accessed.",
@@ -256,7 +256,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Los eventos de acceso al correo son conclusiones inteligentes de Auditoría (Premium)",
           "Auditoría (Estándar) conserva solo 7 días de registros",
           "Auditoría (Estándar) no cubre Exchange Online",
-          "Los registros de auditoría solo se pueden leer con conjuntos de revisión de eDiscovery (Premium) y una retención"
+          "Los registros de auditoría solo se pueden leer con conjuntos de revisión de eDiscovery (Premium)"
         ],
         explain: "Estándar conserva 180 días, pero no incluye conclusiones inteligentes como cuándo se accedió a elementos de correo."
       }
@@ -308,7 +308,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Data Map classification plus data owners registered in Unified Catalog",
         "Content explorer plus sensitivity label policies",
         "Compliance Manager plus the Service Trust Portal",
-        "Activity explorer plus endpoint DLP alerts routed to the Microsoft Defender portal"
+        "Activity explorer plus endpoint DLP alerts routed to the Defender portal"
       ],
       answer: 0,
       explain: "Data Map classifies sensitive data in analytics sources; Unified Catalog records owners and context.",
@@ -319,7 +319,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "La clasificación de Data Map más los propietarios de datos registrados en el Catálogo unificado",
           "El explorador de contenido más las directivas de etiquetas de confidencialidad",
           "El Administrador de cumplimiento más el Portal de confianza de servicios",
-          "El explorador de actividad más las alertas de DLP de punto de conexión enviadas al portal de Microsoft Defender"
+          "El explorador de actividad más las alertas de DLP de punto de conexión enviadas al portal de Defender"
         ],
         explain: "Data Map clasifica datos confidenciales en orígenes analíticos; el Catálogo unificado registra propietarios y contexto."
       }
@@ -357,7 +357,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Security Copilot triage agents in the DLP and IRM alert queues",
         "Alert summarization in Communication Compliance",
         "Data Quality rules generated by AI",
-        "The natural language to KeyQL feature in eDiscovery (Premium) review sets"
+        "The natural language to KeyQL feature in eDiscovery review sets"
       ],
       answer: 0,
       explain: "Both DLP and Insider Risk Management have Copilot triage agents that categorize and prioritize alerts.",
@@ -368,7 +368,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Los agentes de evaluación de Security Copilot en las colas de alertas de DLP e IRM",
           "El resumen de alertas de Cumplimiento de comunicaciones",
           "Las reglas de Data Quality generadas por IA",
-          "La función de lenguaje natural a KeyQL de los conjuntos de revisión de eDiscovery (Premium)"
+          "La función de lenguaje natural a KeyQL de los conjuntos de revisión de eDiscovery"
         ],
         explain: "Tanto DLP como Insider Risk Management tienen agentes de evaluación de Copilot que categorizan y priorizan las alertas."
       }
@@ -381,7 +381,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Communication Compliance with role-based separation of duties",
         "Insider Risk Management with priority user groups",
         "DLP policies for Teams with block with override",
-        "eDiscovery searches run weekly by HR on every trader's mailbox and Teams chats"
+        "eDiscovery searches that HR runs weekly on every trader's mailbox"
       ],
       answer: 0,
       explain: "Communication Compliance reviews messages, including WhatsApp, for regulatory violations, and RBAC separates who configures from who reviews.",
@@ -392,7 +392,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Cumplimiento de comunicaciones con separación de funciones basada en roles",
           "Insider Risk Management con grupos de usuarios prioritarios",
           "Directivas DLP para Teams con bloquear con invalidación",
-          "Búsquedas semanales de eDiscovery que RR. HH. ejecuta en el buzón y los chats de Teams de cada operador"
+          "Búsquedas de eDiscovery que RR. HH. ejecuta cada semana en el buzón de cada operador"
         ],
         explain: "Cumplimiento de comunicaciones revisa mensajes, incluido WhatsApp, por infracciones normativas, y el RBAC separa quién configura de quién revisa."
       }
@@ -430,7 +430,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Customers choose the data location, backed by contractual commitments",
         "Data location is chosen by Microsoft for performance",
         "Data residency is only offered for Azure, not Microsoft 365",
-        "Data stays in-country only if the customer encrypts it with its own keys in Azure Key Vault Premium"
+        "Data stays in-country only if the customer encrypts it with its own keys"
       ],
       answer: 0,
       explain: "Microsoft offers data residency options for Azure, Dynamics 365 and Microsoft 365, backed by contracts.",
@@ -441,7 +441,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "El cliente elige la ubicación de los datos, con compromisos contractuales",
           "Microsoft elige la ubicación de los datos según el rendimiento",
           "La residencia de datos solo se ofrece para Azure, no para Microsoft 365",
-          "Los datos quedan en el país solo si el cliente los cifra con sus propias claves en Azure Key Vault Premium"
+          "Los datos quedan en el país solo si el cliente los cifra con sus propias claves"
         ],
         explain: "Microsoft ofrece opciones de residencia de datos para Azure, Dynamics 365 y Microsoft 365, respaldadas por contratos."
       }
@@ -469,7 +469,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Event-based retention with a disposition review",
         "A seven-year retention policy from creation date",
         "An inactive mailbox with a litigation hold",
-        "A regulatory record label with automatic deletion and no review at the end of the period"
+        "A regulatory record label with automatic deletion"
       ],
       answer: 0,
       explain: "Event-based retention starts at termination; disposition review lets HR approve deletion or extend retention.",
@@ -480,7 +480,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Retención basada en eventos con revisión para eliminación",
           "Una directiva de retención de siete años desde la fecha de creación",
           "Un buzón inactivo con retención por litigio",
-          "Una etiqueta de registro normativo con eliminación automática y sin revisión al final del período"
+          "Una etiqueta de registro normativo con eliminación automática"
         ],
         explain: "La retención basada en eventos empieza con la desvinculación; la revisión para eliminación permite que RR. HH. apruebe la eliminación o extienda la retención."
       }
@@ -493,7 +493,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Sensitivity labels classify and protect; retention labels control how long content is kept",
         "Both encrypt content; retention labels just add an expiration date",
         "Sensitivity labels apply to sites only; retention labels apply to files only",
-        "Retention labels can be read by third-party apps; sensitivity labels are hidden from them by encryption"
+        "Retention labels are readable by third-party apps; sensitivity labels aren't"
       ],
       answer: 0,
       explain: "Sensitivity labels handle classification and protection such as encryption and markings; retention labels handle keep and delete settings.",
@@ -504,7 +504,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Las de confidencialidad clasifican y protegen; las de retención controlan cuánto tiempo se conserva el contenido",
           "Ambas cifran el contenido; las de retención solo agregan una fecha de vencimiento",
           "Las de confidencialidad se aplican solo a sitios; las de retención, solo a archivos",
-          "Las de retención las pueden leer aplicaciones de terceros; las de confidencialidad quedan ocultas por el cifrado"
+          "Las de retención las leen aplicaciones de terceros; las de confidencialidad, no"
         ],
         explain: "Las etiquetas de confidencialidad manejan la clasificación y la protección, como cifrado y marcas; las de retención manejan conservar y eliminar."
       }
@@ -543,7 +543,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Add the user to a priority user group",
         "Apply a Highly Confidential label to the user's OneDrive",
         "Create a Communication Compliance policy",
-        "Assign the user a Moderate risk level by hand in adaptive protection so stricter DLP applies"
+        "Assign the user a Moderate risk level by hand"
       ],
       answer: 0,
       explain: "Priority user groups get closer monitoring and more aggressive risk scoring; risk levels are calculated automatically, not assigned by hand.",
@@ -554,7 +554,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Agregar al usuario a un grupo de usuarios prioritarios",
           "Aplicar una etiqueta Altamente confidencial al OneDrive del usuario",
           "Crear una directiva de Cumplimiento de comunicaciones",
-          "Asignarle al usuario a mano un nivel de riesgo Moderado en la protección adaptable para que se aplique un DLP más estricto"
+          "Asignarle al usuario a mano un nivel de riesgo Moderado"
         ],
         explain: "Los grupos de usuarios prioritarios tienen supervisión más cercana y una puntuación de riesgo más estricta; los niveles de riesgo se calculan automáticamente, no se asignan a mano."
       }
@@ -567,7 +567,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Mandatory labeling in a sensitivity label policy",
         "A default retention label for SharePoint libraries",
         "An auto-labeling condition on the Public label",
-        "A DLP policy that blocks every unlabeled file from being saved on Windows and macOS devices"
+        "A DLP policy that blocks saving unlabeled files"
       ],
       answer: 0,
       explain: "Mandatory labeling in a label policy requires a label before users save documents, send emails or create sites or groups.",
@@ -578,7 +578,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "El etiquetado obligatorio en una directiva de etiquetas de confidencialidad",
           "Una etiqueta de retención predeterminada para las bibliotecas de SharePoint",
           "Una condición de etiquetado automático en la etiqueta Público",
-          "Una directiva DLP que bloquee guardar cualquier archivo sin etiquetar en dispositivos Windows y macOS"
+          "Una directiva DLP que bloquee guardar archivos sin etiqueta"
         ],
         explain: "El etiquetado obligatorio de una directiva exige una etiqueta antes de guardar documentos, enviar correos o crear sitios o grupos."
       }
@@ -591,7 +591,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "Health controls and health actions",
         "Critical data elements",
         "Governance domain glossaries",
-        "Data Map operational metadata with run statuses for every scan and pipeline"
+        "Data Map operational metadata with scan run statuses"
       ],
       answer: 0,
       explain: "Health controls track governance health with scores, and health actions list the steps that raise them.",
@@ -602,7 +602,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Los controles y las acciones de salud",
           "Los elementos de datos críticos",
           "Los glosarios de los dominios de gobernanza",
-          "Los metadatos operativos de Data Map con el estado de cada análisis y canalización"
+          "Los metadatos operativos de Data Map con el estado de los análisis"
         ],
         explain: "Los controles de salud siguen la salud de la gobernanza con puntuaciones, y las acciones de salud enumeran los pasos para subirlas."
       }
@@ -615,7 +615,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
         "eDiscovery Search and delete",
         "A delete-only retention policy",
         "A Communication Compliance remediation",
-        "A DLP policy that quarantines the message for data at rest in every mailbox"
+        "A DLP quarantine policy for mailboxes"
       ],
       answer: 0,
       explain: "eDiscovery Search and delete finds and removes harmful content across the organization; actions are captured in the audit log.",
@@ -626,7 +626,7 @@ Catalog.pathQuiz("sc-900", "priva-purview", {
           "Buscar y eliminar de eDiscovery",
           "Una directiva de retención de solo eliminar",
           "Una corrección de Cumplimiento de comunicaciones",
-          "Una directiva DLP que ponga el mensaje en cuarentena para datos en reposo en cada buzón"
+          "Una directiva DLP de cuarentena para buzones"
         ],
         explain: "Buscar y eliminar de eDiscovery encuentra y quita contenido dañino en toda la organización; las acciones quedan en el registro de auditoría."
       }

@@ -680,12 +680,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company wants to use its own custom domain names inside its private virtual networks instead of Azure-provided names. What should it use?",
-            options: ["Public DNS zones only", "Private DNS domains", "Alias record sets", "A network virtual appliance running a DNS server"],
+            options: ["Public DNS zones only", "Private DNS domains", "Alias record sets", "A network virtual appliance"],
             answer: 1,
             explain: "Azure DNS supports private DNS domains for custom names in private virtual networks.",
             es: {
               q: "Una empresa quiere usar sus propios nombres de dominio personalizados dentro de sus redes virtuales privadas en lugar de los nombres que proporciona Azure. ¿Qué debe usar?",
-              options: ["Solo zonas DNS públicas", "Dominios DNS privados", "Los conjuntos de registros de alias", "Una aplicación virtual de red con un servidor DNS"],
+              options: ["Solo zonas DNS públicas", "Dominios DNS privados", "Los conjuntos de registros de alias", "Una aplicación virtual de red"],
               explain: "Azure DNS admite dominios DNS privados para usar nombres personalizados en redes virtuales privadas."
             }
           },

@@ -309,7 +309,7 @@ Catalog.module("sc-900", {
             q: "What is OATH TOTP?",
             options: [
               "An open standard for time-based codes",
-              "A Microsoft protocol for federating cloud apps with on-premises AD FS",
+              "A protocol for federating apps with AD FS",
               "A biometric standard used by Windows Hello",
               "The FIDO2 standard for hardware security keys"
             ],
@@ -319,7 +319,7 @@ Catalog.module("sc-900", {
               q: "¿Qué es OATH TOTP?",
               options: [
                 "Un estándar abierto para códigos basados en el tiempo",
-                "Un protocolo de Microsoft para federar aplicaciones en la nube con AD FS local",
+                "Un protocolo para federar aplicaciones con AD FS",
                 "Un estándar biométrico que usa Windows Hello",
                 "El estándar FIDO2 para llaves de seguridad de hardware"
               ],

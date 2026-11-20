@@ -434,12 +434,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "An analyst finds an obfuscated PowerShell command line in an incident. Which Security Copilot capability explains what it does and which MITRE techniques it uses?",
-            options: ["Script and command-line analysis", "Incident report generation", "Device summarization", "Threat intelligence summary for the indicators in the incident"],
+            options: ["Script and command-line analysis", "Incident report generation", "Device summarization", "Threat intelligence summary for the incident"],
             answer: 0,
             explain: "Script analysis explains the script in plain language without external reverse-engineering tools.",
             es: {
               q: "Un analista encuentra una línea de comandos de PowerShell ofuscada en un incidente. ¿Qué capacidad de Security Copilot explica qué hace y qué técnicas de MITRE usa?",
-              options: ["El análisis de scripts y líneas de comandos", "La generación de informes de incidentes", "El resumen de dispositivos", "El resumen de inteligencia sobre amenazas de los indicadores del incidente"],
+              options: ["El análisis de scripts y líneas de comandos", "La generación de informes de incidentes", "El resumen de dispositivos", "El resumen de inteligencia sobre amenazas del incidente"],
               explain: "El análisis de scripts explica el script en lenguaje común sin herramientas externas de ingeniería inversa."
             }
           },

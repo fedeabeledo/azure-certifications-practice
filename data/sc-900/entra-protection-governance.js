@@ -801,12 +801,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Which trust system does Microsoft Entra Verified ID use?",
-            options: ["did:web, tied to the issuer's web domain", "A private blockchain operated by each tenant, where every credential is recorded", "did:ion on the Bitcoin network", "SAML federation between issuer and verifier"],
+            options: ["did:web, tied to the issuer's web domain", "A private blockchain that records every credential", "did:ion on the Bitcoin network", "SAML federation between issuer and verifier"],
             answer: 0,
             explain: "With did:web, trust comes from the reputation of the issuer's web domain.",
             es: {
               q: "¿Qué sistema de confianza usa Microsoft Entra Verified ID?",
-              options: ["did:web, ligado al dominio web del emisor", "Una cadena de bloques privada que opera cada inquilino, donde se registra cada credencial", "did:ion en la red de Bitcoin", "Federación SAML entre emisor y verificador"],
+              options: ["did:web, ligado al dominio web del emisor", "Una cadena de bloques privada que registra cada credencial", "did:ion en la red de Bitcoin", "Federación SAML entre emisor y verificador"],
               explain: "Con did:web, la confianza surge de la reputación del dominio web del emisor."
             }
           },

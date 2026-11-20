@@ -150,7 +150,7 @@ Catalog.module("sc-900", {
           "A custom role at object scope",
           "A built-in role with its permissions edited",
           "An Azure RBAC role at subscription scope",
-          "A Conditional Access policy that targets the app and the user"
+          "A Conditional Access policy for the app"
         ],
         answer: 0,
         explain: "Custom roles are created from a preset list of permissions and can be assigned at object scope, such as one app. Built-in roles can't be modified.",
@@ -161,7 +161,7 @@ Catalog.module("sc-900", {
             "Un rol personalizado en el ámbito del objeto",
             "Un rol integrado con sus permisos editados",
             "Un rol de Azure RBAC en el ámbito de la suscripción",
-            "Una directiva de acceso condicional dirigida a la aplicación y al usuario"
+            "Una directiva de acceso condicional para la aplicación"
           ],
           explain: "Los roles personalizados se crean a partir de una lista predefinida de permisos y se pueden asignar en el ámbito de un objeto, como una aplicación. Los roles integrados no se pueden modificar."
         }

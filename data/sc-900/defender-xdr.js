@@ -195,13 +195,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Defender portal",
         q: "A SOC wants one queue with incidents from Defender XDR products and Microsoft Sentinel together. Where do they get it?",
-        options: ["Incidents and alerts in the Microsoft Defender portal", "The Sentinel blade in the Azure portal, which also imports Defender XDR alerts", "The Microsoft Purview portal", "Microsoft Defender for Cloud"],
+        options: ["Incidents and alerts in the Microsoft Defender portal", "The Sentinel blade in the Azure portal", "The Microsoft Purview portal", "Microsoft Defender for Cloud"],
         answer: 0,
         explain: "The Defender portal is a unified security operations platform with a unified incident queue.",
         es: {
           topic: "Portal de Defender",
           q: "Un SOC quiere una sola cola con los incidentes de los productos de Defender XDR y de Microsoft Sentinel juntos. ¿Dónde la obtiene?",
-          options: ["En Incidentes y alertas del portal de Microsoft Defender", "En la hoja de Sentinel de Azure Portal, que además importa las alertas de Defender XDR", "El portal de Microsoft Purview", "Microsoft Defender for Cloud"],
+          options: ["En Incidentes y alertas del portal de Microsoft Defender", "La hoja de Sentinel de Azure Portal", "El portal de Microsoft Purview", "Microsoft Defender for Cloud"],
           explain: "El portal de Defender es una plataforma unificada de operaciones de seguridad con una cola de incidentes unificada."
         }
       },
@@ -788,12 +788,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A critical patch can't be installed yet. What can Defender Vulnerability Management offer to reduce risk in the meantime?",
-            options: ["Alternate mitigations or blocking the vulnerable application", "Automatic removal of the affected devices from the domain until the patch can be installed", "Lowering the CVE's severity until patched", "Opening a Sentinel incident automatically"],
+            options: ["Alternate mitigations or blocking the vulnerable application", "Removing the affected devices from the domain until patched", "Lowering the CVE's severity until patched", "Opening a Sentinel incident automatically"],
             answer: 0,
             explain: "It suggests alternate mitigations such as configuration changes and can block vulnerable apps for device groups.",
             es: {
               q: "Todavía no se puede instalar un parche crítico. ¿Qué puede ofrecer la Administración de vulnerabilidades de Defender para reducir el riesgo mientras tanto?",
-              options: ["Mitigaciones alternativas o bloquear la aplicación vulnerable", "Quitar automáticamente del dominio los dispositivos afectados hasta que se pueda instalar el parche", "Bajar la gravedad de la CVE hasta que se aplique el parche", "Abrir un incidente de Sentinel automáticamente"],
+              options: ["Mitigaciones alternativas o bloquear la aplicación vulnerable", "Quitar del dominio los dispositivos afectados hasta aplicar el parche", "Bajar la gravedad de la CVE hasta que se aplique el parche", "Abrir un incidente de Sentinel automáticamente"],
               explain: "Sugiere mitigaciones alternativas, como cambios de configuración, y puede bloquear aplicaciones vulnerables para grupos de dispositivos."
             }
           }

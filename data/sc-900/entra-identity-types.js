@@ -90,13 +90,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "External identities",
         q: "A company wants consultants to access its Office 365 and line-of-business apps using their own credentials, while it keeps control of its corporate data. Which External ID capability fits?",
-        options: ["B2B collaboration", "CIAM in an external tenant with self-service sign-up", "Microsoft Entra Domain Services", "B2B direct connect"],
+        options: ["B2B collaboration", "CIAM in an external tenant", "Microsoft Entra Domain Services", "B2B direct connect"],
         answer: 0,
         explain: "B2B collaboration lets business guests access your Office 365, SaaS and line-of-business apps by authenticating with their home organization.",
         es: {
           topic: "Identidades externas",
           q: "Una empresa quiere que unos consultores accedan a sus aplicaciones de Office 365 y de línea de negocio con sus propias credenciales, manteniendo el control de sus datos corporativos. ¿Qué capacidad de External ID corresponde?",
-          options: ["Colaboración B2B", "CIAM en un inquilino externo con registro de autoservicio", "Microsoft Entra Domain Services", "Conexión directa B2B"],
+          options: ["Colaboración B2B", "CIAM en un inquilino externo", "Microsoft Entra Domain Services", "Conexión directa B2B"],
           explain: "La colaboración B2B permite que los invitados empresariales accedan a sus aplicaciones de Office 365, SaaS y de línea de negocio autenticándose con su organización de origen."
         }
       },
@@ -856,7 +856,7 @@ Catalog.module("sc-900", {
             type: "single",
             q: "With B2B collaboration, how do business guests authenticate?",
             options: [
-              "With credentials your organization creates and stores for them in your tenant",
+              "With credentials your organization creates for them",
               "Through their home identity provider",
               "With a Temporary Access Pass issued by your admin",
               "Through Microsoft Entra Domain Services"
@@ -866,7 +866,7 @@ Catalog.module("sc-900", {
             es: {
               q: "Con la colaboración B2B, ¿cómo se autentican los invitados empresariales?",
               options: [
-                "Con credenciales que su organización crea y guarda para ellos en su inquilino",
+                "Con credenciales que su organización crea para ellos",
                 "Mediante su proveedor de identidades de origen",
                 "Con un pase de acceso temporal que emite su administrador",
                 "Mediante Microsoft Entra Domain Services"

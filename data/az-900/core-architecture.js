@@ -350,12 +350,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Your team uses one Azure account and wants to run development, testing and production workloads separately. What does the unit suggest?",
-            options: ["Create a separate Azure account for each workload", "Create one subscription per environment", "Use one subscription with a single resource group and tag resources by environment", "Use a free student account for development"],
+            options: ["Create a separate Azure account for each workload", "Create one subscription per environment", "One subscription with one resource group, tagged by environment", "Use a free student account for development"],
             answer: 1,
             explain: "After creating an account you can create additional subscriptions; a team might use one account with separate subscriptions per environment.",
             es: {
               q: "Su equipo usa una sola cuenta de Azure y quiere ejecutar por separado las cargas de desarrollo, pruebas y producción. ¿Qué sugiere la unidad?",
-              options: ["Crear una cuenta de Azure distinta para cada carga", "Crear una suscripción por entorno", "Usar una suscripción con un único grupo de recursos y etiquetar los recursos por entorno", "Usar una cuenta gratuita para estudiantes en desarrollo"],
+              options: ["Crear una cuenta de Azure distinta para cada carga", "Crear una suscripción por entorno", "Una suscripción con un grupo de recursos, etiquetada por entorno", "Usar una cuenta gratuita para estudiantes en desarrollo"],
               explain: "Después de crear una cuenta se pueden crear suscripciones adicionales; un equipo puede usar una cuenta con suscripciones separadas por entorno."
             }
           },
@@ -682,12 +682,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "Your company wants to restrict VM locations to one region across dozens of production subscriptions, and subscription owners must not be able to override the rule. Where should you apply the policy?",
-            options: ["On each virtual machine", "On each resource group inside the production subscriptions", "On a management group", "On each production subscription"],
+            options: ["On each virtual machine", "On each production resource group", "On a management group", "On each production subscription"],
             answer: 2,
             explain: "A policy on a management group is inherited by all subscriptions and VMs beneath it, and resource or subscription owners can't override it.",
             es: {
               q: "Su empresa quiere restringir la ubicación de las máquinas virtuales a una región en decenas de suscripciones de producción, y los propietarios de las suscripciones no deben poder anular la regla. ¿Dónde debe aplicar la directiva?",
-              options: ["En cada máquina virtual", "En cada grupo de recursos de las suscripciones de producción", "En un grupo de administración", "En cada suscripción de producción"],
+              options: ["En cada máquina virtual", "En cada grupo de recursos de producción", "En un grupo de administración", "En cada suscripción de producción"],
               explain: "Una directiva en un grupo de administración la heredan todas las suscripciones y máquinas virtuales que dependen de él, y los propietarios de recursos o suscripciones no pueden anularla."
             }
           },

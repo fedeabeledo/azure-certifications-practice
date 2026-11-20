@@ -59,13 +59,13 @@ Catalog.pathQuiz("sc-900", "security-compliance-identity-concepts", {
       type: "single",
       topic: "Identity concepts",
       q: "Users from a partner organization access your project portal by signing in with their own organization's credentials. Which concept makes this possible?",
-      options: ["Hybrid identity", "Federation", "Single sign-on within one identity provider", "Multifactor authentication"],
+      options: ["Hybrid identity", "Federation", "Single sign-on in one provider", "Multifactor authentication"],
       answer: 1,
       explain: "Federation establishes trust between separate identity providers so users from one organization can access another's resources. Hybrid identity connects your own AD DS and Entra ID.",
       es: {
         topic: "Conceptos de identidad",
         q: "Los usuarios de una organización asociada acceden a su portal de proyectos iniciando sesión con las credenciales de su propia organización. ¿Qué concepto lo hace posible?",
-        options: ["Identidad híbrida", "Federación", "Inicio de sesión único dentro de un solo proveedor de identidades", "Autenticación multifactor"],
+        options: ["Identidad híbrida", "Federación", "Inicio de sesión único en un proveedor", "Autenticación multifactor"],
         explain: "La federación establece confianza entre proveedores de identidades distintos para que los usuarios de una organización accedan a recursos de otra. La identidad híbrida conecta su propio AD DS con Entra ID."
       }
     },

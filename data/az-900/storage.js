@@ -796,12 +796,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A company wants frequently accessed files to stay on its local Windows server while infrequently accessed files are kept in Azure until requested. Which Azure File Sync feature provides this?",
-            options: ["Cloud tiering", "Blob lifecycle management to the cool tier", "Azure Data Box import", "AzCopy sync on a schedule"],
+            options: ["Cloud tiering", "Blob lifecycle management", "Azure Data Box import", "AzCopy sync on a schedule"],
             answer: 0,
             explain: "Cloud tiering keeps the most frequently accessed files local and leaves the rest in the cloud until someone needs them.",
             es: {
               q: "Una empresa quiere que los archivos más usados queden en su servidor Windows local mientras los poco usados se guardan en Azure hasta que se soliciten. ¿Qué característica de Azure File Sync lo permite?",
-              options: ["La organización en niveles en la nube", "La administración del ciclo de vida de blobs al nivel esporádico", "La importación con Azure Data Box", "La sincronización programada con AzCopy"],
+              options: ["La organización en niveles en la nube", "La administración del ciclo de vida de blobs", "La importación con Azure Data Box", "La sincronización programada con AzCopy"],
               explain: "La organización en niveles en la nube mantiene locales los archivos más usados y deja el resto en la nube hasta que alguien los necesite."
             }
           },

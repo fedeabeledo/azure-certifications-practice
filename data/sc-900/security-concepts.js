@@ -273,7 +273,7 @@ Catalog.module("sc-900", {
             q: "An attacker embeds instructions in external data that an AI application processes, to manipulate the AI's outputs. What is this risk called, and who is responsible for mitigating it?",
             options: [
               "Prompt injection; the customer mitigates it",
-              "Prompt injection; only the AI provider can mitigate it, since it controls the model",
+              "Prompt injection; only the AI provider can mitigate it",
               "Data poisoning; the customer mitigates it",
               "Jailbreak; only the AI provider can mitigate it"
             ],
@@ -283,7 +283,7 @@ Catalog.module("sc-900", {
               q: "Un atacante inserta instrucciones en datos externos que procesa una aplicación de IA, para manipular sus resultados. ¿Cómo se llama este riesgo y quién es responsable de mitigarlo?",
               options: [
                 "Inyección de prompts; la mitiga el cliente",
-                "Inyección de prompts; solo el proveedor de IA puede mitigarla, porque controla el modelo",
+                "Inyección de prompts; solo el proveedor de IA puede mitigarla",
                 "Envenenamiento de datos; lo mitiga el cliente",
                 "Jailbreak; solo el proveedor de IA puede mitigarlo"
               ],
@@ -339,12 +339,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A storage account is misconfigured and exposes sensitive data, even though the cloud platform itself is properly secured. Who is responsible for this exposure?",
-            options: ["The cloud provider", "The customer", "Both equally, because storage is shared", "The cloud provider, because it hosts the storage service"],
+            options: ["The cloud provider", "The customer", "Both equally, because storage is shared", "The cloud provider, as the host"],
             answer: 1,
             explain: "Configuration choices in your tenant are always your responsibility. A misconfiguration can expose data even on a properly secured platform.",
             es: {
               q: "Una cuenta de almacenamiento está mal configurada y expone datos confidenciales, aunque la plataforma en la nube está bien protegida. ¿Quién es responsable de esta exposición?",
-              options: ["El proveedor de nube", "El cliente", "Ambos por igual, porque el almacenamiento es compartido", "El proveedor de nube, porque hospeda el servicio de almacenamiento"],
+              options: ["El proveedor de nube", "El cliente", "Ambos por igual, porque el almacenamiento es compartido", "El proveedor de nube, como anfitrión"],
               explain: "Las decisiones de configuración de su inquilino siempre son responsabilidad suya. Una mala configuración puede exponer datos incluso en una plataforma bien protegida."
             }
           },
@@ -618,7 +618,7 @@ Catalog.module("sc-900", {
             options: [
               "A security product that replaces firewalls and VPNs",
               "A strategy that verifies every access request",
-              "A model that trusts everything inside the corporate network and verifies only remote access",
+              "A model that trusts the internal network and verifies only remote access",
               "A layered set of controls around the network perimeter"
             ],
             answer: 1,
@@ -628,7 +628,7 @@ Catalog.module("sc-900", {
               options: [
                 "Un producto de seguridad que reemplaza los firewalls y las VPN",
                 "Una estrategia que verifica cada solicitud de acceso",
-                "Un modelo que confía en todo lo que está dentro de la red corporativa y verifica solo el acceso remoto",
+                "Un modelo que confía en la red interna y verifica solo el acceso remoto",
                 "Un conjunto de controles en capas alrededor del perímetro de red"
               ],
               explain: "Confianza cero es una estrategia, no un producto: no confiar en nadie, verificarlo todo. Confiar en la red interna es el modelo de castillo y foso que reemplaza."
@@ -748,7 +748,7 @@ Catalog.module("sc-900", {
             options: [
               "To make the hash reversible for administrators",
               "So identical passwords get different hashes",
-              "To encrypt passwords while they travel over the network to the authentication server",
+              "To encrypt passwords in transit to the server",
               "So the hash can be compared faster during sign-in"
             ],
             answer: 1,
@@ -758,7 +758,7 @@ Catalog.module("sc-900", {
               options: [
                 "Para que los administradores puedan revertir el hash",
                 "Para que contraseñas iguales tengan hashes distintos",
-                "Para cifrar las contraseñas mientras viajan por la red hasta el servidor de autenticación",
+                "Para cifrar las contraseñas en tránsito hacia el servidor",
                 "Para que el hash se pueda comparar más rápido al iniciar sesión"
               ],
               explain: "Una sal única y aleatoria por contraseña hace que dos usuarios con la misma contraseña tengan hashes distintos, así que las tablas de búsqueda precalculadas dejan de funcionar."

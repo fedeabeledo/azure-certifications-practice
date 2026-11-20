@@ -479,7 +479,7 @@ Catalog.module("sc-900", {
               "Ask the AI-powered copilot in natural language",
               "Request access to every governance domain",
               "Create a new critical data element",
-              "Run a new Data Map scan of all sources and browse the raw results"
+              "Run a new Data Map scan and browse the results"
             ],
             answer: 0,
             explain: "The copilot lets users search in everyday language without knowing exact asset names.",
@@ -489,7 +489,7 @@ Catalog.module("sc-900", {
                 "Preguntarle al copiloto con IA en lenguaje natural",
                 "Solicitar acceso a todos los dominios de gobernanza",
                 "Crear un nuevo elemento de datos crítico",
-                "Ejecutar un análisis nuevo de Data Map sobre todos los orígenes y revisar los resultados sin procesar"
+                "Ejecutar un análisis nuevo de Data Map y revisar los resultados"
               ],
               explain: "El copiloto permite buscar en lenguaje cotidiano sin conocer los nombres exactos de los recursos."
             }

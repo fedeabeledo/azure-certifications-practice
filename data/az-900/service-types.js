@@ -132,13 +132,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "SaaS",
         q: "Your company adopts a SaaS application. Which of the following does your company still manage?",
-        options: ["Who can access it", "Application updates", "Patching the servers that run the application", "Platform middleware"],
+        options: ["Who can access it", "Application updates", "Patching the app's servers", "Platform middleware"],
         answer: 0,
         explain: "In SaaS you mainly manage your data, identity and access settings, and device access posture. The provider handles infrastructure, platform and application maintenance.",
         es: {
           topic: "SaaS",
           q: "Su empresa adopta una aplicación SaaS. ¿Cuál de los siguientes elementos sigue administrando su empresa?",
-          options: ["Quién puede acceder", "Las actualizaciones de la aplicación", "Los parches de los servidores que ejecutan la aplicación", "El middleware de la plataforma"],
+          options: ["Quién puede acceder", "Las actualizaciones de la aplicación", "Los parches de los servidores de la aplicación", "El middleware de la plataforma"],
           explain: "En SaaS usted administra principalmente sus datos, la configuración de identidad y acceso, y la postura de acceso de los dispositivos. El proveedor se ocupa de la infraestructura, la plataforma y el mantenimiento de la aplicación."
         }
       },
@@ -332,12 +332,12 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "A team wants tools provided as a service to analyze and mine its data, find patterns and predict outcomes, without managing servers or operating systems. Which option fits best?",
-            options: ["IaaS virtual machines", "An on-premises datacenter", "PaaS analytics tools", "A private cloud on new hardware with preinstalled analytics software"],
+            options: ["IaaS virtual machines", "An on-premises datacenter", "PaaS analytics tools", "A private cloud with analytics software"],
             answer: 2,
             explain: "Analytics or business intelligence is a listed PaaS scenario: the tools come as a service and the provider manages the platform.",
             es: {
               q: "Un equipo quiere herramientas ofrecidas como servicio para analizar y explorar sus datos, encontrar patrones y predecir resultados, sin administrar servidores ni sistemas operativos. ¿Qué opción es la más adecuada?",
-              options: ["Máquinas virtuales IaaS", "Un centro de datos local", "Herramientas PaaS de análisis", "Una nube privada con hardware nuevo y software de análisis preinstalado"],
+              options: ["Máquinas virtuales IaaS", "Un centro de datos local", "Herramientas PaaS de análisis", "Una nube privada con software de análisis"],
               explain: "El análisis o la inteligencia empresarial es un escenario listado de PaaS: las herramientas vienen como servicio y el proveedor administra la plataforma."
             }
           },
@@ -369,7 +369,7 @@ Catalog.module("az-900", {
             q: "In PaaS, what does the customer focus on?",
             options: [
               "Patching the operating system",
-              "Maintaining the middleware and runtimes that the app depends on",
+              "Maintaining the middleware and runtimes",
               "Code, data and access",
               "Physical security of the datacenter"
             ],
@@ -379,7 +379,7 @@ Catalog.module("az-900", {
               q: "En PaaS, ¿en qué se concentra el cliente?",
               options: [
                 "En aplicar parches al sistema operativo",
-                "En mantener el middleware y los entornos de ejecución de los que depende la aplicación",
+                "En mantener el middleware y los entornos de ejecución",
                 "En el código, los datos y el acceso",
                 "En la seguridad física del centro de datos"
               ],
@@ -499,7 +499,7 @@ Catalog.module("az-900", {
             q: "A team adopts a SaaS collaboration platform. What can the team focus on, now that the provider handles the rest?",
             options: [
               "Infrastructure patching",
-              "Planning application updates and keeping the service available",
+              "Planning app updates and uptime",
               "Onboarding, access and data governance",
               "Maintaining the platform's operating systems"
             ],
@@ -509,7 +509,7 @@ Catalog.module("az-900", {
               q: "Un equipo adopta una plataforma de colaboración SaaS. ¿En qué puede concentrarse ahora que el proveedor se ocupa del resto?",
               options: [
                 "En los parches de la infraestructura",
-                "En planificar las actualizaciones de la aplicación y mantener el servicio disponible",
+                "En planificar las actualizaciones y la disponibilidad",
                 "En la incorporación, el acceso y la gobernanza de datos",
                 "En mantener los sistemas operativos de la plataforma"
               ],

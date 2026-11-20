@@ -144,7 +144,7 @@ Catalog.module("sc-900", {
           "Consistent policies across apps",
           "Federation with each app's provider",
           "Self-service password reset",
-          "Local user stores inside each application, synchronized nightly"
+          "Local user stores synced nightly"
         ],
         answer: 0,
         explain: "Delegating authentication to a central IdP lets you apply policies such as MFA to all applications from one place.",
@@ -155,7 +155,7 @@ Catalog.module("sc-900", {
             "Directivas coherentes en todas las aplicaciones",
             "Federación con el proveedor de cada aplicación",
             "Autoservicio de restablecimiento de contraseña",
-            "Almacenes de usuarios locales en cada aplicación, sincronizados cada noche"
+            "Almacenes de usuarios locales sincronizados cada noche"
           ],
           explain: "Delegar la autenticación en un proveedor de identidades central permite aplicar directivas como la MFA a todas las aplicaciones desde un solo lugar."
         }
@@ -895,12 +895,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A user signs in to a new consumer app with their Google account instead of creating a new account. What is this an example of?",
-            options: ["Social federation", "Directory synchronization between Google and the app", "Multifactor authentication", "Hybrid identity"],
+            options: ["Social federation", "Directory sync with Google", "Multifactor authentication", "Hybrid identity"],
             answer: 0,
             explain: "The app trusts the social identity provider to authenticate the user. That's a federated sign-in.",
             es: {
               q: "Un usuario inicia sesión en una aplicación nueva para consumidores con su cuenta de Google en lugar de crear una cuenta nueva. ¿De qué es un ejemplo?",
-              options: ["Federación social", "Sincronización de directorios entre Google y la aplicación", "Autenticación multifactor", "Identidad híbrida"],
+              options: ["Federación social", "Sincronización de directorios con Google", "Autenticación multifactor", "Identidad híbrida"],
               explain: "La aplicación confía en el proveedor de identidades social para autenticar al usuario. Es un inicio de sesión federado."
             }
           },

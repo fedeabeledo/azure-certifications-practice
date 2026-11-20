@@ -511,7 +511,7 @@ Catalog.module("az-900", {
             q: "A website is split into front-end, back-end and storage containers. The back end reaches capacity while the other parts are fine. What do containers let you do?",
             options: [
               "Scale just the back end",
-              "Scale all three parts together, since they share one OS",
+              "Scale all three parts together",
               "Move the whole website to a larger VM",
               "Move the back end to Azure Functions"
             ],
@@ -521,7 +521,7 @@ Catalog.module("az-900", {
               q: "Un sitio web está dividido en contenedores de front-end, back-end y almacenamiento. El back-end llega a su capacidad mientras las otras partes están bien. ¿Qué permiten hacer los contenedores?",
               options: [
                 "Escalar únicamente el back-end",
-                "Escalar las tres partes juntas, porque comparten un sistema operativo",
+                "Escalar las tres partes juntas",
                 "Trasladar todo el sitio a una máquina virtual más grande",
                 "Mover el back-end a Azure Functions"
               ],

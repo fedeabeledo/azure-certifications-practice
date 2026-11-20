@@ -109,7 +109,7 @@ Catalog.module("az-900", {
         q: "Monitoring shows that several virtual machines consistently use a small fraction of their allocated CPU. Which sustainability-aligned practice applies?",
         options: [
           "Add more virtual machines to spread the load",
-          "Keep them at their current size so there's headroom for future growth",
+          "Keep them at their current size",
           "Right-size them to reduce overprovisioning",
           "Move them to a higher SLA tier"
         ],
@@ -120,7 +120,7 @@ Catalog.module("az-900", {
           q: "La supervisión muestra que varias máquinas virtuales usan siempre una pequeña parte de la CPU asignada. ¿Qué práctica alineada con la sostenibilidad corresponde?",
           options: [
             "Agregar más máquinas virtuales para repartir la carga",
-            "Dejarlas con el tamaño actual para tener margen ante el crecimiento futuro",
+            "Dejarlas con el tamaño actual",
             "Ajustar su tamaño para reducir el sobreaprovisionamiento",
             "Pasarlas a un nivel de SLA más alto"
           ],
@@ -615,24 +615,24 @@ Catalog.module("az-900", {
           {
             type: "single",
             q: "An operations team wants to stop configuring each new resource by hand. Which capability addresses this?",
-            options: ["Monitoring resource health in the portal after each deployment", "Deploying from a template", "Receiving alerts on configured metrics", "Scaling resources vertically"],
+            options: ["Checking resource health after each deployment", "Deploying from a template", "Receiving alerts on configured metrics", "Scaling resources vertically"],
             answer: 1,
             explain: "Deploying from a preconfigured template removes the need for manual configuration and keeps configurations consistent.",
             es: {
               q: "Un equipo de operaciones quiere dejar de configurar a mano cada recurso nuevo. ¿Qué capacidad resuelve esto?",
-              options: ["Supervisar el estado de los recursos en el portal después de cada implementación", "Implementar desde una plantilla", "Recibir alertas sobre métricas configuradas", "Escalar recursos verticalmente"],
+              options: ["Revisar el estado de los recursos tras cada implementación", "Implementar desde una plantilla", "Recibir alertas sobre métricas configuradas", "Escalar recursos verticalmente"],
               explain: "Implementar desde una plantilla preconfigurada elimina la configuración manual y mantiene configuraciones coherentes."
             }
           },
           {
             type: "single",
             q: "You want to learn about performance problems in real time without watching dashboards all day. What should you set up?",
-            options: ["Metric-based alerts", "A deployment template that includes a monitoring dashboard", "A service-level agreement", "A PowerShell module"],
+            options: ["Metric-based alerts", "A template with a monitoring dashboard", "A service-level agreement", "A PowerShell module"],
             answer: 0,
             explain: "Automatic alerts based on configured metrics keep you aware of performance in real time.",
             es: {
               q: "Quiere enterarse de los problemas de rendimiento en tiempo real sin mirar paneles todo el día. ¿Qué debe configurar?",
-              options: ["Alertas basadas en métricas", "Una plantilla de implementación que incluya un panel de supervisión", "Un acuerdo de nivel de servicio", "Un módulo de PowerShell"],
+              options: ["Alertas basadas en métricas", "Una plantilla con un panel de supervisión", "Un acuerdo de nivel de servicio", "Un módulo de PowerShell"],
               explain: "Las alertas automáticas basadas en métricas configuradas le permiten conocer el rendimiento en tiempo real."
             }
           },

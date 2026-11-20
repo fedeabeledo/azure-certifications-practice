@@ -50,13 +50,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Network security groups",
         q: "An NSG has a custom rule with priority 200 that allows port 443, and another with priority 100 that denies all inbound traffic from the internet. What happens to inbound HTTPS from the internet?",
-        options: ["It's denied, because the priority 100 rule is processed first", "It's allowed, because allow rules always win", "It's allowed, because the rule with the higher priority number takes precedence over the lower one", "Both rules are combined and the traffic is logged only"],
+        options: ["It's denied, because the priority 100 rule is processed first", "It's allowed, because allow rules always win", "It's allowed, because the higher priority number takes precedence", "Both rules are combined and the traffic is logged only"],
         answer: 0,
         explain: "Lower numbers are processed first, and processing stops at the first match.",
         es: {
           topic: "Grupos de seguridad de red",
           q: "Un NSG tiene una regla personalizada de prioridad 200 que permite el puerto 443 y otra de prioridad 100 que deniega todo el tráfico entrante desde internet. ¿Qué pasa con el HTTPS entrante desde internet?",
-          options: ["Se deniega, porque la regla de prioridad 100 se procesa primero", "Se permite, porque las reglas de permiso siempre ganan", "Se permite, porque la regla con el número de prioridad más alto tiene precedencia sobre la más baja", "Se combinan ambas reglas y el tráfico solo se registra"],
+          options: ["Se deniega, porque la regla de prioridad 100 se procesa primero", "Se permite, porque las reglas de permiso siempre ganan", "Se permite, porque el número de prioridad más alto tiene precedencia", "Se combinan ambas reglas y el tráfico solo se registra"],
           explain: "Los números más bajos se procesan primero, y el procesamiento se detiene en la primera coincidencia."
         }
       },
@@ -758,7 +758,7 @@ Catalog.module("sc-900", {
             q: "Why does Azure Bastion help protect against zero-day exploits?",
             options: [
               "It's a hardened, platform-managed service at the VNet perimeter that Azure keeps up to date",
-              "It installs and updates an antivirus agent on every VM in the virtual network automatically, so each VM is patched against new threats",
+              "It installs an antivirus agent on every VM in the virtual network automatically",
               "It encrypts RDP traffic with a customer key",
               "It replaces the operating system on each VM"
             ],
@@ -768,7 +768,7 @@ Catalog.module("sc-900", {
               q: "¿Por qué Azure Bastion ayuda a proteger contra vulnerabilidades de día cero?",
               options: [
                 "Es un servicio protegido y administrado por la plataforma en el perímetro de la red virtual, que Azure mantiene actualizado",
-                "Instala y actualiza automáticamente un agente antivirus en cada máquina virtual de la red, para que cada una quede protegida frente a amenazas nuevas",
+                "Instala automáticamente un agente antivirus en cada máquina virtual de la red",
                 "Cifra el tráfico RDP con una clave del cliente",
                 "Reemplaza el sistema operativo de cada máquina virtual"
               ],

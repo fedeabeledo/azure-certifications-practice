@@ -50,13 +50,13 @@ Catalog.module("az-900", {
         type: "single",
         topic: "Authentication methods",
         q: "A company wants employees to sign in without passwords, using an unphishable hardware device that works over USB, Bluetooth or NFC. Which option fits?",
-        options: ["Windows Hello for Business", "FIDO2 security keys", "Microsoft Authenticator push notifications", "SMS one-time codes"],
+        options: ["Windows Hello for Business", "FIDO2 security keys", "Authenticator push notifications", "SMS one-time codes"],
         answer: 1,
         explain: "FIDO2 security keys are unphishable hardware devices built on WebAuthn. Windows Hello ties credentials to the user's own Windows PC.",
         es: {
           topic: "Métodos de autenticación",
           q: "Una empresa quiere que los empleados inicien sesión sin contraseñas, con un dispositivo de hardware imposible de suplantar por phishing que funcione por USB, Bluetooth o NFC. ¿Qué opción corresponde?",
-          options: ["Windows Hello para empresas", "Llaves de seguridad FIDO2", "Las notificaciones push de Microsoft Authenticator", "Los códigos de un solo uso por SMS"],
+          options: ["Windows Hello para empresas", "Llaves de seguridad FIDO2", "Las notificaciones push de Authenticator", "Los códigos de un solo uso por SMS"],
           explain: "Las llaves de seguridad FIDO2 son dispositivos de hardware resistentes al phishing basados en WebAuthn. Windows Hello vincula las credenciales al propio equipo Windows del usuario."
         }
       },
@@ -506,7 +506,7 @@ Catalog.module("az-900", {
               "Your tenant manages both",
               "Their provider authenticates; you authorize",
               "The external identity provider manages both",
-              "You manage authentication in your tenant; the external provider manages authorization to your apps"
+              "You manage authentication; the provider manages authorization"
             ],
             answer: 1,
             explain: "External users bring their own identities; their provider authenticates them while you control what they can access.",
@@ -516,7 +516,7 @@ Catalog.module("az-900", {
                 "Su inquilino administra ambas",
                 "Su proveedor autentica; usted autoriza",
                 "El proveedor de identidades externo administra ambas",
-                "Usted administra la autenticación en su inquilino; el proveedor externo, la autorización a sus aplicaciones"
+                "Usted administra la autenticación; el proveedor, la autorización"
               ],
               explain: "Los usuarios externos traen su propia identidad; su proveedor los autentica mientras usted controla a qué pueden acceder."
             }
@@ -550,7 +550,7 @@ Catalog.module("az-900", {
             q: "How do external identities differ from single sign-on?",
             options: [
               "They target cross-tenant and consumer access",
-              "External identities only work inside your own tenant, for employees who sign in once",
+              "External identities only work for employees in your own tenant",
               "External identities don't support MFA",
               "They're the same feature with a different name"
             ],
@@ -560,7 +560,7 @@ Catalog.module("az-900", {
               q: "¿En qué se diferencian las identidades externas del inicio de sesión único?",
               options: [
                 "Apuntan al acceso entre inquilinos y de consumidores",
-                "Las identidades externas solo funcionan dentro de su propio inquilino, para empleados que inician sesión una vez",
+                "Las identidades externas solo sirven para empleados de su propio inquilino",
                 "Las identidades externas no admiten MFA",
                 "Son la misma característica con otro nombre"
               ],
@@ -706,7 +706,7 @@ Catalog.module("az-900", {
             type: "single",
             q: "A new engineer joins the team and should automatically get the same Azure access as the other engineers. What's the most manageable approach?",
             options: [
-              "Copy each of the other engineers' role assignments to the new engineer individually",
+              "Copy each engineer's role assignments to the new engineer",
               "Add the engineer to the engineers' group",
               "Assign Contributor at the management group",
               "Give the engineer a custom role with the same permissions"
@@ -716,7 +716,7 @@ Catalog.module("az-900", {
             es: {
               q: "Un ingeniero nuevo se suma al equipo y debería recibir automáticamente el mismo acceso a Azure que los demás ingenieros. ¿Cuál es el enfoque más fácil de administrar?",
               options: [
-                "Copiar al nuevo ingeniero, una por una, las asignaciones de rol de los demás ingenieros",
+                "Copiarle al nuevo ingeniero las asignaciones de rol de cada ingeniero",
                 "Agregar al ingeniero al grupo de ingenieros",
                 "Asignar Colaborador en el grupo de administración",
                 "Darle al ingeniero un rol personalizado con los mismos permisos"
@@ -787,7 +787,7 @@ Catalog.module("az-900", {
             type: "single",
             q: "A developer assumes Azure RBAC will also control which records users can see inside the company's application. Is that correct?",
             options: [
-              "Yes, RBAC enforces permissions at the application and data level for any resource",
+              "Yes, RBAC enforces permissions at the data level for any resource",
               "No, the application must handle that",
               "Yes, but only for SQL databases",
               "No, because RBAC only works for virtual machines"
@@ -797,7 +797,7 @@ Catalog.module("az-900", {
             es: {
               q: "Un desarrollador supone que Azure RBAC también controlará qué registros pueden ver los usuarios dentro de la aplicación de la empresa. ¿Es correcto?",
               options: [
-                "Sí, RBAC aplica permisos a nivel de aplicación y de datos en cualquier recurso",
+                "Sí, RBAC aplica permisos a nivel de datos en cualquier recurso",
                 "No, eso lo debe resolver la aplicación",
                 "Sí, pero solo para bases de datos SQL",
                 "No, porque RBAC solo funciona con máquinas virtuales"
@@ -835,7 +835,7 @@ Catalog.module("az-900", {
             type: "single",
             q: "Which statement best describes the Zero Trust security model?",
             options: [
-              "It trusts devices inside the corporate network and verifies only external requests",
+              "It trusts the corporate network and verifies only external requests",
               "It assumes breach and verifies every request",
               "It relies on VPN access as the main security boundary",
               "It replaces identity controls with network segmentation"
@@ -845,7 +845,7 @@ Catalog.module("az-900", {
             es: {
               q: "¿Qué afirmación describe mejor el modelo de seguridad de Confianza cero?",
               options: [
-                "Confía en los dispositivos de la red corporativa y verifica solo las solicitudes externas",
+                "Confía en la red corporativa y verifica solo las solicitudes externas",
                 "Asume una vulneración y verifica cada solicitud",
                 "Depende del acceso por VPN como principal límite de seguridad",
                 "Reemplaza los controles de identidad por segmentación de red"
@@ -895,7 +895,7 @@ Catalog.module("az-900", {
               "Grant full access because the password was correct",
               "Decide based on identity, device and risk",
               "Require MFA once, then trust the device",
-              "Allow access only if the user first connects through a VPN, since the network is then trusted"
+              "Allow access only through a VPN, since the network is trusted"
             ],
             answer: 1,
             explain: "Zero Trust decisions are continuous and context-aware, based on identity, device and risk rather than only where the request comes from.",
@@ -905,7 +905,7 @@ Catalog.module("az-900", {
                 "Conceder acceso total porque la contraseña fue correcta",
                 "Decidir según la identidad, el dispositivo y el riesgo",
                 "Pedir MFA una vez y después confiar en el dispositivo",
-                "Permitir el acceso solo si el usuario se conecta primero por VPN, porque así la red es de confianza"
+                "Permitir el acceso solo por VPN, porque la red es de confianza"
               ],
               explain: "Las decisiones de Confianza cero son continuas y dependen del contexto: identidad, dispositivo y riesgo, no solo de dónde viene la solicitud."
             }
@@ -999,7 +999,7 @@ Catalog.module("az-900", {
             type: "single",
             q: "What is the objective of a defense-in-depth strategy?",
             options: [
-              "To rely on one very strong perimeter layer so attackers never get inside",
+              "To rely on one very strong perimeter layer",
               "To slow an attack with layered mechanisms",
               "To concentrate controls at the identity layer",
               "To make every layer independent of the others"
@@ -1009,7 +1009,7 @@ Catalog.module("az-900", {
             es: {
               q: "¿Cuál es el objetivo de una estrategia de defensa en profundidad?",
               options: [
-                "Depender de una única capa perimetral muy sólida para que los atacantes nunca entren",
+                "Depender de una única capa perimetral muy sólida",
                 "Frenar un ataque con mecanismos en capas",
                 "Concentrar los controles en la capa de identidad",
                 "Hacer que cada capa sea independiente de las demás"

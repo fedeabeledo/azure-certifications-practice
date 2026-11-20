@@ -14,6 +14,9 @@ Es un sitio estático sin build ni dependencias. Se sirve tal cual desde GitHub 
 | SC-900 | Introduction to security, compliance, and identity concepts | 10 unidades, 2 integrales de módulo, 1 integral del learning path (33 preguntas) |
 | SC-900 | Introduction to Microsoft Entra | 20 unidades, 4 integrales de módulo, 1 integral del learning path (33 preguntas) |
 | SC-900 | Introduction to Microsoft security solutions | 30 unidades, 5 integrales de módulo, 1 integral del learning path (33 preguntas) |
+| SC-900 | Introduction to Microsoft Purview and Microsoft's privacy principles | 18 unidades, 4 integrales de módulo, 1 integral del learning path (33 preguntas) |
+
+Cada certificación tiene además un simulacro de 40 preguntas, repartidas según los porcentajes de la guía de estudio oficial (AZ-900 al 20/07/2026, SC-900 al 21/10/2026).
 
 ## Cómo funciona
 

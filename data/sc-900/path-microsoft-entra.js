@@ -69,13 +69,13 @@ Catalog.pathQuiz("sc-900", "microsoft-entra", {
       type: "single",
       topic: "Access management",
       q: "Contractors join a project for three months and need a Teams team, a SharePoint site and an app. Access should be requested, approved by the project lead and removed automatically at the end. What should you use?",
-      options: ["An access package", "A security group with assigned membership", "A Global administrator role", "Global Secure Access Quick Access with a Conditional Access policy"],
+      options: ["An access package", "A security group with assigned membership", "A Global administrator role", "Quick Access with a Conditional Access policy"],
       answer: 0,
       explain: "Access packages bundle resources with request, approval and expiration policies, and can invite external users automatically.",
       es: {
         topic: "Administración de acceso",
         q: "Unos contratistas se suman a un proyecto por tres meses y necesitan un equipo de Teams, un sitio de SharePoint y una aplicación. El acceso se debe solicitar, lo debe aprobar el líder del proyecto y se debe quitar automáticamente al final. ¿Qué debe usar?",
-        options: ["Un paquete de acceso", "Un grupo de seguridad con pertenencia asignada", "El rol de administrador global", "El acceso rápido del acceso seguro global con una directiva de acceso condicional"],
+        options: ["Un paquete de acceso", "Un grupo de seguridad con pertenencia asignada", "El rol de administrador global", "El acceso rápido con una directiva de acceso condicional"],
         explain: "Los paquetes de acceso agrupan recursos con directivas de solicitud, aprobación y vencimiento, y pueden invitar automáticamente a usuarios externos."
       }
     },

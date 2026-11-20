@@ -329,13 +329,13 @@ Catalog.pathQuiz("sc-900", "security-solutions", {
       type: "single",
       topic: "Defender XDR",
       q: "A team wants to know which domains (devices, identities, cloud, SaaS) are most exposed to ransomware, with a score and target to track progress. What should it use?",
-      options: ["A Security Exposure Management initiative", "Microsoft Secure Score for Devices", "A Defender for Office 365 campaign view filtered by ransomware campaigns", "A Defender for Cloud regulatory standard"],
+      options: ["A Security Exposure Management initiative", "Microsoft Secure Score for Devices", "The Defender for Office 365 campaign view", "A Defender for Cloud regulatory standard"],
       answer: 0,
       explain: "Initiatives, such as horizontal threat initiatives for ransomware, group metrics and recommendations with a score and target.",
       es: {
         topic: "Defender XDR",
         q: "Un equipo quiere saber qué dominios (dispositivos, identidades, nube, SaaS) están más expuestos al ransomware, con una puntuación y un objetivo para seguir el avance. ¿Qué debe usar?",
-        options: ["Una iniciativa de la administración de la exposición de seguridad", "Microsoft Secure Score para dispositivos", "La vista de campañas de Defender para Office 365 filtrada por campañas de ransomware", "Un estándar normativo de Defender for Cloud"],
+        options: ["Una iniciativa de la administración de la exposición de seguridad", "Microsoft Secure Score para dispositivos", "La vista de campañas de Defender para Office 365", "Un estándar normativo de Defender for Cloud"],
         explain: "Las iniciativas, como las de amenaza horizontal para ransomware, agrupan métricas y recomendaciones con una puntuación y un objetivo."
       }
     },
