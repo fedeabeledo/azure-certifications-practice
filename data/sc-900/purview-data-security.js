@@ -161,13 +161,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Data loss prevention",
         q: "Employees paste customer data into third-party generative AI sites from Edge on onboarded Windows devices. The company wants to warn them and let them override with a justification. What should it configure?",
-        options: ["An endpoint DLP policy with a block with override action", "A sensitivity label with a watermark", "A Risky AI usage policy in Insider Risk Management", "A trainable classifier for AI prompts"],
+        options: ["An endpoint DLP policy with a block with override action", "A sensitivity label with a watermark", "A Risky AI usage policy in Insider Risk Management that blocks the paste", "A trainable classifier for AI prompts"],
         answer: 0,
         explain: "Endpoint DLP can warn or block sharing sensitive data with third-party AI sites; block with override captures a justification. IRM detects risk but doesn't block the paste.",
         es: {
           topic: "Prevención de pérdida de datos",
           q: "Los empleados pegan datos de clientes en sitios de IA generativa de terceros desde Edge en dispositivos Windows incorporados. La empresa quiere avisarles y permitirles continuar con una justificación. ¿Qué debe configurar?",
-          options: ["Una directiva DLP de punto de conexión con la acción bloquear con invalidación", "Una etiqueta de confidencialidad con marca de agua", "Una directiva de uso riesgoso de IA en Insider Risk Management", "Un clasificador entrenable para indicaciones de IA"],
+          options: ["Una directiva DLP de punto de conexión con la acción bloquear con invalidación", "Una etiqueta de confidencialidad con marca de agua", "Una directiva de uso riesgoso de IA en Insider Risk Management que bloquee el pegado", "Un clasificador entrenable para indicaciones de IA"],
           explain: "DLP de punto de conexión puede advertir o bloquear el envío de datos confidenciales a sitios de IA de terceros; bloquear con invalidación registra una justificación. IRM detecta el riesgo, pero no bloquea el pegado."
         }
       },
@@ -238,7 +238,7 @@ Catalog.module("sc-900", {
             q: "An admin raises a SIT's confidence level from low to high. What's the expected effect?",
             options: [
               "Fewer false positives, but some true matches may be missed",
-              "More matches overall, including weaker ones",
+              "More matches overall, because weaker evidence is now enough to report a match",
               "The SIT starts working on encrypted files",
               "Proximity stops being evaluated"
             ],
@@ -248,7 +248,7 @@ Catalog.module("sc-900", {
               q: "Un administrador sube el nivel de confianza de un SIT de bajo a alto. ¿Qué efecto se espera?",
               options: [
                 "Menos falsos positivos, aunque puede pasar por alto algunas coincidencias reales",
-                "Más coincidencias en total, incluidas las más débiles",
+                "Más coincidencias en total, porque ahora alcanza con evidencia más débil para informar una coincidencia",
                 "El SIT empieza a funcionar con archivos cifrados",
                 "La proximidad deja de evaluarse"
               ],
@@ -287,7 +287,7 @@ Catalog.module("sc-900", {
             q: "What's the first step when creating a custom trainable classifier?",
             options: [
               "Seed it with samples that are definitely in the category and samples that definitely aren't",
-              "Write a regular expression and a keyword list",
+              "Write a regular expression, a keyword list and a proximity window for the category",
               "Upload a hashed table of exact values",
               "Publish it to SharePoint and wait for matches"
             ],
@@ -297,7 +297,7 @@ Catalog.module("sc-900", {
               q: "¿Cuál es el primer paso al crear un clasificador entrenable personalizado?",
               options: [
                 "Alimentarlo con ejemplos que sin duda son de la categoría y ejemplos que sin duda no lo son",
-                "Escribir una expresión regular y una lista de palabras clave",
+                "Escribir una expresión regular, una lista de palabras clave y una ventana de proximidad para la categoría",
                 "Cargar una tabla con hash de valores exactos",
                 "Publicarlo en SharePoint y esperar coincidencias"
               ],
@@ -390,12 +390,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Users keep replacing Confidential with Public on documents to share them easily. The company wants them to explain why each time. What should it configure?",
-            options: ["Require a justification for label changes in the label policy", "Mandatory labeling in the label policy", "A DLP policy tip on every SharePoint share", "Encryption with a 7-day expiration on the label"],
+            options: ["Require a justification for label changes in the label policy", "Mandatory labeling in the label policy", "A DLP policy tip on every SharePoint share", "Encryption with a 7-day content expiration configured on the Confidential label"],
             answer: 0,
             explain: "Label policies can require users to justify removing a label or replacing it with a lower-sensitivity one.",
             es: {
               q: "Los usuarios reemplazan seguido Confidencial por Público en los documentos para compartirlos más fácil. La empresa quiere que expliquen el motivo cada vez. ¿Qué debe configurar?",
-              options: ["Exigir una justificación para los cambios de etiqueta en la directiva", "El etiquetado obligatorio en la directiva de etiquetas", "Una sugerencia de directiva DLP en cada uso compartido de SharePoint", "Cifrado con vencimiento de 7 días en la etiqueta"],
+              options: ["Exigir una justificación para los cambios de etiqueta en la directiva", "El etiquetado obligatorio en la directiva de etiquetas", "Una sugerencia de directiva DLP en cada uso compartido de SharePoint", "Cifrado con vencimiento del contenido a los 7 días configurado en la etiqueta Confidencial"],
               explain: "Las directivas de etiquetas pueden exigir que el usuario justifique quitar una etiqueta o reemplazarla por una de menor confidencialidad."
             }
           },
@@ -425,12 +425,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "To reduce oversharing, a company wants links to documents in a sensitive SharePoint site to default to people in the organization only. How can sensitivity labels help?",
-            options: ["Configure the label to set the default sharing link type", "Apply a watermark that says Internal Only", "Publish the label only to internal users", "Require a justification for label changes"],
+            options: ["Configure the label to set the default sharing link type", "Apply a watermark that says Internal Only", "Publish the label only to internal users through the label policy", "Require a justification for label changes"],
             answer: 0,
             explain: "Labels can set the default sharing link type for SharePoint sites and individual documents.",
             es: {
               q: "Para reducir el uso compartido excesivo, una empresa quiere que los vínculos a documentos de un sitio de SharePoint sensible sean, de forma predeterminada, solo para personas de la organización. ¿Cómo ayudan las etiquetas de confidencialidad?",
-              options: ["Configurando la etiqueta para definir el tipo de vínculo de uso compartido predeterminado", "Aplicando una marca de agua que diga Solo uso interno", "Publicando la etiqueta solo para usuarios internos", "Exigiendo una justificación para los cambios de etiqueta"],
+              options: ["Configurando la etiqueta para definir el tipo de vínculo de uso compartido predeterminado", "Aplicando una marca de agua que diga Solo uso interno", "Publicar la etiqueta solo para usuarios internos mediante la directiva de etiquetas", "Exigiendo una justificación para los cambios de etiqueta"],
               explain: "Las etiquetas pueden definir el tipo de vínculo de uso compartido predeterminado para sitios de SharePoint y documentos individuales."
             }
           }
@@ -448,12 +448,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "Finance users sometimes need to email bank details to a new supplier. The company wants DLP to stop accidental sends but allow justified ones. Which action fits?",
-            options: ["Block with override, capturing the user's justification", "Block without the override option", "Show a policy tip only, without blocking", "Lock the item and move it to quarantine"],
+            options: ["Block with override, capturing the user's justification", "Block without the override option", "Show a policy tip only, without blocking", "Lock the item and move it to a secure quarantine location until reviewed"],
             answer: 0,
             explain: "Block with override stops the action by default but lets the user continue with a recorded justification.",
             es: {
               q: "Los usuarios de Finanzas a veces necesitan enviar datos bancarios por correo a un proveedor nuevo. La empresa quiere que DLP frene los envíos accidentales, pero permita los justificados. ¿Qué acción corresponde?",
-              options: ["Bloquear con invalidación, registrando la justificación del usuario", "Bloquear sin opción de invalidación", "Mostrar solo una sugerencia de directiva, sin bloquear", "Bloquear el elemento y moverlo a cuarentena"],
+              options: ["Bloquear con invalidación, registrando la justificación del usuario", "Bloquear sin opción de invalidación", "Mostrar solo una sugerencia de directiva, sin bloquear", "Bloquear el elemento y moverlo a una ubicación de cuarentena segura hasta que se revise"],
               explain: "Bloquear con invalidación detiene la acción de forma predeterminada, pero permite continuar con una justificación registrada."
             }
           },
@@ -568,12 +568,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "HR wants employees who just received a poor performance review to be brought into scope of insider risk policies. What makes this possible?",
-            options: ["An HR data connector feeding employment stressor events", "A Conditional Access policy for risky users", "A sensitivity label applied to the review document", "Communication compliance scanning HR emails"],
+            options: ["An HR data connector feeding employment stressor events", "A Conditional Access policy for risky users", "A sensitivity label applied to the performance review document itself", "Communication compliance scanning HR emails"],
             answer: 0,
             explain: "Risky user behavior policies use HR data connectors to bring affected users into scope.",
             es: {
               q: "RR. HH. quiere que los empleados que acaban de recibir una mala evaluación de desempeño queden dentro del alcance de las directivas de riesgo interno. ¿Qué lo permite?",
-              options: ["Un conector de datos de RR. HH. que aporta eventos de estrés laboral", "Una directiva de acceso condicional para usuarios riesgosos", "Una etiqueta de confidencialidad aplicada al documento de la evaluación", "El cumplimiento de comunicaciones analizando los correos de RR. HH."],
+              options: ["Un conector de datos de RR. HH. que aporta eventos de estrés laboral", "Una directiva de acceso condicional para usuarios riesgosos", "Una etiqueta de confidencialidad aplicada al propio documento de la evaluación de desempeño", "El cumplimiento de comunicaciones analizando los correos de RR. HH."],
               explain: "Las directivas de comportamiento riesgoso del usuario usan conectores de datos de RR. HH. para incluir a los usuarios afectados."
             }
           },
@@ -668,7 +668,7 @@ Catalog.module("sc-900", {
             options: [
               "A retention label policy preserves the deleted content for 120 days",
               "Deleted files are moved to the user's manager's OneDrive",
-              "The deletions are blocked until an admin approves them",
+              "The deletions are blocked until an admin approves each one in the Purview portal",
               "A copy of each file is sent to Microsoft Defender XDR"
             ],
             answer: 0,
@@ -678,7 +678,7 @@ Catalog.module("sc-900", {
               options: [
                 "Una directiva de etiquetas de retención conserva el contenido eliminado durante 120 días",
                 "Los archivos eliminados se mueven al OneDrive del responsable del usuario",
-                "Las eliminaciones se bloquean hasta que un administrador las aprueba",
+                "Las eliminaciones se bloquean hasta que un administrador aprueba cada una en el portal de Purview",
                 "Se envía una copia de cada archivo a Microsoft Defender XDR"
               ],
               explain: "Mediante la administración del ciclo de vida de los datos, el contenido que un usuario de riesgo Elevado elimina de SharePoint, OneDrive o Exchange Online se conserva 120 días."
@@ -725,7 +725,7 @@ Catalog.module("sc-900", {
             q: "Why does adaptive protection reduce the number of DLP policies an organization has to maintain?",
             options: [
               "The right DLP policy is assigned automatically as each user's risk level changes",
-              "It merges all DLP policies into one tenant-wide policy",
+              "It merges all DLP policies into one tenant-wide policy that applies to every user equally",
               "It replaces DLP policies with sensitivity labels",
               "It only applies DLP to users in priority user groups"
             ],
@@ -735,7 +735,7 @@ Catalog.module("sc-900", {
               q: "¿Por qué la protección adaptable reduce la cantidad de directivas DLP que una organización tiene que mantener?",
               options: [
                 "La directiva DLP adecuada se asigna automáticamente a medida que cambia el nivel de riesgo de cada usuario",
-                "Combina todas las directivas DLP en una única directiva para todo el inquilino",
+                "Combina todas las directivas DLP en una única directiva para todo el inquilino que se aplica igual a todos",
                 "Reemplaza las directivas DLP por etiquetas de confidencialidad",
                 "Solo aplica DLP a los usuarios de grupos prioritarios"
               ],
@@ -768,12 +768,12 @@ Catalog.module("sc-900", {
           {
             type: "single",
             q: "A company suspects sensitive data sits in Snowflake and Databricks outside any managed location. Which DSPM capability helps uncover this shadow data?",
-            options: ["Asset explorer across Microsoft and non-Microsoft locations", "Content explorer in Information Protection", "Activity explorer filtered by endpoint", "Insider risk analytics"],
+            options: ["Asset explorer across Microsoft and non-Microsoft locations", "Content explorer in Information Protection", "Activity explorer filtered by endpoint", "Insider risk analytics run across the third-party connectors"],
             answer: 0,
             explain: "The asset explorer shows unlabeled or classified data by workload, including non-Microsoft locations, to uncover shadow data.",
             es: {
               q: "Una empresa sospecha que hay datos confidenciales en Snowflake y Databricks fuera de cualquier ubicación administrada. ¿Qué capacidad de DSPM ayuda a descubrir esos datos en la sombra?",
-              options: ["El explorador de recursos en ubicaciones de Microsoft y de terceros", "El explorador de contenido de Information Protection", "El explorador de actividad filtrado por punto de conexión", "El análisis de riesgos internos"],
+              options: ["El explorador de recursos en ubicaciones de Microsoft y de terceros", "El explorador de contenido de Information Protection", "El explorador de actividad filtrado por punto de conexión", "El análisis de riesgos internos ejecutado sobre los conectores de terceros"],
               explain: "El explorador de recursos muestra datos sin etiquetar o clasificados por carga de trabajo, incluidas ubicaciones de terceros, para descubrir datos en la sombra."
             }
           },
@@ -834,7 +834,7 @@ Catalog.module("sc-900", {
               "It surfaces the risk and recommends a policy you can apply in one click",
               "It deletes the agent automatically",
               "It blocks the agent through Conditional Access",
-              "It opens an eDiscovery case for the agent's owner"
+              "It opens an eDiscovery case for the agent's owner and places their mailbox on hold"
             ],
             answer: 0,
             explain: "AI observability surfaces the gap and recommends corrective actions, such as one-click policies.",
@@ -844,7 +844,7 @@ Catalog.module("sc-900", {
                 "Muestra el riesgo y recomienda una directiva que puede aplicar en un clic",
                 "Elimina el agente automáticamente",
                 "Bloquea el agente mediante el acceso condicional",
-                "Abre un caso de eDiscovery para el propietario del agente"
+                "Abre un caso de eDiscovery para el propietario del agente y pone su buzón en retención"
               ],
               explain: "La observabilidad de IA muestra la brecha y recomienda acciones correctivas, como directivas en un clic."
             }

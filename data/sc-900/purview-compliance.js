@@ -54,7 +54,7 @@ Catalog.module("sc-900", {
           "A five-year retention policy on the site plus a ten-year retention label on the contracts",
           "A ten-year retention label applied manually to every document in the site",
           "Two retention policies on the same site, one for five years and one for ten",
-          "A ten-year retention policy on the site and a disposition review for the rest"
+          "A ten-year retention policy on the whole site, plus a disposition review for every non-contract document"
         ],
         answer: 0,
         explain: "Policies apply the same settings to a whole container; labels set item-level exceptions such as a longer period.",
@@ -65,7 +65,7 @@ Catalog.module("sc-900", {
             "Una directiva de retención de cinco años en el sitio y una etiqueta de retención de diez años en los contratos",
             "Una etiqueta de retención de diez años aplicada a mano a cada documento del sitio",
             "Dos directivas de retención en el mismo sitio, una de cinco años y otra de diez",
-            "Una directiva de retención de diez años en el sitio y una revisión para eliminación del resto"
+            "Una directiva de retención de diez años en todo el sitio, más una revisión para eliminación de cada documento que no sea contrato"
           ],
           explain: "Las directivas aplican la misma configuración a todo un contenedor; las etiquetas definen excepciones a nivel de elemento, como un período más largo."
         }
@@ -156,13 +156,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Communication Compliance",
         q: "A company wants IT to configure monitoring policies, while only the compliance team can read and act on flagged messages. How does Communication Compliance support this?",
-        options: ["Role-based access controls that separate configuration from review", "Separate Microsoft Entra tenants for IT and compliance", "Sensitivity labels applied to every flagged message", "Privileged Identity Management for every reviewer"],
+        options: ["Role-based access controls that separate configuration from review", "Separate Microsoft Entra tenants for IT and compliance", "Sensitivity labels applied to every flagged message", "Privileged Identity Management with approval required for every reviewer activation"],
         answer: 0,
         explain: "RBAC in Communication Compliance supports separation of duties between IT admins and the compliance team.",
         es: {
           topic: "Cumplimiento de comunicaciones",
           q: "Una empresa quiere que TI configure las directivas de supervisión, mientras que solo el equipo de cumplimiento pueda leer y actuar sobre los mensajes marcados. ¿Cómo lo admite Cumplimiento de comunicaciones?",
-          options: ["Con controles de acceso basados en roles que separan la configuración de la revisión", "Con inquilinos de Microsoft Entra separados para TI y cumplimiento", "Con etiquetas de confidencialidad aplicadas a cada mensaje marcado", "Con Privileged Identity Management para cada revisor"],
+          options: ["Con controles de acceso basados en roles que separan la configuración de la revisión", "Con inquilinos de Microsoft Entra separados para TI y cumplimiento", "Con etiquetas de confidencialidad aplicadas a cada mensaje marcado", "Privileged Identity Management con aprobación obligatoria para cada activación de los revisores"],
           explain: "El RBAC de Cumplimiento de comunicaciones permite separar funciones entre los administradores de TI y el equipo de cumplimiento."
         }
       },
@@ -199,13 +199,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Data Lifecycle Management",
         q: "An employee is leaving, and the company must keep her mailbox content for legal reasons after her account is deleted. What should it do?",
-        options: ["Place the mailbox on hold before deleting the account, making it inactive", "Enable auto-expanding archiving on the mailbox", "Export the mailbox to a PST and delete the account", "Apply a sensitivity label with encryption to the mailbox"],
+        options: ["Place the mailbox on hold before deleting the account, making it inactive", "Enable auto-expanding archiving on the mailbox", "Export the mailbox to a PST file, store it on a file share and then delete the account", "Apply a sensitivity label with encryption to the mailbox"],
         answer: 0,
         explain: "A mailbox placed on hold before the account is deleted becomes an inactive mailbox and is retained.",
         es: {
           topic: "Administración del ciclo de vida de los datos",
           q: "Una empleada se va y la empresa debe conservar el contenido de su buzón por motivos legales después de eliminar su cuenta. ¿Qué debe hacer?",
-          options: ["Poner el buzón en retención antes de eliminar la cuenta, para que quede inactivo", "Habilitar el archivado de expansión automática en el buzón", "Exportar el buzón a un PST y eliminar la cuenta", "Aplicar al buzón una etiqueta de confidencialidad con cifrado"],
+          options: ["Poner el buzón en retención antes de eliminar la cuenta, para que quede inactivo", "Habilitar el archivado de expansión automática en el buzón", "Exportar el buzón a un archivo PST, guardarlo en un recurso compartido y después eliminar la cuenta", "Aplicar al buzón una etiqueta de confidencialidad con cifrado"],
           explain: "Un buzón que se pone en retención antes de eliminar la cuenta pasa a ser un buzón inactivo y se conserva."
         }
       }
@@ -394,7 +394,7 @@ Catalog.module("sc-900", {
             options: [
               "A contextual summary with follow-up questions in the side panel",
               "Automatic deletion of the message from all mailboxes",
-              "A KeyQL query that finds similar messages",
+              "A KeyQL query generated by Copilot that finds similar messages across the tenant",
               "An insider risk level for the sender"
             ],
             answer: 0,
@@ -404,7 +404,7 @@ Catalog.module("sc-900", {
               options: [
                 "Un resumen contextual con preguntas de seguimiento en el panel lateral",
                 "La eliminación automática del mensaje de todos los buzones",
-                "Una consulta KeyQL que encuentra mensajes parecidos",
+                "Una consulta KeyQL generada por Copilot que encuentra mensajes parecidos en todo el inquilino",
                 "Un nivel de riesgo interno para el remitente"
               ],
               explain: "En Cumplimiento de comunicaciones, Copilot resume el mensaje y los adjuntos en el contexto del clasificador y admite preguntas de seguimiento."
@@ -523,7 +523,7 @@ Catalog.module("sc-900", {
               "Audit (Premium) with a retention policy and the 10-year add-on license",
               "Audit (Standard), which keeps records for up to seven years",
               "An eDiscovery hold on the audit log",
-              "A retention label applied to the unified audit log"
+              "A retention label applied to the unified audit log with a seven-year retain-only setting"
             ],
             answer: 0,
             explain: "Audit (Premium) retention policies keep records up to one year, and up to 10 years with the add-on license. Standard keeps 180 days.",
@@ -533,7 +533,7 @@ Catalog.module("sc-900", {
                 "Auditoría (Premium) con una directiva de retención y la licencia complementaria de 10 años",
                 "Auditoría (Estándar), que conserva registros hasta siete años",
                 "Una retención de eDiscovery sobre el registro de auditoría",
-                "Una etiqueta de retención aplicada al registro de auditoría unificado"
+                "Una etiqueta de retención aplicada al registro de auditoría unificado con la opción de solo conservar siete años"
               ],
               explain: "Las directivas de retención de Auditoría (Premium) conservan registros hasta un año, y hasta 10 años con la licencia complementaria. Estándar conserva 180 días."
             }
@@ -616,7 +616,7 @@ Catalog.module("sc-900", {
             q: "A user edits a document covered by a retain-for-three-years policy and then deletes it. What happens?",
             options: [
               "A copy is kept in a secure location the user doesn't normally see",
-              "The deletion is blocked until the period ends",
+              "The deletion is blocked and the user sees a message until the retention period ends",
               "The document is moved to the user's manager",
               "The policy is removed from the site"
             ],
@@ -626,7 +626,7 @@ Catalog.module("sc-900", {
               q: "Un usuario edita un documento cubierto por una directiva de conservar tres años y después lo elimina. ¿Qué pasa?",
               options: [
                 "Se guarda una copia en una ubicación segura que el usuario normalmente no ve",
-                "La eliminación se bloquea hasta que termina el período",
+                "La eliminación se bloquea y el usuario ve un mensaje hasta que termina el período de retención",
                 "El documento se mueve al responsable del usuario",
                 "La directiva se quita del sitio"
               ],
@@ -675,7 +675,7 @@ Catalog.module("sc-900", {
             options: [
               "They don't travel with it, though a copy is kept in the original workload's secure location",
               "They travel with the document to the new site",
-              "The new site automatically adopts the old site's policy",
+              "The new site automatically adopts the old site's retention policy for that document and any others moved with it",
               "The document is deleted because it left the container"
             ],
             answer: 0,
@@ -685,7 +685,7 @@ Catalog.module("sc-900", {
               options: [
                 "No viaja con él, aunque se guarda una copia en la ubicación segura de la carga de trabajo original",
                 "Viaja con el documento al sitio nuevo",
-                "El sitio nuevo adopta automáticamente la directiva del sitio anterior",
+                "El sitio nuevo adopta automáticamente la directiva de retención del sitio anterior para ese documento y los que se muevan con él",
                 "El documento se elimina porque salió del contenedor"
               ],
               explain: "Los elementos heredan la directiva de su contenedor; si salen, se guarda una copia, pero la configuración no los sigue. Las etiquetas, en cambio, viajan dentro del inquilino."
@@ -719,7 +719,7 @@ Catalog.module("sc-900", {
             q: "An admin wants to mark certain items as regulatory records, but the option doesn't appear in the retention label settings. Why?",
             options: [
               "It's off by default and must be enabled with PowerShell",
-              "It requires Audit (Premium) to be turned on first",
+              "It requires Audit (Premium) to be turned on first for the whole tenant",
               "It's only available for SharePoint, not Exchange",
               "It must be requested from Microsoft support"
             ],
@@ -729,7 +729,7 @@ Catalog.module("sc-900", {
               q: "Un administrador quiere marcar ciertos elementos como registros normativos, pero la opción no aparece en la configuración de la etiqueta de retención. ¿Por qué?",
               options: [
                 "Está desactivada de forma predeterminada y se habilita con PowerShell",
-                "Requiere activar primero Auditoría (Premium)",
+                "Requiere activar primero Auditoría (Premium) para todo el inquilino",
                 "Solo está disponible para SharePoint, no para Exchange",
                 "Hay que pedírsela al soporte de Microsoft"
               ],

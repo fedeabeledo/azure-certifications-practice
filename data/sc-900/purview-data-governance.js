@@ -11,13 +11,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Unified Catalog",
         q: "Data consumers keep missing half the tables a churn model depends on, even though each table has a glossary term. What should the model's owner create so consumers get everything in one place?",
-        options: ["A data product listing all the related assets", "A critical data element for each table", "A new collection in Data Map", "An OKR linked to the governance domain"],
+        options: ["A data product listing all the related assets", "A critical data element mapped to every table in the model", "A new collection in Data Map", "An OKR linked to the governance domain"],
         answer: 0,
         explain: "A data product groups associated assets with a description and use case, so consumers find everything they need in one place.",
         es: {
           topic: "Catálogo unificado",
           q: "Los consumidores de datos no encuentran la mitad de las tablas de las que depende un modelo de abandono, aunque cada tabla tiene un término del glosario. ¿Qué debe crear el responsable del modelo para que encuentren todo en un solo lugar?",
-          options: ["Un producto de datos que enumere todos los recursos relacionados", "Un elemento de datos crítico para cada tabla", "Una colección nueva en Data Map", "Un OKR vinculado al dominio de gobernanza"],
+          options: ["Un producto de datos que enumere todos los recursos relacionados", "Un elemento de datos crítico asignado a cada tabla del modelo", "Una colección nueva en Data Map", "Un OKR vinculado al dominio de gobernanza"],
           explain: "Un producto de datos agrupa los recursos asociados con una descripción y un caso de uso, para que los consumidores encuentren todo en un lugar."
         }
       },
@@ -65,13 +65,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Unified Catalog",
         q: "One table stores the customer identifier as CustID and another as CID. The company wants them treated as the same thing, with one set of quality rules. What should it create?",
-        options: ["A critical data element", "A governance domain", "A data product", "A Data Map scan rule"],
+        options: ["A critical data element", "A governance domain", "A data product", "A custom classification rule in Data Map"],
         answer: 0,
         explain: "Critical data elements group equivalent columns into one logical container, with quality rules and access policies attached.",
         es: {
           topic: "Catálogo unificado",
           q: "Una tabla guarda el identificador de cliente como CustID y otra como CID. La empresa quiere tratarlos como lo mismo, con un único conjunto de reglas de calidad. ¿Qué debe crear?",
-          options: ["Un elemento de datos crítico", "Un dominio de gobernanza", "Un producto de datos", "Una regla de análisis de Data Map"],
+          options: ["Un elemento de datos crítico", "Un dominio de gobernanza", "Un producto de datos", "Una regla de clasificación personalizada en Data Map"],
           explain: "Los elementos de datos críticos agrupan columnas equivalentes en un contenedor lógico, con reglas de calidad y directivas de acceso."
         }
       },
@@ -175,13 +175,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Unified Catalog",
         q: "Leadership wants to show that the Finance data products contribute to the goal of closing the books two days faster. Which Unified Catalog feature links them?",
-        options: ["OKRs (objectives and key results)", "Health actions", "Critical data elements", "Access policies"],
+        options: ["OKRs (objectives and key results)", "Health actions", "Critical data elements with quality rules", "Access policies"],
         answer: 0,
         explain: "OKRs are trackable business objectives tied to governance domains and data products.",
         es: {
           topic: "Catálogo unificado",
           q: "La dirección quiere mostrar que los productos de datos de Finanzas contribuyen al objetivo de cerrar la contabilidad dos días antes. ¿Qué característica del Catálogo unificado los vincula?",
-          options: ["Los OKR (objetivos y resultados clave)", "Las acciones de salud", "Los elementos de datos críticos", "Las directivas de acceso"],
+          options: ["Los OKR (objetivos y resultados clave)", "Las acciones de salud", "Los elementos de datos críticos con reglas de calidad", "Las directivas de acceso"],
           explain: "Los OKR son objetivos de negocio medibles vinculados a dominios de gobernanza y productos de datos."
         }
       },
@@ -189,13 +189,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Unified Catalog",
         q: "Analysts should be able to request access to a data product and get it through an approval flow, without opening IT tickets. What enables this?",
-        options: ["Unified Catalog access policies", "Data Map collections", "Glossary term descriptions", "Health controls"],
+        options: ["Unified Catalog access policies", "Data Map collections", "Glossary terms with terms of use attached", "Health controls"],
         answer: 0,
         explain: "Access policies set up self-service access requests for data products while upholding right-use standards.",
         es: {
           topic: "Catálogo unificado",
           q: "Los analistas deberían poder solicitar acceso a un producto de datos y obtenerlo con un flujo de aprobación, sin abrir tickets a TI. ¿Qué lo permite?",
-          options: ["Las directivas de acceso del Catálogo unificado", "Las colecciones de Data Map", "Las descripciones de los términos del glosario", "Los controles de salud"],
+          options: ["Las directivas de acceso del Catálogo unificado", "Las colecciones de Data Map", "Los términos del glosario con términos de uso asociados", "Los controles de salud"],
           explain: "Las directivas de acceso configuran solicitudes de acceso de autoservicio a productos de datos, respetando las normas de uso adecuado."
         }
       }
@@ -335,7 +335,7 @@ Catalog.module("sc-900", {
             options: [
               "It gives a single, unified view of metadata regardless of where the data resides",
               "It migrates all the data into one Azure region",
-              "It replaces each platform's native access controls",
+              "It replaces each platform's native access controls with Purview roles that grant data access",
               "It creates a copy of every dataset in Microsoft Fabric"
             ],
             answer: 0,
@@ -345,7 +345,7 @@ Catalog.module("sc-900", {
               options: [
                 "Da una vista única y unificada de los metadatos, sin importar dónde están los datos",
                 "Migra todos los datos a una única región de Azure",
-                "Reemplaza los controles de acceso nativos de cada plataforma",
+                "Reemplaza los controles de acceso nativos de cada plataforma por roles de Purview que dan acceso a los datos",
                 "Crea una copia de cada conjunto de datos en Microsoft Fabric"
               ],
               explain: "Data Map se conecta a orígenes en distintas nubes y locales, y evita una gobernanza fragmentada."
@@ -371,7 +371,7 @@ Catalog.module("sc-900", {
             q: "In a Purview rollout, which team typically works in Data Map, and which in Unified Catalog?",
             options: [
               "Technical teams connect and scan sources in Data Map; business teams and stewards curate in Unified Catalog",
-              "Business teams scan sources in Data Map; IT curates glossary terms in Unified Catalog",
+              "Business teams connect and scan sources in Data Map, while IT curates glossary terms and data products in Unified Catalog",
               "Only the central data office uses both tools",
               "Data consumers configure scans in Unified Catalog"
             ],
@@ -381,7 +381,7 @@ Catalog.module("sc-900", {
               q: "En una implementación de Purview, ¿qué equipo suele trabajar en Data Map y cuál en el Catálogo unificado?",
               options: [
                 "Los equipos técnicos conectan y analizan orígenes en Data Map; los de negocio y los stewards organizan en el Catálogo unificado",
-                "Los equipos de negocio analizan orígenes en Data Map; TI organiza los términos del glosario en el Catálogo unificado",
+                "Los equipos de negocio conectan y analizan orígenes en Data Map, mientras TI organiza términos del glosario y productos de datos en el Catálogo unificado",
                 "Solo la oficina central de datos usa ambas herramientas",
                 "Los consumidores de datos configuran los análisis en el Catálogo unificado"
               ],
@@ -479,7 +479,7 @@ Catalog.module("sc-900", {
               "Ask the AI-powered copilot in natural language",
               "Request access to every governance domain",
               "Create a new critical data element",
-              "Run a new Data Map scan of all sources"
+              "Run a new Data Map scan of all sources and browse the raw results"
             ],
             answer: 0,
             explain: "The copilot lets users search in everyday language without knowing exact asset names.",
@@ -489,7 +489,7 @@ Catalog.module("sc-900", {
                 "Preguntarle al copiloto con IA en lenguaje natural",
                 "Solicitar acceso a todos los dominios de gobernanza",
                 "Crear un nuevo elemento de datos crítico",
-                "Ejecutar un análisis nuevo de Data Map sobre todos los orígenes"
+                "Ejecutar un análisis nuevo de Data Map sobre todos los orígenes y revisar los resultados sin procesar"
               ],
               explain: "El copiloto permite buscar en lenguaje cotidiano sin conocer los nombres exactos de los recursos."
             }

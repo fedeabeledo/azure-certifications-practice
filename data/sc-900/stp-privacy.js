@@ -11,13 +11,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Service Trust Portal",
         q: "An auditor asks your company for evidence that Microsoft's cloud datacenters passed an independent ISO/IEC 27001 audit. Where do you get the report?",
-        options: ["Service Trust Portal, Certifications, Regulations, and Standards", "Compliance Manager, improvement actions for ISO/IEC 27001", "Microsoft Trust Center, privacy commitments page", "Microsoft Purview Audit, audit log search results"],
+        options: ["Service Trust Portal, Certifications, Regulations, and Standards", "Compliance Manager, using the improvement actions in its ISO/IEC 27001 assessment", "Microsoft Trust Center, privacy commitments page", "Microsoft Purview Audit, audit log search results"],
         answer: 0,
         explain: "The STP publishes audit reports produced by external auditors. Compliance Manager tracks your own controls, not Microsoft's audit reports.",
         es: {
           topic: "Portal de confianza de servicios",
           q: "Un auditor le pide a su empresa evidencia de que los centros de datos en la nube de Microsoft aprobaron una auditoría independiente de ISO/IEC 27001. ¿Dónde obtiene el informe?",
-          options: ["Portal de confianza de servicios, Certificaciones, normativas y estándares", "Administrador de cumplimiento, acciones de mejora para ISO/IEC 27001", "Centro de confianza de Microsoft, página de compromisos de privacidad", "Auditoría de Microsoft Purview, resultados de búsqueda del registro de auditoría"],
+          options: ["Portal de confianza de servicios, Certificaciones, normativas y estándares", "Administrador de cumplimiento, con las acciones de mejora de su evaluación ISO/IEC 27001", "Centro de confianza de Microsoft, página de compromisos de privacidad", "Auditoría de Microsoft Purview, resultados de búsqueda del registro de auditoría"],
           explain: "El STP publica informes de auditoría elaborados por auditores externos. El Administrador de cumplimiento sigue sus propios controles, no los informes de auditoría de Microsoft."
         }
       },
@@ -69,7 +69,7 @@ Catalog.module("sc-900", {
           "Notify the customer, share a copy of the request and redirect the agency to the customer",
           "Hand over the data and notify the customer afterward",
           "Give the agency read-only access to the tenant for the investigation",
-          "Refuse the request, since customer data is never disclosed under any law"
+          "Refuse the request outright, since Microsoft never discloses customer data under any law or court order"
         ],
         answer: 0,
         explain: "Microsoft's position is that government requests should go to the customer. It discloses data only as the customer directs or where required by law.",
@@ -80,7 +80,7 @@ Catalog.module("sc-900", {
             "Notifica al cliente, le comparte una copia de la solicitud y deriva al organismo hacia el cliente",
             "Entrega los datos y después notifica al cliente",
             "Le da al organismo acceso de solo lectura al inquilino para la investigación",
-            "Rechaza la solicitud, porque los datos del cliente nunca se divulgan bajo ninguna ley"
+            "Rechaza la solicitud de plano, porque Microsoft nunca divulga datos de clientes bajo ninguna ley ni orden judicial"
           ],
           explain: "La posición de Microsoft es que las solicitudes de gobierno deben dirigirse al cliente. Solo divulga datos según lo que indique el cliente o cuando la ley lo exige."
         }
@@ -128,13 +128,13 @@ Catalog.module("sc-900", {
         type: "single",
         topic: "Service Trust Portal",
         q: "A compliance officer wants an email whenever Microsoft updates the SOC 2 reports she relies on. What should she do in the Service Trust Portal?",
-        options: ["Save the reports to My Library and configure notification settings", "Subscribe to the Microsoft Trust Center RSS feed", "Create an alert policy in Microsoft Purview Audit", "Add the reports as an assessment in Compliance Manager"],
+        options: ["Save the reports to My Library and configure notification settings", "Subscribe to the Microsoft Trust Center RSS feed", "Create an alert policy in Microsoft Purview Audit", "Add the SOC 2 reports as a custom assessment in Compliance Manager and enable alerts"],
         answer: 0,
         explain: "My Library collects documents in one place and can email you when Microsoft updates them, including documents in a subscribed series.",
         es: {
           topic: "Portal de confianza de servicios",
           q: "Una responsable de cumplimiento quiere recibir un correo cada vez que Microsoft actualiza los informes SOC 2 que usa. ¿Qué debe hacer en el Portal de confianza de servicios?",
-          options: ["Guardar los informes en Mi biblioteca y configurar las notificaciones", "Suscribirse al RSS del Centro de confianza de Microsoft", "Crear una directiva de alertas en Auditoría de Microsoft Purview", "Agregar los informes como evaluación en el Administrador de cumplimiento"],
+          options: ["Guardar los informes en Mi biblioteca y configurar las notificaciones", "Suscribirse al RSS del Centro de confianza de Microsoft", "Crear una directiva de alertas en Auditoría de Microsoft Purview", "Agregar los informes SOC 2 como evaluación personalizada en el Administrador de cumplimiento y activar alertas"],
           explain: "Mi biblioteca reúne documentos en un lugar y puede avisarle por correo cuando Microsoft los actualiza, incluidos los documentos de una serie suscrita."
         }
       },
@@ -304,7 +304,7 @@ Catalog.module("sc-900", {
             options: [
               "Subprocessors can only perform the functions they were engaged for, under the same commitments",
               "Subprocessors can use the data for analytics if it's aggregated",
-              "Subprocessors sign separate contracts directly with each customer",
+              "Subprocessors sign their own separate data processing contracts directly with each customer instead",
               "Subprocessors never access customer data under any circumstances"
             ],
             answer: 0,
@@ -314,7 +314,7 @@ Catalog.module("sc-900", {
               options: [
                 "Los subencargados solo pueden hacer las funciones para las que se los contrató, con los mismos compromisos",
                 "Los subencargados pueden usar los datos para análisis si están agregados",
-                "Los subencargados firman contratos separados directamente con cada cliente",
+                "Los subencargados firman, en cambio, sus propios contratos de tratamiento de datos directamente con cada cliente",
                 "Los subencargados nunca acceden a datos de clientes bajo ninguna circunstancia"
               ],
               explain: "Los subencargados están sujetos a los compromisos contractuales de privacidad de Microsoft y se auditan de antemano."
